@@ -1,11 +1,13 @@
 {
+  "name": "MoBouzer",
+  "displayName": "MoBouzer",
   "expo": {
-    "name": "TestProject",
-    "slug": "TestProject",
+    "name": "MoBouzer",
+    "slug": "MoBouzer",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "scheme": "mobouzer",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/images/splash.png",
@@ -15,9 +17,7 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
