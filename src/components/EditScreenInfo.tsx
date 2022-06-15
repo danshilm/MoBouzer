@@ -2,10 +2,13 @@ import * as WebBrowser from 'expo-web-browser';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 
 import Colors from '../constants/Colors';
+import useSettings from '../hooks/useSettings';
 import { MonoText } from './StyledText';
 import { Text, View } from './Themed';
 
 export default function EditScreenInfo({ path }: { path: string }) {
+  const { currentSettings } = useSettings();
+
   return (
     <View>
       <View style={styles.getStartedContainer}>
@@ -41,6 +44,10 @@ export default function EditScreenInfo({ path }: { path: string }) {
           </Text>
         </TouchableOpacity>
       </View>
+      <Text>
+        Is app initialised: {currentSettings.isInitialised}{' '}
+        {JSON.stringify(currentSettings.isInitialised)}
+      </Text>
     </View>
   );
 }

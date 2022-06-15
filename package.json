@@ -13,7 +13,8 @@
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "format": "prettier --write .",
     "postinstall": "node ./bin/postInstall",
-    "test": "jest --watchAll"
+    "test": "jest --watchAll",
+    "recrawl": "watchman watch-del ./; watchman watch-project ./"
   },
   "jest": {
     "preset": "jest-expo"
@@ -34,6 +35,7 @@
     "expo-status-bar": "~1.2.0",
     "expo-system-ui": "~1.1.0",
     "expo-web-browser": "~10.1.0",
+    "lodash": "^4.17.21",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "0.64.3",
@@ -44,6 +46,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
+    "@types/lodash": "^4.14.182",
     "@types/react": "~17.0.21",
     "@types/react-native": "~0.64.12",
     "@typescript-eslint/eslint-plugin": "^5.16.0",
