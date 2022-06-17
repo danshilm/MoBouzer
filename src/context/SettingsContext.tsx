@@ -1,24 +1,37 @@
-import { createContext } from 'react';
-import { getSettings, PublicAppSettings } from '../lib/settings';
-
-// type SettingsContextProps = PublicAppSettings;
+import React, { createContext, Dispatch, SetStateAction, useState } from 'react';
+import { defaultSettings, getSettings, PublicAppSettings } from '../lib/settings';
 
 export interface SettingsContextProps {
-  currentSettings: PublicAppSettings;
+  settings: PublicAppSettings;
+  setSettings: Dispatch<SetStateAction<PublicAppSettings>>;
 }
 
-const defaultPublicAppSettings: SettingsContextProps = {
-  currentSettings: { isInitialised: false, isOnboarded: false, defaultTheme: 'light' },
-};
+export const SettingsContext = createContext<SettingsContextProps>({
+  settings: defaultSettings.public,
+  setSettings: () => null,
+});
 
-export const SettingsContext = createContext<SettingsContextProps>(defaultPublicAppSettings);
+export const SettingsProvider = ({ children }) => {
+  const [settings, setSettings] = useState(() => {
+    return getSettings().publicSettings;
+  });
 
-export default function SettingsProvider({ children }): JSX.Element {
-  const { publicSettings } = getSettings();
+  const handleSetSettings = async (newSettings: SetStateAction<PublicAppSettings>) => {
+    const settings = getSettings();
+    settings.publicSettings = newSettings as PublicAppSettings;
+    await settings.save();
+
+    setSettings(newSettings);
+  };
 
   return (
-    <SettingsContext.Provider value={{ currentSettings: publicSettings }}>
+    <SettingsContext.Provider
+      value={{
+        settings: settings,
+        setSettings: async (newSettings) => await handleSetSettings(newSettings),
+      }}
+    >
       {children}
     </SettingsContext.Provider>
   );
-}
+};

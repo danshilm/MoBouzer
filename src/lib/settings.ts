@@ -12,17 +12,19 @@ interface AppSettings {
   public: PublicAppSettings;
 }
 
+export const defaultSettings: AppSettings = {
+  public: {
+    defaultTheme: 'light',
+    isInitialised: false,
+    isOnboarded: false,
+  },
+};
+
 class Settings {
   private settings: AppSettings;
 
   constructor() {
-    this.settings = {
-      public: {
-        isInitialised: false,
-        isOnboarded: false,
-        defaultTheme: 'dark',
-      },
-    };
+    this.settings = defaultSettings;
   }
 
   get publicSettings() {
@@ -33,13 +35,20 @@ class Settings {
     this.settings.public = data;
   }
 
-  public async load() {
+  public async load(overrideSettings?: AppSettings) {
+    if (overrideSettings) {
+      this.settings = overrideSettings;
+      await this.save();
+      return this;
+    }
+
     const settings = await load<AppSettings>('app-settings');
 
     if (settings) {
       this.settings = merge(this.settings, settings);
       await this.save();
     }
+
     return this;
   }
 

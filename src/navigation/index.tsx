@@ -12,6 +12,7 @@ import { ColorSchemeName, Pressable } from 'react-native';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
+import useSettings from '../hooks/useSettings';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import TabOneScreen from '../screens/TabOneScreen';
@@ -56,6 +57,7 @@ const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
 function BottomTabNavigator() {
   const colorScheme = useColorScheme();
+  const { settings, setSettings } = useSettings();
 
   return (
     <BottomTab.Navigator
@@ -72,7 +74,11 @@ function BottomTabNavigator() {
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
           headerRight: () => (
             <Pressable
-              onPress={() => navigation.navigate('Modal')}
+              onPress={() => {
+                navigation.navigate('Modal');
+                const isDarkMode = settings.defaultTheme === 'dark';
+                setSettings({ ...settings, defaultTheme: isDarkMode ? 'light' : 'dark' });
+              }}
               style={({ pressed }) => ({
                 opacity: pressed ? 0.5 : 1,
               })}
