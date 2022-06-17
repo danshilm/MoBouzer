@@ -5,7 +5,7 @@ import { load, save } from '../utils/storage';
 export interface PublicAppSettings {
   isInitialised: boolean;
   isOnboarded: boolean;
-  defaultTheme: 'dark' | 'light';
+  isDarkMode: boolean;
 }
 
 interface AppSettings {
@@ -14,7 +14,7 @@ interface AppSettings {
 
 export const defaultSettings: AppSettings = {
   public: {
-    defaultTheme: 'light',
+    isDarkMode: false,
     isInitialised: false,
     isOnboarded: false,
   },

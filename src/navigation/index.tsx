@@ -76,8 +76,7 @@ function BottomTabNavigator() {
             <Pressable
               onPress={() => {
                 navigation.navigate('Modal');
-                const isDarkMode = settings.defaultTheme === 'dark';
-                setSettings({ ...settings, defaultTheme: isDarkMode ? 'light' : 'dark' });
+                setSettings({ ...settings, isDarkMode: !settings.isDarkMode });
               }}
               style={({ pressed }) => ({
                 opacity: pressed ? 0.5 : 1,

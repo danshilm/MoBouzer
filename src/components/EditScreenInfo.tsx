@@ -43,7 +43,7 @@ export default function EditScreenInfo({ path }: { path: string }) {
           </Text>
         </TouchableOpacity>
       </View>
-      <Text>{`is dark mode: ${settings.defaultTheme === 'dark' ? 'true' : 'false'}`}</Text>
+      <Text>{`is dark mode: ${settings.isDarkMode ? 'true' : 'false'}`}</Text>
     </View>
   );
 }
