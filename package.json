@@ -13,11 +13,7 @@
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "format": "prettier --write .",
     "postinstall": "node ./bin/postInstall",
-    "test": "jest --watchAll",
     "recrawl": "watchman watch-del ./; watchman watch-project ./"
-  },
-  "jest": {
-    "preset": "jest-expo"
   },
   "dependencies": {
     "@expo/vector-icons": "^12.0.0",
