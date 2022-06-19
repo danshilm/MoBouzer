@@ -12,9 +12,7 @@ export const SettingsContext = createContext<SettingsContextProps>({
 });
 
 export const SettingsProvider = ({ children }) => {
-  const [settings, setSettings] = useState(() => {
-    return getSettings().publicSettings;
-  });
+  const [settings, setSettings] = useState(getSettings().publicSettings);
 
   const handleSetSettings = async (newSettings: SetStateAction<PublicAppSettings>) => {
     const settings = getSettings();
