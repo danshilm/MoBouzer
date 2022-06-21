@@ -9,10 +9,10 @@ import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import { ColorSchemeName, Pressable } from 'react-native';
-
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import useSettings from '../hooks/useSettings';
+import tw from '../lib/tailwind';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import TabOneScreen from '../screens/TabOneScreen';
@@ -78,15 +78,13 @@ function BottomTabNavigator() {
                 navigation.navigate('Modal');
                 setSettings({ ...settings, isDarkMode: !settings.isDarkMode });
               }}
-              style={({ pressed }) => ({
-                opacity: pressed ? 0.5 : 1,
-              })}
+              style={({ pressed }) => tw`${pressed ? 'opacity-50' : 'opacity-100'}`}
             >
               <FontAwesome
                 name="info-circle"
                 size={25}
                 color={Colors[colorScheme].text}
-                style={{ marginRight: 15 }}
+                style={tw`mr-4`}
               />
             </Pressable>
           ),
@@ -111,5 +109,5 @@ function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>['name'];
   color: string;
 }) {
-  return <FontAwesome size={30} style={{ marginBottom: -3 }} {...props} />;
+  return <FontAwesome size={30} style={tw`mb-[-3px]`} {...props} />;
 }

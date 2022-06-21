@@ -1,32 +1,17 @@
-import { StyleSheet } from 'react-native';
-import tw from 'twrnc';
+import { Text, View } from 'react-native';
+import { useDeviceContext } from 'twrnc';
 import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
+import tw from '../lib/tailwind';
 import { RootTabScreenProps } from '../navigation/types';
 
 export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
+  useDeviceContext(tw);
+
   return (
-    <View style={tw`flex flex-1 justify-center items-center `}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+    <View style={tw`flex items-center justify-center flex-1 bg-white dark:bg-black font-inter`}>
+      <Text style={tw`text-xl font-bold dark:text-slate-100`}>Tab One</Text>
+      <View style={tw`w-4/5 h-px my-8 bg-slate-300 dark:bg-slate-100`} />
       <EditScreenInfo path="/src/screens/TabOneScreen.tsx" />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
-});

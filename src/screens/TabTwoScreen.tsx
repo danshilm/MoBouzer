@@ -1,31 +1,16 @@
-import { StyleSheet } from 'react-native';
-
+import { Text, View } from 'react-native';
+import { useDeviceContext } from 'twrnc';
 import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
+import tw from '../lib/tailwind';
 
 export default function TabTwoScreen() {
+  useDeviceContext(tw);
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Tab Two</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+    <View style={tw`flex items-center justify-center flex-1 bg-white dark:bg-black`}>
+      <Text style={tw`text-xl font-bold dark:text-slate-100`}>Tab Two</Text>
+      <View style={tw`w-4/5 h-px my-8 bg-slate-300 dark:bg-slate-50`} />
       <EditScreenInfo path="/src/screens/TabTwoScreen.tsx" />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
-});

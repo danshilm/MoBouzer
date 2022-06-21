@@ -1,49 +1,37 @@
 import * as WebBrowser from 'expo-web-browser';
-import { StyleSheet, TouchableOpacity } from 'react-native';
-import Colors from '../constants/Colors';
+import { Text, TouchableOpacity, View } from 'react-native';
 import useSettings from '../hooks/useSettings';
-import { MonoText } from './StyledText';
-import { Text, View } from './Themed';
+import tw from '../lib/tailwind';
 
 export default function EditScreenInfo({ path }: { path: string }) {
   const { settings } = useSettings();
 
   return (
     <View>
-      <View style={styles.getStartedContainer}>
-        <Text
-          style={styles.getStartedText}
-          lightColor="rgba(0,0,0,0.8)"
-          darkColor="rgba(255,255,255,0.8)"
-        >
+      <View style={tw`items-center px-6 py-8`}>
+        <Text style={[tw`text-base leading-6 text-center dark:text-slate-100`]}>
           Open up the code for this screen:
         </Text>
 
-        <View
-          style={[styles.codeHighlightContainer, styles.homeScreenFilename]}
-          darkColor="rgba(255,255,255,0.05)"
-          lightColor="rgba(0,0,0,0.05)"
-        >
-          <MonoText>{path}</MonoText>
+        <View style={tw`px-1 my-2 rounded dark:text-slate-100 bg-slate-100 dark:bg-neutral-900`}>
+          <Text style={tw`font-space-mono`}>{path}</Text>
         </View>
 
-        <Text
-          style={styles.getStartedText}
-          lightColor="rgba(0,0,0,0.8)"
-          darkColor="rgba(255,255,255,0.8)"
-        >
+        <Text style={tw`text-base leading-6 text-center dark:text-slate-100`}>
           Change any of the text, save the file, and your app will automatically update.
         </Text>
       </View>
 
-      <View style={styles.helpContainer}>
-        <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
-          <Text style={styles.helpLinkText} lightColor={Colors.light.tint}>
+      <View style={tw`mx-6 mt-3`}>
+        <TouchableOpacity onPress={handleHelpPress} style={tw`py-4`}>
+          <Text style={tw`text-center underline dark:text-slate-100`}>
             Tap here if your app doesn't automatically update after making changes
           </Text>
         </TouchableOpacity>
       </View>
-      <Text>{`is dark mode: ${settings.isDarkMode ? 'true' : 'false'}`}</Text>
+      <Text style={tw`text-center font-extralight`}>{`is dark mode: ${
+        settings.isDarkMode ? 'true' : 'false'
+      }`}</Text>
     </View>
   );
 }
@@ -53,33 +41,3 @@ function handleHelpPress() {
     'https://docs.expo.io/get-started/create-a-new-app/#opening-the-app-on-your-phonetablet'
   );
 }
-
-const styles = StyleSheet.create({
-  getStartedContainer: {
-    alignItems: 'center',
-    marginHorizontal: 50,
-  },
-  homeScreenFilename: {
-    marginVertical: 7,
-  },
-  codeHighlightContainer: {
-    borderRadius: 3,
-    paddingHorizontal: 4,
-  },
-  getStartedText: {
-    fontSize: 17,
-    lineHeight: 24,
-    textAlign: 'center',
-  },
-  helpContainer: {
-    marginTop: 15,
-    marginHorizontal: 20,
-    alignItems: 'center',
-  },
-  helpLink: {
-    paddingVertical: 15,
-  },
-  helpLinkText: {
-    textAlign: 'center',
-  },
-});
