@@ -28,15 +28,20 @@ export default function SignIn({ navigation }: RootStackScreenProps<'SignIn'>) {
           <TextInput
             label="Email address"
             textContentType="emailAddress"
+            autoCompleteType="email"
             placeholder="gandalf@tlotr.com"
           />
           <TextInput
             label="Password"
             textContentType="password"
+            autoCompleteType="password"
             secureTextEntry={true}
             placeholder="Thoushallnotpass123"
           />
-          <Button style={tw`flex flex-row mt-3.5 bg-slate-800 border-slate-800`}>
+          <Button
+            style={tw`flex flex-row mt-3.5 bg-slate-800 border-slate-800`}
+            onPress={() => navigation.reset({ index: 0, routes: [{ name: 'Home' }] })}
+          >
             <Text style={tw`text-base text-white font-inter-medium`}>Sign In</Text>
           </Button>
         </View>
