@@ -20,6 +20,9 @@ module.exports = {
         'space-mono-bold': 'SpaceMono_700Bold',
         'space-mono-bold-italic': 'SpaceMono_700Bold_Italic',
       },
+      spacing: {
+        13: '3.25rem',
+      },
     },
   },
   plugins: [],
