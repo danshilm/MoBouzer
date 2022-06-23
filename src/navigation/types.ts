@@ -14,7 +14,9 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 // }
 
 export type RootStackParamList = {
-  Root: NavigatorScreenParams<RootTabParamList> | undefined;
+  Onboarding: undefined;
+  SignIn: undefined;
+  Home: NavigatorScreenParams<RootTabParamList> | undefined;
   Modal: undefined;
   NotFound: undefined;
 };
