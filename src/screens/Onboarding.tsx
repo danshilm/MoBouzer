@@ -8,8 +8,8 @@ import { RootStackScreenProps } from '../navigation/types';
 export default function Onboarding({ navigation }: RootStackScreenProps<'Onboarding'>) {
   return (
     <>
-      <View style={tw`flex flex-col justify-between h-screen`}>
-        <View style={tw``}>
+      <View style={tw`flex flex-col justify-between h-full`}>
+        <View>
           {/* <Carousel> */}
           <View style={tw`w-full bg-gray-400 rounded-lg h-[410px] mt-7`}></View>
           <View style={tw`flex flex-row justify-center mt-4`}>
@@ -38,7 +38,7 @@ export default function Onboarding({ navigation }: RootStackScreenProps<'Onboard
             </Button>
           </View>
         </View>
-        <View style={tw`flex flex-row justify-center mb-6`}>
+        <View style={tw`flex flex-row justify-center mb-8`}>
           <Text style={tw`text-gray-700`}>Terms of Use</Text>
           <Text style={tw`mx-3`}>|</Text>
           <Text style={tw`text-gray-700`}>Privacy Policy</Text>
