@@ -3,7 +3,7 @@ import { TouchableOpacity, TouchableOpacityProps, ViewStyle } from 'react-native
 import tw from '../../lib/tailwind';
 
 interface ButtonProps extends TouchableOpacityProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   style: ViewStyle;
 }
 
@@ -12,7 +12,7 @@ export default function Button({ children, style, ...props }: ButtonProps): JSX.
     <TouchableOpacity
       activeOpacity={0.6}
       style={tw.style(
-        'shadow-sm font-semibold disabled:opacity-50 h-14 rounded-xl border flex flex-row items-center justify-center',
+        'shadow-sm font-semibold disabled:opacity-50 h-13 rounded-xl border flex flex-row items-center justify-center',
         style
       )}
       {...props}
