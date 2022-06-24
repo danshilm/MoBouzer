@@ -1,18 +1,19 @@
 import { FontAwesome } from '@expo/vector-icons';
 import React from 'react';
 import { Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import Button from '../components/Common/Button';
 import tw from '../lib/tailwind';
 import { RootStackScreenProps } from '../navigation/types';
 
 export default function Onboarding({ navigation }: RootStackScreenProps<'Onboarding'>) {
   return (
-    <>
+    <SafeAreaView style={tw`px-6`}>
       <View style={tw`flex flex-col justify-between h-full`}>
         <View>
           {/* <Carousel> */}
-          <View style={tw`w-full bg-gray-400 rounded-lg h-[410px] mt-7`}></View>
-          <View style={tw`flex flex-row justify-center mt-4`}>
+          <View style={tw`w-full bg-gray-400 rounded-lg h-[410px] my-2`}></View>
+          <View style={tw`flex flex-row justify-center mt-2`}>
             <View style={tw`w-2 h-2 mx-1 rounded-md bg-slate-600`}></View>
             <View style={tw`w-2 h-2 mx-1 rounded-md bg-slate-400`}></View>
             <View style={tw`w-2 h-2 mx-1 rounded-md bg-slate-400`}></View>
@@ -44,6 +45,6 @@ export default function Onboarding({ navigation }: RootStackScreenProps<'Onboard
           <Text style={tw`text-gray-700`}>Privacy Policy</Text>
         </View>
       </View>
-    </>
+    </SafeAreaView>
   );
 }

@@ -8,7 +8,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
-import { ColorSchemeName, Platform, Pressable, StatusBar } from 'react-native';
+import { ColorSchemeName, Pressable } from 'react-native';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import useSettings from '../hooks/useSettings';
@@ -42,17 +42,13 @@ function RootNavigator() {
     <Stack.Navigator
       screenOptions={{
         animation: 'default',
-        contentStyle: tw.style(
-          Platform.OS === 'ios' ? 'pt-10' : `pt-[${StatusBar.currentHeight ?? 0}px]`,
-          'px-6'
-        ),
+        headerShown: false,
       }}
     >
-      <Stack.Screen name="Onboarding" component={Onboarding} options={{ headerShown: false }} />
-      <Stack.Screen name="SignIn" component={SignIn} options={{ headerShown: false }} />
+      <Stack.Screen name="Onboarding" component={Onboarding} />
+      <Stack.Screen name="SignIn" component={SignIn} />
       {/* Sign Up */}
-      <Stack.Screen name="Home" component={HomeTabNavigator} options={{ headerShown: false }} />
-      {/* <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} /> */}
+      <Stack.Screen name="Home" component={HomeTabNavigator} />
     </Stack.Navigator>
   );
 }
