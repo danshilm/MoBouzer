@@ -62,3 +62,6 @@ local.properties
 # Expo
 .expo/*
 bin/Exponent.app
+
+# Env variables
+.env
