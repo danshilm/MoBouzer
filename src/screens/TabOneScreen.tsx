@@ -2,9 +2,8 @@ import { Text, View } from 'react-native';
 import { useDeviceContext } from 'twrnc';
 import EditScreenInfo from '../components/EditScreenInfo';
 import tw from '../lib/tailwind';
-import { RootTabScreenProps } from '../navigation/types';
 
-export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
+export default function TabOneScreen() {
   useDeviceContext(tw);
 
   return (
