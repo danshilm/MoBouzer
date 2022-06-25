@@ -20,9 +20,11 @@ const expoConfig = {
     },
     assetBundlePatterns: ['**/*'],
     ios: {
+      bundleIdentifier: 'com.mobouzer',
       supportsTablet: true,
     },
     android: {
+      package: 'com.mobouzer',
       adaptiveIcon: {
         foregroundImage: './assets/images/adaptive-icon.png',
         backgroundColor: '#ffffff',
