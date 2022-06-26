@@ -2,12 +2,16 @@ import { AntDesign } from '@expo/vector-icons';
 import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useDeviceContext } from 'twrnc';
 import Button from '../components/Common/Button';
 import TextInput from '../components/Common/TextInput';
+import OnboardingFooter from '../components/OnboardingFooter';
 import tw from '../lib/tailwind';
 import { RootStackScreenProps } from '../navigation/types';
 
 export default function SignIn({ navigation }: RootStackScreenProps<'SignIn'>) {
+  useDeviceContext(tw);
+
   return (
     <SafeAreaView style={tw`px-6`}>
       <View style={tw`flex flex-col justify-between h-full`}>
@@ -19,8 +23,10 @@ export default function SignIn({ navigation }: RootStackScreenProps<'SignIn'>) {
               onPress={() => navigation.goBack()}
               style={tw`flex flex-row items-center`}
             >
-              <AntDesign name="arrowleft" size={20} />
-              <Text style={tw`ml-2 text-base font-inter-medium`}>Back</Text>
+              <AntDesign name="arrowleft" size={20} style={tw`text-gray-800 dark:text-gray-300`} />
+              <Text style={tw`ml-2 text-base text-gray-800 font-inter-medium dark:text-gray-300`}>
+                Back
+              </Text>
             </TouchableOpacity>
           </View>
           {/* Carousel-y image */}
@@ -48,11 +54,7 @@ export default function SignIn({ navigation }: RootStackScreenProps<'SignIn'>) {
             </Button>
           </View>
         </View>
-        <View style={tw`flex flex-row justify-center mb-8`}>
-          <Text style={tw`text-gray-700`}>Terms of Use</Text>
-          <Text style={tw`mx-3`}>|</Text>
-          <Text style={tw`text-gray-700`}>Privacy Policy</Text>
-        </View>
+        <OnboardingFooter />
       </View>
     </SafeAreaView>
   );
