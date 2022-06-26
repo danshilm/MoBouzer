@@ -88,3 +88,20 @@ export async function clear(): Promise<boolean> {
     return false;
   }
 }
+
+export async function getAll() {
+  try {
+    const allItems: Record<string, unknown>[] = [];
+    await AsyncStorage.getAllKeys((err, keys) => {
+      AsyncStorage.multiGet(keys ?? [], (_error, stores) => {
+        stores?.map((_result, i, store) => {
+          allItems.push({ [store[i][0]]: store[i][1] });
+        });
+      });
+    });
+
+    return allItems;
+  } catch {
+    return undefined;
+  }
+}
