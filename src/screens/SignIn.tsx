@@ -30,22 +30,11 @@ export default function SignIn({ navigation }: RootStackScreenProps<'SignIn'>) {
             </TouchableOpacity>
           </View>
           {/* Carousel-y image */}
-          <View style={tw`w-full h-32 mt-6 bg-gray-400 rounded-xl`}></View>
+          <View style={tw`w-full h-32 mt-6 bg-gray-400 rounded-xl`} />
           {/* Login form */}
           <View style={tw`mt-3`}>
-            <TextInput
-              label="Email address"
-              textContentType="emailAddress"
-              autoCompleteType="email"
-              placeholder="gandalf@tlotr.com"
-            />
-            <TextInput
-              label="Password"
-              textContentType="password"
-              autoCompleteType="password"
-              secureTextEntry={true}
-              placeholder="Thoushallnotpass123"
-            />
+            <TextInput label="Email address" as="email" placeholder="gandalf@tlotr.com" />
+            <TextInput label="Password" as="password" placeholder="Thoushallnotpass123" />
             <Button
               style={tw`flex flex-row mt-3.5 bg-slate-800 border-slate-800`}
               onPress={() => navigation.reset({ index: 0, routes: [{ name: 'Home' }] })}
