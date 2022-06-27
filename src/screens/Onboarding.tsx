@@ -24,22 +24,19 @@ export default function Onboarding({ navigation }: RootStackScreenProps<'Onboard
           </View>
           {/* Sign in buttons */}
           <View style={tw`mt-8`}>
-            <Button style={tw`flex flex-row mb-5 bg-white dark:bg-gray-200 border-slate-300`}>
-              <FontAwesome style={tw`mr-3 text-gray-700`} name="apple" size={20} />
-              <Text style={tw`text-base text-gray-700 font-inter-medium`}>Continue With Apple</Text>
+            <Button style={tw`mb-5`} type="default">
+              <FontAwesome style={tw`mr-3 text-gray-800`} name="apple" size={20} />
+              <Text style={tw`text-base text-gray-800 font-inter-medium`}>Continue With Apple</Text>
             </Button>
-            <Button style={tw`mb-5 bg-white dark:bg-gray-200 border-slate-300`}>
-              <FontAwesome style={tw`mr-3 text-gray-700`} name="google" size={20} />
-              <Text style={tw`text-base text-gray-700 font-inter-medium`}>
+            <Button style={tw`mb-5`} type="default">
+              <FontAwesome style={tw`mr-3 text-gray-800`} name="google" size={20} />
+              <Text style={tw`text-base text-gray-800 font-inter-medium`}>
                 Continue With Google
               </Text>
             </Button>
-            <Button
-              onPress={() => navigation.push('SignIn')}
-              style={tw`flex flex-row mb-5 bg-slate-800 border-slate-800`}
-            >
-              <FontAwesome style={tw`mr-3 text-white`} name="envelope-o" size={20} />
-              <Text style={tw`text-base text-white font-inter-medium`}>Continue With Email</Text>
+            <Button onPress={() => navigation.push('SignIn')} style={tw`mb-5`} type="primary">
+              <FontAwesome style={tw`mr-3 text-gray-100`} name="envelope-o" size={20} />
+              <Text style={tw`text-base text-gray-100 font-inter-medium`}>Continue With Email</Text>
             </Button>
           </View>
         </View>

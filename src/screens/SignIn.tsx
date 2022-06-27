@@ -56,14 +56,11 @@ export default function SignIn({ navigation }: RootStackScreenProps<'SignIn'>) {
               value={password}
               onChangeText={setPassword}
             />
-            <Button
-              style={tw`flex flex-row mt-3.5 bg-slate-800 border-slate-800`}
-              onPress={() => handleSignIn()}
-            >
+            <Button style={tw`mt-3.5`} type="primary" onPress={() => handleSignIn()}>
               {loading ? (
                 <ActivityIndicator color="#FFFFFF" />
               ) : (
-                <Text style={tw`text-base text-white font-inter-medium`}>Sign In</Text>
+                <Text style={tw`text-base text-gray-100 font-inter-medium`}>Sign In</Text>
               )}
             </Button>
           </View>
