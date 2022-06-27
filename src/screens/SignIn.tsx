@@ -1,16 +1,25 @@
 import { AntDesign } from '@expo/vector-icons';
-import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import React, { useState } from 'react';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { ActivityIndicator, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useDeviceContext } from 'twrnc';
 import Button from '../components/Common/Button';
 import TextInput from '../components/Common/TextInput';
 import OnboardingFooter from '../components/OnboardingFooter';
+import { firebaseAuth } from '../firebase/config';
 import tw from '../lib/tailwind';
 import { RootStackScreenProps } from '../navigation/types';
 
 export default function SignIn({ navigation }: RootStackScreenProps<'SignIn'>) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [signInWithEmailAndPassword, _user, loading] = useSignInWithEmailAndPassword(firebaseAuth);
   useDeviceContext(tw);
+
+  const handleSignIn = () => {
+    signInWithEmailAndPassword(email, password);
+  };
 
   return (
     <SafeAreaView style={tw`px-6`}>
@@ -33,13 +42,29 @@ export default function SignIn({ navigation }: RootStackScreenProps<'SignIn'>) {
           <View style={tw`w-full h-32 mt-6 bg-gray-400 rounded-xl`} />
           {/* Login form */}
           <View style={tw`mt-3`}>
-            <TextInput label="Email address" as="email" placeholder="gandalf@tlotr.com" />
-            <TextInput label="Password" as="password" placeholder="Thoushallnotpass123" />
+            <TextInput
+              label="Email address"
+              as="email"
+              placeholder="gandalf@tlotr.com"
+              value={email}
+              onChangeText={setEmail}
+            />
+            <TextInput
+              label="Password"
+              as="password"
+              placeholder="Thoushallnotpass123"
+              value={password}
+              onChangeText={setPassword}
+            />
             <Button
               style={tw`flex flex-row mt-3.5 bg-slate-800 border-slate-800`}
-              onPress={() => navigation.reset({ index: 0, routes: [{ name: 'Home' }] })}
+              onPress={() => handleSignIn()}
             >
-              <Text style={tw`text-base text-white font-inter-medium`}>Sign In</Text>
+              {loading ? (
+                <ActivityIndicator color="#FFFFFF" />
+              ) : (
+                <Text style={tw`text-base text-white font-inter-medium`}>Sign In</Text>
+              )}
             </Button>
           </View>
         </View>

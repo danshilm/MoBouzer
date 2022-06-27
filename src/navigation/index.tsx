@@ -3,13 +3,15 @@
  * https://reactnavigation.org/docs/getting-started
  *
  */
-import { FontAwesome } from '@expo/vector-icons';
+import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { ColorSchemeName, Pressable } from 'react-native';
 import Colors from '../constants/Colors';
+import { firebaseAuth } from '../firebase/config';
 import useColorScheme from '../hooks/useColorScheme';
 import useSettings from '../hooks/useSettings';
 import tw from '../lib/tailwind';
@@ -38,6 +40,10 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
+  // everything under one navigator so screen transitions happen smoothly
+  // https://reactnavigation.org/docs/auth-flow/
+  const [user] = useAuthState(firebaseAuth);
+
   return (
     <Stack.Navigator
       screenOptions={{
@@ -45,10 +51,17 @@ function RootNavigator() {
         headerShown: false,
       }}
     >
-      <Stack.Screen name="Onboarding" component={Onboarding} />
-      <Stack.Screen name="SignIn" component={SignIn} />
-      {/* Sign Up */}
-      <Stack.Screen name="Home" component={HomeTabNavigator} />
+      {!user ? (
+        <>
+          <Stack.Screen name="Onboarding" component={Onboarding} />
+          <Stack.Screen name="SignIn" component={SignIn} />
+          {/* Sign Up */}
+        </>
+      ) : (
+        <>
+          <Stack.Screen name="Home" component={HomeTabNavigator} />
+        </>
+      )}
     </Stack.Navigator>
   );
 }
@@ -79,13 +92,13 @@ function HomeTabNavigator() {
           headerRight: () => (
             <Pressable
               onPress={() => {
-                navigation.navigate('Modal');
                 setSettings({ ...settings, isDarkMode: !settings.isDarkMode });
+                firebaseAuth.signOut();
               }}
               style={({ pressed }) => tw`${pressed ? 'opacity-50' : 'opacity-100'}`}
             >
-              <FontAwesome
-                name="info-circle"
+              <Ionicons
+                name="exit-outline"
                 size={25}
                 color={Colors[colorScheme].text}
                 style={tw`mr-4`}

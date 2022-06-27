@@ -13,8 +13,8 @@ export default function EditScreenInfo({ path }: { path: string }) {
           Open up the code for this screen:
         </Text>
 
-        <View style={tw`px-1 my-2 rounded dark:text-slate-100 bg-slate-100 dark:bg-neutral-900`}>
-          <Text style={tw`font-space-mono`}>{path}</Text>
+        <View style={tw`px-1 my-2 rounded bg-slate-100 dark:bg-neutral-900`}>
+          <Text style={tw`font-space-mono dark:text-slate-100`}>{path}</Text>
         </View>
 
         <Text style={tw`text-base leading-6 text-center dark:text-slate-100`}>
@@ -29,9 +29,9 @@ export default function EditScreenInfo({ path }: { path: string }) {
           </Text>
         </TouchableOpacity>
       </View>
-      <Text style={tw`text-center font-extralight`}>{`is dark mode: ${
-        settings.isDarkMode ? 'true' : 'false'
-      }`}</Text>
+      <Text style={tw`text-center font-extralight dark:text-slate-100`}>
+        is dark mode: {settings.isDarkMode ? 'true' : 'false'}
+      </Text>
     </View>
   );
 }
