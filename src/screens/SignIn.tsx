@@ -14,7 +14,7 @@ import { RootStackScreenProps } from '../navigation/types';
 export default function SignIn({ navigation }: RootStackScreenProps<'SignIn'>) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [signInWithEmailAndPassword, _user, loading] = useSignInWithEmailAndPassword(firebaseAuth);
+  const [signInWithEmailAndPassword, , loading] = useSignInWithEmailAndPassword(firebaseAuth);
   useDeviceContext(tw);
 
   const handleSignIn = () => {

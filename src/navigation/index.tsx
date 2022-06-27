@@ -15,12 +15,13 @@ import { firebaseAuth } from '../firebase/config';
 import useColorScheme from '../hooks/useColorScheme';
 import useSettings from '../hooks/useSettings';
 import tw from '../lib/tailwind';
+import Loading from '../screens/Loading';
 import Onboarding from '../screens/Onboarding';
 import SignIn from '../screens/SignIn';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import LinkingConfiguration from './LinkingConfiguration';
-import { RootStackParamList, RootTabParamList, RootTabScreenProps } from './types';
+import { RootStackParamList, RootTabParamList } from './types';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -42,7 +43,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function RootNavigator() {
   // everything under one navigator so screen transitions happen smoothly
   // https://reactnavigation.org/docs/auth-flow/
-  const [user] = useAuthState(firebaseAuth);
+  const [user, loading] = useAuthState(firebaseAuth);
 
   return (
     <Stack.Navigator
@@ -51,7 +52,9 @@ function RootNavigator() {
         headerShown: false,
       }}
     >
-      {!user ? (
+      {loading ? (
+        <Stack.Screen name="Loading" component={Loading} />
+      ) : !user ? (
         <>
           <Stack.Screen name="Onboarding" component={Onboarding} />
           <Stack.Screen name="SignIn" component={SignIn} />
@@ -86,7 +89,7 @@ function HomeTabNavigator() {
       <BottomTab.Screen
         name="TabOne"
         component={TabOneScreen}
-        options={({ navigation }: RootTabScreenProps<'TabOne'>) => ({
+        options={() => ({
           title: 'Tab One',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
           headerRight: () => (
