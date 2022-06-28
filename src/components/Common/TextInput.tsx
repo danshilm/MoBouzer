@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import {
+  NativeSyntheticEvent,
   Platform,
   Text,
   TextInput as BaseTextInput,
+  TextInputFocusEventData,
   TextInputProps as BaseTextInputProps,
   View,
 } from 'react-native';
@@ -12,9 +14,10 @@ interface TextInputProps extends BaseTextInputProps {
   label?: string;
   errorMsg?: string;
   as?: 'email' | 'password';
+  onBlur?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
 }
 
-export default function TextInput({ label, errorMsg, as, ...props }: TextInputProps) {
+export default function TextInput({ label, errorMsg, as, onBlur, ...props }: TextInputProps) {
   const [focused, setFocused] = useState(false);
   const extraInputProps: BaseTextInputProps | undefined = as && {
     textContentType: as === 'email' ? 'emailAddress' : 'password',
@@ -40,7 +43,10 @@ export default function TextInput({ label, errorMsg, as, ...props }: TextInputPr
         )}
         selectionColor={'black'}
         onFocus={() => setFocused(true)}
-        onBlur={() => setFocused(false)}
+        onBlur={(e) => {
+          onBlur && onBlur(e);
+          setFocused(false);
+        }}
         autoCorrect={false}
         autoCapitalize={'none'}
         importantForAutofill="yesExcludeDescendants"
