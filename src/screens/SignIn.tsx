@@ -2,12 +2,12 @@ import { AntDesign } from '@expo/vector-icons';
 import { Formik } from 'formik';
 import React from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { ActivityIndicator, Text, TouchableOpacity, View } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useDeviceContext } from 'twrnc';
 import * as Yup from 'yup';
-import Button from '../components/Common/Button';
-import TextInput from '../components/Common/TextInput';
+import FormButton from '../components/Common/Form/Button';
+import FormTextInput from '../components/Common/Form/TextInput';
 import OnboardingFooter from '../components/OnboardingFooter';
 import { firebaseAuth } from '../firebase/config';
 import tw from '../lib/tailwind';
@@ -56,34 +56,41 @@ export default function SignIn({ navigation }: RootStackScreenProps<'SignIn'>) {
                 }
               }}
             >
-              {({ handleChange, handleBlur, handleSubmit, values, errors, isSubmitting }) => (
+              {({
+                handleChange,
+                handleBlur,
+                handleSubmit,
+                values,
+                touched,
+                errors,
+                isSubmitting,
+              }) => (
                 <View>
-                  <TextInput
+                  <FormTextInput
                     label="Email address"
                     as="email"
                     placeholder="gandalf@tlotr.com"
                     value={values.email}
                     onChangeText={handleChange('email')}
                     onBlur={handleBlur('email')}
-                    errorMsg={errors.email}
+                    error={errors.email && touched.email ? errors.email : undefined}
                   />
-                  <TextInput
+                  <FormTextInput
                     label="Password"
                     as="password"
                     placeholder="Thoushallnotpass123"
                     value={values.password}
                     onChangeText={handleChange('password')}
                     onBlur={handleBlur('password')}
-                    errorMsg={errors.password}
+                    error={errors.password && touched.password ? errors.password : undefined}
                   />
-                  <Button style={tw`mt-3.5`} type="primary" onPress={() => handleSubmit()}>
-                    {isSubmitting ? (
-                      <ActivityIndicator color="#FFFFFF" />
-                    ) : (
-                      <Text style={tw`text-base text-gray-100 font-inter-medium`}>Sign In</Text>
-                    )}
-                  </Button>
-                  {error && <Text>{error.message}</Text>}
+                  <FormButton text="Sign In" isSubmitting={isSubmitting} onPress={handleSubmit} />
+                  {/* TODO print human readable firebase auth error */}
+                  {error && (
+                    <Text style={tw`mt-1 text-red-700 font-inter-light`}>
+                      Oops, something went wrong...
+                    </Text>
+                  )}
                 </View>
               )}
             </Formik>

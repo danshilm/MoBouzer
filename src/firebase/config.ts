@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Constants from 'expo-constants';
 import { initializeApp } from 'firebase/app';
-import { initializeAuth } from 'firebase/auth';
+import { debugErrorMap, initializeAuth } from 'firebase/auth';
 import { getReactNativePersistence } from 'firebase/auth/react-native';
 
 const firebaseConfig = {
@@ -21,6 +21,7 @@ const firebaseApp = initializeApp(firebaseConfig, 'MoBouzer');
 // of react-native core where AsyncStorage was part of it
 export const firebaseAuth = initializeAuth(firebaseApp, {
   persistence: getReactNativePersistence(AsyncStorage),
+  errorMap: debugErrorMap,
 });
 
 export default firebaseApp;

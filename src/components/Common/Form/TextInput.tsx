@@ -8,16 +8,16 @@ import {
   TextInputProps as BaseTextInputProps,
   View,
 } from 'react-native';
-import tw from '../../lib/tailwind';
+import tw from '../../../lib/tailwind';
 
 interface TextInputProps extends BaseTextInputProps {
   label?: string;
-  errorMsg?: string;
+  error?: string;
   as?: 'email' | 'password';
   onBlur?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
 }
 
-export default function TextInput({ label, errorMsg, as, onBlur, ...props }: TextInputProps) {
+export default function FormTextInput({ label, error, as, onBlur, ...props }: TextInputProps) {
   const [focused, setFocused] = useState(false);
   const extraInputProps: BaseTextInputProps | undefined = as && {
     textContentType: as === 'email' ? 'emailAddress' : 'password',
@@ -38,7 +38,7 @@ export default function TextInput({ label, errorMsg, as, onBlur, ...props }: Tex
         style={tw.style(
           `h-13 pb-0 px-4 text-base dark:bg-gray-200 bg-white rounded-xl font-inter border`,
           Platform.OS === 'ios' && 'pb-1',
-          errorMsg === undefined ? 'border-gray-300' : 'border-red-700',
+          error === undefined ? 'border-gray-300' : 'border-red-700',
           focused ? 'border-2' : 'border'
         )}
         selectionColor={'black'}
@@ -53,7 +53,7 @@ export default function TextInput({ label, errorMsg, as, onBlur, ...props }: Tex
         {...extraInputProps}
         {...props}
       />
-      {errorMsg && <Text style={tw`mt-1 text-red-700 font-inter-light`}>{errorMsg}</Text>}
+      {error && <Text style={tw`mt-1 text-red-700 font-inter-light`}>{error}</Text>}
     </View>
   );
 }
