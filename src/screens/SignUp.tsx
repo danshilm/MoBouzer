@@ -7,6 +7,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useDeviceContext } from 'twrnc';
 import * as Yup from 'yup';
 import FormButton from '../components/Common/Form/Button';
+import FormCheckbox from '../components/Common/Form/Checkbox';
 import FormTextInput from '../components/Common/Form/TextInput';
 import { firebaseAuth } from '../firebase/config';
 import tw from '../lib/tailwind';
@@ -16,7 +17,8 @@ const signInSchema = Yup.object().shape({
   email: Yup.string().required('Enter an email address'),
   password: Yup.string()
     .min(8, 'Password must be 8 characters or more')
-    .required('Emter a password'),
+    .required('Enter a password'),
+  tac: Yup.boolean().isTrue('Accept the terms and conditions'),
 });
 
 export default function SignUp({ navigation }: RootStackScreenProps<'SignUp'>) {
@@ -45,7 +47,7 @@ export default function SignUp({ navigation }: RootStackScreenProps<'SignUp'>) {
           {/* Login form */}
           <View style={tw`mt-3`}>
             <Formik
-              initialValues={{ email: '', password: '' }}
+              initialValues={{ email: '', password: '', tac: false }}
               validationSchema={signInSchema}
               onSubmit={async (values) => {
                 try {
@@ -65,6 +67,7 @@ export default function SignUp({ navigation }: RootStackScreenProps<'SignUp'>) {
                 touched,
                 errors,
                 isSubmitting,
+                setFieldValue,
               }) => (
                 <View>
                   <FormTextInput
@@ -85,6 +88,32 @@ export default function SignUp({ navigation }: RootStackScreenProps<'SignUp'>) {
                     onBlur={handleBlur('password')}
                     errorMessage={errors.password && touched.password ? errors.password : undefined}
                   />
+                  <FormCheckbox
+                    value={values.tac}
+                    onValueChange={(value) => setFieldValue('tac', value)}
+                    errorMessage={errors.tac && touched.tac ? errors.tac : undefined}
+                  >
+                    <View style={tw`flex flex-row flex-wrap ml-2`}>
+                      <Text style={tw`text-gray-800 font-inter dark:text-gray-300`}>
+                        I agree to the{' '}
+                      </Text>
+                      <TouchableOpacity activeOpacity={0.6}>
+                        <Text
+                          style={tw`text-gray-700 underline dark:text-gray-300 font-inter-semibold`}
+                        >
+                          terms of use
+                        </Text>
+                      </TouchableOpacity>
+                      <Text style={tw`text-gray-800 font-inter dark:text-gray-300`}> and </Text>
+                      <TouchableOpacity activeOpacity={0.6}>
+                        <Text
+                          style={tw`text-gray-700 underline dark:text-gray-300 font-inter-semibold`}
+                        >
+                          privacy policy
+                        </Text>
+                      </TouchableOpacity>
+                    </View>
+                  </FormCheckbox>
                   <FormButton
                     text="Sign Up"
                     isSubmitting={isSubmitting}

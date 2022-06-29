@@ -28,7 +28,7 @@ const MyDarkTheme: Theme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    background: 'rgb(24, 24, 27)',
+    background: tw.color('zinc-900') ?? 'rgb(24, 24, 27)',
   },
 };
 

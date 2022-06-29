@@ -14,7 +14,7 @@ import { RootStackScreenProps } from '../navigation/types';
 
 const signInSchema = Yup.object().shape({
   email: Yup.string().required('Enter an email address'),
-  password: Yup.string().required('Emter a password'),
+  password: Yup.string().required('Enter a password'),
 });
 
 export default function SignIn({ navigation }: RootStackScreenProps<'SignIn'>) {

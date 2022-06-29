@@ -50,6 +50,7 @@ export default function FormTextInput({
         selectionColor={'black'}
         onFocus={() => setFocused(true)}
         onBlur={(e) => {
+          // formik / react-form-hook need this
           onBlur && onBlur(e);
           setFocused(false);
         }}
