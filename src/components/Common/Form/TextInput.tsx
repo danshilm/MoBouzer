@@ -65,6 +65,7 @@ export default function FormTextInput({
           autoCorrect={false}
           autoCapitalize={'none'}
           importantForAutofill="yesExcludeDescendants"
+          placeholderTextColor={tw.color('gray-300')}
           {...props}
           {...rest}
         />
