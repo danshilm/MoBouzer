@@ -18,6 +18,7 @@ import tw from '../lib/tailwind';
 import Loading from '../screens/Loading';
 import Onboarding from '../screens/Onboarding';
 import SignIn from '../screens/SignIn';
+import SignUp from '../screens/SignUp';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import LinkingConfiguration from './LinkingConfiguration';
@@ -66,7 +67,7 @@ function RootNavigator() {
         <>
           <Stack.Screen name="Onboarding" component={Onboarding} />
           <Stack.Screen name="SignIn" component={SignIn} />
-          {/* Sign Up */}
+          <Stack.Screen name="SignUp" component={SignUp} />
         </>
       ) : (
         <>

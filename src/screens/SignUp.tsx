@@ -1,7 +1,7 @@
 import { AntDesign } from '@expo/vector-icons';
 import { Formik } from 'formik';
 import React from 'react';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useDeviceContext } from 'twrnc';
@@ -14,11 +14,13 @@ import { RootStackScreenProps } from '../navigation/types';
 
 const signInSchema = Yup.object().shape({
   email: Yup.string().required('Enter an email address'),
-  password: Yup.string().required('Emter a password'),
+  password: Yup.string()
+    .min(8, 'Password must be 8 characters or more')
+    .required('Emter a password'),
 });
 
-export default function SignIn({ navigation }: RootStackScreenProps<'SignIn'>) {
-  const [signIn, , , error] = useSignInWithEmailAndPassword(firebaseAuth);
+export default function SignUp({ navigation }: RootStackScreenProps<'SignUp'>) {
+  const [createUser, , , error] = useCreateUserWithEmailAndPassword(firebaseAuth);
   useDeviceContext(tw);
 
   return (
@@ -47,7 +49,7 @@ export default function SignIn({ navigation }: RootStackScreenProps<'SignIn'>) {
               validationSchema={signInSchema}
               onSubmit={async (values) => {
                 try {
-                  await signIn(values.email, values.password);
+                  await createUser(values.email, values.password);
                 } catch (e) {
                   // no need to do anything here
                   // the signin hook already gives the reason for the error
@@ -84,7 +86,7 @@ export default function SignIn({ navigation }: RootStackScreenProps<'SignIn'>) {
                     errorMessage={errors.password && touched.password ? errors.password : undefined}
                   />
                   <FormButton
-                    text="Sign In"
+                    text="Sign Up"
                     isSubmitting={isSubmitting}
                     onPress={handleSubmit}
                     error={!!error}
@@ -96,15 +98,15 @@ export default function SignIn({ navigation }: RootStackScreenProps<'SignIn'>) {
         </View>
         <View style={tw`flex flex-row justify-center mb-8`}>
           <Text style={tw`text-gray-700 dark:text-gray-300 font-inter`}>
-            Don't have an account?
+            Already have an account?
           </Text>
           <TouchableOpacity
             style={tw`ml-2`}
             activeOpacity={0.7}
-            onPress={() => navigation.navigate('SignUp')}
+            onPress={() => navigation.navigate('SignIn')}
           >
             <Text style={tw`text-gray-700 underline dark:text-gray-300 font-inter-semibold`}>
-              Sign Up
+              Sign In
             </Text>
           </TouchableOpacity>
         </View>
