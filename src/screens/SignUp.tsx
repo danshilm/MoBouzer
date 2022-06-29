@@ -32,7 +32,7 @@ export default function SignUp({ navigation }: RootStackScreenProps<'SignUp'>) {
           {/* Header */}
           <View style={tw`flex flex-row items-center h-10`}>
             <TouchableOpacity
-              activeOpacity={0.6}
+              activeOpacity={0.7}
               onPress={() => navigation.goBack()}
               style={tw`flex flex-row items-center`}
             >
@@ -97,7 +97,7 @@ export default function SignUp({ navigation }: RootStackScreenProps<'SignUp'>) {
                       <Text style={tw`text-gray-800 font-inter dark:text-gray-300`}>
                         I agree to the{' '}
                       </Text>
-                      <TouchableOpacity activeOpacity={0.6}>
+                      <TouchableOpacity activeOpacity={0.7}>
                         <Text
                           style={tw`text-gray-700 underline dark:text-gray-300 font-inter-semibold`}
                         >
@@ -105,7 +105,7 @@ export default function SignUp({ navigation }: RootStackScreenProps<'SignUp'>) {
                         </Text>
                       </TouchableOpacity>
                       <Text style={tw`text-gray-800 font-inter dark:text-gray-300`}> and </Text>
-                      <TouchableOpacity activeOpacity={0.6}>
+                      <TouchableOpacity activeOpacity={0.7}>
                         <Text
                           style={tw`text-gray-700 underline dark:text-gray-300 font-inter-semibold`}
                         >

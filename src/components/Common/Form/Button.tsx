@@ -18,7 +18,7 @@ export default function FormButton({
     <View>
       <Button style={tw`mt-3.5`} type="primary" onPress={onPress}>
         {isSubmitting ? (
-          <ActivityIndicator color="#FFFFFF" />
+          <ActivityIndicator color={tw.color('gray-100')} />
         ) : (
           <Text style={tw`text-base text-gray-100 font-inter-medium`}>{text}</Text>
         )}
