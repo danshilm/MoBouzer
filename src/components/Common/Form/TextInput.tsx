@@ -6,7 +6,7 @@ import {
   TextInput as BaseTextInput,
   TextInputFocusEventData,
   TextInputProps as BaseTextInputProps,
-  View
+  View,
 } from 'react-native';
 import tw from '../../../lib/tailwind';
 
