@@ -57,7 +57,7 @@ function RootNavigator() {
   return (
     <Stack.Navigator
       screenOptions={{
-        animation: 'default',
+        animation: 'slide_from_right',
         headerShown: false,
       }}
     >
