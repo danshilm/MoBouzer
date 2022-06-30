@@ -51,7 +51,8 @@ export default function SignIn({ navigation }: RootStackScreenProps<'SignIn'>) {
                 } catch (e) {
                   // no need to do anything here
                   // the signin hook already gives the reason for the error
-                  console.log(e);
+                  console.warn(e);
+                  console.warn(error);
                 }
               }}
             >

@@ -2754,7 +2754,7 @@ balanced-match@^1.0.0:
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.2.tgz#e83e3a7e3f300b34cb9d87f615fa0cbf357690ee"
   integrity sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==
 
-base64-js@^1.1.2, base64-js@^1.2.3, base64-js@^1.5.1:
+base64-js@^1.1.2, base64-js@^1.2.3, base64-js@^1.3.0, base64-js@^1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/base64-js/-/base64-js-1.5.1.tgz#1b1b440160a5bf7ad40b650f095963481903930a"
   integrity sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==
@@ -3819,6 +3819,18 @@ expo-asset@~8.4.4, expo-asset@~8.4.6:
     path-browserify "^1.0.0"
     url-parse "^1.4.4"
 
+expo-auth-session@~3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/expo-auth-session/-/expo-auth-session-3.5.0.tgz#ebb4c8263b29c207ff2db2f8a7e315ed797f4a41"
+  integrity sha512-Cia1NvIu1CcKuQNbhRsSmJz1YG76wDKU0NY+FHoD/0KItKd2+//oZyjrmlJXOk4m4gVohOIGWbFzt8Xe/ReZYg==
+  dependencies:
+    expo-constants "~13.0.0"
+    expo-crypto "~10.1.0"
+    expo-linking "~3.0.0"
+    expo-web-browser "~10.1.0"
+    invariant "^2.2.4"
+    qs "6.9.1"
+
 expo-checkbox@~2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/expo-checkbox/-/expo-checkbox-2.0.0.tgz#417f5e6c4e3b4404e479064adab841bb2bef4d74"
@@ -3831,6 +3843,11 @@ expo-constants@~13.0.0, expo-constants@~13.0.2:
   dependencies:
     "@expo/config" "^6.0.6"
     uuid "^3.3.2"
+
+expo-crypto@~10.1.0:
+  version "10.1.2"
+  resolved "https://registry.yarnpkg.com/expo-crypto/-/expo-crypto-10.1.2.tgz#5dfc0f0a5b4aa94dae2ecfb744d4aa8c001660b7"
+  integrity sha512-TYaBtV9oK5OH+EfsAUHQkWkRPifZjCMDn6Yf9gk3/LyHdJHDYnB6NQWTJo9Qkl6vzI9svQ6PMnQTm2Yxrb3ZfQ==
 
 expo-dev-client@~0.8.6:
   version "0.8.6"
@@ -3932,6 +3949,13 @@ expo-modules-core@0.6.5:
   dependencies:
     compare-versions "^3.4.0"
     invariant "^2.2.4"
+
+expo-random@~12.1.1:
+  version "12.1.2"
+  resolved "https://registry.yarnpkg.com/expo-random/-/expo-random-12.1.2.tgz#ed4e7f85728b609bcb373bc4c4a1a05192ec44b9"
+  integrity sha512-ajB+Mwff9PdglsyLliaU4K9BtVwKvAVVI2hQhnvlS3QgsAhHf+jQVUfAysQJHuioF6ADMEsab/kRUy4Dy03aoQ==
+  dependencies:
+    base64-js "^1.3.0"
 
 expo-splash-screen@~0.14.0:
   version "0.14.2"
@@ -6449,6 +6473,11 @@ punycode@^2.1.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
+
+qs@6.9.1:
+  version "6.9.1"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.9.1.tgz#20082c65cb78223635ab1a9eaca8875a29bf8ec9"
+  integrity sha512-Cxm7/SS/y/Z3MHWSxXb8lIFqgqBowP5JMlTUFyJN88y0SGQhVmZnqFK/PeuMX9LzUyWsqqhNxIyg0jlzq946yA==
 
 qs@^6.9.1:
   version "6.10.3"

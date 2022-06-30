@@ -43,6 +43,7 @@ export default {
       firebaseMessagingSenderId: process.env.FIREBASE_MESSAGING_ID,
       firebaseAppId: process.env.FIREBASE_APP_ID,
       firebaseMeasurementId: process.env.FIREBASE_MEASUREMENT_ID,
+      firebaseWebClientId: process.env.FIREBASE_WEB_CLIENT_ID,
     },
   },
 };

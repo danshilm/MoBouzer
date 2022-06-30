@@ -5,6 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useDeviceContext } from 'twrnc';
 import Button from '../components/Common/Button';
 import OnboardingFooter from '../components/OnboardingFooter';
+import SignInWithGoogleButton from '../components/SignInWithGoogleButton';
 import tw from '../lib/tailwind';
 import { RootStackScreenProps } from '../navigation/types';
 
@@ -28,12 +29,7 @@ export default function Onboarding({ navigation }: RootStackScreenProps<'Onboard
               <FontAwesome style={tw`mr-3 text-gray-800`} name="apple" size={20} />
               <Text style={tw`text-base text-gray-800 font-inter-medium`}>Continue With Apple</Text>
             </Button>
-            <Button style={tw`mb-5`} type="default">
-              <FontAwesome style={tw`mr-3 text-gray-800`} name="google" size={20} />
-              <Text style={tw`text-base text-gray-800 font-inter-medium`}>
-                Continue With Google
-              </Text>
-            </Button>
+            <SignInWithGoogleButton />
             <Button onPress={() => navigation.push('SignIn')} style={tw`mb-5`} type="primary">
               <FontAwesome style={tw`mr-3 text-gray-100`} name="envelope-o" size={20} />
               <Text style={tw`text-base text-gray-100 font-inter-medium`}>Continue With Email</Text>
