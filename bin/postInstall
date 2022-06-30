@@ -26,8 +26,8 @@ const os = require('os');
   { command: 'jetify' },
 
   // only needed after expo eject/prebuild
-  // // on iOS, make sure our native modules are installed
-  // { command: 'pod install', cwd: 'ios', onlyPlatforms: ['darwin'] },
+  // on iOS, make sure our native modules are installed
+  { command: 'pod install', cwd: 'ios', onlyPlatforms: ['darwin'] },
 ]
   .filter(({ onlyPlatforms }) => !onlyPlatforms || onlyPlatforms.includes(os.platform()))
   .forEach((commandAndOptions) => {
