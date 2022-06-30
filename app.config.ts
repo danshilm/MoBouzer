@@ -44,6 +44,9 @@ export default {
       firebaseAppId: process.env.FIREBASE_APP_ID,
       firebaseMeasurementId: process.env.FIREBASE_MEASUREMENT_ID,
       firebaseWebClientId: process.env.FIREBASE_WEB_CLIENT_ID,
+      firebaseAndroidClientId: process.env.FIREBASE_ANDROID_CLIENT_ID,
+      firebaseExpoGoClientId: process.env.FIREBASE_EXPO_GO_CLIENT_ID,
+      firebaseiOSClientId: process.env.FIREBASE_IOS_CLIENT_ID,
     },
   },
 };

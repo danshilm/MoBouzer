@@ -11,6 +11,9 @@ import Button from './Common/Button';
 export default function SignInWithGoogleButton() {
   const [request, response, promptAsync] = useIdTokenAuthRequest({
     clientId: Constants.manifest?.extra?.firebaseWebClientId,
+    androidClientId: Constants.manifest?.extra?.firebaseAndroidClientId,
+    iosClientId: Constants.manifest?.extra?.firebaseiOSClientId,
+    expoClientId: Constants.manifest?.extra?.firebaseExpoGoClientId,
   });
 
   useEffect(() => {
@@ -24,7 +27,19 @@ export default function SignInWithGoogleButton() {
 
   return (
     <>
-      <Button style={tw`mb-5`} type="default" isDisabled={!request} onPress={() => promptAsync()}>
+      <Button
+        style={tw`mb-5`}
+        type="default"
+        isDisabled={!request}
+        onPress={() =>
+          promptAsync({
+            // TODO should not use proxy in prod, but setting false
+            // results in an error screen from auth.expo.io
+            // something went wrong trying to finish signing in
+            useProxy: true,
+          })
+        }
+      >
         {!request ? (
           <ActivityIndicator color={tw.color('gray-800')} />
         ) : (

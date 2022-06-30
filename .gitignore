@@ -65,3 +65,6 @@ bin/Exponent.app
 
 # Env variables
 .env
+
+# keystore, etc
+credentials
