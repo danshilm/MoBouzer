@@ -6,12 +6,14 @@ interface ButtonProps extends TouchableOpacityProps {
   children?: React.ReactNode;
   style: ViewStyle;
   type: 'default' | 'primary';
+  isDisabled?: boolean;
 }
 
 export default function Button({
   children,
   style,
   type = 'default',
+  isDisabled,
   ...props
 }: ButtonProps): JSX.Element {
   return (
@@ -22,8 +24,10 @@ export default function Button({
         type === 'default'
           ? 'bg-white dark:bg-gray-200 border-slate-300 text-gray-100'
           : 'bg-slate-800 border-slate-800',
+        isDisabled && 'bg-gray-200 dark:bg-gray-500 dark:border-slate-500',
         style
       )}
+      disabled={isDisabled}
       {...props}
     >
       {children}
