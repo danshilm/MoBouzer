@@ -16,6 +16,7 @@ import useColorScheme from '../hooks/useColorScheme';
 import useSettings from '../hooks/useSettings';
 import tw from '../lib/tailwind';
 import Loading from '../screens/Loading';
+import Map from '../screens/Map';
 import Onboarding from '../screens/Onboarding';
 import SignIn from '../screens/SignIn';
 import SignUp from '../screens/SignUp';
@@ -90,13 +91,12 @@ function HomeTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
+      initialRouteName="Map"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
         tabBarStyle: tw`bg-white dark:bg-zinc-800`,
         headerStyle: tw`bg-white dark:bg-zinc-800`,
         headerTitleStyle: tw`dark:text-gray-100`,
-        headerShown: false,
       }}
     >
       <BottomTab.Screen
@@ -124,6 +124,14 @@ function HomeTabNavigator() {
         })}
       />
       <BottomTab.Screen
+        name="Map"
+        component={Map}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ color }) => <TabBarIcon name="map" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
         name="TabTwo"
         component={TabTwoScreen}
         options={{
@@ -142,5 +150,5 @@ function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>['name'];
   color: string;
 }) {
-  return <FontAwesome size={30} style={tw`-mb-1`} {...props} />;
+  return <FontAwesome size={25} {...props} />;
 }
