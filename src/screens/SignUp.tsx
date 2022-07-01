@@ -94,20 +94,20 @@ export default function SignUp({ navigation }: RootStackScreenProps<'SignUp'>) {
                     errorMessage={errors.tac && touched.tac ? errors.tac : undefined}
                   >
                     <View style={tw`flex flex-row flex-wrap ml-2`}>
-                      <Text style={tw`text-gray-800 font-inter dark:text-gray-300`}>
+                      <Text style={tw`text-gray-800 font-inter dark:text-gray-200`}>
                         I agree to the{' '}
                       </Text>
                       <TouchableOpacity activeOpacity={0.7}>
                         <Text
-                          style={tw`text-gray-700 underline dark:text-gray-300 font-inter-semibold`}
+                          style={tw`text-gray-700 underline dark:text-gray-200 font-inter-semibold`}
                         >
                           terms of use
                         </Text>
                       </TouchableOpacity>
-                      <Text style={tw`text-gray-800 font-inter dark:text-gray-300`}> and </Text>
+                      <Text style={tw`text-gray-800 font-inter dark:text-gray-200`}> and </Text>
                       <TouchableOpacity activeOpacity={0.7}>
                         <Text
-                          style={tw`text-gray-700 underline dark:text-gray-300 font-inter-semibold`}
+                          style={tw`text-gray-700 underline dark:text-gray-200 font-inter-semibold`}
                         >
                           privacy policy
                         </Text>

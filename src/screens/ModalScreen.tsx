@@ -6,7 +6,7 @@ import tw from '../lib/tailwind';
 export default function ModalScreen() {
   return (
     <View style={tw`flex items-center justify-center flex-1 bg-white dark:bg-black`}>
-      <Text style={tw`text-xl font-bold dark:text-white`}>Modal</Text>
+      <Text style={tw`text-xl font-bold dark:text-gray-100`}>Modal</Text>
       <View style={tw`w-4/5 h-px my-7 bg-slate-300`} />
       <EditScreenInfo path="/src/screens/ModalScreen.tsx" />
 

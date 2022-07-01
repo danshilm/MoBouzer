@@ -93,6 +93,10 @@ function HomeTabNavigator() {
       initialRouteName="TabOne"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
+        tabBarStyle: tw`bg-white dark:bg-zinc-800`,
+        headerStyle: tw`bg-white dark:bg-zinc-800`,
+        headerTitleStyle: tw`dark:text-gray-100`,
+        headerShown: false,
       }}
     >
       <BottomTab.Screen
