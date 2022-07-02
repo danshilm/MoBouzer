@@ -1,6 +1,7 @@
+import { ExpoConfig } from '@expo/config-types';
 import 'dotenv/config';
 
-export default {
+const expoConfig = {
   name: 'MoBouzer',
   displayName: 'MoBouzer',
   expo: {
@@ -24,12 +25,20 @@ export default {
     ios: {
       bundleIdentifier: 'com.mobouzer',
       supportsTablet: true,
+      config: {
+        googleMapsApiKey: process.env.IOS_MAPS_SDK,
+      },
     },
     android: {
       package: 'com.mobouzer',
       adaptiveIcon: {
         foregroundImage: './assets/images/adaptive-icon.png',
         backgroundColor: '#ffffff',
+      },
+      config: {
+        googleMaps: {
+          apiKey: process.env.ANDROID_MAPS_API_KEY,
+        },
       },
     },
     web: {
@@ -48,5 +57,7 @@ export default {
       firebaseExpoGoClientId: process.env.FIREBASE_EXPO_GO_CLIENT_ID,
       firebaseiOSClientId: process.env.FIREBASE_IOS_CLIENT_ID,
     },
-  },
+  } as ExpoConfig,
 };
+
+export default expoConfig;

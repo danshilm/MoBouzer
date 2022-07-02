@@ -2,7 +2,6 @@ import { Ionicons } from '@expo/vector-icons';
 import React, { useState } from 'react';
 import {
   NativeSyntheticEvent,
-  Platform,
   Text,
   TextInput as BaseTextInput,
   TextInputFocusEventData,
@@ -51,11 +50,8 @@ export default function FormTextInput({
         )}
       >
         <BaseTextInput
-          style={tw.style(
-            `pb-0 px-4 text-base font-inter h-full flex-1`,
-            Platform.OS === 'ios' && 'pb-1'
-          )}
-          selectionColor={'black'}
+          style={tw`flex-1 h-full px-4 pb-0 text-base font-inter ios:pb-1`}
+          selectionColor={tw.color('gray-800')}
           onFocus={() => setFocused(true)}
           onBlur={(e) => {
             // formik / react-form-hook need this
@@ -65,7 +61,7 @@ export default function FormTextInput({
           autoCorrect={false}
           autoCapitalize={'none'}
           importantForAutofill="yesExcludeDescendants"
-          placeholderTextColor={tw.color('gray-300')}
+          // placeholderTextColor={tw.color('gray-300')}
           {...props}
           {...rest}
         />
