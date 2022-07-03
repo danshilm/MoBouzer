@@ -10,7 +10,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { ColorSchemeName, Pressable } from 'react-native';
-import Colors from '../constants/Colors';
 import { firebaseAuth } from '../firebase/config';
 import useColorScheme from '../hooks/useColorScheme';
 import useSettings from '../hooks/useSettings';
@@ -93,7 +92,7 @@ function HomeTabNavigator() {
     <BottomTab.Navigator
       initialRouteName="Map"
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme].tint,
+        tabBarActiveTintColor: tw.color('sky-500'),
         tabBarStyle: tw`bg-white dark:bg-zinc-800`,
         headerStyle: tw`bg-white dark:bg-zinc-800`,
         headerTitleStyle: tw`dark:text-gray-100`,
@@ -116,7 +115,7 @@ function HomeTabNavigator() {
               <Ionicons
                 name="exit-outline"
                 size={25}
-                color={Colors[colorScheme].text}
+                color={tw.color('gray-800')}
                 style={tw`mr-4`}
               />
             </Pressable>
