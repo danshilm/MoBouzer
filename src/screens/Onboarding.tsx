@@ -1,5 +1,6 @@
 import { FontAwesome } from '@expo/vector-icons';
-import React from 'react';
+import { coolDownAsync, warmUpAsync } from 'expo-web-browser';
+import React, { useEffect } from 'react';
 import { Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useDeviceContext } from 'twrnc';
@@ -11,6 +12,14 @@ import { RootStackScreenProps } from '../navigation/types';
 
 export default function Onboarding({ navigation }: RootStackScreenProps<'Onboarding'>) {
   useDeviceContext(tw);
+
+  useEffect(() => {
+    warmUpAsync();
+
+    return () => {
+      coolDownAsync();
+    };
+  }, []);
 
   return (
     <SafeAreaView style={tw`px-6`}>
