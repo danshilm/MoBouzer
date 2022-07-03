@@ -3,7 +3,6 @@ import { coolDownAsync, warmUpAsync } from 'expo-web-browser';
 import React, { useEffect } from 'react';
 import { Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useDeviceContext } from 'twrnc';
 import Button from '../components/Common/Button';
 import OnboardingFooter from '../components/OnboardingFooter';
 import SignInWithGoogleButton from '../components/SignInWithGoogleButton';
@@ -11,8 +10,6 @@ import tw from '../lib/tailwind';
 import { RootStackScreenProps } from '../navigation/types';
 
 export default function Onboarding({ navigation }: RootStackScreenProps<'Onboarding'>) {
-  useDeviceContext(tw);
-
   useEffect(() => {
     warmUpAsync();
 

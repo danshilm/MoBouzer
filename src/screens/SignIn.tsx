@@ -4,7 +4,6 @@ import React from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useDeviceContext } from 'twrnc';
 import * as Yup from 'yup';
 import FormButton from '../components/Common/Form/Button';
 import FormTextInput from '../components/Common/Form/TextInput';
@@ -19,7 +18,6 @@ const signInSchema = Yup.object().shape({
 
 export default function SignIn({ navigation }: RootStackScreenProps<'SignIn'>) {
   const [signIn, , , error] = useSignInWithEmailAndPassword(firebaseAuth);
-  useDeviceContext(tw);
 
   return (
     <SafeAreaView style={tw`px-6`}>
