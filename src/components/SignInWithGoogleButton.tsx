@@ -15,11 +15,11 @@ export default function SignInWithGoogleButton() {
       androidClientId: Constants.manifest?.extra?.firebaseAndroidClientId,
       iosClientId: Constants.manifest?.extra?.firebaseiOSClientId,
       expoClientId: Constants.manifest?.extra?.firebaseExpoGoClientId,
-    },
-    // TODO should not use proxy in prod, but setting false
-    // results in an error screen from auth.expo.io
-    // something went wrong trying to finish signing in
-    { useProxy: true }
+    }
+    // // TODO should not use proxy in prod, but setting false
+    // // results in an error screen from auth.expo.io
+    // // something went wrong trying to finish signing in
+    // { useProxy: true }
   );
 
   useEffect(() => {
