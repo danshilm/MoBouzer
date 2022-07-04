@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import MapView from 'react-native-maps';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Search from '../components/Search';
+import SearchBar from '../components/SearchBar';
 import tw from '../lib/tailwind';
 
 // latitude = y-axis
@@ -25,8 +25,8 @@ export default function Map() {
           longitudeDelta: (northEastCoordinates[1] - southWestCoordinates[1]) * 1.2,
         }}
       ></MapView>
-      <SafeAreaView style={tw`mt-4`}>
-        <Search />
+      <SafeAreaView style={tw`px-6 mt-4`}>
+        <SearchBar />
       </SafeAreaView>
     </View>
   );

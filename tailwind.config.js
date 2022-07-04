@@ -21,6 +21,8 @@ module.exports = {
         'space-mono-bold-italic': 'SpaceMono_700Bold_Italic',
       },
       spacing: {
+        2.5: '0.625rem',
+        7.5: '1.875rem',
         13: '3.25rem',
       },
     },
