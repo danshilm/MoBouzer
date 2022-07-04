@@ -10,7 +10,7 @@ export default function UserDropdown() {
   return (
     <>
       <View style={tw`flex justify-center h-full ml-1`}>
-        <TouchableOpacity activeOpacity={0.8} onPress={() => setisOpen(!isOpen)}>
+        <TouchableOpacity activeOpacity={0.7} onPress={() => setisOpen(!isOpen)}>
           <Image
             source={{ uri: 'https://via.placeholder.com/600/9c184f' }}
             style={tw`border border-gray-300 rounded-md w-7.5 h-7.5`}

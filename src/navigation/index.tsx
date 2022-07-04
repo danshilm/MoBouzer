@@ -11,7 +11,6 @@ import * as React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { ColorSchemeName, Pressable } from 'react-native';
 import { firebaseAuth } from '../firebase/config';
-import useColorScheme from '../hooks/useColorScheme';
 import useSettings from '../hooks/useSettings';
 import tw from '../lib/tailwind';
 import Loading from '../screens/Loading';
@@ -85,7 +84,6 @@ function RootNavigator() {
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
 function HomeTabNavigator() {
-  const colorScheme = useColorScheme();
   const { settings, setSettings } = useSettings();
 
   return (
