@@ -90,7 +90,7 @@ function HomeTabNavigator() {
     <BottomTab.Navigator
       initialRouteName="Map"
       screenOptions={{
-        tabBarActiveTintColor: tw.color('sky-500'),
+        tabBarActiveTintColor: tw.color('slate-700'),
         tabBarStyle: tw`bg-white dark:bg-zinc-800`,
         headerStyle: tw`bg-white dark:bg-zinc-800`,
         headerTitleStyle: tw`dark:text-gray-100`,
@@ -136,7 +136,11 @@ function HomeTabNavigator() {
         options={{
           headerShown: false,
           tabBarIcon: ({ color, focused }) => (
-            <Ionicons name={focused ? 'document' : 'document-outline'} size={25} color={color} />
+            <Ionicons
+              name={focused ? 'document-text' : 'document-text-outline'}
+              size={25}
+              color={color}
+            />
           ),
         }}
       />
