@@ -9,6 +9,7 @@ import FormButton from '../components/Common/Form/Button';
 import FormCheckbox from '../components/Common/Form/Checkbox';
 import FormTextInput from '../components/Common/Form/TextInput';
 import { firebaseAuth } from '../firebase/config';
+import { canHumaniseFirebaseAuthError, DisplayFirebaseAuthError } from '../firebase/errors';
 import tw from '../lib/tailwind';
 import { RootStackScreenProps } from '../navigation/types';
 
@@ -53,7 +54,6 @@ export default function SignUp({ navigation }: RootStackScreenProps<'SignUp'>) {
                 } catch (e) {
                   // no need to do anything here
                   // the signin hook already gives the reason for the error
-                  console.log(e);
                 }
               }}
             >
@@ -116,8 +116,13 @@ export default function SignUp({ navigation }: RootStackScreenProps<'SignUp'>) {
                     text="Sign Up"
                     isSubmitting={isSubmitting}
                     onPress={handleSubmit}
-                    error={!!error}
+                    errorMessage={
+                      error && !canHumaniseFirebaseAuthError(error)
+                        ? 'Oops, something went wrong'
+                        : undefined
+                    }
                   />
+                  <DisplayFirebaseAuthError error={error} />
                 </View>
               )}
             </Formik>

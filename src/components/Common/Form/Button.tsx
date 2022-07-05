@@ -6,12 +6,12 @@ import Button from '../Button';
 export default function FormButton({
   text,
   isSubmitting,
-  error,
+  errorMessage,
   onPress,
 }: {
   text: string;
   isSubmitting: boolean;
-  error?: boolean;
+  errorMessage?: string;
   onPress: () => void;
 }) {
   return (
@@ -23,10 +23,7 @@ export default function FormButton({
           <Text style={tw`text-base text-gray-100 font-inter-medium`}>{text}</Text>
         )}
       </Button>
-      {/* TODO print human readable firebase auth error */}
-      {error && (
-        <Text style={tw`mt-1 text-red-700 font-inter-light`}>Oops, something went wrong...</Text>
-      )}
+      {errorMessage && <Text style={tw`mt-1 text-red-700 font-inter-light`}>{errorMessage}</Text>}
     </View>
   );
 }

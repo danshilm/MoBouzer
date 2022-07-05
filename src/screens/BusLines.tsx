@@ -6,7 +6,7 @@ import BusLineCard from '../components/BusLineCard';
 import SearchBar from '../components/SearchBar';
 import tw from '../lib/tailwind';
 
-const busLine = (line?: number) => {
+const busLine = () => {
   return { line: Math.floor(Math.random() * 100), destination: 'Port Louis', origin: 'Curepipe' };
 };
 
