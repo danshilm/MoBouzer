@@ -43,7 +43,7 @@ export default function SignIn({ navigation }: RootStackScreenProps<'SignIn'>) {
             <Formik
               initialValues={{ email: '', password: '' }}
               validationSchema={signInSchema}
-              onSubmit={async (values) => {
+              onSubmit={async (values: { email: string; password: string }) => {
                 try {
                   await signIn(values.email, values.password);
                 } catch (e) {

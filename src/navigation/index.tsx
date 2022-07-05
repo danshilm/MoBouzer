@@ -13,13 +13,13 @@ import { ColorSchemeName, Pressable } from 'react-native';
 import { firebaseAuth } from '../firebase/config';
 import useSettings from '../hooks/useSettings';
 import tw from '../lib/tailwind';
+import BusLines from '../screens/BusLines';
 import Loading from '../screens/Loading';
 import Map from '../screens/Map';
 import Onboarding from '../screens/Onboarding';
 import SignIn from '../screens/SignIn';
 import SignUp from '../screens/SignUp';
 import TabOneScreen from '../screens/TabOneScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
 import LinkingConfiguration from './LinkingConfiguration';
 import { RootStackParamList, RootTabParamList } from './types';
 
@@ -131,8 +131,8 @@ function HomeTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="TabTwo"
-        component={TabTwoScreen}
+        name="Bus Lines"
+        component={BusLines}
         options={{
           headerShown: false,
           tabBarIcon: ({ color, focused }) => (

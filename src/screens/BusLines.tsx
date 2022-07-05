@@ -29,7 +29,7 @@ const allBuslines = [
   busLine(),
 ];
 
-export default function TabTwoScreen() {
+export default function BusLines() {
   return (
     <SafeAreaView style={tw`dark:bg-zinc-900`}>
       <SearchBar style={tw`mx-6 mt-4 mb-4`} placeholder="Search for a bus line" />

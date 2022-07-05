@@ -30,8 +30,8 @@ export type RootStackScreenProps<Screen extends keyof RootStackParamList> = Nati
 
 export type RootTabParamList = {
   Map: undefined;
-  BusStops: undefined;
-  BusLines: undefined;
+  'Bus Stops': undefined;
+  'Bus Lines': undefined;
   TabOne: undefined;
   TabTwo: undefined;
 };
