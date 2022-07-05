@@ -2,7 +2,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import { useIdTokenAuthRequest } from 'expo-auth-session/providers/google';
 import Constants from 'expo-constants';
 import { GoogleAuthProvider, signInWithCredential } from 'firebase/auth';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, Text } from 'react-native';
 import { firebaseAuth } from '../firebase/config';
 import tw from '../lib/tailwind';
@@ -21,20 +21,34 @@ export default function SignInWithGoogleButton() {
     // // something went wrong trying to finish signing in
     // { useProxy: true }
   );
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (response?.type === 'success') {
-      const { id_token } = response.params;
+    const login = async () => {
+      if (response?.type === 'success') {
+        const { id_token } = response.params;
 
-      const credential = GoogleAuthProvider.credential(id_token);
-      signInWithCredential(firebaseAuth, credential).catch((err) => console.log(err));
-    }
+        const credential = GoogleAuthProvider.credential(id_token);
+        await signInWithCredential(firebaseAuth, credential).catch((err) => console.log(err));
+      }
+      setLoading(false);
+    };
+
+    login();
   }, [response]);
 
   return (
     <>
-      <Button style={tw`mb-5`} type="default" isDisabled={!request} onPress={() => promptAsync()}>
-        {!request ? (
+      <Button
+        style={tw`mb-5`}
+        type="default"
+        isDisabled={loading}
+        onPress={() => {
+          setLoading(true);
+          promptAsync();
+        }}
+      >
+        {loading ? (
           <ActivityIndicator color={tw.color('gray-800')} />
         ) : (
           <>

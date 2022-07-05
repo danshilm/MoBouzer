@@ -24,7 +24,7 @@ export default function Button({
         type === 'default'
           ? 'bg-white dark:bg-gray-200 border-slate-300 text-gray-100'
           : 'bg-slate-800 border-slate-800',
-        isDisabled && 'bg-gray-200 dark:bg-gray-500 dark:border-slate-500',
+        isDisabled && 'bg-gray-300 dark:bg-gray-500 dark:border-slate-500',
         style
       )}
       disabled={isDisabled}
