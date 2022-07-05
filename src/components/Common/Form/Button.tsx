@@ -16,7 +16,7 @@ export default function FormButton({
 }) {
   return (
     <View>
-      <Button style={tw`mt-3.5`} type="primary" onPress={onPress}>
+      <Button style={tw`mt-3.5`} type="primary" onPress={onPress} disabled={isSubmitting}>
         {isSubmitting ? (
           <ActivityIndicator color={tw.color('gray-100')} />
         ) : (

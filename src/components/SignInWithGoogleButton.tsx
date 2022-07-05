@@ -42,7 +42,7 @@ export default function SignInWithGoogleButton() {
       <Button
         style={tw`mb-5`}
         type="default"
-        isDisabled={loading}
+        disabled={loading}
         onPress={() => {
           setLoading(true);
           promptAsync();
