@@ -1,18 +1,20 @@
 import { AntDesign } from '@expo/vector-icons';
 import React, { useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { firebaseAuth } from '../firebase/config';
 import tw from '../lib/tailwind';
 
 export default function UserDropdown() {
   const [isOpen, setisOpen] = useState(false);
+  const [user] = useAuthState(firebaseAuth);
 
   return (
     <>
       <View style={tw`flex justify-center h-full ml-1`}>
         <TouchableOpacity activeOpacity={0.7} onPress={() => setisOpen(!isOpen)}>
           <Image
-            source={{ uri: 'https://via.placeholder.com/600/9c184f' }}
+            source={user ? { uri: user?.photoURL } : require('../../assets/images/icon.png')}
             style={tw`border border-gray-300 rounded-md w-7.5 h-7.5`}
           />
         </TouchableOpacity>
