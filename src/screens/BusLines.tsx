@@ -1,9 +1,8 @@
 import { AntDesign, Ionicons } from '@expo/vector-icons';
 import React from 'react';
 import { ScrollView, Text, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import ViewWithSearchBar from '../components/BetterSearchBar/ViewWithSearchBar';
 import BusLineCard from '../components/BusLineCard';
-import SearchBar from '../components/SearchBar';
 import tw from '../lib/tailwind';
 
 const busLine = () => {
@@ -31,10 +30,9 @@ const allBuslines = [
 
 export default function BusLines() {
   return (
-    <SafeAreaView style={tw`dark:bg-zinc-900`}>
-      <SearchBar style={tw`mx-6 mt-4 mb-4`} placeholder="Search for a bus line" />
-      <ScrollView style={tw`px-6 android:mb-23 ios:mb-14`}>
-        <Text style={[tw`mt-2 font-inter-bold`, { fontSize: 26 }]}>Bus Lines</Text>
+    <ViewWithSearchBar style={tw`flex flex-1`}>
+      <ScrollView style={tw`px-6 my-2`}>
+        <Text style={[tw`mt-4 text-[25px] font-inter-bold`]}>Bus Lines</Text>
         {favourites.length > 1 && (
           <View>
             <View style={tw`flex flex-row mt-3.5 items-center`}>
@@ -60,6 +58,6 @@ export default function BusLines() {
           </View>
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </ViewWithSearchBar>
   );
 }
