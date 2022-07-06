@@ -25,7 +25,7 @@ export default function BetterSearchBar({
     <View
       style={[
         tw.style(
-          'h-12 bg-white rounded-xl border-gray-300 shadow-md px-2 flex flex-row relative',
+          'h-12 bg-white rounded-xl border-gray-300 shadow-md px-2 flex flex-row',
           focused ? 'border-2' : 'border'
         ),
         style,

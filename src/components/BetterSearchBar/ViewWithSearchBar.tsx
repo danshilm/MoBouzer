@@ -10,12 +10,12 @@ export default function ViewWithSearchBar(props: ViewProps) {
 
   return (
     <View {...props}>
-      {props.children}
-
       <DropdownMenu isDropdownOpen={isDropdownOpen} setIsDropdownOpen={setIsDropdownOpen} />
-      <SafeAreaView style={tw`px-6 pt-4`} edges={['top']}>
+      <SafeAreaView style={tw`z-10 px-6 pt-4`} edges={['top']}>
         <BetterSearchBar isDropdownOpen={isDropdownOpen} setIsDropdownOpen={setIsDropdownOpen} />
       </SafeAreaView>
+
+      {props.children}
     </View>
   );
 }
