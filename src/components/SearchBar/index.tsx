@@ -6,9 +6,9 @@ import { firebaseAuth } from '../../firebase/config';
 import useDebouncedState from '../../hooks/useDebouncedState';
 import tw from '../../lib/tailwind';
 
-export default function BetterSearchBar({
+export default function SearchBar({
   style,
-  placeholder = 'Search for your destination',
+  placeholder = 'Search',
   isDropdownOpen = false,
   setIsDropdownOpen,
 }: {
@@ -25,7 +25,7 @@ export default function BetterSearchBar({
     <View
       style={[
         tw.style(
-          'h-12 bg-white rounded-xl border-gray-300 shadow-md px-2 flex flex-row',
+          'flex flex-row h-12 px-2 bg-white border-gray-300 shadow-md rounded-xl',
           focused ? 'border-2' : 'border'
         ),
         style,

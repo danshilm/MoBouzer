@@ -1,6 +1,6 @@
 import React from 'react';
 import MapView from 'react-native-maps';
-import ViewWithSearchBar from '../components/BetterSearchBar/ViewWithSearchBar';
+import ViewWithSearchBar from '../components/SearchBar/ViewWithSearchBar';
 import tw from '../lib/tailwind';
 
 // latitude = y-axis
@@ -12,7 +12,7 @@ const centreCoordinates = [-20.254103, 57.5571735];
 
 export default function Map() {
   return (
-    <ViewWithSearchBar style={tw`h-full`}>
+    <ViewWithSearchBar style={tw`flex flex-1`} placeholder="Search for your destination">
       <MapView
         style={tw`absolute top-0 bottom-0 left-0 right-0`}
         provider="google"
