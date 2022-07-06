@@ -51,7 +51,7 @@ export default function BetterSearchBar({
             {user?.photoURL ? (
               <Image
                 source={{ uri: user.photoURL }}
-                defaultSource={require('../../../assets/images/person.png')}
+                loadingIndicatorSource={require('../../../assets/images/person.png')}
                 style={tw`w-7.5 h-7.5 rounded-md`}
               />
             ) : (
