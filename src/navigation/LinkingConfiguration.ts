@@ -34,6 +34,7 @@ const linking: LinkingOptions<RootStackParamList> = {
       NotFound: '*',
     },
   },
+  filter: (url) => !url.includes('expo-auth-session'),
 };
 
 export default linking;
