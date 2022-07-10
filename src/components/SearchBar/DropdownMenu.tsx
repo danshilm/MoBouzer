@@ -17,7 +17,7 @@ export default function DropdownMenu({
   return isDropdownOpen ? (
     <View
       style={tw.style(
-        `absolute z-10 right-6 top-17 w-auto h-auto py-2 bg-white border border-gray-300 shadow-md mt-17 rounded-xl mt-[${top}px]`
+        `absolute z-50 right-6 top-17 w-auto h-auto py-2 bg-white border border-gray-300 shadow-md mt-17 rounded-xl mt-[${top}px]`
       )}
     >
       <Pressable

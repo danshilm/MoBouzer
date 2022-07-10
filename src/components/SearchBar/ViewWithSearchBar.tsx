@@ -34,7 +34,7 @@ export default function ViewWithSearchBar(props: ViewWithSearchBarProps) {
 
       {/* Not making the search bar absolutely positioned because it's more likely that
       components will need to be displayed only below the search bar */}
-      <SafeAreaView style={tw`z-10 px-6 pt-4`} edges={['top']}>
+      <SafeAreaView style={tw`z-50`} edges={['top']}>
         <SearchBar
           isDropdownOpen={isDropdownOpen}
           setIsDropdownOpen={setIsDropdownOpen}

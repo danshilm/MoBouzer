@@ -25,7 +25,7 @@ export default function SearchBar({
     <View
       style={[
         tw.style(
-          'flex flex-row h-12 px-2 bg-white border-gray-300 shadow-md rounded-xl',
+          'flex flex-row h-12 px-2 bg-white border-gray-300 shadow-md rounded-xl mt-4 mx-6',
           focused ? 'border-2' : 'border'
         ),
         style,
