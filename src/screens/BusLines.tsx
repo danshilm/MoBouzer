@@ -57,7 +57,6 @@ export default function BusLines({ navigation }: BusLinesStackScreenProps<'BusLi
               <BusLineCard
                 data={busline}
                 key={Math.random() + busline.line}
-                // TODO: not happy with the prop drilling here
                 navigation={navigation}
               />
             ))}
