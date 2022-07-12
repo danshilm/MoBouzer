@@ -7,17 +7,11 @@ import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import { CompositeScreenProps, NavigatorScreenParams } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-// declare global {
-//   namespace ReactNavigation {
-//     interface RootParamList extends RootStackParamList {}
-//   }
-// }
-
 export type RootStackParamList = {
   Onboarding: undefined;
   SignIn: undefined;
   SignUp: undefined;
-  Home: NavigatorScreenParams<RootTabParamList> | undefined;
+  HomeTab: NavigatorScreenParams<HomeTabParamList> | undefined;
   Modal: undefined;
   NotFound: undefined;
   Loading: undefined;
@@ -28,15 +22,25 @@ export type RootStackScreenProps<Screen extends keyof RootStackParamList> = Nati
   Screen
 >;
 
-export type RootTabParamList = {
+export type HomeTabParamList = {
   Map: undefined;
-  'Bus Stops': undefined;
-  'Bus Lines': undefined;
+  BusStops: undefined;
+  BusLinesStack: NavigatorScreenParams<BusLinesStackParamList>;
   TabOne: undefined;
-  TabTwo: undefined;
 };
 
-export type RootTabScreenProps<Screen extends keyof RootTabParamList> = CompositeScreenProps<
-  BottomTabScreenProps<RootTabParamList, Screen>,
+export type HomeTabScreenProps<Screen extends keyof HomeTabParamList> = CompositeScreenProps<
+  BottomTabScreenProps<HomeTabParamList, Screen>,
   NativeStackScreenProps<RootStackParamList>
 >;
+
+export type BusLinesStackParamList = {
+  BusLines: undefined;
+  BusLineDetails: { id: string };
+};
+
+export type BusLinesStackScreenProps<Screen extends keyof BusLinesStackParamList> =
+  CompositeScreenProps<
+    NativeStackScreenProps<BusLinesStackParamList, Screen>,
+    BottomTabScreenProps<HomeTabParamList>
+  >;

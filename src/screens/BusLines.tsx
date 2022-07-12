@@ -4,6 +4,7 @@ import { ScrollView, Text, View } from 'react-native';
 import BusLineCard from '../components/BusLineCard';
 import ViewWithSearchBar from '../components/SearchBar/ViewWithSearchBar';
 import tw from '../lib/tailwind';
+import { BusLinesStackScreenProps } from '../navigation/types';
 
 const busLine = () => {
   return { line: Math.floor(Math.random() * 100), destination: 'Port Louis', origin: 'Curepipe' };
@@ -28,7 +29,7 @@ const allBuslines = [
   busLine(),
 ];
 
-export default function BusLines() {
+export default function BusLines({ navigation }: BusLinesStackScreenProps<'BusLines'>) {
   return (
     <ViewWithSearchBar style={tw`flex-1`} placeholder="Search for a bus line">
       <ScrollView style={tw`z-10 my-2`}>
@@ -41,7 +42,7 @@ export default function BusLines() {
             </View>
             <View style={tw`mt-3`}>
               {favourites.map((favourite) => (
-                <BusLineCard data={favourite} key={favourite.line} />
+                <BusLineCard data={favourite} key={favourite.line} navigation={navigation} />
               ))}
             </View>
           </View>
@@ -53,7 +54,12 @@ export default function BusLines() {
           </View>
           <View style={tw`mt-3`}>
             {allBuslines.map((busline) => (
-              <BusLineCard data={busline} key={Math.random() + busline.line} />
+              <BusLineCard
+                data={busline}
+                key={Math.random() + busline.line}
+                // TODO: not happy with the prop drilling here
+                navigation={navigation}
+              />
             ))}
           </View>
         </View>

@@ -1,4 +1,4 @@
-import { AntDesign } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import { Formik } from 'formik';
 import React from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
@@ -25,22 +25,22 @@ export default function SignIn({ navigation }: RootStackScreenProps<'SignIn'>) {
       <View style={tw`flex flex-col justify-between h-full`}>
         <View>
           {/* Header */}
-          <View style={tw`flex flex-row items-center h-10`}>
+          <View style={tw`mt-2`}>
             <TouchableOpacity
               activeOpacity={0.7}
               onPress={() => navigation.goBack()}
-              style={tw`flex flex-row items-center`}
+              style={tw`flex flex-row items-center h-12`}
             >
-              <AntDesign name="arrowleft" size={20} style={tw`text-gray-800 dark:text-gray-300`} />
+              <Ionicons name="arrow-back" size={20} style={tw`text-gray-800 dark:text-gray-300`} />
               <Text style={tw`ml-2 text-base text-gray-800 font-inter-medium dark:text-gray-300`}>
                 Back
               </Text>
             </TouchableOpacity>
           </View>
           {/* Carousel-y image */}
-          <View style={tw`w-full h-32 mt-6 bg-gray-400 rounded-xl`} />
+          <View style={tw`w-full h-32 mt-4 bg-gray-400 rounded-xl`} />
           {/* Login form */}
-          <View style={tw`mt-3`}>
+          <View style={tw`mt-4`}>
             <Formik
               initialValues={{ email: '', password: '' }}
               validationSchema={signInSchema}

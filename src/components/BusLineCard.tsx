@@ -1,17 +1,42 @@
 import { Entypo, Ionicons } from '@expo/vector-icons';
-import React from 'react';
+import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+import { CompositeNavigationProp } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { MotiPressable } from 'moti/interactions';
+import React, { useMemo } from 'react';
 import { Text, View } from 'react-native';
 import tw from '../lib/tailwind';
+import { BusLinesStackParamList, HomeTabParamList } from '../navigation/types';
 
 interface BusLineProps {
   data: { line: number; destination: string; origin: string };
+  // use the BusLinesStack navigator so we can be free of the router state when
+  // going back to the grandparent navigator
+  navigation: CompositeNavigationProp<
+    NativeStackNavigationProp<BusLinesStackParamList, 'BusLines'>,
+    BottomTabNavigationProp<HomeTabParamList, keyof HomeTabParamList>
+  >;
 }
 
-export default function BusLineCard({ data }: BusLineProps) {
+export default function BusLineCard({ data, navigation }: BusLineProps) {
   return (
-    <View style={tw`w-full h-[50px] bg-white rounded-xl flex flex-row px-2.5 py-2.5 my-[2.5px]`}>
+    <MotiPressable
+      style={tw`w-full h-[50px] bg-white rounded-xl flex flex-row px-2.5 py-2.5 my-[2.5px]`}
+      animate={useMemo(
+        () =>
+          ({ pressed }) => {
+            'worklet';
+
+            return {
+              scale: pressed ? 1.05 : 1,
+            };
+          },
+        []
+      )}
+      onPress={() => navigation.push('BusLineDetails', { id: data.line.toString() })}
+    >
       <View
-        style={tw`flex items-center justify-center border border-gray-300 rounded-md w-7 h-7.5`}
+        style={tw`flex items-center justify-center border border-gray-300 rounded-md w-12 h-7.5`}
       >
         <Text style={tw`text-base text-gray-800 font-inter`}>{data.line}</Text>
       </View>
@@ -24,6 +49,6 @@ export default function BusLineCard({ data }: BusLineProps) {
         <Ionicons name="information-circle" size={18} />
         <Entypo name="chevron-right" size={18} />
       </View>
-    </View>
+    </MotiPressable>
   );
 }

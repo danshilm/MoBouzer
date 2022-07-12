@@ -10,18 +10,27 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { ColorSchemeName, Pressable } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { firebaseAuth } from '../firebase/config';
 import useSettings from '../hooks/useSettings';
 import tw from '../lib/tailwind';
+import BusLineDetails from '../screens/BusLineDetails';
 import BusLines from '../screens/BusLines';
 import Loading from '../screens/Loading';
 import Map from '../screens/Map';
+import ModalScreen from '../screens/ModalScreen';
 import Onboarding from '../screens/Onboarding';
 import SignIn from '../screens/SignIn';
 import SignUp from '../screens/SignUp';
 import TabOneScreen from '../screens/TabOneScreen';
 import LinkingConfiguration from './LinkingConfiguration';
-import { RootStackParamList, RootTabParamList } from './types';
+import {
+  BusLinesStackParamList,
+  HomeTabParamList,
+  HomeTabScreenProps,
+  RootStackParamList,
+} from './types';
+import { navigationRef } from './utils';
 
 const MyDarkTheme: Theme = {
   ...DefaultTheme,
@@ -33,13 +42,16 @@ const MyDarkTheme: Theme = {
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
-    <NavigationContainer
-      linking={LinkingConfiguration}
-      theme={colorScheme === 'dark' ? MyDarkTheme : DefaultTheme}
-      fallback={Loading()}
-    >
-      <RootNavigator />
-    </NavigationContainer>
+    <GestureHandlerRootView style={tw`flex-1`}>
+      <NavigationContainer
+        linking={LinkingConfiguration}
+        theme={colorScheme === 'dark' ? MyDarkTheme : DefaultTheme}
+        fallback={Loading()}
+        ref={navigationRef}
+      >
+        <RootNavigator />
+      </NavigationContainer>
+    </GestureHandlerRootView>
   );
 }
 
@@ -71,9 +83,14 @@ function RootNavigator() {
         </>
       ) : (
         <>
-          <Stack.Screen name="Home" component={HomeTabNavigator} />
+          <Stack.Screen name="HomeTab" component={HomeTabNavigator} />
         </>
       )}
+      <Stack.Screen
+        name="Modal"
+        component={ModalScreen}
+        options={{ presentation: 'modal', animation: 'slide_from_bottom', headerShown: true }}
+      />
     </Stack.Navigator>
   );
 }
@@ -82,7 +99,7 @@ function RootNavigator() {
  * A bottom tab navigator displays tab buttons on the bottom of the display to switch screens.
  * https://reactnavigation.org/docs/bottom-tab-navigator
  */
-const BottomTab = createBottomTabNavigator<RootTabParamList>();
+const BottomTab = createBottomTabNavigator<HomeTabParamList>();
 
 function HomeTabNavigator() {
   const { settings, setSettings } = useSettings();
@@ -95,25 +112,27 @@ function HomeTabNavigator() {
         tabBarStyle: tw`bg-white dark:bg-zinc-800`,
         headerStyle: tw`bg-white dark:bg-zinc-800`,
         headerTitleStyle: tw`dark:text-gray-100`,
+        headerShown: false,
       }}
     >
       <BottomTab.Screen
         name="TabOne"
         component={TabOneScreen}
-        options={() => ({
+        options={({ navigation }: HomeTabScreenProps<'TabOne'>) => ({
           title: 'Tab One',
-          headerShown: false,
+          headerShown: true,
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
           headerRight: () => (
             <Pressable
               onPress={() => {
                 setSettings({ ...settings, isDarkMode: !settings.isDarkMode });
-                firebaseAuth.signOut();
+                // firebaseAuth.signOut();
+                navigation.navigate('Modal');
               }}
               style={({ pressed }) => tw`${pressed ? 'opacity-50' : 'opacity-100'}`}
             >
               <Ionicons
-                name="exit-outline"
+                name="contrast-outline"
                 size={25}
                 color={tw.color('gray-800')}
                 style={tw`mr-4`}
@@ -126,17 +145,16 @@ function HomeTabNavigator() {
         name="Map"
         component={Map}
         options={{
-          headerShown: false,
           tabBarIcon: ({ color, focused }) => (
             <Ionicons name={focused ? 'map' : 'map-outline'} size={25} color={color} />
           ),
         }}
       />
       <BottomTab.Screen
-        name="Bus Lines"
-        component={BusLines}
+        name="BusLinesStack"
+        component={BusLinesNavigator}
         options={{
-          headerShown: false,
+          tabBarLabel: 'Bus Lines',
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               name={focused ? 'document-text' : 'document-text-outline'}
@@ -147,6 +165,17 @@ function HomeTabNavigator() {
         }}
       />
     </BottomTab.Navigator>
+  );
+}
+
+const BusLinesStack = createNativeStackNavigator<BusLinesStackParamList>();
+
+function BusLinesNavigator() {
+  return (
+    <BusLinesStack.Navigator screenOptions={{ animation: 'slide_from_right', headerShown: false }}>
+      <BusLinesStack.Screen name="BusLines" component={BusLines} />
+      <BusLinesStack.Screen name="BusLineDetails" component={BusLineDetails} />
+    </BusLinesStack.Navigator>
   );
 }
 

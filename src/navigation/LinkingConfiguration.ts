@@ -4,26 +4,25 @@
  * https://reactnavigation.org/docs/configuring-links
  */
 
-import { LinkingOptions } from '@react-navigation/native';
+import { LinkingOptions, PathConfig } from '@react-navigation/native';
 import * as Linking from 'expo-linking';
-import { RootStackParamList } from './types';
+import { BusLinesStackParamList, RootStackParamList } from './types';
 
 const linking: LinkingOptions<RootStackParamList> = {
   prefixes: [Linking.createURL('/')],
   config: {
     screens: {
-      Home: {
+      HomeTab: {
         screens: {
-          TabOne: {
+          BusLinesStack: {
             screens: {
-              TabOneScreen: 'one',
+              BusLines: 'bus-lines',
+              // id available in route.params.id as a string
+              BusLineDetails: 'bus-lines/:id',
             },
-          },
-          TabTwo: {
-            screens: {
-              TabTwoScreen: 'two',
-            },
-          },
+          } as PathConfig<BusLinesStackParamList>,
+          Map: 'map',
+          TabOne: 'tab-one',
         },
       },
       Modal: 'modal',
