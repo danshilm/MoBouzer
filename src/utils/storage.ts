@@ -89,7 +89,7 @@ export async function clear(): Promise<boolean> {
   }
 }
 
-export async function getAll() {
+export async function getAll(): Promise<Record<string, unknown>[] | undefined> {
   try {
     const allItems: Record<string, unknown>[] = [];
     await AsyncStorage.getAllKeys((err, keys) => {

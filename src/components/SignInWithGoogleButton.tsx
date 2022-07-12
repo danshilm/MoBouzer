@@ -9,18 +9,12 @@ import tw from '../lib/tailwind';
 import Button from './Common/Button';
 
 export default function SignInWithGoogleButton() {
-  const [request, response, promptAsync] = useIdTokenAuthRequest(
-    {
-      clientId: Constants.manifest?.extra?.firebaseWebClientId,
-      androidClientId: Constants.manifest?.extra?.firebaseAndroidClientId,
-      iosClientId: Constants.manifest?.extra?.firebaseiOSClientId,
-      expoClientId: Constants.manifest?.extra?.firebaseExpoGoClientId,
-    }
-    // // TODO should not use proxy in prod, but setting false
-    // // results in an error screen from auth.expo.io
-    // // something went wrong trying to finish signing in
-    // { useProxy: true }
-  );
+  const [_request, response, promptAsync] = useIdTokenAuthRequest({
+    clientId: Constants.manifest?.extra?.firebaseWebClientId,
+    androidClientId: Constants.manifest?.extra?.firebaseAndroidClientId,
+    iosClientId: Constants.manifest?.extra?.firebaseiOSClientId,
+    expoClientId: Constants.manifest?.extra?.firebaseExpoGoClientId,
+  });
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
