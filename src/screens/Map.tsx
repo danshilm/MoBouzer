@@ -17,6 +17,14 @@ export default function Map() {
           longitudeDelta: regionCoordinates.longitudeDelta,
         }}
       ></MapView>
+
+      {/* use this as reference to put a compass and trigger follow user location */}
+      {/* <SafeAreaView style={StyleSheet.absoluteFill} pointerEvents="box-none">
+        <View style={tw`flex-1`}>
+          <SearchBar panY={y} />
+          <NavBar panY={y} />
+        </View>
+      </SafeAreaView> */}
     </ViewWithSearchBar>
   );
 }

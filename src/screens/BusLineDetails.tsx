@@ -2,9 +2,8 @@ import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import MapView from 'react-native-maps';
-import { useSharedValue } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import BottomSheet from '../components/BottomSheet';
+import BusLineSheet from '../components/BusLineSheet';
 import regionCoordinates from '../constants/Map';
 import tw from '../lib/tailwind';
 import { BusLinesStackScreenProps } from '../navigation/types';
@@ -16,9 +15,7 @@ export default function BusLineDetails({ navigation }: BusLinesStackScreenProps<
     | undefined) ?? {
     id: undefined,
   };
-
   const insets = useSafeAreaInsets();
-  const y = useSharedValue(0);
 
   return (
     <View style={tw`flex-1 bg-gray-300`}>
@@ -40,31 +37,16 @@ export default function BusLineDetails({ navigation }: BusLinesStackScreenProps<
 
       <MapView
         style={tw`w-full h-full`}
+        provider="google"
         initialRegion={{
           latitude: regionCoordinates.latitude - 0.15,
           longitude: regionCoordinates.longitude,
           latitudeDelta: regionCoordinates.latitudeDelta,
           longitudeDelta: regionCoordinates.longitudeDelta,
         }}
-        provider="google"
       />
 
-      {/* <GeoBar panY={y} />
-
-      <Overlay panY={y} />
-
-      <PicturesCarousel panY={y} /> */}
-
-      <BottomSheet panY={y}>
-        <Text style={tw`text-xl font-inter-medium`}>Bus Line: {id}</Text>
-      </BottomSheet>
-
-      {/* <SafeAreaView style={StyleSheet.absoluteFill} pointerEvents="none">
-        <View style={tw`flex-1`}>
-          <SearchBar panY={y} />
-          <NavBar panY={y} />
-        </View>
-      </SafeAreaView> */}
+      <BusLineSheet data={{ id }} />
     </View>
   );
 }

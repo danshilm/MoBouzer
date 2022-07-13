@@ -1,41 +1,49 @@
+import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import React from 'react';
-import { StyleSheet, useWindowDimensions, View } from 'react-native';
-import { PanGestureHandler } from 'react-native-gesture-handler';
-import { SharedValue } from 'react-native-gesture-handler/lib/typescript/handlers/gestures/reanimatedWrapper';
+import { StyleProp, StyleSheet, useWindowDimensions, View, ViewStyle } from 'react-native';
+import { PanGestureHandler, PanGestureHandlerGestureEvent } from 'react-native-gesture-handler';
 import Animated, {
   Extrapolate,
   interpolate,
   useAnimatedGestureHandler,
   useAnimatedStyle,
-  withTiming,
+  useSharedValue
 } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import tw from '../lib/tailwind';
+
+// TODO determine max and min height of bottom sheet and clamp it there
 
 // from https://github.com/eveningkid/react-native-google-maps
 // and https://www.youtube.com/watch?v=Z_dC5Mv99bI
 export default function BottomSheet({
-  panY,
   children,
+  style: contentStyle,
+  minSheetHeight = 60 + 12,
+  maxSheetHeight = 0,
 }: {
-  panY: SharedValue<number>;
   children: React.ReactNode;
+  style?: StyleProp<ViewStyle>;
+  minSheetHeight?: number;
+  maxSheetHeight?: number;
 }) {
+  const panY = useSharedValue(0);
   const { height } = useWindowDimensions();
+  const bottomBarHeight = useBottomTabBarHeight();
 
-  const gestureHandler = useAnimatedGestureHandler(
+  const gestureHandler = useAnimatedGestureHandler<
+    PanGestureHandlerGestureEvent,
+    { startY: number }
+  >(
     {
-      onStart(_, context: { startY: number }) {
+      onStart(_, context) {
         context.startY = panY.value;
       },
       onActive(event, context) {
         panY.value = context.startY + event.translationY;
       },
       onEnd() {
-        if (panY.value < -height * 0.4) {
-          panY.value = withTiming(-(height * 0.6));
-        } else {
-          panY.value = withTiming(0);
-        }
+        console.debug(panY.value);
       },
     },
     [height]
@@ -56,9 +64,16 @@ export default function BottomSheet({
 
   return (
     <PanGestureHandler onGestureEvent={gestureHandler}>
-      <Animated.View style={[styles.container, { top: height * 0.8 }, animatedStyle]}>
+      <Animated.View
+        style={[
+          styles.container,
+          { top: height - bottomBarHeight - minSheetHeight },
+          animatedStyle,
+          tw`shadow-lg`,
+        ]}
+      >
         <SafeAreaView style={styles.wrapper} edges={['bottom', 'left', 'right']}>
-          <View style={styles.content}>
+          <View style={[styles.content, contentStyle]}>
             {children}
             <View style={styles.fakeContent} />
           </View>
@@ -75,20 +90,13 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     backgroundColor: 'white',
-    shadowColor: 'black',
-    shadowOffset: {
-      height: -6,
-      width: 0,
-    },
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
+    borderRadius: 10,
   },
   wrapper: {
     flex: 1,
   },
   content: {
     flex: 1,
-    padding: 20,
   },
   title: {
     fontWeight: '400',
