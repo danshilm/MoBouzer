@@ -7,19 +7,17 @@ import BusLineSheet from '../components/BusLineSheet';
 import regionCoordinates from '../constants/Map';
 import tw from '../lib/tailwind';
 import { BusLinesStackScreenProps } from '../navigation/types';
-import { navigationRef } from '../navigation/utils';
 
-export default function BusLineDetails({ navigation }: BusLinesStackScreenProps<'BusLineDetails'>) {
-  const { id } = (navigationRef.current?.getCurrentRoute()?.params as
-    | { id: string }
-    | undefined) ?? {
-    id: undefined,
-  };
+export default function BusLineDetails({
+  navigation,
+  route,
+}: BusLinesStackScreenProps<'BusLineDetails'>) {
+  const id = route.params?.id;
   const insets = useSafeAreaInsets();
 
   return (
     <View style={tw`flex-1 bg-gray-300`}>
-      <View style={tw`flex flex-row items-center h-12 bg-gray-300 px-6 mt-[${insets.top + 8}]`}>
+      <View style={tw`flex flex-row items-center h-12 bg-gray-300 px-6 mt-[${insets.top + 8}px]`}>
         <TouchableOpacity
           activeOpacity={0.7}
           onPress={() => navigation.goBack()}

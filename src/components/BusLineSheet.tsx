@@ -7,12 +7,12 @@ import BottomSheet from './BottomSheet';
 
 export default function BusLineSheet({ data }) {
   return (
-    <BottomSheet style={tw``}>
+    <BottomSheet style={tw``} minSheetHeight={36 + 36} maxSheetHeight={256}>
       {/* Header */}
       <Animated.View style={tw`h-[18] rounded-[10px]`}>
         {/* Pill */}
         <View style={tw`items-center w-full`}>
-          <View style={tw`w-8 h-1 my-1 bg-gray-300 rounded-md`} />
+          <View style={tw`w-8 h-1 mt-1 bg-gray-300 rounded-md`} />
         </View>
         <View style={tw`flex-row items-center mx-2`}>
           <View style={tw`h-15 w-17 items-center justify-center`}>

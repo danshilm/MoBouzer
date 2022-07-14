@@ -1,15 +1,24 @@
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import React from 'react';
-import { StyleProp, StyleSheet, useWindowDimensions, View, ViewStyle } from 'react-native';
+import {
+  Platform,
+  StyleProp,
+  StyleSheet,
+  useWindowDimensions,
+  View,
+  ViewStyle
+} from 'react-native';
 import { PanGestureHandler, PanGestureHandlerGestureEvent } from 'react-native-gesture-handler';
 import Animated, {
   Extrapolate,
   interpolate,
   useAnimatedGestureHandler,
   useAnimatedStyle,
-  useSharedValue
+  useSharedValue,
+  withSpring,
+  withTiming
 } from 'react-native-reanimated';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import tw from '../lib/tailwind';
 
 // TODO determine max and min height of bottom sheet and clamp it there
@@ -19,7 +28,7 @@ import tw from '../lib/tailwind';
 export default function BottomSheet({
   children,
   style: contentStyle,
-  minSheetHeight = 60 + 12,
+  minSheetHeight = 0,
   maxSheetHeight = 0,
 }: {
   children: React.ReactNode;
@@ -30,6 +39,7 @@ export default function BottomSheet({
   const panY = useSharedValue(0);
   const { height } = useWindowDimensions();
   const bottomBarHeight = useBottomTabBarHeight();
+  const insets = useSafeAreaInsets();
 
   const gestureHandler = useAnimatedGestureHandler<
     PanGestureHandlerGestureEvent,
@@ -43,7 +53,21 @@ export default function BottomSheet({
         panY.value = context.startY + event.translationY;
       },
       onEnd() {
-        console.debug(panY.value);
+        // arbitrary value of 15 for iOS for arbitrary reason
+        // because I couldn't make both match exactly
+        if (panY.value < -height * 0.3) {
+          panY.value = withSpring(
+            -(
+              height -
+              bottomBarHeight -
+              insets.top * 2 -
+              (Platform.OS === 'android' ? 0 : 15) -
+              maxSheetHeight
+            )
+          );
+        } else {
+          panY.value = withTiming(0);
+        }
       },
     },
     [height]
@@ -67,7 +91,7 @@ export default function BottomSheet({
       <Animated.View
         style={[
           styles.container,
-          { top: height - bottomBarHeight - minSheetHeight },
+          { top: height - bottomBarHeight + 36 - insets.bottom - minSheetHeight },
           animatedStyle,
           tw`shadow-lg`,
         ]}
@@ -97,10 +121,6 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-  },
-  title: {
-    fontWeight: '400',
-    fontSize: 22,
   },
   fakeContent: {
     flex: 1,

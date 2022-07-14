@@ -28,7 +28,7 @@ import {
   BusLinesStackParamList,
   HomeTabParamList,
   HomeTabScreenProps,
-  RootStackParamList,
+  RootStackParamList
 } from './types';
 import { navigationRef } from './utils';
 
@@ -106,7 +106,7 @@ function HomeTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="Map"
+      initialRouteName="BusLinesStack"
       screenOptions={{
         tabBarActiveTintColor: tw.color('slate-700'),
         tabBarStyle: tw`bg-white dark:bg-zinc-800`,
@@ -172,7 +172,10 @@ const BusLinesStack = createNativeStackNavigator<BusLinesStackParamList>();
 
 function BusLinesNavigator() {
   return (
-    <BusLinesStack.Navigator screenOptions={{ animation: 'slide_from_right', headerShown: false }}>
+    <BusLinesStack.Navigator
+      screenOptions={{ animation: 'slide_from_right', headerShown: false }}
+      initialRouteName="BusLineDetails"
+    >
       <BusLinesStack.Screen name="BusLines" component={BusLines} />
       <BusLinesStack.Screen name="BusLineDetails" component={BusLineDetails} />
     </BusLinesStack.Navigator>
