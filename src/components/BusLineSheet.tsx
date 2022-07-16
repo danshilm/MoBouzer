@@ -1,13 +1,16 @@
 import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 import Animated from 'react-native-reanimated';
+import { BusLineWithStops } from '../interfaces/busline';
 import tw from '../lib/tailwind';
 import BottomSheet from './BottomSheet';
+import BusLineStopCard from './BusLineStopCard';
 
-export default function BusLineSheet({ data }) {
+export default function BusLineSheet({ data }: { data: BusLineWithStops }) {
   return (
-    <BottomSheet style={tw``} minSheetHeight={36 + 36} maxSheetHeight={256}>
+    <BottomSheet minSheetHeight={36 + 36} maxSheetHeight={256}>
       {/* Header */}
       <Animated.View style={tw`h-[18] rounded-[10px]`}>
         {/* Pill */}
@@ -25,6 +28,21 @@ export default function BusLineSheet({ data }) {
       </Animated.View>
       {/* Divider */}
       <View style={tw`h-px bg-gray-600 mx-3`} />
+      {/* TODO fix unable to scroll on Android */}
+      {/* TODO fix scrollview snapping back to top on iOS */}
+      <ScrollView
+        scrollEventThrottle={16}
+        style={tw`flex-1`}
+        // onScroll={() => console.log('scrolling')}
+      >
+        {data.busStops.map((busStop) => (
+          <BusLineStopCard
+            data={busStop}
+            maxOrder={data.busStops[data.busStops.length - 1].order}
+            key={busStop.order}
+          />
+        ))}
+      </ScrollView>
     </BottomSheet>
   );
 }

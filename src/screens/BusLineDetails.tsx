@@ -5,6 +5,7 @@ import MapView from 'react-native-maps';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import BusLineSheet from '../components/BusLineSheet';
 import regionCoordinates from '../constants/Map';
+import { BusLineWithStops } from '../interfaces/busline';
 import tw from '../lib/tailwind';
 import { BusLinesStackScreenProps } from '../navigation/types';
 
@@ -14,6 +15,33 @@ export default function BusLineDetails({
 }: BusLinesStackScreenProps<'BusLineDetails'>) {
   const id = route.params?.id;
   const insets = useSafeAreaInsets();
+
+  const busLineDetails: BusLineWithStops = {
+    id: id ?? 2,
+    destination: {
+      name: 'Curepipe',
+    },
+    origin: {
+      name: 'Port Louis',
+    },
+    busStops: [
+      { name: 'Port Louis (Victoria Square)', order: 1, isLive: true, label: 'Closest bus stop' },
+      { name: 'Brabant (SPAR)', order: 2 },
+      { name: 'G.R.N.W', order: 3 },
+      { name: 'Coromandel (Sunny Hotel)', order: 4 },
+      { name: 'Belle Etoile (Tamil Social Hall And another Long Thing)', order: 5 },
+      { name: 'Beau Bassin (St John Store)', order: 6 },
+      { name: 'Beau Bassin (Nid Horondelle)', order: 7 },
+      { name: 'Rose Hill (Place Margeot)', order: 8 },
+      { name: 'Belle Rose (Pepsi Cola)', order: 9 },
+      { name: 'Pellegrin (United Basasalt)', order: 10 },
+      { name: 'Pont Fer', order: 11 },
+      { name: 'Phoenix (Police Station)', order: 12 },
+      { name: 'Castel (Magasin Etoile Brillante)', order: 13 },
+      { name: 'Eau Coulee (Villa Chambly)', order: 14 },
+      { name: 'Curepipe (Ian Palach North)', order: 15 },
+    ],
+  };
 
   return (
     <View style={tw`flex-1 bg-gray-300`}>
@@ -44,7 +72,7 @@ export default function BusLineDetails({
         }}
       />
 
-      <BusLineSheet data={{ id }} />
+      <BusLineSheet data={busLineDetails} />
     </View>
   );
 }

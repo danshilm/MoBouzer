@@ -28,7 +28,7 @@ import {
   BusLinesStackParamList,
   HomeTabParamList,
   HomeTabScreenProps,
-  RootStackParamList
+  RootStackParamList,
 } from './types';
 import { navigationRef } from './utils';
 
@@ -64,7 +64,12 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function RootNavigator() {
   // everything under one navigator so screen transitions happen smoothly
   // https://reactnavigation.org/docs/auth-flow/
-  const [user, loading] = useAuthState(firebaseAuth);
+  const [user, loading] = useAuthState(
+    firebaseAuth
+    // 	, {
+    //   onUserChanged: (user) => initialiseUserDocument(user),
+    // }
+  );
 
   return (
     <Stack.Navigator
@@ -174,7 +179,7 @@ function BusLinesNavigator() {
   return (
     <BusLinesStack.Navigator
       screenOptions={{ animation: 'slide_from_right', headerShown: false }}
-      initialRouteName="BusLineDetails"
+      // initialRouteName="BusLineDetails"
     >
       <BusLinesStack.Screen name="BusLines" component={BusLines} />
       <BusLinesStack.Screen name="BusLineDetails" component={BusLineDetails} />

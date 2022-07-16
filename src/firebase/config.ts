@@ -3,6 +3,7 @@ import Constants from 'expo-constants';
 import { initializeApp } from 'firebase/app';
 import { debugErrorMap, initializeAuth } from 'firebase/auth';
 import { getReactNativePersistence } from 'firebase/auth/react-native';
+import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: Constants.manifest?.extra?.firebaseApiKey,
@@ -23,5 +24,7 @@ export const firebaseAuth = initializeAuth(firebaseApp, {
   persistence: getReactNativePersistence(AsyncStorage),
   errorMap: debugErrorMap,
 });
+
+export const firebaseStore = getFirestore(firebaseApp);
 
 export default firebaseApp;

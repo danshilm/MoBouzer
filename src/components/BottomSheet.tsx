@@ -6,7 +6,7 @@ import {
   StyleSheet,
   useWindowDimensions,
   View,
-  ViewStyle
+  ViewStyle,
 } from 'react-native';
 import { PanGestureHandler, PanGestureHandlerGestureEvent } from 'react-native-gesture-handler';
 import Animated, {
@@ -16,7 +16,7 @@ import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withSpring,
-  withTiming
+  withTiming,
 } from 'react-native-reanimated';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import tw from '../lib/tailwind';
