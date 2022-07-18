@@ -28,12 +28,7 @@ export default function BusLineSheet({ data }: { data: BusLineWithStops }) {
   };
 
   return (
-    <BottomSheet
-      snapPoints={snapPoints}
-      ref={sheetRef}
-      index={0}
-      handleComponent={(props) => <HandleComponent />}
-    >
+    <BottomSheet snapPoints={snapPoints} ref={sheetRef} index={0} handleComponent={HandleComponent}>
       {/* Header */}
       <View style={tw`h-[15] rounded-[10px]`}>
         <View style={tw`flex-row items-center mx-2`}>
@@ -47,7 +42,7 @@ export default function BusLineSheet({ data }: { data: BusLineWithStops }) {
       </View>
       {/* Divider */}
       <View style={tw`h-px bg-gray-600 mx-3`} />
-      <BottomSheetScrollView contentContainerStyle={tw``} focusHook={useFocusEffect}>
+      <BottomSheetScrollView focusHook={useFocusEffect}>
         {data.busStops.map(renderItem)}
       </BottomSheetScrollView>
     </BottomSheet>
