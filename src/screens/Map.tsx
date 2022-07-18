@@ -11,13 +11,15 @@ export default function Map() {
   const mapRef = useRef<MapView | null>(null);
   const allBusStops = getBusStops();
 
-  const renderItem = useCallback(
-    (data: OSMNode) => (
+  const renderItem = useCallback((data: OSMNode) => {
+    return (
       <Marker
         coordinate={{ latitude: data.lat, longitude: data.lon }}
         key={data.id}
         pinColor="tomato"
-        tracksViewChanges={false}
+        tracksViewChanges={true}
+        // buggy on ios
+        // image={require('../../assets/images/location.png')}
       >
         {!!data.tags['name'] && (
           <Callout tooltip={false}>
@@ -25,9 +27,8 @@ export default function Map() {
           </Callout>
         )}
       </Marker>
-    ),
-    []
-  );
+    );
+  }, []);
 
   const handleMarkerPress = (e: MapEvent) => {
     mapRef.current?.animateToRegion(
