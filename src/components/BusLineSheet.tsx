@@ -10,7 +10,7 @@ import BusLineStopCard from './BusLineStopCard';
 export default function BusLineSheet({ data }: { data: BusLineWithStops }) {
   const sheetRef = useRef<BottomSheet>(null);
   const snapPoints = useMemo(() => [68, 250, 500], []);
-  const maxOrder = data.busStops[data.busStops.length - 1].order;
+  const maxOrder = data.busStops.length;
 
   const renderItem = useCallback(
     (data: BusStopWithOrder) => (

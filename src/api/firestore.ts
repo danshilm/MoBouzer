@@ -1,7 +1,7 @@
 import { User } from 'firebase/auth';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { firebaseStore } from '../firebase/config';
-import { OSMNode } from '../interfaces/bustop';
+import { NodeElement, RawOSMRootObject } from '../interfaces/common';
 
 export const initialiseUserDocument = async (user: User | null): Promise<void> => {
   if (!user) {
@@ -22,19 +22,8 @@ export const initialiseUserDocument = async (user: User | null): Promise<void> =
   }
 };
 
-interface RawOSMData {
-  version: string;
-  generator: string;
-  osm3s: {
-    // date
-    timestamp_osm_base: string;
-    copyright: string;
-  };
-  elements: OSMNode[];
-}
+export const getBusStops = (): NodeElement[] => {
+  const rawOSMData = require('../../assets/data/osm-bus-stops.json') as RawOSMRootObject;
 
-export const getBusStops = (): OSMNode[] => {
-  const rawOSMData = require('../../assets/data/osm-bus-stops.json') as RawOSMData;
-
-  return rawOSMData.elements;
+  return rawOSMData.elements as NodeElement[];
 };

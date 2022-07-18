@@ -40,7 +40,7 @@ export default function BusLineStopCard({
       >
         <View>
           <Text style={tw`max-w-[55] text-sm font-inter`} numberOfLines={1}>
-            {data.name}
+            {data.name ?? 'Bus Stop'}
           </Text>
           {data.label && <Text style={tw`text-xs font-inter-light`}>{data.label}</Text>}
         </View>

@@ -4,14 +4,14 @@ import MapView, { Callout, MapEvent, Marker } from 'react-native-maps';
 import { getBusStops } from '../api/firestore';
 import ViewWithSearchBar from '../components/SearchBar/ViewWithSearchBar';
 import regionCoordinates from '../constants/Map';
-import { OSMNode } from '../interfaces/bustop';
+import { NodeElement } from '../interfaces/common';
 import tw from '../lib/tailwind';
 
 export default function Map() {
   const mapRef = useRef<MapView | null>(null);
   const allBusStops = getBusStops();
 
-  const renderItem = useCallback((data: OSMNode) => {
+  const renderItem = useCallback((data: NodeElement) => {
     return (
       <Marker
         coordinate={{ latitude: data.lat, longitude: data.lon }}
@@ -21,7 +21,7 @@ export default function Map() {
         // buggy on ios
         // image={require('../../assets/images/location.png')}
       >
-        {!!data.tags['name'] && (
+        {data.tags && data.tags.name && (
           <Callout tooltip={false}>
             <Text>{data.tags['name'] as string}</Text>
           </Callout>
