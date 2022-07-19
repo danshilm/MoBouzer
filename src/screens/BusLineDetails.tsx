@@ -71,6 +71,26 @@ export default function BusLineDetails({
     []
   );
 
+  const fitToMarkers = () => {
+    if (busStops.length > 1) {
+      mapRef?.current?.fitToCoordinates(
+        busStops.map((busLineStop) => ({
+          latitude: busLineStop.lat,
+          longitude: busLineStop.lon,
+        })),
+        {
+          animated: true,
+          edgePadding: {
+            top: 100,
+            right: 50,
+            bottom: 200,
+            left: 50,
+          },
+        }
+      );
+    }
+  };
+
   useEffect(() => {
     const busLineStops: NodeElement[] = [];
 
@@ -83,22 +103,6 @@ export default function BusLineDetails({
     });
 
     setBusStops(busLineStops);
-
-    mapRef?.current?.fitToCoordinates(
-      busLineStops.map((busLineStop) => ({
-        latitude: busLineStop.lat,
-        longitude: busLineStop.lon,
-      })),
-      {
-        animated: true,
-        edgePadding: {
-          top: 100,
-          right: 50,
-          bottom: 200,
-          left: 50,
-        },
-      }
-    );
   }, []);
 
   return (
@@ -129,7 +133,7 @@ export default function BusLineDetails({
           longitudeDelta: regionCoordinates.longitudeDelta,
         }}
         ref={mapRef}
-        // onMapLoaded={}
+        onMapLoaded={fitToMarkers}
       >
         {busStops.length > 1 && busStops.map(renderBusStopMarker)}
       </MapView>
