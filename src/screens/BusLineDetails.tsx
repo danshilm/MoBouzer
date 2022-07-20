@@ -5,6 +5,7 @@ import MapView, { Callout, MapEvent, Marker } from 'react-native-maps';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { getBusStops } from '../api/firestore';
 import BusLineSheet from '../components/BusLineSheet';
+import Error from '../components/Error';
 import regionCoordinates from '../constants/Map';
 import { BusLineWithStops } from '../interfaces/busline';
 import { NodeElement } from '../interfaces/common';
@@ -115,6 +116,10 @@ export default function BusLineDetails({
 
     setBusStops(busLineStops);
   }, []);
+
+  if (!id) {
+    return <Error code={404} />;
+  }
 
   return (
     <View style={tw`flex-1 bg-gray-300`}>
