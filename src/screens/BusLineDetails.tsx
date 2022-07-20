@@ -1,7 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
-import MapView, { Callout, Marker } from 'react-native-maps';
+import MapView, { Callout, MapEvent, Marker } from 'react-native-maps';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { getBusStops } from '../api/firestore';
 import BusLineSheet from '../components/BusLineSheet';
@@ -15,14 +15,14 @@ export default function BusLineDetails({
   navigation,
   route,
 }: BusLinesStackScreenProps<'BusLineDetails'>) {
-  const id = route.params?.id;
+  const id = route.params?.id as string | undefined;
   const insets = useSafeAreaInsets();
   const [busStops, setBusStops] = useState<NodeElement[]>([]);
   const allBusStops = getBusStops();
   const mapRef = useRef<MapView | null>(null);
 
-  const busLineDetails: BusLineWithStops = {
-    id: id ?? 2,
+  const busLine: BusLineWithStops = {
+    id: id ?? '2',
     destination: {
       name: 'Curepipe',
     },
@@ -56,10 +56,10 @@ export default function BusLineDetails({
 
   const renderBusStopMarker = useCallback(
     ({ id, lat, lon }: { id: number; lat: number; lon: number }) => {
-      const name = busLineDetails.busStops.find((oneBusStop) => oneBusStop.id === id)?.name;
+      const name = busLine.busStops.find((v) => v.id === id)?.name;
 
       return (
-        <Marker coordinate={{ latitude: lat, longitude: lon }} key={id}>
+        <Marker coordinate={{ latitude: lat, longitude: lon }} key={id} tracksViewChanges={false}>
           {name && (
             <Callout tooltip={false}>
               <Text>{name}</Text>
@@ -91,10 +91,21 @@ export default function BusLineDetails({
     }
   };
 
+  const handleMarkerPress = (e: MapEvent) => {
+    mapRef.current?.animateToRegion(
+      {
+        ...e.nativeEvent.coordinate,
+        latitudeDelta: 0.005,
+        longitudeDelta: 0.005,
+      },
+      1000
+    );
+  };
+
   useEffect(() => {
     const busLineStops: NodeElement[] = [];
 
-    busLineDetails.busStops.forEach((oneBusStop) => {
+    busLine.busStops.forEach((oneBusStop) => {
       const existing = allBusStops.find((v) => v.id === oneBusStop.id);
 
       if (existing) {
@@ -134,11 +145,13 @@ export default function BusLineDetails({
         }}
         ref={mapRef}
         onMapLoaded={fitToMarkers}
+        onMarkerPress={handleMarkerPress}
+        moveOnMarkerPress={false}
       >
         {busStops.length > 1 && busStops.map(renderBusStopMarker)}
       </MapView>
 
-      <BusLineSheet data={busLineDetails} />
+      <BusLineSheet data={busLine} />
     </View>
   );
 }

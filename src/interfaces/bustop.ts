@@ -7,3 +7,9 @@ export interface BusStop {
     url?: string;
   };
 }
+
+export interface BusStopWithOrder extends BusStop {
+  order?: number;
+  isLive?: boolean;
+  label?: String;
+}

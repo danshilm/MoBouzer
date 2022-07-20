@@ -17,7 +17,7 @@ export default function Map() {
         coordinate={{ latitude: data.lat, longitude: data.lon }}
         key={data.id}
         pinColor="tomato"
-        tracksViewChanges={true}
+        tracksViewChanges={false}
         // buggy on ios
         // image={require('../../assets/images/location.png')}
       >

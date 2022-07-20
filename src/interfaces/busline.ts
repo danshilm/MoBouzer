@@ -1,4 +1,4 @@
-import { BusStop } from './bustop';
+import { BusStopWithOrder } from './bustop';
 
 export interface BusLine {
   id: string;
@@ -10,12 +10,6 @@ export interface BusLine {
     name?: string;
     id?: number;
   };
-}
-
-export interface BusStopWithOrder extends BusStop {
-  order?: number;
-  isLive?: boolean;
-  label?: String;
 }
 
 export interface BusLineWithStops extends BusLine {
