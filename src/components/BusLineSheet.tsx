@@ -41,12 +41,10 @@ export default function BusLineSheet({
   };
 
   useEffect(() => {
-    if (!busLine) {
-      setTimeout(() => {
-        sheetRef.current?.snapToIndex(2);
-      }, 150);
+    if (!busLine && !loading) {
+      sheetRef.current?.snapToIndex(2);
     }
-  }, [busLine]);
+  }, [busLine, loading]);
 
   return (
     <BottomSheet snapPoints={snapPoints} ref={sheetRef} index={1} handleComponent={HandleComponent}>
@@ -70,7 +68,7 @@ export default function BusLineSheet({
                 <ActivityIndicator size="small" />
               ) : (
                 <Text style={tw`text-lg font-inter-medium`}>
-                  {busLine?.id ?? ''} {origin}
+                  {busLine.id} {origin}
                   {' -> '}
                   {destination}
                 </Text>
@@ -79,7 +77,7 @@ export default function BusLineSheet({
           </View>
           {/* Divider */}
           <View style={tw`h-px mx-3 bg-gray-600`} />
-          {error || !busLine?.direction[direction]['bus-stops']?.length ? (
+          {error || !busLine.direction[direction]['bus-stops']?.length ? (
             <View style={tw`items-center justify-center flex-1`}>
               <Ionicons name="alert-circle-outline" size={42} style={tw`text-slate-700`} />
             </View>
