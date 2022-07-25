@@ -1,18 +1,24 @@
 import { Ionicons } from '@expo/vector-icons';
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
-import { BusStopWithOrder } from '../interfaces/busline';
+import { BusLineDocumentBusStop } from '../interfaces/busline';
 import tw from '../lib/tailwind';
 
 export default function BusLineStopCard({
   data,
   maxOrder,
+  index,
 }: {
-  data: BusStopWithOrder;
+  data: BusLineDocumentBusStop;
   maxOrder?: number;
+  index: number;
 }) {
-  const isFirstStop = data.order === 1;
-  const isLastStop = data.order === maxOrder;
+  const isFirstStop = index == 0;
+  const isLastStop = index == maxOrder;
+	// to determine
+  const [label, setLabel] = useState('');
+	// grab from `live-buses` collection
+  const [isLive, setIsLive] = useState(false);
 
   return (
     <View style={tw`h-[60px] flex-1 flex-row overflow-hidden`}>
@@ -42,10 +48,10 @@ export default function BusLineStopCard({
           <Text style={tw`max-w-[55] text-sm font-inter`} numberOfLines={1}>
             {data.name ?? 'Bus Stop'}
           </Text>
-          {data.label && <Text style={tw`text-xs font-inter-light`}>{data.label}</Text>}
+          {label !== '' && <Text style={tw`text-xs font-inter-light`}>{label}</Text>}
         </View>
         <View style={tw`flex-row items-center justify-end`}>
-          {data.isLive && <View style={tw`h-[10px] w-[10px] rounded-md bg-green-600 mr-1`} />}
+          {isLive && <View style={tw`h-[10px] w-[10px] rounded-md bg-green-600 mr-1`} />}
           <TouchableOpacity style={tw`items-center justify-center w-6 h-6 mr-3`}>
             <Ionicons name="chevron-forward-outline" size={18} />
           </TouchableOpacity>

@@ -18,7 +18,7 @@ const linking: LinkingOptions<RootStackParamList> = {
             screens: {
               BusLines: 'bus-lines',
               // id available in route.params.id as a string
-              BusLineDetails: 'bus-lines/:id',
+              BusLineDetails: 'bus-lines/:id/:section',
             },
           } as PathConfig<BusLinesStackParamList>,
           Map: 'map',

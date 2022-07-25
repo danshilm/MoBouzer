@@ -7,7 +7,11 @@ import tw from '../lib/tailwind';
 import { BusLinesStackScreenProps } from '../navigation/types';
 
 const busLine = () => {
-  return { line: Math.floor(Math.random() * 100), destination: 'Port Louis', origin: 'Curepipe' };
+  return {
+    line: Math.floor(Math.random() * 100).toString(),
+    destination: 'Port Louis',
+    origin: 'Curepipe',
+  };
 };
 
 const favourites = [busLine(), busLine(), busLine(), busLine(), busLine()];
@@ -30,6 +34,8 @@ const allBuslines = [
 ];
 
 export default function BusLines({ navigation }: BusLinesStackScreenProps<'BusLines'>) {
+  // const [value, loading, error] = useDocumentDataOnce(doc(firebaseStore, 'bus-lines', 'all'));
+
   return (
     <ViewWithSearchBar style={tw`flex-1`} placeholder="Search for a bus line">
       <ScrollView style={tw`z-10 my-2`}>
@@ -41,6 +47,11 @@ export default function BusLines({ navigation }: BusLinesStackScreenProps<'BusLi
               <Text style={tw`ml-1.5 text-base font-inter`}>Favourites</Text>
             </View>
             <View style={tw`mt-3`}>
+              <BusLineCard
+                data={{ line: '2', destination: 'Curepipe', origin: 'Port Louis' }}
+                key="2-szkvb"
+                navigation={navigation}
+              />
               {favourites.map((favourite) => (
                 <BusLineCard data={favourite} key={favourite.line} navigation={navigation} />
               ))}

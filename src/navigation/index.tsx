@@ -182,7 +182,11 @@ function BusLinesNavigator() {
       // initialRouteName="BusLineDetails"
     >
       <BusLinesStack.Screen name="BusLines" component={BusLines} />
-      <BusLinesStack.Screen name="BusLineDetails" component={BusLineDetails} />
+      <BusLinesStack.Screen
+        name="BusLineDetails"
+        component={BusLineDetails}
+        initialParams={{ id: '0', direction: 'forward' }}
+      />
     </BusLinesStack.Navigator>
   );
 }

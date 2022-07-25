@@ -1,15 +1,10 @@
-export interface BusStop {
-  id: number;
+import { DocumentData, GeoPoint } from 'firebase/firestore';
+
+export interface BusStopDocumentData extends DocumentData {
+  id: string;
+  location: GeoPoint;
   name?: string;
-  latitude?: number;
-  longitude?: number;
   photo?: {
     url?: string;
   };
-}
-
-export interface BusStopWithOrder extends BusStop {
-  order?: number;
-  isLive?: boolean;
-  label?: String;
 }

@@ -1,17 +1,31 @@
-import { BusStopWithOrder } from './bustop';
+import { DocumentReference, GeoPoint } from 'firebase/firestore';
 
-export interface BusLine {
+export interface BusLineDocumentBusStop {
   id: string;
+  location: GeoPoint;
+  name?: string;
+  ref: DocumentReference;
+}
+
+export interface BusLineDocumentDirectionData {
+  'bus-stops'?: BusLineDocumentBusStop[];
+  'bus-stops-ids'?: string[];
   destination: {
-    name?: string;
-    id?: number;
+    id: string;
+    name: string;
+    ref: DocumentReference;
   };
   origin: {
-    name?: string;
-    id?: number;
+    id: string;
+    name: string;
+    ref: DocumentReference;
   };
 }
 
-export interface BusLineWithStops extends BusLine {
-  busStops: BusStopWithOrder[];
+export interface BusLineDocumentData {
+  id: string;
+  direction: {
+    forward: BusLineDocumentDirectionData;
+    reverse: BusLineDocumentDirectionData;
+  };
 }

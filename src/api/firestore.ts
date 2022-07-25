@@ -1,5 +1,13 @@
 import { User } from 'firebase/auth';
-import { doc, GeoPoint, getDoc, setDoc, writeBatch } from 'firebase/firestore';
+import {
+	arrayUnion,
+	doc,
+	GeoPoint,
+	getDoc,
+	setDoc,
+	updateDoc,
+	writeBatch
+} from 'firebase/firestore';
 import { firebaseStore } from '../firebase/config';
 import { NodeElement, RawOSMRootObject } from '../interfaces/common';
 
@@ -46,7 +54,7 @@ export const saveBusStops = async (busStops: NodeElement[]) => {
     await batch.commit();
 
     if (maxWritesExceeded) {
-      throw new Error('Partially batch saved bus stops, limit of 500 reached');
+      throw new Error('Partial batch of bus stops saved, limit of 500 per batch reached');
     }
   } catch (error) {
     console.log(`Failed to batch save bus stops: ${error}`);
@@ -55,22 +63,41 @@ export const saveBusStops = async (busStops: NodeElement[]) => {
 
 export const setBusLineStops = async (
   busLineId: string,
-  busStops: NodeElement[],
-  // direction 1 on schedule = forward
-  direction: 'forward' | 'reverse' = 'forward'
+  direction: 'forward' | 'reverse' = 'forward',
+  busStops: NodeElement[]
 ) => {
   try {
-    await setDoc(
-      doc(firebaseStore, 'bus-lines', busLineId),
-      {
-        direction: {
-          [direction]: {
-            'bus-stops-ids': busStops.map((v) => doc(firebaseStore, 'bus-stops', v.id.toString())),
-          },
-        },
-      },
-      { merge: true }
-    );
+    const allBusStops = require('../../assets/data/bus-lines/2.reverse.json');
+    const filteredBusStops = allBusStops.members
+      .filter((busStop) => busStop.type === 'node')
+      .map((v) => v.ref);
+
+    const everyOne = getBusStops();
+    const myArray: NodeElement[] = [];
+    filteredBusStops.forEach((element) => {
+      const found = everyOne.find((v) => v.id === element);
+      if (found) {
+        myArray.push(found);
+      }
+    });
+
+    await updateDoc(doc(firebaseStore, 'bus-lines', '2'), {
+      'direction.reverse.bus-stops': arrayUnion(
+        ...myArray.map((v) => {
+          const data: Record<string, unknown> = {
+            id: v.id,
+            location: new GeoPoint(v.lat, v.lon),
+            ref: doc(firebaseStore, 'bus-stops', v.id.toString()),
+          };
+          if (v.tags?.name) {
+            data.name = v.tags.name;
+          }
+          return data;
+        })
+      ),
+    });
+
+    console.log('done');
   } catch (error) {
     console.log(`Failed to set bus line bus stops: ${error}`);
   }

@@ -9,7 +9,7 @@ import tw from '../lib/tailwind';
 import { BusLinesStackParamList, HomeTabParamList } from '../navigation/types';
 
 interface BusLineProps {
-  data: { line: number; destination: string; origin: string };
+  data: { line: string; destination: string; origin: string };
   // use the BusLinesStack navigator so we can be free of the router state when
   // going back to the grandparent navigator
   navigation: CompositeNavigationProp<
@@ -33,7 +33,9 @@ export default function BusLineCard({ data, navigation }: BusLineProps) {
           },
         []
       )}
-      onPress={() => navigation.push('BusLineDetails', { id: data.line.toString() })}
+      onPress={() =>
+        navigation.push('BusLineDetails', { id: data.line, direction: 'forward' })
+      }
     >
       <View
         style={tw`flex items-center justify-center border border-gray-300 rounded-md w-12 h-7.5`}

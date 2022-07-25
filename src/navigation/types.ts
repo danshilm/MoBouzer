@@ -36,7 +36,7 @@ export type HomeTabScreenProps<Screen extends keyof HomeTabParamList> = Composit
 
 export type BusLinesStackParamList = {
   BusLines: undefined;
-  BusLineDetails: { id: string };
+  BusLineDetails: { id: string; direction: 'forward' | 'reverse' };
 };
 
 export type BusLinesStackScreenProps<Screen extends keyof BusLinesStackParamList> =

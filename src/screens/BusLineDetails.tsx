@@ -1,14 +1,14 @@
 import { Ionicons } from '@expo/vector-icons';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { doc, DocumentReference } from 'firebase/firestore';
+import React, { useCallback, useRef } from 'react';
+import { useDocumentDataOnce } from 'react-firebase-hooks/firestore';
 import { Text, TouchableOpacity, View } from 'react-native';
 import MapView, { Callout, MapEvent, Marker } from 'react-native-maps';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { getBusStops } from '../api/firestore';
 import BusLineSheet from '../components/BusLineSheet';
-import Error from '../components/Error';
 import regionCoordinates from '../constants/Map';
-import { BusLineWithStops } from '../interfaces/busline';
-import { NodeElement } from '../interfaces/common';
+import { firebaseStore } from '../firebase/config';
+import { BusLineDocumentBusStop, BusLineDocumentData } from '../interfaces/busline';
 import tw from '../lib/tailwind';
 import { BusLinesStackScreenProps } from '../navigation/types';
 
@@ -16,75 +16,42 @@ export default function BusLineDetails({
   navigation,
   route,
 }: BusLinesStackScreenProps<'BusLineDetails'>) {
-  const id = route.params?.id as string | undefined;
+  const { id, direction } = route.params;
   const insets = useSafeAreaInsets();
-  const [busStops, setBusStops] = useState<NodeElement[]>([]);
-  const allBusStops = getBusStops();
+  const [value, loading, error] = useDocumentDataOnce(
+    doc(firebaseStore, 'bus-lines', id ?? '') as DocumentReference<BusLineDocumentData>
+  );
   const mapRef = useRef<MapView | null>(null);
 
-  const busLine: BusLineWithStops = {
-    id: id ?? '2',
-    destination: {
-      name: 'Curepipe',
-    },
-    origin: {
-      name: 'Port Louis',
-    },
-    busStops: [
-      {
-        name: 'Port Louis (Victoria Square)',
-        order: 1,
-        isLive: true,
-        label: 'Closest bus stop',
-        id: 7176151924,
-      },
-      { name: 'Brabant (SPAR)', order: 2, id: 3768473681 },
-      { name: 'G.R.N.W', order: 3, id: 3101465727 },
-      { name: 'Coromandel (Sunny Hotel)', order: 4, id: 3104132163 },
-      { name: 'Belle Etoile (Tamil Social Hall And another Long Thing)', order: 5, id: 7176723505 },
-      { name: 'Beau Bassin (St John Store)', order: 6, id: 7081653076 },
-      { name: 'Beau Bassin (Nid Horondelle)', order: 7, id: 7176723502 },
-      { name: 'Rose Hill (Place Margeot)', order: 8, id: 7176712551 },
-      { name: 'Belle Rose (Pepsi Cola)', order: 9, id: 7188513795 },
-      { name: 'Pellegrin (United Basasalt)', order: 10, id: 7188513798 },
-      { name: 'Pont Fer', order: 11, id: 4159230908 },
-      { name: 'Phoenix (Police Station)', order: 12, id: 4159237944 },
-      { name: 'Castel (Magasin Etoile Brillante)', order: 13, id: 7188513802 },
-      { name: 'Eau Coulee (Villa Chambly)', order: 14, id: 7188513804 },
-      { name: 'Curepipe (Ian Palach North)', order: 15, id: 7191794969 },
-    ],
-  };
-
-  const renderBusStopMarker = useCallback(
-    ({ id, lat, lon }: { id: number; lat: number; lon: number }) => {
-      const name = busLine.busStops.find((v) => v.id === id)?.name;
-
-      return (
-        <Marker coordinate={{ latitude: lat, longitude: lon }} key={id} tracksViewChanges={false}>
-          {name && (
-            <Callout tooltip={false}>
-              <Text>{name}</Text>
-            </Callout>
-          )}
-        </Marker>
-      );
-    },
-    []
-  );
+  const renderBusStopMarker = useCallback((data: BusLineDocumentBusStop) => {
+    return (
+      <Marker
+        coordinate={{ latitude: data.location.latitude, longitude: data.location.longitude }}
+        key={data.id}
+        tracksViewChanges={false}
+      >
+        {data.name && (
+          <Callout tooltip={false}>
+            <Text>{data.name}</Text>
+          </Callout>
+        )}
+      </Marker>
+    );
+  }, []);
 
   const fitToMarkers = () => {
-    if (busStops.length > 1) {
+    if (value?.direction[direction]?.['bus-stops']?.length) {
       mapRef?.current?.fitToCoordinates(
-        busStops.map((busLineStop) => ({
-          latitude: busLineStop.lat,
-          longitude: busLineStop.lon,
+        value?.direction[direction]['bus-stops']?.map((busStop) => ({
+          latitude: busStop.location.latitude,
+          longitude: busStop.location.longitude,
         })),
         {
           animated: true,
           edgePadding: {
             top: 100,
             right: 50,
-            bottom: 200,
+            bottom: 300,
             left: 50,
           },
         }
@@ -93,6 +60,7 @@ export default function BusLineDetails({
   };
 
   const handleMarkerPress = (e: MapEvent) => {
+    // account for bottom sheet being open
     mapRef.current?.animateToRegion(
       {
         ...e.nativeEvent.coordinate,
@@ -102,24 +70,6 @@ export default function BusLineDetails({
       1000
     );
   };
-
-  useEffect(() => {
-    const busLineStops: NodeElement[] = [];
-
-    busLine.busStops.forEach((oneBusStop) => {
-      const existing = allBusStops.find((v) => v.id === oneBusStop.id);
-
-      if (existing) {
-        busLineStops.push({ id: existing.id, lat: existing.lat, lon: existing.lon, type: 'node' });
-      }
-    });
-
-    setBusStops(busLineStops);
-  }, []);
-
-  if (!id) {
-    return <Error code={404} />;
-  }
 
   return (
     <View style={tw`flex-1 bg-gray-300`}>
@@ -134,7 +84,13 @@ export default function BusLineDetails({
         <Text style={tw`flex-1 text-gray-800 font-inter dark:text-gray-300`}>
           United Bus Service
         </Text>
-        <TouchableOpacity activeOpacity={0.7}>
+        <TouchableOpacity
+          activeOpacity={0.7}
+          onPress={() =>
+            // doesn't work
+            navigation.setParams({ direction: direction === 'forward' ? 'reverse' : 'forward' })
+          }
+        >
           <Ionicons name="information-circle" size={20} />
         </TouchableOpacity>
       </View>
@@ -153,10 +109,13 @@ export default function BusLineDetails({
         onMarkerPress={handleMarkerPress}
         moveOnMarkerPress={false}
       >
-        {busStops.length > 1 && busStops.map(renderBusStopMarker)}
+        {value?.direction[direction]?.['bus-stops']?.length &&
+          value.direction[direction]['bus-stops']?.map(renderBusStopMarker)}
       </MapView>
 
-      <BusLineSheet data={busLine} />
+      {/* pass rudimentary data through here */}
+      {/* and grab data from firestore in the bottom sheet component */}
+      <BusLineSheet busLine={value} direction={direction} loading={loading} error={error} />
     </View>
   );
 }
