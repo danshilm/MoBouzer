@@ -1,4 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
+import auth from '@react-native-firebase/auth';
 import { Formik } from 'formik';
 import React from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
@@ -46,8 +47,10 @@ export default function SignIn({ navigation }: RootStackScreenProps<'SignIn'>) {
               validationSchema={signInSchema}
               onSubmit={async (values: { email: string; password: string }) => {
                 try {
-                  await signIn(values.email, values.password);
+                  await auth().signInWithEmailAndPassword(values.email, values.password);
+                  // await signIn(values.email, values.password);
                 } catch (e) {
+                  console.log(e);
                   // no need to do anything here
                   // the signin hook already gives the reason for the error
                 }
