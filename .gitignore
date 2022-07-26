@@ -68,3 +68,7 @@ bin/Exponent.app
 
 # keystore, etc
 credentials
+
+# firebase ios & android app credentials
+google-services.json
+GoogleService-Info.plist

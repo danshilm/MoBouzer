@@ -12,7 +12,8 @@
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "format": "prettier --write .",
     "postinstall": "node ./bin/postInstall",
-    "recrawl": "watchman watch-del ./; watchman watch-project ./"
+    "recrawl": "watchman watch-del ./; watchman watch-project ./",
+    "eas-build-pre-install": "echo $GOOGLE_SERVICES_ANDROID_BASE64 | base64 --decode > ./google-services.json && echo $GOOGLE_SERVICES_IOS_BASE64 | base64 --decode > ./GoogleService-Info.plist"
   },
   "dependencies": {
     "@expo-google-fonts/inter": "^0.2.2",

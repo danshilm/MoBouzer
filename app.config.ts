@@ -28,6 +28,7 @@ const expoConfig = {
       config: {
         googleMapsApiKey: process.env.IOS_MAPS_SDK,
       },
+      googleServicesFile: './GoogleService-Info.plist',
     },
     android: {
       package: 'com.mobouzer',
@@ -40,6 +41,7 @@ const expoConfig = {
           apiKey: process.env.ANDROID_MAPS_API_KEY,
         },
       },
+      googleServicesFile: './google-services.json',
     },
     web: {
       favicon: './assets/images/favicon.png',
@@ -57,6 +59,7 @@ const expoConfig = {
       firebaseExpoGoClientId: process.env.FIREBASE_EXPO_GO_CLIENT_ID,
       firebaseiOSClientId: process.env.FIREBASE_IOS_CLIENT_ID,
     },
+    plugins: ['./plugins/react-native-firebase', '@react-native-firebase/app'],
   } as ExpoConfig,
 };
 
