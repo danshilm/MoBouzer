@@ -1,12 +1,12 @@
 import { User } from 'firebase/auth';
 import {
-	arrayUnion,
-	doc,
-	GeoPoint,
-	getDoc,
-	setDoc,
-	updateDoc,
-	writeBatch
+  arrayUnion,
+  doc,
+  GeoPoint,
+  getDoc,
+  setDoc,
+  updateDoc,
+  writeBatch,
 } from 'firebase/firestore';
 import { firebaseStore } from '../firebase/config';
 import { NodeElement, RawOSMRootObject } from '../interfaces/common';

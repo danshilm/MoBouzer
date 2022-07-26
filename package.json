@@ -65,8 +65,8 @@
     "@types/lodash": "^4.14.182",
     "@types/react": "~17.0.21",
     "@types/react-native": "~0.67.6",
-    "@typescript-eslint/eslint-plugin": "^5.16.0",
-    "@typescript-eslint/parser": "^5.16.0",
+    "@typescript-eslint/eslint-plugin": "^5.31.0",
+    "@typescript-eslint/parser": "^5.31.0",
     "eslint": "^8.11.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
@@ -116,7 +116,6 @@
       "@typescript-eslint/no-unused-vars": [
         "warn",
         {
-          "argsIgnorePattern": "^_",
           "destructuredArrayIgnorePattern": "^_"
         }
       ],

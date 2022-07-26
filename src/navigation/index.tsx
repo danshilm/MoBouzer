@@ -25,10 +25,10 @@ import SignUp from '../screens/SignUp';
 import TabOneScreen from '../screens/TabOneScreen';
 import LinkingConfiguration from './LinkingConfiguration';
 import {
-	BusLinesStackParamList,
-	HomeTabParamList,
-	HomeTabScreenProps,
-	RootStackParamList
+  BusLinesStackParamList,
+  HomeTabParamList,
+  HomeTabScreenProps,
+  RootStackParamList,
 } from './types';
 import { navigationRef } from './utils';
 

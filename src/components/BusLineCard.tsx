@@ -33,9 +33,7 @@ export default function BusLineCard({ data, navigation }: BusLineProps) {
           },
         []
       )}
-      onPress={() =>
-        navigation.push('BusLineDetails', { id: data.line, direction: 'forward' })
-      }
+      onPress={() => navigation.push('BusLineDetails', { id: data.line, direction: 'forward' })}
     >
       <View
         style={tw`flex items-center justify-center border border-gray-300 rounded-md w-12 h-7.5`}
