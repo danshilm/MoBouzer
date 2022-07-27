@@ -1,8 +1,14 @@
 import { Ionicons } from '@expo/vector-icons';
 import BottomSheet, { BottomSheetScrollView } from '@gorhom/bottom-sheet';
 import { useFocusEffect } from '@react-navigation/native';
-import React, { useCallback, useEffect, useMemo, useRef } from 'react';
-import { ActivityIndicator, Text, TouchableOpacity, View } from 'react-native';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import {
+  ActivityIndicator,
+  Text,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  View,
+} from 'react-native';
 import { BusLineDocumentBusStop, BusLineDocumentData } from '../interfaces/busline';
 import tw from '../lib/tailwind';
 import BusLineStopCard from './BusLineStopCard';
@@ -23,12 +29,13 @@ export default function BusLineSheet({
   const maxOrder = busLine?.['bus-stops']?.length ?? 0;
   const origin = busLine?.direction[direction].origin.name;
   const destination = busLine?.direction[direction].destination.name;
+  const [sheetPositionIndex, setSheetPositionIndex] = useState(0);
 
   const renderItem = useCallback(
     (data: BusLineDocumentBusStop, index: number) => (
       <BusLineStopCard data={data} maxOrder={maxOrder} index={index} key={index} />
     ),
-    []
+    [maxOrder]
   );
 
   const HandleComponent = () => {
@@ -45,8 +52,23 @@ export default function BusLineSheet({
     }
   }, [busLine, loading]);
 
+  const handleSheetHeaderPress = () => {
+    // expand sheet if minimised
+    if (sheetPositionIndex === 0 || sheetPositionIndex === 1) {
+      sheetRef.current?.snapToIndex(2);
+    } else {
+      sheetRef.current?.snapToIndex(0);
+    }
+  };
+
   return (
-    <BottomSheet snapPoints={snapPoints} ref={sheetRef} index={1} handleComponent={HandleComponent}>
+    <BottomSheet
+      snapPoints={snapPoints}
+      ref={sheetRef}
+      index={1}
+      handleComponent={HandleComponent}
+      onChange={setSheetPositionIndex}
+    >
       {loading ? (
         <ActivityIndicator size="large" style={tw`flex-1`} />
       ) : !busLine ? (
@@ -56,7 +78,10 @@ export default function BusLineSheet({
       ) : (
         <View style={tw`flex-1`}>
           {/* Header */}
-          <View style={tw`h-[15] rounded-[10px]`}>
+          <TouchableWithoutFeedback
+            style={tw`h-[15] rounded-[10px]`}
+            onPress={handleSheetHeaderPress}
+          >
             <View style={tw`flex-row items-center mx-2`}>
               <View style={tw`items-center justify-center h-15 w-17`}>
                 <TouchableOpacity style={tw`items-center justify-center w-8 h-8`}>
@@ -73,7 +98,7 @@ export default function BusLineSheet({
                 </Text>
               )}
             </View>
-          </View>
+          </TouchableWithoutFeedback>
           {/* Divider */}
           <View style={tw`h-px mx-3 bg-gray-600`} />
           {error || !busLine.direction[direction]['bus-stops']?.length ? (

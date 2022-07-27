@@ -50,7 +50,7 @@ export default function BusLineDetails({
           edgePadding: {
             top: 100,
             right: 50,
-            bottom: 300,
+            bottom: 400,
             left: 50,
           },
         }
