@@ -1,10 +1,9 @@
 import { FontAwesome } from '@expo/vector-icons';
 import { useIdTokenAuthRequest } from 'expo-auth-session/providers/google';
 import Constants from 'expo-constants';
-import { GoogleAuthProvider, signInWithCredential } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, Text } from 'react-native';
-import { firebaseAuth } from '../firebase/config';
+import { firebaseAuth } from '../firebase/utils';
 import tw from '../lib/tailwind';
 import Button from './Common/Button';
 
@@ -22,8 +21,13 @@ export default function SignInWithGoogleButton() {
       if (response?.type === 'success') {
         const { id_token } = response.params;
 
-        const credential = GoogleAuthProvider.credential(id_token);
-        await signInWithCredential(firebaseAuth, credential).catch((err) => console.log(err));
+        // Create a Google credential with the token
+        const googleCredential = firebaseAuth.GoogleAuthProvider.credential(id_token);
+
+        // Sign-in the user with the credential
+        await firebaseAuth()
+          .signInWithCredential(googleCredential)
+          .catch((reason) => console.log(reason));
       }
       setLoading(false);
     };
