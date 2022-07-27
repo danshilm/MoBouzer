@@ -1,15 +1,14 @@
 import { Ionicons } from '@expo/vector-icons';
-import auth from '@react-native-firebase/auth';
+import { useSignInWithEmailAndPassword } from '@skillnation/react-native-firebase-hooks/auth';
 import { Formik } from 'formik';
 import React from 'react';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as Yup from 'yup';
 import FormButton from '../components/Common/Form/Button';
 import FormTextInput from '../components/Common/Form/TextInput';
-import { firebaseAuth } from '../firebase/config';
 import { canHumaniseFirebaseAuthError, DisplayFirebaseAuthError } from '../firebase/errors';
+import { firebaseAuth } from '../firebase/utils';
 import tw from '../lib/tailwind';
 import { RootStackScreenProps } from '../navigation/types';
 
@@ -46,14 +45,8 @@ export default function SignIn({ navigation }: RootStackScreenProps<'SignIn'>) {
               initialValues={{ email: '', password: '' }}
               validationSchema={signInSchema}
               onSubmit={async (values: { email: string; password: string }) => {
-                try {
-                  await auth().signInWithEmailAndPassword(values.email, values.password);
-                  // await signIn(values.email, values.password);
-                } catch (e) {
-                  console.log(e);
-                  // no need to do anything here
-                  // the signin hook already gives the reason for the error
-                }
+                await signIn(values.email, values.password);
+                console.log(firebaseAuth().currentUser);
               }}
             >
               {({

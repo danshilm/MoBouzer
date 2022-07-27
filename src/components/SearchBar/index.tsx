@@ -1,8 +1,8 @@
 import { Ionicons } from '@expo/vector-icons';
+import { useAuthState } from '@skillnation/react-native-firebase-hooks/auth';
 import React, { useState } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { Image, StyleProp, TextInput, TouchableOpacity, View, ViewStyle } from 'react-native';
-import { firebaseAuth } from '../../firebase/config';
+import { firebaseAuth } from '../../firebase/utils';
 import useDebouncedState from '../../hooks/useDebouncedState';
 import tw from '../../lib/tailwind';
 

@@ -1,7 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import BottomSheet, { BottomSheetScrollView } from '@gorhom/bottom-sheet';
 import { useFocusEffect } from '@react-navigation/native';
-import { FirebaseError } from 'firebase/app';
 import React, { useCallback, useEffect, useMemo, useRef } from 'react';
 import { ActivityIndicator, Text, TouchableOpacity, View } from 'react-native';
 import { BusLineDocumentBusStop, BusLineDocumentData } from '../interfaces/busline';
@@ -17,7 +16,7 @@ export default function BusLineSheet({
   busLine?: BusLineDocumentData;
   direction: 'forward' | 'reverse';
   loading?: boolean;
-  error?: FirebaseError;
+  error?: Error;
 }) {
   const sheetRef = useRef<BottomSheet>(null);
   const snapPoints = useMemo(() => [68, 250, 500], []);

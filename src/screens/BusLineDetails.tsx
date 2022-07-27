@@ -1,13 +1,12 @@
 import { Ionicons } from '@expo/vector-icons';
-import { doc, DocumentReference } from 'firebase/firestore';
-import React, { useCallback, useRef } from 'react';
-import { useDocumentDataOnce } from 'react-firebase-hooks/firestore';
+import { useDocumentDataOnce } from '@skillnation/react-native-firebase-hooks/firestore';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import MapView, { Callout, MapEvent, Marker } from 'react-native-maps';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import BusLineSheet from '../components/BusLineSheet';
 import regionCoordinates from '../constants/Map';
-import { firebaseStore } from '../firebase/config';
+import { firebaseStore } from '../firebase/utils';
 import { BusLineDocumentBusStop, BusLineDocumentData } from '../interfaces/busline';
 import tw from '../lib/tailwind';
 import { BusLinesStackScreenProps } from '../navigation/types';
@@ -18,8 +17,8 @@ export default function BusLineDetails({
 }: BusLinesStackScreenProps<'BusLineDetails'>) {
   const { id, direction } = route.params;
   const insets = useSafeAreaInsets();
-  const [value, loading, error] = useDocumentDataOnce(
-    doc(firebaseStore, 'bus-lines', id ?? '') as DocumentReference<BusLineDocumentData>
+  const [value, loading, error] = useDocumentDataOnce<BusLineDocumentData>(
+    firebaseStore().doc(`bus-lines/${id}`)
   );
   const mapRef = useRef<MapView | null>(null);
 
@@ -70,6 +69,11 @@ export default function BusLineDetails({
       1000
     );
   };
+
+  useEffect(() => {
+    console.log(`value`, value);
+    console.log(`error`, error);
+  }, [value, error]);
 
   return (
     <View style={tw`flex-1 bg-gray-300`}>

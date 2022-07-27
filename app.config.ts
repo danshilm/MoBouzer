@@ -59,7 +59,12 @@ const expoConfig = {
       firebaseExpoGoClientId: process.env.FIREBASE_EXPO_GO_CLIENT_ID,
       firebaseiOSClientId: process.env.FIREBASE_IOS_CLIENT_ID,
     },
-    plugins: ['./plugins/react-native-firebase', '@react-native-firebase/app'],
+    plugins: [
+      // only required by @react-native-firebase >= v15.0.0
+      // ['expo-build-properties', { ios: { useFrameworks: 'dynamic' } }],
+      './plugins/react-native-firebase',
+      '@react-native-firebase/app',
+    ],
   } as ExpoConfig,
 };
 

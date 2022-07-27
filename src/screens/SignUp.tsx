@@ -1,15 +1,15 @@
 import { AntDesign } from '@expo/vector-icons';
+import { useCreateUserWithEmailAndPassword } from '@skillnation/react-native-firebase-hooks/auth';
 import { Formik } from 'formik';
 import React from 'react';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as Yup from 'yup';
 import FormButton from '../components/Common/Form/Button';
 import FormCheckbox from '../components/Common/Form/Checkbox';
 import FormTextInput from '../components/Common/Form/TextInput';
-import { firebaseAuth } from '../firebase/config';
 import { canHumaniseFirebaseAuthError, DisplayFirebaseAuthError } from '../firebase/errors';
+import { firebaseAuth } from '../firebase/utils';
 import tw from '../lib/tailwind';
 import { RootStackScreenProps } from '../navigation/types';
 
@@ -49,12 +49,7 @@ export default function SignUp({ navigation }: RootStackScreenProps<'SignUp'>) {
               initialValues={{ email: '', password: '', tac: false }}
               validationSchema={signInSchema}
               onSubmit={async (values) => {
-                try {
-                  await createUser(values.email, values.password);
-                } catch (e) {
-                  // no need to do anything here
-                  // the signin hook already gives the reason for the error
-                }
+                await createUser(values.email, values.password);
               }}
             >
               {({

@@ -1,16 +1,20 @@
-import { AuthError } from 'firebase/auth';
+import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { useFormikContext } from 'formik';
 import { startCase } from 'lodash';
 import { useEffect } from 'react';
 
 const errorsToHandle = ['auth/wrong-password', 'auth/invalid-email', 'auth/user-not-found'];
-export const canHumaniseFirebaseAuthError = (error?: AuthError) =>
+export const canHumaniseFirebaseAuthError = (error?: FirebaseAuthTypes.NativeFirebaseAuthError) =>
   errorsToHandle.includes(error?.code ?? '');
 export const humaniseFirebaseAuthError = (code: string) => {
   return startCase(code.replace('auth/', ''));
 };
 
-export function DisplayFirebaseAuthError({ error }: { error?: AuthError }) {
+export function DisplayFirebaseAuthError({
+  error,
+}: {
+  error?: FirebaseAuthTypes.NativeFirebaseAuthError;
+}) {
   const { setFieldError } = useFormikContext();
 
   useEffect(() => {

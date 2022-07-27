@@ -7,11 +7,11 @@ import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { DefaultTheme, NavigationContainer, Theme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useAuthState } from '@skillnation/react-native-firebase-hooks/auth';
 import * as React from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { ColorSchemeName, Pressable } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { firebaseAuth } from '../firebase/config';
+import { firebaseAuth } from '../firebase/utils';
 import useSettings from '../hooks/useSettings';
 import tw from '../lib/tailwind';
 import BusLineDetails from '../screens/BusLineDetails';
@@ -64,12 +64,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function RootNavigator() {
   // everything under one navigator so screen transitions happen smoothly
   // https://reactnavigation.org/docs/auth-flow/
-  const [user, loading] = useAuthState(
-    firebaseAuth
-    // 	, {
-    //   onUserChanged: (user) => initialiseUserDocument(user),
-    // }
-  );
+  const [user, loading] = useAuthState(firebaseAuth);
 
   return (
     <Stack.Navigator
