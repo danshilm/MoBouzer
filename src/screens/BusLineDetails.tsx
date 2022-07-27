@@ -38,7 +38,7 @@ export default function BusLineDetails({
     );
   }, []);
 
-  const fitToMarkers = () => {
+  const fitToMarkers = useCallback(() => {
     if (value?.direction[direction]?.['bus-stops']?.length) {
       mapRef?.current?.fitToCoordinates(
         value?.direction[direction]['bus-stops']?.map((busStop) => ({
@@ -56,7 +56,7 @@ export default function BusLineDetails({
         }
       );
     }
-  };
+  }, [direction, value?.direction]);
 
   const handleMarkerPress = (e: MapEvent) => {
     // account for bottom sheet being open
@@ -71,9 +71,10 @@ export default function BusLineDetails({
   };
 
   useEffect(() => {
-    console.log(`value`, value);
-    console.log(`error`, error);
-  }, [value, error]);
+    if (value && !loading) {
+      fitToMarkers();
+    }
+  }, [fitToMarkers, loading, value]);
 
   return (
     <View style={tw`flex-1 bg-gray-300`}>

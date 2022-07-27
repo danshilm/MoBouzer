@@ -46,7 +46,6 @@ export default function SignIn({ navigation }: RootStackScreenProps<'SignIn'>) {
               validationSchema={signInSchema}
               onSubmit={async (values: { email: string; password: string }) => {
                 await signIn(values.email, values.password);
-                console.log(firebaseAuth().currentUser);
               }}
             >
               {({
