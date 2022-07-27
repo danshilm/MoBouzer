@@ -52,6 +52,7 @@
     "react-dom": "17.0.2",
     "react-firebase-hooks": "^5.0.3",
     "react-native": "0.68.2",
+    "react-native-clusterer": "^1.2.0",
     "react-native-gesture-handler": "~2.2.1",
     "react-native-maps": "0.30.2",
     "react-native-reanimated": "~2.8.0",

@@ -1987,6 +1987,18 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
+"@mapbox/geo-viewport@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@mapbox/geo-viewport/-/geo-viewport-0.5.0.tgz#5e3b4ef19ed113169d168eec9c60840e430c52a6"
+  integrity sha512-h0b10JU+lSxw8/TLXGdzcVTPxMN9Ikv0os8sCo0OAHXUiSDkQs5fx4WWLJeQTnC++qaGFl6/Ssr+H5N6NIvE5g==
+  dependencies:
+    "@mapbox/sphericalmercator" "^1.2.0"
+
+"@mapbox/sphericalmercator@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@mapbox/sphericalmercator/-/sphericalmercator-1.2.0.tgz#55d4896be906bfff859e22a1d72267329a0fff90"
+  integrity sha512-ZTOuuwGuMOJN+HEmG/68bSEw15HHaMWmQ5gdTsWdWsjDe56K1kGvLOK6bOSC8gWgIvEO0w6un/2Gvv1q5hJSkQ==
+
 "@motify/components@^0.18.0":
   version "0.18.0"
   resolved "https://registry.yarnpkg.com/@motify/components/-/components-0.18.0.tgz#66fd4449129613e30903d63bef004b84083520a4"
@@ -2434,7 +2446,7 @@
   resolved "https://registry.yarnpkg.com/@skillnation/react-native-firebase-hooks/-/react-native-firebase-hooks-0.5.0.tgz#3f6dc084feb8d9d9b4a7d6467c6e70c369dfddc5"
   integrity sha512-F4jUqbXvBLEdc3B/Vndn0qdarCXQXHQ6mYAUVw/cft25c4+AZ3Ja1nOl2AmQN5U5N5SDcXqsrDskapDbeM5VdA==
 
-"@types/geojson@^7946.0.7":
+"@types/geojson@^7946.0.7", "@types/geojson@^7946.0.8":
   version "7946.0.10"
   resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-7946.0.10.tgz#6dfbf5ea17142f7f9a043809f1cd4c448cb68249"
   integrity sha512-Nmh0K3iWQJzniTuPRcJn5hxXkfB1T1pgB89SBig5PlJQU5yocazeu4jATJlaA0GYFKWMqDdvYemoSnF2pXgLVA==
@@ -7543,6 +7555,14 @@ react-is@^16.13.0, react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
+
+react-native-clusterer@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-clusterer/-/react-native-clusterer-1.2.0.tgz#6ee83e2179d4c4e995b5a6a6e5813bf8cb1dfd5e"
+  integrity sha512-1lUsM6zDo31eV/vq4zqkxS4tXsQprCZW9JnCskyz2ijB4d3FdJLRqnITkrwbK489oMLfgQf+TiQpsX+zvhYayA==
+  dependencies:
+    "@mapbox/geo-viewport" "^0.5.0"
+    "@types/geojson" "^7946.0.8"
 
 react-native-codegen@^0.0.17:
   version "0.0.17"
