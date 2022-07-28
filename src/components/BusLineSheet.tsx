@@ -1,7 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import BottomSheet, { BottomSheetScrollView } from '@gorhom/bottom-sheet';
 import { useFocusEffect } from '@react-navigation/native';
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
 import {
   ActivityIndicator,
   Text,
@@ -46,12 +46,6 @@ export default function BusLineSheet({
     );
   };
 
-  useEffect(() => {
-    if (!busLine && !loading) {
-      sheetRef.current?.snapToIndex(2);
-    }
-  }, [busLine, loading]);
-
   const handleSheetHeaderPress = () => {
     // expand sheet if minimised
     if (sheetPositionIndex === 0 || sheetPositionIndex === 1) {
@@ -70,9 +64,9 @@ export default function BusLineSheet({
       onChange={setSheetPositionIndex}
     >
       {loading ? (
-        <ActivityIndicator size="large" style={tw`flex-1`} />
+        <ActivityIndicator size="large" style={tw`h-1/3`} />
       ) : !busLine ? (
-        <View style={tw`items-center justify-center flex-1`}>
+        <View style={tw`items-center justify-center h-1/3`}>
           <Ionicons name="alert-circle-outline" size={42} style={tw`text-slate-700`} />
         </View>
       ) : (
