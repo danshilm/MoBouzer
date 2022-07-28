@@ -111,7 +111,7 @@ function HomeTabNavigator() {
       initialRouteName="Map"
       screenOptions={{
         tabBarActiveTintColor: tw.color('slate-700'),
-        tabBarStyle: tw.style(`bg-white dark:bg-zinc-800`, !bottom && `pb-2 h-15`),
+        tabBarStyle: tw.style(`bg-white dark:bg-zinc-800`, !bottom && `pb-2 h-16`),
         headerStyle: tw`bg-white dark:bg-zinc-800`,
         headerTitleStyle: tw`dark:text-gray-100`,
         headerShown: false,

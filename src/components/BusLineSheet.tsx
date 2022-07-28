@@ -56,56 +56,67 @@ export default function BusLineSheet({
   };
 
   return (
-    <BottomSheet
-      snapPoints={snapPoints}
-      ref={sheetRef}
-      index={1}
-      handleComponent={HandleComponent}
-      onChange={setSheetPositionIndex}
-    >
-      {loading ? (
-        <ActivityIndicator size="large" style={tw`h-1/3`} />
-      ) : !busLine ? (
-        <View style={tw`items-center justify-center h-1/3`}>
-          <Ionicons name="alert-circle-outline" size={42} style={tw`text-slate-700`} />
-        </View>
-      ) : (
-        <View style={tw`flex-1`}>
-          {/* Header */}
-          <TouchableWithoutFeedback
-            style={tw`h-[15] rounded-[10px]`}
-            onPress={handleSheetHeaderPress}
-          >
-            <View style={tw`flex-row items-center mx-2`}>
-              <View style={tw`items-center justify-center h-15 w-17`}>
-                <TouchableOpacity style={tw`items-center justify-center w-8 h-8`}>
-                  <Ionicons name="swap-vertical-outline" size={20} />
-                </TouchableOpacity>
+    <>
+      <View style={tw`absolute bottom-3 right-3`}>
+        <TouchableOpacity
+          style={tw`flex items-center justify-center w-12 h-12 bg-white shadow-lg rounded-xl`}
+          onPress={() => sheetRef.current?.snapToIndex(1)}
+        >
+          <Ionicons name="information-circle-outline" size={22} />
+        </TouchableOpacity>
+      </View>
+      <BottomSheet
+        snapPoints={snapPoints}
+        ref={sheetRef}
+        index={1}
+        handleComponent={HandleComponent}
+        onChange={setSheetPositionIndex}
+        enablePanDownToClose={true}
+      >
+        {loading ? (
+          <ActivityIndicator size="large" style={tw`h-1/3`} />
+        ) : !busLine ? (
+          <View style={tw`items-center justify-center h-1/3`}>
+            <Ionicons name="alert-circle-outline" size={42} style={tw`text-slate-700`} />
+          </View>
+        ) : (
+          <View style={tw`flex-1`}>
+            {/* Header */}
+            <TouchableWithoutFeedback
+              style={tw`h-[15] rounded-[10px]`}
+              onPress={handleSheetHeaderPress}
+            >
+              <View style={tw`flex-row items-center mx-2`}>
+                <View style={tw`items-center justify-center h-15 w-17`}>
+                  <TouchableOpacity style={tw`items-center justify-center w-8 h-8`}>
+                    <Ionicons name="swap-vertical-outline" size={20} />
+                  </TouchableOpacity>
+                </View>
+                {loading ? (
+                  <ActivityIndicator size="small" />
+                ) : (
+                  <Text style={tw`text-lg font-inter-medium`}>
+                    {busLine.id} {origin}
+                    {' -> '}
+                    {destination}
+                  </Text>
+                )}
               </View>
-              {loading ? (
-                <ActivityIndicator size="small" />
-              ) : (
-                <Text style={tw`text-lg font-inter-medium`}>
-                  {busLine.id} {origin}
-                  {' -> '}
-                  {destination}
-                </Text>
-              )}
-            </View>
-          </TouchableWithoutFeedback>
-          {/* Divider */}
-          <View style={tw`h-px mx-3 bg-gray-600`} />
-          {error || !busLine.direction[direction]['bus-stops']?.length ? (
-            <View style={tw`items-center justify-center flex-1`}>
-              <Ionicons name="alert-circle-outline" size={42} style={tw`text-slate-700`} />
-            </View>
-          ) : (
-            <BottomSheetScrollView focusHook={useFocusEffect}>
-              {busLine.direction[direction]['bus-stops']?.map(renderItem)}
-            </BottomSheetScrollView>
-          )}
-        </View>
-      )}
-    </BottomSheet>
+            </TouchableWithoutFeedback>
+            {/* Divider */}
+            <View style={tw`h-px mx-3 bg-gray-600`} />
+            {error || !busLine.direction[direction]['bus-stops']?.length ? (
+              <View style={tw`items-center justify-center flex-1`}>
+                <Ionicons name="alert-circle-outline" size={42} style={tw`text-slate-700`} />
+              </View>
+            ) : (
+              <BottomSheetScrollView focusHook={useFocusEffect}>
+                {busLine.direction[direction]['bus-stops']?.map(renderItem)}
+              </BottomSheetScrollView>
+            )}
+          </View>
+        )}
+      </BottomSheet>
+    </>
   );
 }
