@@ -11,6 +11,7 @@ import { useAuthState } from '@skillnation/react-native-firebase-hooks/auth';
 import * as React from 'react';
 import { ColorSchemeName, Pressable } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { firebaseAuth } from '../firebase/utils';
 import useSettings from '../hooks/useSettings';
 import tw from '../lib/tailwind';
@@ -103,13 +104,14 @@ const BottomTab = createBottomTabNavigator<HomeTabParamList>();
 
 function HomeTabNavigator() {
   const { settings, setSettings } = useSettings();
+  const { bottom } = useSafeAreaInsets();
 
   return (
     <BottomTab.Navigator
       initialRouteName="Map"
       screenOptions={{
         tabBarActiveTintColor: tw.color('slate-700'),
-        tabBarStyle: tw`bg-white dark:bg-zinc-800`,
+        tabBarStyle: tw.style(`bg-white dark:bg-zinc-800`, !bottom && `pb-2 h-15`),
         headerStyle: tw`bg-white dark:bg-zinc-800`,
         headerTitleStyle: tw`dark:text-gray-100`,
         headerShown: false,
@@ -193,5 +195,5 @@ function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>['name'];
   color: string;
 }) {
-  return <FontAwesome size={25} {...props} />;
+  return <FontAwesome size={25} style={tw`mb-0`} {...props} />;
 }
