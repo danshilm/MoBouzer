@@ -1,9 +1,10 @@
 import type * as GeoJSON from 'geojson';
-import React, { useCallback, useRef, useState } from 'react';
+import { throttle } from 'lodash';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
 import { useWindowDimensions } from 'react-native';
 import type { supercluster } from 'react-native-clusterer';
 import { useClusterer } from 'react-native-clusterer';
-import MapView, { MapEvent, Marker } from 'react-native-maps';
+import MapView, { MapEvent, Marker, Region } from 'react-native-maps';
 import { getBusStops } from '../api/firestore';
 import ViewWithSearchBar from '../components/SearchBar/ViewWithSearchBar';
 import regionCoordinates from '../constants/Map';
@@ -63,6 +64,12 @@ export default function Map() {
     );
   };
 
+  const regionChangeHandler = (region: Region) => {
+    setRegion(region);
+  };
+
+  const throttledRegionChangeHandler = useMemo(() => throttle(regionChangeHandler, 250), []);
+
   return (
     <ViewWithSearchBar style={tw`flex flex-1`} placeholder="Search for your destination">
       <MapView
@@ -76,7 +83,7 @@ export default function Map() {
           longitudeDelta: regionCoordinates.longitudeDelta,
         }}
         ref={mapRef}
-        onRegionChangeComplete={setRegion}
+        onRegionChange={throttledRegionChangeHandler}
         onPoiClick={handleMarkerPress}
         onMarkerPress={handleMarkerPress}
         toolbarEnabled={false}
