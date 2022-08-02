@@ -1,5 +1,4 @@
 node_modules/
-.expo/
 dist/
 npm-debug.*
 yarn-error.*
@@ -9,7 +8,6 @@ yarn-error.*
 *.key
 *.mobileprovision
 *.orig.*
-web-build/
 
 # macOS
 .DS_Store
@@ -60,8 +58,10 @@ local.properties
 /ios/Pods/
 
 # Expo
-.expo/*
+.expo
 bin/Exponent.app
+__generated__
+web-build/
 
 # Env variables
 .env
@@ -72,3 +72,10 @@ credentials
 # firebase ios & android app credentials
 google-services.json
 GoogleService-Info.plist
+
+# Monorepo
+apps/*/credentials.json
+packages/*/build
+
+# VSCode
+.history/
