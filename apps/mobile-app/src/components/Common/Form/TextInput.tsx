@@ -29,7 +29,7 @@ export default function FormTextInput({
   const [isShown, setIsShown] = useState(false);
   const props: BaseTextInputProps | undefined = as && {
     textContentType: as === 'email' ? 'emailAddress' : 'password',
-    autoCompleteType: as === 'email' ? 'email' : 'password',
+    autoComplete: as === 'email' ? 'email' : 'password',
     secureTextEntry: as === 'email' ? false : isShown ? false : true,
   };
 
