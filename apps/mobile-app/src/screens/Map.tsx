@@ -43,6 +43,7 @@ export default function Map() {
             longitude: point.geometry.coordinates[0],
           }}
           key={point.properties?.cluster_id ?? `point-${point.properties?.id}`}
+          identifier={point.properties?.cluster_id?.toString() ?? `point-${point.properties?.id}`}
           pinColor="tomato"
           tracksViewChanges={false}
           // buggy on ios
@@ -54,11 +55,13 @@ export default function Map() {
   );
 
   const handleMarkerPress = (e: MapEvent) => {
+    const isClusterMarker = !e.nativeEvent.id?.startsWith('point-');
+
     mapRef.current?.animateToRegion(
       {
         ...e.nativeEvent.coordinate,
-        latitudeDelta: 0.005,
-        longitudeDelta: 0.005,
+        latitudeDelta: isClusterMarker ? 0.02 : 0.005,
+        longitudeDelta: isClusterMarker ? 0.02 : 0.005,
       },
       1000
     );
