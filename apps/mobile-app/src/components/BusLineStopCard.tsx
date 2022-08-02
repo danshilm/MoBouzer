@@ -16,9 +16,9 @@ export default function BusLineStopCard({
   const isFirstStop = index == 0;
   const isLastStop = index == maxOrder;
   // to determine
-  const [label, setLabel] = useState('');
+  const [label, _setLabel] = useState('');
   // grab from `live-buses` collection
-  const [isLive, setIsLive] = useState(false);
+  const [isLive, _setIsLive] = useState(false);
 
   return (
     <View style={tw`h-[60px] flex-1 flex-row overflow-hidden`}>
