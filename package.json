@@ -1,10 +1,8 @@
 {
   "private": true,
-  "name": "mobouzer-monorepo",
+  "name": "@mobouzer/monorepo",
   "scripts": {
-    "build": "yarn workspaces run build",
-    "test": "yarn workspaces run test",
-    "app": "yarn workspace @mobouzer/app"
+    "app": "pnpm run --filter @mobouzer/app"
   },
   "workspaces": [
     "apps/*",
