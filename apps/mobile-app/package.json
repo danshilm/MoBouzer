@@ -1,5 +1,5 @@
 {
-  "name": "@mobouzer/app",
+  "name": "@mobouzer/mobile-app",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -29,7 +29,6 @@
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/native-stack": "^6.1.0",
     "@skillnation/react-native-firebase-hooks": "^0.5.0",
-    "dotenv": "^16.0.1",
     "expo": "^45.0.0",
     "expo-application": "~4.1.0",
     "expo-asset": "~8.5.0",
@@ -47,7 +46,6 @@
     "expo-web-browser": "~10.2.1",
     "firebase": "~9.7.0",
     "formik": "^2.2.9",
-    "lodash": "^4.17.21",
     "moti": "^0.18.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
@@ -68,21 +66,13 @@
     "@babel/core": "^7.12.9",
     "@babel/preset-typescript": "^7.18.6",
     "@expo/config-types": "^45.0.0",
-    "@types/lodash": "^4.14.182",
     "@types/react": "~17.0.21",
     "@types/react-native": "~0.67.6",
-    "@typescript-eslint/eslint-plugin": "^5.31.0",
-    "@typescript-eslint/parser": "^5.31.0",
-    "eslint": "^8.11.0",
-    "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.3.0",
     "jetifier": "^2.0.0",
-    "prettier": "^2.6.0",
-    "react-test-renderer": "17.0.1",
-    "typescript": "~4.3.5"
+    "react-test-renderer": "17.0.1"
   },
   "prettier": {
     "printWidth": 100,
@@ -165,7 +155,6 @@
       "node": true,
       "jest": true,
       "es6": true
-    },
-    "reportUnusedDisableDirectives": true
+    }
   }
 }

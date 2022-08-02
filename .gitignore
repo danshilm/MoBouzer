@@ -2,6 +2,7 @@ node_modules/
 dist/
 npm-debug.*
 yarn-error.*
+.pnpm-debug.*
 *.jks
 *.p8
 *.p12
@@ -63,8 +64,12 @@ bin/Exponent.app
 __generated__
 web-build/
 
-# Env variables
+# dotenv environment variable files
 .env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
 
 # keystore, etc
 credentials
@@ -79,3 +84,6 @@ packages/*/build
 
 # VSCode
 .history/
+
+# Output of 'npm pack'
+*.tgz
