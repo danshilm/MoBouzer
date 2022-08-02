@@ -1,0 +1,8 @@
+# Logs
+*.log
+
+# TypeScript cache
+*.tsbuildinfo
+
+# firebase
+service-account-file.json
