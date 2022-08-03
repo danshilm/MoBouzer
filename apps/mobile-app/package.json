@@ -106,10 +106,7 @@
       "arrow-parens": "off",
       "no-console": "warn",
       "prettier/prettier": [
-        "error",
-        {
-          "endOfLine": "auto"
-        }
+        "warn"
       ],
       "@typescript-eslint/explicit-function-return-type": "off",
       "@typescript-eslint/camelcase": "off",

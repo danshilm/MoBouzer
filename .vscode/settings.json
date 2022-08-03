@@ -1,7 +1,8 @@
 {
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
+  "files.eol": "\n",
   "editor.codeActionsOnSave": {
-    "source.organizeImports": true,
+    "source.organizeImports": true
   }
 }

@@ -53,10 +53,7 @@
       "arrow-parens": "off",
       "no-console": "off",
       "prettier/prettier": [
-        "error",
-        {
-          "endOfLine": "auto"
-        }
+        "warn"
       ],
       "@typescript-eslint/explicit-function-return-type": "off",
       "@typescript-eslint/camelcase": "off",
