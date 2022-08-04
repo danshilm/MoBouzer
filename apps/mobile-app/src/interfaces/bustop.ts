@@ -1,8 +1,8 @@
-import { DocumentData, GeoPoint } from 'firebase/firestore';
+import { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
 
-export interface BusStopDocumentData extends DocumentData {
+export interface BusStopDocumentData {
   id: string;
-  location: GeoPoint;
+  location: FirebaseFirestoreTypes.GeoPoint;
   name?: string;
   photo?: {
     url?: string;

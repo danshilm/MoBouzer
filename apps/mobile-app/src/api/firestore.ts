@@ -1,29 +1,18 @@
-import { User } from 'firebase/auth';
-import {
-  arrayUnion,
-  doc,
-  GeoPoint,
-  getDoc,
-  setDoc,
-  updateDoc,
-  writeBatch,
-} from 'firebase/firestore';
-import { firebaseStore } from '../firebase/config';
+import { FirebaseAuthTypes } from '@react-native-firebase/auth';
+import { firebaseStore } from '../firebase/utils';
+import { BusLineDocumentBusStop } from '../interfaces/busline';
+import { BusStopDocumentData } from '../interfaces/bustop';
 import { NodeElement, RawOSMRootObject } from '../interfaces/common';
 
-export const initialiseUserDocument = async (user: User | null): Promise<void> => {
+export const initialiseUserDocument = async (
+  user: FirebaseAuthTypes.User | null
+): Promise<void> => {
   if (!user) {
     return;
   }
 
   try {
-    const userData = await getDoc(doc(firebaseStore, 'users', user.uid));
-    if (userData?.exists()) {
-      return;
-      // console.log(`Document for user ${userData.data().email} already exists`);
-    }
-
-    await setDoc(doc(firebaseStore, 'users', user.uid), { email: user.email }, { merge: true });
+    await firebaseStore().doc(`users/${user.uid}`).set({ email: user.email }, { merge: true });
     // console.log(`Successfully added user document for ${user.email}`);
   } catch (reason) {
     // console.log(`Failed to add user document for ${user.email}, ${JSON.stringify(reason)}`);
@@ -38,17 +27,21 @@ export const getBusStops = (): NodeElement[] => {
 
 export const saveBusStops = async (busStops: NodeElement[]) => {
   try {
-    const batch = writeBatch(firebaseStore);
+    const batch = firebaseStore().batch();
     const maxWritesExceeded = busStops.length > 500;
 
     busStops.slice(0, 500).forEach((busStop) => {
-      const data: Record<string, unknown> = { location: new GeoPoint(busStop.lat, busStop.lon) };
+      const data: Partial<BusStopDocumentData> = {
+        location: new firebaseStore.GeoPoint(busStop.lat, busStop.lon),
+      };
 
       if (busStop.tags?.name) {
         data.name = busStop.tags.name;
       }
 
-      batch.set(doc(firebaseStore, 'bus-stops', busStop.id.toString()), data, { merge: true });
+      batch.set(firebaseStore().doc(`bus-stops/${busStop.id.toString()}`), data, {
+        merge: true,
+      });
     });
 
     await batch.commit();
@@ -67,35 +60,28 @@ export const setBusLineStops = async (
   busStops: NodeElement[]
 ) => {
   try {
-    const allBusStops = require('../../assets/data/bus-lines/2.reverse.json');
-    const filteredBusStops = allBusStops.members
-      .filter((busStop) => busStop.type === 'node')
-      .map((v) => v.ref);
+    const busStopPropPath =
+      direction === 'forward' ? 'direction.forward.bus-stops' : 'direction.reverse.bus-stops';
 
-    const everyOne = getBusStops();
-    const myArray: NodeElement[] = [];
-    filteredBusStops.forEach((element) => {
-      const found = everyOne.find((v) => v.id === element);
-      if (found) {
-        myArray.push(found);
-      }
-    });
+    await firebaseStore()
+      .doc(`bus-lines/${busLineId}`)
+      .update({
+        [busStopPropPath]: firebaseStore.FieldValue.arrayUnion(
+          ...busStops.map((v) => {
+            const data: BusLineDocumentBusStop = {
+              id: v.id.toString(),
+              location: new firebaseStore.GeoPoint(v.lat, v.lon),
+              ref: firebaseStore().doc(`bus-stops/${v.id.toString()}`),
+            };
 
-    await updateDoc(doc(firebaseStore, 'bus-lines', '2'), {
-      'direction.reverse.bus-stops': arrayUnion(
-        ...myArray.map((v) => {
-          const data: Record<string, unknown> = {
-            id: v.id,
-            location: new GeoPoint(v.lat, v.lon),
-            ref: doc(firebaseStore, 'bus-stops', v.id.toString()),
-          };
-          if (v.tags?.name) {
-            data.name = v.tags.name;
-          }
-          return data;
-        })
-      ),
-    });
+            if (v.tags?.name) {
+              data.name = v.tags.name;
+            }
+
+            return data;
+          })
+        ),
+      });
 
     console.log('done');
   } catch (error) {

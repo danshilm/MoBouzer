@@ -1,10 +1,10 @@
-import { DocumentReference, GeoPoint } from 'firebase/firestore';
+import { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
 
 export interface BusLineDocumentBusStop {
   id: string;
-  location: GeoPoint;
+  location: FirebaseFirestoreTypes.GeoPoint;
   name?: string;
-  ref: DocumentReference;
+  ref: FirebaseFirestoreTypes.DocumentReference;
 }
 
 export interface BusLineDocumentDirectionData {
@@ -13,12 +13,12 @@ export interface BusLineDocumentDirectionData {
   destination: {
     id: string;
     name: string;
-    ref: DocumentReference;
+    ref: FirebaseFirestoreTypes.DocumentReference;
   };
   origin: {
     id: string;
     name: string;
-    ref: DocumentReference;
+    ref: FirebaseFirestoreTypes.DocumentReference;
   };
 }
 
