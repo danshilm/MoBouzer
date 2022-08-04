@@ -11,6 +11,7 @@
     "build": "tsc --noEmit -p . --pretty",
     "watch": "tsc --watch",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
+    "lint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix",
     "format": "prettier --write .",
     "postinstall": "node ./bin/postInstall",
     "recrawl": "watchman watch-del ./; watchman watch-project ./",
@@ -105,6 +106,8 @@
       "no-unused-vars": "off",
       "arrow-parens": "off",
       "no-console": "warn",
+      "eqeqeq": "warn",
+      "no-unneeded-ternary": "warn",
       "prettier/prettier": [
         "warn"
       ],
@@ -121,6 +124,7 @@
       "@typescript-eslint/explicit-module-boundary-types": "off",
       "@typescript-eslint/no-non-null-assertion": "off",
       "@typescript-eslint/no-namespace": "off",
+      "@typescript-eslint/consistent-type-imports": "error",
       "jsx-a11y/no-noninteractive-tabindex": 0,
       "jsx-a11y/anchor-is-valid": "off",
       "jsx-a11y/no-onchange": "off",

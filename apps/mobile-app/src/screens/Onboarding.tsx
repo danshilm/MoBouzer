@@ -7,7 +7,7 @@ import Button from '../components/Common/Button';
 import OnboardingFooter from '../components/OnboardingFooter';
 import SignInWithGoogleButton from '../components/SignInWithGoogleButton';
 import tw from '../lib/tailwind';
-import { RootStackScreenProps } from '../navigation/types';
+import type { RootStackScreenProps } from '../navigation/types';
 
 export default function Onboarding({ navigation }: RootStackScreenProps<'Onboarding'>) {
   useEffect(() => {

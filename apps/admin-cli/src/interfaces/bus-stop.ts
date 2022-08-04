@@ -1,4 +1,4 @@
-import { DocumentData, GeoPoint } from 'firebase-admin/firestore';
+import type { DocumentData, GeoPoint } from 'firebase-admin/firestore';
 
 export interface BusStopDocumentData extends DocumentData {
   id: string;

@@ -11,7 +11,7 @@ import FormTextInput from '../components/Common/Form/TextInput';
 import { canHumaniseFirebaseAuthError, DisplayFirebaseAuthError } from '../firebase/errors';
 import { firebaseAuth } from '../firebase/utils';
 import tw from '../lib/tailwind';
-import { RootStackScreenProps } from '../navigation/types';
+import type { RootStackScreenProps } from '../navigation/types';
 
 const signInSchema = Yup.object().shape({
   email: Yup.string().required('Enter an email address'),

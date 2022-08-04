@@ -1,4 +1,4 @@
-import { FirebaseAuthTypes } from '@react-native-firebase/auth';
+import type { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { useFormikContext } from 'formik';
 import { startCase } from 'lodash';
 import { useEffect } from 'react';

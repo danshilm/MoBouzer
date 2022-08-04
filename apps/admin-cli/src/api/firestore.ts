@@ -1,6 +1,6 @@
-import { GeoPoint } from 'firebase-admin/firestore';
+import type { GeoPoint } from 'firebase-admin/firestore';
 import { firebaseStore } from '../firebase/config';
-import { BusStopDocumentData } from '../interfaces/bus-stop';
+import type { BusStopDocumentData } from '../interfaces/bus-stop';
 
 export const updateBusStop = async (busStopId: string, location: GeoPoint, name?: string) => {
   const busStopRef = firebaseStore.doc(`bus-stops/${busStopId}`);

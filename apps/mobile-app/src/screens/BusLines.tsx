@@ -4,7 +4,7 @@ import { ScrollView, Text, View } from 'react-native';
 import BusLineCard from '../components/BusLineCard';
 import ViewWithSearchBar from '../components/SearchBar/ViewWithSearchBar';
 import tw from '../lib/tailwind';
-import { BusLinesStackScreenProps } from '../navigation/types';
+import type { BusLinesStackScreenProps } from '../navigation/types';
 
 const busLine = () => {
   return {

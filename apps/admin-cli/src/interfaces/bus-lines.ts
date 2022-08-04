@@ -1,4 +1,4 @@
-import { DocumentReference, GeoPoint } from 'firebase-admin/firestore';
+import type { DocumentReference, GeoPoint } from 'firebase-admin/firestore';
 
 export interface BusLineDocumentBusStop {
   id: string;

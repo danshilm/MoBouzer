@@ -1,14 +1,11 @@
 import { Ionicons } from '@expo/vector-icons';
 import React, { useState } from 'react';
-import {
+import type {
   NativeSyntheticEvent,
-  Text,
-  TextInput as BaseTextInput,
   TextInputFocusEventData,
   TextInputProps as BaseTextInputProps,
-  TouchableOpacity,
-  View,
 } from 'react-native';
+import { Text, TextInput as BaseTextInput, TouchableOpacity, View } from 'react-native';
 import tw from '../../../lib/tailwind';
 
 interface TextInputProps extends BaseTextInputProps {
@@ -30,7 +27,7 @@ export default function FormTextInput({
   const props: BaseTextInputProps | undefined = as && {
     textContentType: as === 'email' ? 'emailAddress' : 'password',
     autoComplete: as === 'email' ? 'email' : 'password',
-    secureTextEntry: as === 'email' ? false : isShown ? false : true,
+    secureTextEntry: as === 'email' ? false : !isShown,
   };
 
   return (

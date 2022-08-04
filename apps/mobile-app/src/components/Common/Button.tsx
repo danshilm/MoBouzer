@@ -1,5 +1,6 @@
 import React from 'react';
-import { TouchableOpacity, TouchableOpacityProps, ViewStyle } from 'react-native';
+import type { TouchableOpacityProps, ViewStyle } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import tw from '../../lib/tailwind';
 
 interface ButtonProps extends TouchableOpacityProps {

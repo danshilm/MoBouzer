@@ -4,9 +4,9 @@
  * https://reactnavigation.org/docs/configuring-links
  */
 
-import { LinkingOptions, PathConfig } from '@react-navigation/native';
+import type { LinkingOptions, PathConfig } from '@react-navigation/native';
 import * as Linking from 'expo-linking';
-import { BusLinesStackParamList, RootStackParamList } from './types';
+import type { BusLinesStackParamList, RootStackParamList } from './types';
 
 const linking: LinkingOptions<RootStackParamList> = {
   prefixes: [Linking.createURL('/')],

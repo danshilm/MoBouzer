@@ -1,7 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import React, { useState } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
-import { BusLineDocumentBusStop } from '../interfaces/busline';
+import type { BusLineDocumentBusStop } from '../interfaces/busline';
 import tw from '../lib/tailwind';
 
 export default function BusLineStopCard({
@@ -13,8 +13,8 @@ export default function BusLineStopCard({
   maxOrder?: number;
   index: number;
 }) {
-  const isFirstStop = index == 0;
-  const isLastStop = index == maxOrder;
+  const isFirstStop = index === 0;
+  const isLastStop = index === maxOrder;
   // to determine
   const [label, _setLabel] = useState('');
   // grab from `live-buses` collection

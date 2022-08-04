@@ -1,12 +1,12 @@
 import { Entypo, Ionicons } from '@expo/vector-icons';
-import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
-import { CompositeNavigationProp } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import type { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+import type { CompositeNavigationProp } from '@react-navigation/native';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { MotiPressable } from 'moti/interactions';
 import React, { useMemo } from 'react';
 import { Text, View } from 'react-native';
 import tw from '../lib/tailwind';
-import { BusLinesStackParamList, HomeTabParamList } from '../navigation/types';
+import type { BusLinesStackParamList, HomeTabParamList } from '../navigation/types';
 
 interface BusLineProps {
   data: { line: string; destination: string; origin: string };

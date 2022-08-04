@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { stripIndent } from 'common-tags';
 import { stringify } from 'qs';
-import { RawOSMRootObject } from '../interfaces/overpass';
+import type { RawOSMRootObject } from '../interfaces/overpass';
 
 const overpass = axios.create({
   baseURL: 'https://overpass-api.de',

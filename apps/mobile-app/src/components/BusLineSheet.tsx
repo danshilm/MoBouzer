@@ -9,7 +9,7 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import { BusLineDocumentBusStop, BusLineDocumentData } from '../interfaces/busline';
+import type { BusLineDocumentBusStop, BusLineDocumentData } from '../interfaces/busline';
 import tw from '../lib/tailwind';
 import BusLineStopCard from './BusLineStopCard';
 

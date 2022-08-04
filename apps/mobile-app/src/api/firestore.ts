@@ -1,8 +1,8 @@
-import { FirebaseAuthTypes } from '@react-native-firebase/auth';
+import type { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { firebaseStore } from '../firebase/utils';
-import { BusLineDocumentBusStop } from '../interfaces/busline';
-import { BusStopDocumentData } from '../interfaces/bustop';
-import { NodeElement, RawOSMRootObject } from '../interfaces/common';
+import type { BusLineDocumentBusStop } from '../interfaces/busline';
+import type { BusStopDocumentData } from '../interfaces/bustop';
+import type { NodeElement, RawOSMRootObject } from '../interfaces/common';
 
 export const initialiseUserDocument = async (
   user: FirebaseAuthTypes.User | null

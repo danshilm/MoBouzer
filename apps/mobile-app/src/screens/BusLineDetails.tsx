@@ -2,14 +2,15 @@ import { Ionicons } from '@expo/vector-icons';
 import { useDocumentDataOnce } from '@skillnation/react-native-firebase-hooks/firestore';
 import React, { useCallback, useEffect, useRef } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
-import MapView, { Callout, MapEvent, Marker } from 'react-native-maps';
+import type { MapEvent } from 'react-native-maps';
+import MapView, { Callout, Marker } from 'react-native-maps';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import BusLineSheet from '../components/BusLineSheet';
 import regionCoordinates from '../constants/Map';
 import { firebaseStore } from '../firebase/utils';
-import { BusLineDocumentBusStop, BusLineDocumentData } from '../interfaces/busline';
+import type { BusLineDocumentBusStop, BusLineDocumentData } from '../interfaces/busline';
 import tw from '../lib/tailwind';
-import { BusLinesStackScreenProps } from '../navigation/types';
+import type { BusLinesStackScreenProps } from '../navigation/types';
 
 export default function BusLineDetails({
   navigation,

@@ -5,11 +5,13 @@
  */
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { DefaultTheme, NavigationContainer, Theme } from '@react-navigation/native';
+import type { Theme } from '@react-navigation/native';
+import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useAuthState } from '@skillnation/react-native-firebase-hooks/auth';
 import * as React from 'react';
-import { ColorSchemeName, Pressable } from 'react-native';
+import type { ColorSchemeName } from 'react-native';
+import { Pressable } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { firebaseAuth } from '../firebase/utils';
@@ -25,7 +27,7 @@ import SignIn from '../screens/SignIn';
 import SignUp from '../screens/SignUp';
 import TabOneScreen from '../screens/TabOneScreen';
 import LinkingConfiguration from './LinkingConfiguration';
-import {
+import type {
   BusLinesStackParamList,
   HomeTabParamList,
   HomeTabScreenProps,

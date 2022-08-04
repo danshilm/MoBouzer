@@ -1,7 +1,7 @@
 import { FieldValue } from 'firebase-admin/firestore';
 import { getAllBusStopIds } from '../api/firestore';
 import { firebaseStore } from '../firebase/config';
-import { AllBusStopsDocumentData, BusStopDocumentData } from '../interfaces/bus-stop';
+import type { AllBusStopsDocumentData, BusStopDocumentData } from '../interfaces/bus-stop';
 
 export const updateBusStopsAllDoc = async (force = false) => {
   const allDocSnapshot = await firebaseStore.doc('bus-stops/all').get();

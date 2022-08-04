@@ -1,5 +1,7 @@
-import React, { createContext, Dispatch, SetStateAction, useState } from 'react';
-import { defaultSettings, getSettings, PublicAppSettings } from '../lib/settings';
+import type { Dispatch, SetStateAction } from 'react';
+import React, { createContext, useState } from 'react';
+import type { PublicAppSettings } from '../lib/settings';
+import { defaultSettings, getSettings } from '../lib/settings';
 
 export interface SettingsContextProps {
   settings: PublicAppSettings;

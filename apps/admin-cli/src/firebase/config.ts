@@ -1,5 +1,6 @@
 import { credential } from 'firebase-admin';
-import { initializeApp, ServiceAccount } from 'firebase-admin/app';
+import type { ServiceAccount } from 'firebase-admin/app';
+import { initializeApp } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
 const serviceAccount = require('../../config/service-account-file.json');
 
