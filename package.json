@@ -3,16 +3,31 @@
   "private": true,
   "scripts": {
     "app": "pnpm run --filter @mobouzer/mobile-app",
-    "cli": "pnpm run --filter @mobouzer/admin-cli"
+    "cli": "pnpm run --filter @mobouzer/admin-cli",
+    "prepare": "husky install"
   },
   "workspaces": [
     "apps/*",
     "packages/*"
   ],
+  "dependencies": {
+    "lint-staged": "^13.0.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.21.0",
+    "husky": "^8.0.1",
+    "prettier": "^2.7.1"
+  },
   "prettier": {
     "printWidth": 100,
     "singleQuote": true,
     "trailingComma": "es5",
     "endOfLine": "lf"
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx,js}": [
+      "prettier --write",
+      "eslint"
+    ]
   }
 }
