@@ -1,4 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
+import type { BusLine } from '@mobouzer/shared';
 import { useDocumentDataOnce } from '@skillnation/react-native-firebase-hooks/firestore';
 import React, { useCallback, useEffect, useRef } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
@@ -8,7 +9,6 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import BusLineSheet from '../components/BusLineSheet';
 import regionCoordinates from '../constants/Map';
 import { firebaseStore } from '../firebase/utils';
-import type { BusLineDocumentBusStop, BusLineDocumentData } from '../interfaces/busline';
 import tw from '../lib/tailwind';
 import type { BusLinesStackScreenProps } from '../navigation/types';
 
@@ -18,12 +18,12 @@ export default function BusLineDetails({
 }: BusLinesStackScreenProps<'BusLineDetails'>) {
   const { id, direction } = route.params;
   const insets = useSafeAreaInsets();
-  const [value, loading, error] = useDocumentDataOnce<BusLineDocumentData>(
+  const [value, loading, error] = useDocumentDataOnce<BusLine.DocumentData>(
     firebaseStore().doc(`bus-lines/${id}`)
   );
   const mapRef = useRef<MapView | null>(null);
 
-  const renderBusStopMarker = useCallback((data: BusLineDocumentBusStop) => {
+  const renderBusStopMarker = useCallback((data: BusLine.DocumentBusStopData) => {
     return (
       <Marker
         coordinate={{ latitude: data.location.latitude, longitude: data.location.longitude }}

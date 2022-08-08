@@ -1,5 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import BottomSheet, { BottomSheetScrollView } from '@gorhom/bottom-sheet';
+import type { BusLine } from '@mobouzer/shared';
 import { useFocusEffect } from '@react-navigation/native';
 import React, { useCallback, useMemo, useRef, useState } from 'react';
 import {
@@ -9,7 +10,6 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import type { BusLineDocumentBusStop, BusLineDocumentData } from '../interfaces/busline';
 import tw from '../lib/tailwind';
 import BusLineStopCard from './BusLineStopCard';
 
@@ -19,7 +19,7 @@ export default function BusLineSheet({
   loading = true,
   error,
 }: {
-  busLine?: BusLineDocumentData;
+  busLine?: BusLine.DocumentData;
   direction: 'forward' | 'reverse';
   loading?: boolean;
   error?: Error;
@@ -32,7 +32,7 @@ export default function BusLineSheet({
   const [sheetPositionIndex, setSheetPositionIndex] = useState(0);
 
   const renderItem = useCallback(
-    (data: BusLineDocumentBusStop, index: number) => (
+    (data: BusLine.DocumentBusStopData, index: number) => (
       <BusLineStopCard data={data} maxOrder={maxOrder} index={index} key={index} />
     ),
     [maxOrder]

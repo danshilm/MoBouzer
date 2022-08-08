@@ -1,17 +1,17 @@
+import type { BusStop } from '@mobouzer/shared';
 import type { GeoPoint } from 'firebase-admin/firestore';
 import { firebaseStore } from '../firebase/config';
-import type { BusStopDocumentData } from '../interfaces/bus-stop';
 
 export const updateBusStop = async (busStopId: string, location: GeoPoint, name?: string) => {
   const busStopRef = firebaseStore.doc(`bus-stops/${busStopId}`);
-  const data: BusStopDocumentData = { location, id: busStopId };
+  const data: BusStop.DocumentData = { location, id: busStopId };
 
   if (name) {
     data.name = name;
   }
 
   try {
-    return await busStopRef.update(data);
+    return await busStopRef.update({ ...data });
   } catch (error) {
     console.log(`Could not update bus stop: ${error}`);
   }

@@ -4,7 +4,8 @@
   "scripts": {
     "app": "pnpm run --filter @mobouzer/mobile-app",
     "cli": "pnpm run --filter @mobouzer/admin-cli",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "build": "pnpm run -r --if-present build"
   },
   "workspaces": [
     "apps/*",
@@ -26,8 +27,7 @@
   },
   "lint-staged": {
     "**/*.{ts,tsx,js}": [
-      "prettier --write",
-      "eslint"
+      "prettier --write"
     ]
   }
 }

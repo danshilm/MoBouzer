@@ -1,7 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
+import type { BusLine } from '@mobouzer/shared';
 import React, { useState } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
-import type { BusLineDocumentBusStop } from '../interfaces/busline';
 import tw from '../lib/tailwind';
 
 export default function BusLineStopCard({
@@ -9,7 +9,7 @@ export default function BusLineStopCard({
   maxOrder,
   index,
 }: {
-  data: BusLineDocumentBusStop;
+  data: BusLine.DocumentBusStopData;
   maxOrder?: number;
   index: number;
 }) {

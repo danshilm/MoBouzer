@@ -3,12 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "expo start --dev-client",
+    "start": "pnpm -w build && expo start --dev-client",
     "android": "expo start --dev-client --android",
     "ios": "expo start --dev-client --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "build": "tsc --noEmit -p . --pretty",
     "watch": "tsc --watch",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "lint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix",
@@ -16,13 +15,14 @@
     "postinstall": "node ./bin/postInstall",
     "recrawl": "watchman watch-del ./; watchman watch-project ./",
     "eas-build-pre-install": "echo $GOOGLE_SERVICES_ANDROID_BASE64 | base64 --decode > ./google-services.json && echo $GOOGLE_SERVICES_IOS_BASE64 | base64 --decode > ./GoogleService-Info.plist",
-    "eas-build-post-install": "pnpm run -r --if-present build"
+    "eas-build-post-install": "pnpm -w build"
   },
   "dependencies": {
     "@expo-google-fonts/inter": "^0.2.2",
     "@expo-google-fonts/space-mono": "^0.2.2",
     "@expo/vector-icons": "^13.0.0",
     "@gorhom/bottom-sheet": "^4",
+    "@mobouzer/shared": "workspace:*",
     "@react-native-async-storage/async-storage": "~1.17.3",
     "@react-native-firebase/app": "14.11.1",
     "@react-native-firebase/auth": "14.11.1",

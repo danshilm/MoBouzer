@@ -1,7 +1,6 @@
+import type { BusLine, BusStop } from '@mobouzer/shared';
 import type { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { firebaseStore } from '../firebase/utils';
-import type { BusLineDocumentBusStop } from '../interfaces/busline';
-import type { BusStopDocumentData } from '../interfaces/bustop';
 import type { NodeElement, RawOSMRootObject } from '../interfaces/common';
 
 export const initialiseUserDocument = async (
@@ -31,7 +30,7 @@ export const saveBusStops = async (busStops: NodeElement[]) => {
     const maxWritesExceeded = busStops.length > 500;
 
     busStops.slice(0, 500).forEach((busStop) => {
-      const data: Partial<BusStopDocumentData> = {
+      const data: Partial<BusStop.DocumentData> = {
         location: new firebaseStore.GeoPoint(busStop.lat, busStop.lon),
       };
 
@@ -68,7 +67,7 @@ export const setBusLineStops = async (
       .update({
         [busStopPropPath]: firebaseStore.FieldValue.arrayUnion(
           ...busStops.map((v) => {
-            const data: BusLineDocumentBusStop = {
+            const data: BusLine.DocumentBusStopData = {
               id: v.id.toString(),
               location: new firebaseStore.GeoPoint(v.lat, v.lon),
               ref: firebaseStore().doc(`bus-stops/${v.id.toString()}`),

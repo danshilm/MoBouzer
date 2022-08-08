@@ -1,0 +1,22 @@
+{
+  "name": "@mobouzer/shared",
+  "description": "Packages to be shared among the apps in the monorepo",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc --build",
+    "watch": "tsc --watch",
+    "watch:build": "tsc --build --watch"
+  },
+  "devDependencies": {
+    "@react-native-firebase/firestore": "14.11.1",
+    "@tsconfig/node16": "^1.0.3",
+    "firebase-admin": "^11.0.1",
+    "typescript": "^4.7.4"
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module"
+    }
+  }
+}

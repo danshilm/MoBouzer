@@ -1,11 +1,11 @@
+import type { BusStop } from '@mobouzer/shared';
 import { FieldValue } from 'firebase-admin/firestore';
 import { getAllBusStopIds } from '../api/firestore';
 import { firebaseStore } from '../firebase/config';
-import type { AllBusStopsDocumentData, BusStopDocumentData } from '../interfaces/bus-stop';
 
 export const updateBusStopsAllDoc = async (force = false) => {
   const allDocSnapshot = await firebaseStore.doc('bus-stops/all').get();
-  const allDocData = allDocSnapshot.data() as AllBusStopsDocumentData;
+  const allDocData = allDocSnapshot.data() as BusStop.AllDocumentData;
   const allDocIds = allDocData['bus-stops'].map((v) => v.id);
   const allBusStopIds = await getAllBusStopIds();
 
@@ -29,8 +29,8 @@ export const updateBusStopsAllDoc = async (force = false) => {
 
       for await (const missingBusStopId of missing.slice(index * 500, (index + 1) * 500)) {
         const busStopSnapshot = await firebaseStore.doc(`bus-stops/${missingBusStopId}`).get();
-        const busStopData = busStopSnapshot.data() as BusStopDocumentData;
-        const data: Partial<AllBusStopsDocumentData['bus-stops'][0]> = {
+        const busStopData = busStopSnapshot.data() as BusStop.DocumentData;
+        const data: Partial<BusStop.AllDocumentData['bus-stops'][0]> = {
           id: missingBusStopId,
           location: busStopData.location,
         };

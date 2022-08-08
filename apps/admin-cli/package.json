@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "ts-node src/index.ts",
+    "start": "pnpm -w build && ts-node src/index.ts",
     "watch": "tsc --watch",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "lint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix",
     "format": "prettier --write ."
   },
   "dependencies": {
+    "@mobouzer/shared": "workspace:*",
     "axios": "^0.27.2",
     "commander": "^9.4.0",
     "common-tags": "^1.8.2",
