@@ -9,9 +9,9 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "watch": "tsc --watch",
-    "lint": "eslint \"src/**/*.{ts,tsx}\"",
-    "lint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix",
-    "format": "prettier --write .",
+    "lint": "pnpm -w exec eslint \"apps/mobile-app/src/**/*.{ts,tsx}\"",
+    "lint:fix": "pnpm -w exec eslint \"apps/mobile-app/src/**/*.{ts,tsx}\" --fix",
+    "format": "pnpm -w exec prettier --write apps/mobile-app/",
     "postinstall": "node ./bin/postInstall",
     "recrawl": "watchman watch-del ./; watchman watch-project ./",
     "eas-build-pre-install": "echo $GOOGLE_SERVICES_ANDROID_BASE64 | base64 --decode > ./google-services.json && echo $GOOGLE_SERVICES_IOS_BASE64 | base64 --decode > ./GoogleService-Info.plist",
@@ -72,59 +72,24 @@
     "@types/lodash": "^4.14.182",
     "@types/react": "~17.0.21",
     "@types/react-native": "~0.67.6",
-    "@typescript-eslint/eslint-plugin": "^5.31.0",
-    "@typescript-eslint/parser": "^5.31.0",
-    "eslint": "^8.21.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.29.4",
-    "eslint-plugin-react-hooks": "^4.3.0",
     "jetifier": "^2.0.0",
-    "prettier": "^2.7.1",
     "react-test-renderer": "17.0.1",
     "typescript": "^4.7.4"
   },
   "eslintConfig": {
-    "parser": "@typescript-eslint/parser",
     "extends": [
-      "eslint:recommended",
-      "plugin:@typescript-eslint/recommended",
       "plugin:jsx-a11y/recommended",
       "plugin:react/recommended",
       "plugin:react-hooks/recommended",
       "prettier"
     ],
     "parserOptions": {
-      "ecmaVersion": 6,
       "sourceType": "module",
       "ecmaFeatures": {
         "jsx": true
       }
     },
     "rules": {
-      "no-unused-vars": "off",
-      "arrow-parens": "off",
-      "no-console": "warn",
-      "eqeqeq": "warn",
-      "no-unneeded-ternary": "warn",
-      "prettier/prettier": [
-        "warn"
-      ],
-      "@typescript-eslint/explicit-function-return-type": "off",
-      "@typescript-eslint/camelcase": "off",
-      "@typescript-eslint/no-use-before-define": "off",
-      "@typescript-eslint/no-unused-vars": [
-        "warn",
-        {
-          "destructuredArrayIgnorePattern": "^_"
-        }
-      ],
-      "@typescript-eslint/no-var-requires": "off",
-      "@typescript-eslint/explicit-module-boundary-types": "off",
-      "@typescript-eslint/no-non-null-assertion": "off",
-      "@typescript-eslint/no-namespace": "off",
-      "@typescript-eslint/consistent-type-imports": "error",
       "jsx-a11y/no-noninteractive-tabindex": 0,
       "jsx-a11y/anchor-is-valid": "off",
       "jsx-a11y/no-onchange": "off",
@@ -143,9 +108,10 @@
         }
       }
     ],
+    "ignorePatterns": [
+      "app.config.ts"
+    ],
     "plugins": [
-      "@typescript-eslint",
-      "prettier",
       "jsx-a11y",
       "react",
       "react-hooks"
@@ -158,9 +124,7 @@
     },
     "env": {
       "browser": true,
-      "node": true,
-      "jest": true,
-      "es6": true
+      "node": true
     }
   }
 }

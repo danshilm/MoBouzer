@@ -15,15 +15,63 @@
     "lint-staged": "^13.0.3"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.31.0",
+    "@typescript-eslint/parser": "^5.31.0",
     "eslint": "^8.21.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.3.0",
     "husky": "^8.0.1",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "typescript": "^4.7.4"
   },
   "prettier": {
     "printWidth": 100,
     "singleQuote": true,
     "trailingComma": "es5",
     "endOfLine": "lf"
+  },
+  "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "prettier"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 6
+    },
+    "rules": {
+      "no-unused-vars": "off",
+      "arrow-parens": "off",
+      "no-console": "warn",
+      "eqeqeq": "warn",
+      "no-unneeded-ternary": "warn",
+      "prettier/prettier": "warn",
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "@typescript-eslint/camelcase": "off",
+      "@typescript-eslint/no-use-before-define": "off",
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        {
+          "destructuredArrayIgnorePattern": "^_"
+        }
+      ],
+      "@typescript-eslint/no-var-requires": "off",
+      "@typescript-eslint/explicit-module-boundary-types": "off",
+      "@typescript-eslint/no-non-null-assertion": "off",
+      "@typescript-eslint/no-namespace": "off",
+      "@typescript-eslint/consistent-type-imports": "error"
+    },
+    "plugins": [
+      "@typescript-eslint",
+      "prettier"
+    ],
+    "env": {
+      "es6": true
+    }
   },
   "lint-staged": {
     "**/*.{ts,tsx,js}": [

@@ -4,16 +4,32 @@ importers:
 
   .:
     specifiers:
+      '@typescript-eslint/eslint-plugin': ^5.31.0
+      '@typescript-eslint/parser': ^5.31.0
       eslint: ^8.21.0
+      eslint-config-prettier: ^8.5.0
+      eslint-plugin-jsx-a11y: ^6.5.1
+      eslint-plugin-prettier: ^4.2.1
+      eslint-plugin-react: ^7.29.4
+      eslint-plugin-react-hooks: ^4.3.0
       husky: ^8.0.1
       lint-staged: ^13.0.3
       prettier: ^2.7.1
+      typescript: ^4.7.4
     dependencies:
       lint-staged: 13.0.3
     devDependencies:
+      '@typescript-eslint/eslint-plugin': 5.32.0_iosr3hrei2tubxveewluhu5lhy
+      '@typescript-eslint/parser': 5.32.0_qugx7qdu5zevzvxaiqyxfiwquq
       eslint: 8.21.0
+      eslint-config-prettier: 8.5.0_eslint@8.21.0
+      eslint-plugin-jsx-a11y: 6.6.1_eslint@8.21.0
+      eslint-plugin-prettier: 4.2.1_h62lvancfh4b7r6zn2dgodrh5e
+      eslint-plugin-react: 7.30.1_eslint@8.21.0
+      eslint-plugin-react-hooks: 4.6.0_eslint@8.21.0
       husky: 8.0.1
       prettier: 2.7.1
+      typescript: 4.7.4
 
   apps/admin-cli:
     specifiers:
@@ -83,15 +99,7 @@ importers:
       '@types/lodash': ^4.14.182
       '@types/react': ~17.0.21
       '@types/react-native': ~0.67.6
-      '@typescript-eslint/eslint-plugin': ^5.31.0
-      '@typescript-eslint/parser': ^5.31.0
       dotenv: ^16.0.1
-      eslint: ^8.21.0
-      eslint-config-prettier: ^8.5.0
-      eslint-plugin-jsx-a11y: ^6.5.1
-      eslint-plugin-prettier: ^4.2.1
-      eslint-plugin-react: ^7.29.4
-      eslint-plugin-react-hooks: ^4.3.0
       expo: ^45.0.0
       expo-application: ~4.1.0
       expo-asset: ~8.5.0
@@ -111,7 +119,6 @@ importers:
       jetifier: ^2.0.0
       lodash: ^4.17.21
       moti: ^0.18.0
-      prettier: ^2.7.1
       react: 17.0.2
       react-dom: 17.0.2
       react-firebase-hooks: ^5.0.3
@@ -182,16 +189,7 @@ importers:
       '@types/lodash': 4.14.182
       '@types/react': 17.0.48
       '@types/react-native': 0.67.12
-      '@typescript-eslint/eslint-plugin': 5.32.0_iosr3hrei2tubxveewluhu5lhy
-      '@typescript-eslint/parser': 5.32.0_qugx7qdu5zevzvxaiqyxfiwquq
-      eslint: 8.21.0
-      eslint-config-prettier: 8.5.0_eslint@8.21.0
-      eslint-plugin-jsx-a11y: 6.6.1_eslint@8.21.0
-      eslint-plugin-prettier: 4.2.1_h62lvancfh4b7r6zn2dgodrh5e
-      eslint-plugin-react: 7.30.1_eslint@8.21.0
-      eslint-plugin-react-hooks: 4.6.0_eslint@8.21.0
       jetifier: 2.0.0
-      prettier: 2.7.1
       react-test-renderer: 17.0.1_react@17.0.2
       typescript: 4.7.4
 
