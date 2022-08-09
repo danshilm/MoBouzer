@@ -5,7 +5,14 @@
   "scripts": {
     "build": "tsc --build",
     "watch": "tsc --watch",
-    "watch:build": "tsc --build --watch"
+    "watch:build": "tsc --build --watch",
+    "lint": "eslint \"./src/**/*.{ts,tsx}\"",
+    "lint:fix": "eslint \"./src/**/*.{ts,tsx}\" --fix",
+    "format": "prettier --write ./"
+  },
+  "bin": {
+    "eslint": "../../node_modules/.bin/eslint",
+    "prettier": "../../node_modules/.bin/prettier"
   },
   "devDependencies": {
     "@react-native-firebase/firestore": "14.11.1",
@@ -15,7 +22,6 @@
   },
   "eslintConfig": {
     "parserOptions": {
-      "ecmaVersion": 6,
       "sourceType": "module"
     }
   }

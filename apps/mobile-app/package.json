@@ -9,13 +9,18 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "watch": "tsc --watch",
-    "lint": "pnpm -w exec eslint \"apps/mobile-app/src/**/*.{ts,tsx}\"",
-    "lint:fix": "pnpm -w exec eslint \"apps/mobile-app/src/**/*.{ts,tsx}\" --fix",
-    "format": "pnpm -w exec prettier --write apps/mobile-app/",
+    "lint": "eslint \"./src/**/*.{ts,tsx}\"",
+    "lint:fix": "eslint \"./src/**/*.{ts,tsx}\" --fix",
+    "format": "prettier --write ./",
     "postinstall": "node ./bin/postInstall",
     "recrawl": "watchman watch-del ./; watchman watch-project ./",
     "eas-build-pre-install": "echo $GOOGLE_SERVICES_ANDROID_BASE64 | base64 --decode > ./google-services.json && echo $GOOGLE_SERVICES_IOS_BASE64 | base64 --decode > ./GoogleService-Info.plist",
-    "eas-build-post-install": "pnpm -w build"
+    "eas-build-post-install": "pnpm -w build",
+    "test": "eslint --help"
+  },
+  "bin": {
+    "eslint": "../../node_modules/.bin/eslint",
+    "prettier": "../../node_modules/.bin/prettier"
   },
   "dependencies": {
     "@expo-google-fonts/inter": "^0.2.2",

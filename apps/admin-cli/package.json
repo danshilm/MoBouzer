@@ -5,9 +5,13 @@
   "scripts": {
     "start": "pnpm -w build && ts-node src/index.ts",
     "watch": "tsc --watch",
-    "lint": "pnpm -w exec eslint \"apps/admin-cli/src/**/*.{ts,tsx}\"",
-    "lint:fix": "pnpm -w exec eslint \"apps/admin-cli/src/**/*.{ts,tsx}\" --fix",
-    "format": "pnpm -w exec prettier --write apps/admin-cli/"
+    "lint": "eslint \"./src/**/*.{ts,tsx}\"",
+    "lint:fix": "eslint \"./src/**/*.{ts,tsx}\" --fix",
+    "format": "prettier --write ./"
+  },
+  "bin": {
+    "eslint": "../../node_modules/.bin/eslint",
+    "prettier": "../../node_modules/.bin/prettier"
   },
   "dependencies": {
     "@mobouzer/shared": "workspace:*",

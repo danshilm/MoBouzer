@@ -1,4 +1,4 @@
-import { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
+import type { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
 import type {
   DocumentReference as AdminDocumentReference,
   GeoPoint as AdminGeoPoint,
