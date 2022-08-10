@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "pnpm -w build && ts-node src/index.ts",
-    "watch": "tsc --watch",
+    "build": "tsc --build",
+    "watch": "tsc --build --watch",
+    "start": "node dist/index.js",
+    "dev": "pnpm -w build && ts-node src/index.ts",
     "lint": "eslint \"./src/**/*.{ts,tsx}\"",
     "lint:fix": "eslint \"./src/**/*.{ts,tsx}\" --fix",
     "format": "prettier --write ./"
@@ -21,6 +23,7 @@
     "dotenv": "^16.0.1",
     "firebase-admin": "^11.0.0",
     "lodash": "^4.17.21",
+    "ora": "^5.4.1",
     "qs": "^6.11.0",
     "ts-node": "^10.9.1"
   },
