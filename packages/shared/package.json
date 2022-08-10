@@ -4,8 +4,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc --build",
-    "watch": "tsc --watch",
-    "watch:build": "tsc --build --watch",
+    "watch": "tsc --build --watch",
     "lint": "eslint \"./src/**/*.{ts,tsx}\"",
     "lint:fix": "eslint \"./src/**/*.{ts,tsx}\" --fix",
     "format": "prettier --write ./"
