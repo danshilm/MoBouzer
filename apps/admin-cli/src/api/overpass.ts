@@ -2,6 +2,7 @@ import axios from 'axios';
 import { stripIndent } from 'common-tags';
 import { stringify } from 'qs';
 import type { RawOSMRootObject } from '../interfaces/overpass';
+import logger from '../utils/logger';
 
 const overpass = axios.create({
   baseURL: 'https://overpass-api.de',
@@ -36,7 +37,7 @@ export const getNode = async (id: number | number[]) => {
     const res = await post(data);
     return res.data.elements[0];
   } catch (error) {
-    console.log(`Could not retrieve node from Overpass API: ${error}`);
+    logger.error(`Could not retrieve node from Overpass API: ${error}`);
   }
 };
 
@@ -47,6 +48,6 @@ export const getAllNodes = async () => {
     const res = await post(data);
     return res.data.elements;
   } catch (error) {
-    console.log(`Could not retrieve all nodes from Overpass API: ${error}`);
+    logger.error(`Could not retrieve all nodes from Overpass API: ${error}`);
   }
 };

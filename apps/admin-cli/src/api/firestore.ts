@@ -1,6 +1,7 @@
 import type { BusStop } from '@mobouzer/shared';
 import type { GeoPoint } from 'firebase-admin/firestore';
 import { firebaseStore } from '../firebase/config';
+import logger from '../utils/logger';
 
 export const updateBusStop = async (busStopId: string, location: GeoPoint, name?: string) => {
   const busStopRef = firebaseStore.doc(`bus-stops/${busStopId}`);
@@ -13,11 +14,9 @@ export const updateBusStop = async (busStopId: string, location: GeoPoint, name?
   try {
     return await busStopRef.update({ ...data });
   } catch (error) {
-    console.log(`Could not update bus stop: ${error}`);
+    logger.error(`Could not update bus stop: ${error}`);
   }
 };
-
-// export const updateAllBusStops = async () => {};
 
 export const getAllBusStopIds = async () => {
   try {
