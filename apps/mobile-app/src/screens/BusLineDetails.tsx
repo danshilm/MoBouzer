@@ -3,7 +3,7 @@ import type { BusLine } from '@mobouzer/shared';
 import { useDocumentDataOnce } from '@skillnation/react-native-firebase-hooks/firestore';
 import React, { useCallback, useEffect, useRef } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
-import type { MapEvent } from 'react-native-maps';
+import type { MarkerPressEvent } from 'react-native-maps';
 import MapView, { Callout, Marker } from 'react-native-maps';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import BusLineSheet from '../components/BusLineSheet';
@@ -59,7 +59,7 @@ export default function BusLineDetails({
     }
   }, [direction, value?.direction]);
 
-  const handleMarkerPress = (e: MapEvent) => {
+  const handleMarkerPress = (e: MarkerPressEvent) => {
     // account for bottom sheet being open
     mapRef.current?.animateToRegion(
       {

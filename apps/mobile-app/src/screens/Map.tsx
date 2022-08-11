@@ -4,12 +4,13 @@ import React, { useCallback, useMemo, useRef, useState } from 'react';
 import { useWindowDimensions } from 'react-native';
 import type { supercluster } from 'react-native-clusterer';
 import { useClusterer } from 'react-native-clusterer';
-import type { MapEvent, Region } from 'react-native-maps';
+import type { MarkerPressEvent, PoiClickEvent, Region } from 'react-native-maps';
 import MapView, { Marker } from 'react-native-maps';
 import { getBusStops } from '../api/firestore';
 import ViewWithSearchBar from '../components/SearchBar/ViewWithSearchBar';
 import regionCoordinates from '../constants/Map';
 import tw from '../lib/tailwind';
+import { isMarkerPressEvent } from '../utils/types';
 
 export default function Map() {
   const [region, setRegion] = useState(regionCoordinates);
@@ -55,8 +56,10 @@ export default function Map() {
     []
   );
 
-  const handleMarkerPress = (e: MapEvent) => {
-    const isClusterMarker = !e.nativeEvent.id?.startsWith('point-');
+  const handleMarkerPress = (e: PoiClickEvent | MarkerPressEvent) => {
+    const isClusterMarker = isMarkerPressEvent(e)
+      ? !e.nativeEvent.id?.startsWith('point-')
+      : !e.nativeEvent.placeId?.startsWith('point-');
 
     mapRef.current?.animateToRegion(
       {

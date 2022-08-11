@@ -117,7 +117,7 @@ importers:
       react-native: 0.68.2
       react-native-clusterer: ^1.2.0
       react-native-gesture-handler: ~2.2.1
-      react-native-maps: 0.30.2
+      react-native-maps: 1.2.0
       react-native-reanimated: ~2.8.0
       react-native-safe-area-context: 4.2.4
       react-native-screens: ~3.11.1
@@ -166,7 +166,7 @@ importers:
       react-native: 0.68.2_react@17.0.2
       react-native-clusterer: 1.2.0_zqxy7fpkavjkgz5xll7ed4r6rq
       react-native-gesture-handler: 2.2.1
-      react-native-maps: 0.30.2_3jwg325lw2mq7x6febgnkz6brm
+      react-native-maps: 1.2.0_3jwg325lw2mq7x6febgnkz6brm
       react-native-reanimated: 2.8.0_mzokd7szrayhpouqbsglmu5eba
       react-native-safe-area-context: 4.2.4_zqxy7fpkavjkgz5xll7ed4r6rq
       react-native-screens: 3.11.1_zqxy7fpkavjkgz5xll7ed4r6rq
@@ -8603,15 +8603,17 @@ packages:
     resolution: {integrity: sha512-eIlgtsmDp1jLC24dRn43hB3kEcZVqx6DUQbR0N1ABXGnMEafm9I3V3dUUeD1vh+Dy5WqijSoEwLNUPLgu5zDMg==}
     dev: false
 
-  /react-native-maps/0.30.2_3jwg325lw2mq7x6febgnkz6brm:
-    resolution: {integrity: sha512-WVv5e7aWdnNJugqNSG/87U+12Pg4RFWU7x/UigTPG1FEUZx2TbYKChL6xZCMGPOv5m5b4Z7bMeKJnZosg+yPyQ==}
+  /react-native-maps/1.2.0_3jwg325lw2mq7x6febgnkz6brm:
+    resolution: {integrity: sha512-n6QtGLznQ+1psY09st/qD1WluyQx9qIz3S0l9w/UA/ZMYhNWJiQpqrXzNpgJW1N+4uy2umjEpIYYHnhdzIFSKg==}
     peerDependencies:
-      react: '>= 16.0 || < 18.0'
-      react-native: '>= 0.51'
+      react: '>= 17.0.1'
+      react-native: '>= 0.64.3'
       react-native-web: '>= 0.11'
+    peerDependenciesMeta:
+      react-native-web:
+        optional: true
     dependencies:
       '@types/geojson': 7946.0.10
-      deprecated-react-native-prop-types: 2.3.0
       react: 17.0.2
       react-native: 0.68.2_react@17.0.2
       react-native-web: 0.17.7_sfoxds7t5ydpegc3knd667wn6m
