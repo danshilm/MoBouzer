@@ -2,6 +2,7 @@ import axios from 'axios';
 import { stripIndent } from 'common-tags';
 import { stringify } from 'qs';
 import type { RawOSMRootObject } from '../interfaces/overpass';
+import { mauritiusBBox } from '../utils/location';
 import logger from '../utils/logger';
 
 const overpass = axios.create({
@@ -17,7 +18,7 @@ const post = async (rawData: string) => {
   return await overpass.post<RawOSMRootObject>('/api/interpreter', data);
 };
 
-const bbox = `(-20.745840238902247,56.888580322265625,-19.731805658115217,58.08471679687499)`;
+const bbox = `(${mauritiusBBox[1].latitude},${mauritiusBBox[2].longitude},${mauritiusBBox[0].latitude},${mauritiusBBox[1].longitude})`;
 
 const query = (...queries: string[]) => {
   return stripIndent`
