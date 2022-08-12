@@ -16,7 +16,9 @@
     "recrawl": "watchman watch-del ./; watchman watch-project ./",
     "eas-build-pre-install": "echo $GOOGLE_SERVICES_ANDROID_BASE64 | base64 --decode > ./google-services.json && echo $GOOGLE_SERVICES_IOS_BASE64 | base64 --decode > ./GoogleService-Info.plist",
     "eas-build-post-install": "pnpm -w build",
-    "test": "eslint --help"
+    "eas:build:development": "eas build --platform all --profile development --no-wait",
+    "eas:build:development:android": "eas build --platform android --profile development --no-wait",
+    "eas:build:development:ios": "eas build --platform ios --profile development --no-wait"
   },
   "bin": {
     "eslint": "../../node_modules/.bin/eslint",
