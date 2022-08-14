@@ -57,12 +57,12 @@ export default function BusLineSheet({
 
   return (
     <>
-      <View style={tw`absolute bottom-3 right-3`}>
+      <View style={tw`absolute bottom-4 right-4`}>
         <TouchableOpacity
-          style={tw`flex items-center justify-center w-12 h-12 bg-white shadow-lg rounded-xl`}
+          style={tw`flex items-center justify-center w-12 h-12 bg-white shadow-xm rounded-xl`}
           onPress={() => sheetRef.current?.snapToIndex(1)}
         >
-          <Ionicons name="information-circle-outline" size={22} />
+          <Ionicons name="information-circle-outline" size={24} />
         </TouchableOpacity>
       </View>
       <BottomSheet

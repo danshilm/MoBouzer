@@ -39,9 +39,9 @@ export default function BusLines({ navigation }: BusLinesStackScreenProps<'BusLi
   return (
     <ViewWithSearchBar style={tw`flex-1`} placeholder="Search for a bus line">
       <ScrollView style={tw`z-10 my-2`}>
-        <Text style={[tw`mt-4 px-6 text-[25px] font-inter-bold`]}>Bus Lines</Text>
+        <Text style={[tw`mt-4 px-4 text-[25px] font-inter-bold`]}>Bus Lines</Text>
         {favourites.length > 1 && (
-          <View style={tw`px-6`}>
+          <View style={tw`px-4`}>
             <View style={tw`flex flex-row mt-3.5 items-center`}>
               <AntDesign name="inbox" size={18} />
               <Text style={tw`ml-1.5 text-base font-inter`}>Favourites</Text>
@@ -58,7 +58,7 @@ export default function BusLines({ navigation }: BusLinesStackScreenProps<'BusLi
             </View>
           </View>
         )}
-        <View style={tw`px-6`}>
+        <View style={tw`px-4`}>
           <View style={tw`flex flex-row mt-3.5 items-center`}>
             <Ionicons name="bus" size={18} />
             <Text style={tw`ml-1.5 text-base font-inter`}>All Buslines</Text>

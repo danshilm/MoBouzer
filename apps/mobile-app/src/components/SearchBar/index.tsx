@@ -26,14 +26,14 @@ export default function SearchBar({
     <View
       style={[
         tw.style(
-          'flex flex-row h-12 px-2 bg-white border-gray-300 shadow-md rounded-xl mt-2 mx-6',
+          'flex flex-row h-12 px-2 bg-white border-gray-300 shadow-md rounded-xl mt-2 mx-4',
           focused ? 'border-2' : 'border'
         ),
         style,
       ]}
     >
       <TextInput
-        style={tw`flex-1 h-full px-1 text-base font-inter ios:pb-1`}
+        style={tw`flex-1 h-full px-2 text-base font-inter ios:pb-1`}
         selectionColor={tw.color('gray-800')}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}

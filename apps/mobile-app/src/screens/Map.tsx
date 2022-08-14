@@ -46,7 +46,7 @@ export default function Map() {
     mapOverlayButtons.push(
       <TouchableOpacity
         activeOpacity={0.6}
-        style={tw`flex items-center justify-center w-10 h-10 mt-2 bg-white shadow-md rounded-xl`}
+        style={tw`flex items-center justify-center w-12 h-12 mt-2 bg-white shadow-sm rounded-xl`}
         key="markers-loading-indicator"
       >
         {loading ? (
@@ -127,7 +127,7 @@ export default function Map() {
         {points.map(renderMarker)}
       </MapView>
 
-      <View style={tw`flex-col items-end justify-end flex-1 mb-6 mr-6`} pointerEvents="box-none">
+      <View style={tw`flex-col items-end justify-end flex-1 mb-4 mr-4`} pointerEvents="box-none">
         {mapOverlayButtons}
       </View>
 
