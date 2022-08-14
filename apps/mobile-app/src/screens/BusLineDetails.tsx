@@ -93,7 +93,7 @@ export default function BusLineDetails({
         <TouchableOpacity
           activeOpacity={0.7}
           onPress={() =>
-            // doesn't work
+            // todo doesn't work
             navigation.setParams({ direction: direction === 'forward' ? 'reverse' : 'forward' })
           }
         >

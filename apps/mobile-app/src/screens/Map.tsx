@@ -1,28 +1,36 @@
-import type * as GeoJSON from 'geojson';
+import { Ionicons } from '@expo/vector-icons';
+import type { BusStop } from '@mobouzer/shared';
+import { useDocumentData } from '@skillnation/react-native-firebase-hooks/firestore';
+import type { GeoJsonProperties } from 'geojson';
 import { throttle } from 'lodash';
 import React, { useCallback, useMemo, useRef, useState } from 'react';
-import { useWindowDimensions } from 'react-native';
+import { ActivityIndicator, TouchableOpacity, useWindowDimensions, View } from 'react-native';
 import type { supercluster } from 'react-native-clusterer';
 import { useClusterer } from 'react-native-clusterer';
 import type { MarkerPressEvent, PoiClickEvent, Region } from 'react-native-maps';
 import MapView, { Marker } from 'react-native-maps';
-import { getBusStops } from '../api/firestore';
 import ViewWithSearchBar from '../components/SearchBar/ViewWithSearchBar';
 import regionCoordinates from '../constants/Map';
+import { firebaseStore } from '../firebase/utils';
 import tw from '../lib/tailwind';
 import { isMarkerPressEvent } from '../utils/types';
 
 export default function Map() {
   const [region, setRegion] = useState(regionCoordinates);
   const mapRef = useRef<MapView | null>(null);
-  const allBusStops = getBusStops();
+  const [allBusStops, loading, error] = useDocumentData<BusStop.AllDocumentData>(
+    firebaseStore().doc('bus-stops/all')
+  );
   const { width: mapWidth, height: mapHeight } = useWindowDimensions();
   const [points] = useClusterer(
-    allBusStops.map((busStop) => ({
+    allBusStops?.['bus-stops'].map((busStop) => ({
       type: 'Feature',
-      properties: { name: busStop.tags?.name, id: busStop.id },
-      geometry: { type: 'Point', coordinates: [busStop.lon, busStop.lat] },
-    })),
+      properties: { name: busStop.name, id: busStop.id },
+      geometry: {
+        type: 'Point',
+        coordinates: [busStop.location.longitude, busStop.location.latitude],
+      },
+    })) ?? [],
     { width: mapWidth, height: mapHeight },
     region,
     {
@@ -32,11 +40,29 @@ export default function Map() {
     }
   );
 
-  const renderItem = useCallback(
+  const mapOverlayButtons: React.ReactNode[] = [];
+
+  if (loading || error) {
+    mapOverlayButtons.push(
+      <TouchableOpacity
+        activeOpacity={0.6}
+        style={tw`flex items-center justify-center w-10 h-10 mt-2 bg-white shadow-md rounded-xl`}
+        key="markers-loading-indicator"
+      >
+        {loading ? (
+          <ActivityIndicator size="small" />
+        ) : (
+          <Ionicons name="alert-circle-outline" size={24} />
+        )}
+      </TouchableOpacity>
+    );
+  }
+
+  const renderMarker = useCallback(
     (
       point:
-        | supercluster.PointFeature<GeoJSON.GeoJsonProperties>
-        | supercluster.ClusterFeatureClusterer<GeoJSON.GeoJsonProperties>
+        | supercluster.PointFeature<GeoJsonProperties>
+        | supercluster.ClusterFeatureClusterer<GeoJsonProperties>
     ) => {
       return (
         <Marker
@@ -98,8 +124,12 @@ export default function Map() {
         loadingEnabled={true}
         moveOnMarkerPress={false}
       >
-        {points.map(renderItem)}
+        {points.map(renderMarker)}
       </MapView>
+
+      <View style={tw`flex-col items-end justify-end flex-1 mb-6 mr-6`} pointerEvents="box-none">
+        {mapOverlayButtons}
+      </View>
 
       {/* use this as reference to put a compass and trigger follow user location */}
       {/* <SafeAreaView style={StyleSheet.absoluteFill} pointerEvents="box-none">
