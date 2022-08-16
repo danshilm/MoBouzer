@@ -14,6 +14,7 @@ import type { ColorSchemeName } from 'react-native';
 import { Pressable } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { gray, slate, zinc } from 'tailwindcss/colors';
 import { firebaseAuth } from '../firebase/utils';
 import useSettings from '../hooks/useSettings';
 import tw from '../lib/tailwind';
@@ -39,7 +40,7 @@ const MyDarkTheme: Theme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    background: tw.color('zinc-900') ?? 'rgb(24, 24, 27)',
+    background: zinc[900],
   },
 };
 
@@ -112,7 +113,7 @@ function HomeTabNavigator() {
     <BottomTab.Navigator
       initialRouteName="Map"
       screenOptions={{
-        tabBarActiveTintColor: tw.color('slate-700'),
+        tabBarActiveTintColor: slate[700],
         tabBarStyle: tw.style(`bg-white dark:bg-zinc-800`, !bottom && `pb-2 h-16`),
         headerStyle: tw`bg-white dark:bg-zinc-800`,
         headerTitleStyle: tw`dark:text-gray-100`,
@@ -135,12 +136,7 @@ function HomeTabNavigator() {
               }}
               style={({ pressed }) => tw`${pressed ? 'opacity-50' : 'opacity-100'}`}
             >
-              <Ionicons
-                name="contrast-outline"
-                size={25}
-                color={tw.color('gray-800')}
-                style={tw`mr-4`}
-              />
+              <Ionicons name="contrast-outline" size={25} color={gray[800]} style={tw`mr-4`} />
             </Pressable>
           ),
         })}

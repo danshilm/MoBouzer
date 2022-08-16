@@ -3,6 +3,7 @@ import { useAuthState } from '@skillnation/react-native-firebase-hooks/auth';
 import React, { useState } from 'react';
 import type { StyleProp, ViewStyle } from 'react-native';
 import { Image, TextInput, TouchableOpacity, View } from 'react-native';
+import { gray } from 'tailwindcss/colors';
 import { firebaseAuth } from '../../firebase/utils';
 import useDebouncedState from '../../hooks/useDebouncedState';
 import tw from '../../lib/tailwind';
@@ -34,11 +35,11 @@ export default function SearchBar({
     >
       <TextInput
         style={tw`flex-1 h-full px-2 text-base font-inter ios:pb-1`}
-        selectionColor={tw.color('gray-800')}
+        selectionColor={gray[800]}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
         placeholder={placeholder}
-        // placeholderTextColor={tw.color('gray-300')}
+        // placeholderTextColor={gray[300]}
         value={searchValue}
         onChangeText={(e) => setSearchValue(e)}
       />
@@ -56,7 +57,7 @@ export default function SearchBar({
                 style={tw`w-7.5 h-7.5 rounded-md`}
               />
             ) : (
-              <Ionicons name="person" size={20} color={tw.color('gray-500')} />
+              <Ionicons name="person" size={20} color={gray[500]} />
             )}
           </TouchableOpacity>
         </View>

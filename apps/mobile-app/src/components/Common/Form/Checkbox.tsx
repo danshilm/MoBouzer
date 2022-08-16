@@ -1,6 +1,7 @@
 import Checkbox from 'expo-checkbox';
 import React from 'react';
 import { Text, View } from 'react-native';
+import { gray, red } from 'tailwindcss/colors';
 import tw from '../../../lib/tailwind';
 
 export default function FormCheckbox({
@@ -19,9 +20,7 @@ export default function FormCheckbox({
       <View style={tw`flex flex-row items-center mt-2`}>
         <Checkbox
           style={tw`w-5 h-5 text-gray-400 border rounded-md`}
-          color={
-            errorMessage ? tw.color('red-700') : value ? tw.color('gray-700') : tw.color('gray-400')
-          }
+          color={errorMessage ? red[700] : value ? gray[700] : gray[400]}
           value={value}
           onValueChange={onValueChange}
         />

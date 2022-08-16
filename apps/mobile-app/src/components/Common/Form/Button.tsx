@@ -1,5 +1,6 @@
 import React from 'react';
 import { ActivityIndicator, Text, View } from 'react-native';
+import { gray } from 'tailwindcss/colors';
 import tw from '../../../lib/tailwind';
 import Button from '../Button';
 
@@ -18,7 +19,7 @@ export default function FormButton({
     <View>
       <Button style={tw`mt-3.5`} type="primary" onPress={onPress} disabled={isSubmitting}>
         {isSubmitting ? (
-          <ActivityIndicator color={tw.color('gray-100')} />
+          <ActivityIndicator color={gray[100]} />
         ) : (
           <Text style={tw`text-base text-gray-100 font-inter-medium`}>{text}</Text>
         )}

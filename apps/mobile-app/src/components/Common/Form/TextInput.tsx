@@ -6,6 +6,7 @@ import type {
   TextInputProps as BaseTextInputProps,
 } from 'react-native';
 import { Text, TextInput as BaseTextInput, TouchableOpacity, View } from 'react-native';
+import { gray } from 'tailwindcss/colors';
 import tw from '../../../lib/tailwind';
 
 interface TextInputProps extends BaseTextInputProps {
@@ -48,7 +49,7 @@ export default function FormTextInput({
       >
         <BaseTextInput
           style={tw`flex-1 h-full px-4 pb-0 text-base font-inter ios:pb-1`}
-          selectionColor={tw.color('gray-800')}
+          selectionColor={gray[800]}
           onFocus={() => setFocused(true)}
           onBlur={(e) => {
             // formik / react-form-hook need this
@@ -58,7 +59,7 @@ export default function FormTextInput({
           autoCorrect={false}
           autoCapitalize={'none'}
           importantForAutofill="yesExcludeDescendants"
-          // placeholderTextColor={tw.color('gray-300')}
+          // placeholderTextColor={gray[300]}
           {...props}
           {...rest}
         />
@@ -68,7 +69,7 @@ export default function FormTextInput({
               size={20}
               name={isShown ? 'md-eye-off' : 'md-eye'}
               style={tw`mr-4`}
-              color={tw.color('gray-700')}
+              color={gray[700]}
             />
           </TouchableOpacity>
         )}
