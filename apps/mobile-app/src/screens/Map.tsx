@@ -7,16 +7,18 @@ import React, { useCallback, useMemo, useRef, useState } from 'react';
 import { ActivityIndicator, TouchableOpacity, useWindowDimensions, View } from 'react-native';
 import type { supercluster } from 'react-native-clusterer';
 import { useClusterer } from 'react-native-clusterer';
-import type { MarkerPressEvent, PoiClickEvent, Region } from 'react-native-maps';
+import type { Camera, MarkerPressEvent, PoiClickEvent, Region } from 'react-native-maps';
 import MapView, { Marker } from 'react-native-maps';
+import Compass from '../components/Map/Compass';
 import ViewWithSearchBar from '../components/SearchBar/ViewWithSearchBar';
-import regionCoordinates from '../constants/Map';
+import { initialCamera, initialRegion } from '../constants/Map';
 import { firebaseStore } from '../firebase/utils';
 import tw from '../lib/tailwind';
 import { isMarkerPressEvent } from '../utils/types';
 
 export default function Map() {
-  const [region, setRegion] = useState(regionCoordinates);
+  const [region, setRegion] = useState(initialRegion);
+  const [camera] = useState<Camera>(initialCamera);
   const mapRef = useRef<MapView | null>(null);
   const [allBusStops, loading, error] = useDocumentData<BusStop.AllDocumentData>(
     firebaseStore().doc('bus-stops/all')
@@ -109,13 +111,8 @@ export default function Map() {
         style={tw`absolute top-0 bottom-0 left-0 right-0`}
         provider="google"
         mapType="standard"
-        initialRegion={{
-          latitude: regionCoordinates.latitude,
-          longitude: regionCoordinates.longitude,
-          latitudeDelta: regionCoordinates.latitudeDelta,
-          longitudeDelta: regionCoordinates.longitudeDelta,
-        }}
         ref={mapRef}
+        camera={camera}
         onRegionChange={throttledRegionChangeHandler}
         onPoiClick={handleMarkerPress}
         onMarkerPress={handleMarkerPress}
@@ -127,7 +124,9 @@ export default function Map() {
         {points.map(renderMarker)}
       </MapView>
 
-      <View style={tw`flex-col items-end justify-end flex-1 mb-4 mr-4`} pointerEvents="box-none">
+      <View style={tw`flex-col items-end justify-end flex-1 mx-4 my-4`} pointerEvents="box-none">
+        <Compass ref={mapRef} />
+        <View style={tw`flex-1`} />
         {mapOverlayButtons}
       </View>
 

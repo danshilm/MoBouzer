@@ -1,13 +1,15 @@
 import { Ionicons } from '@expo/vector-icons';
 import type { BusLine } from '@mobouzer/shared';
 import { useDocumentDataOnce } from '@skillnation/react-native-firebase-hooks/firestore';
-import React, { useCallback, useEffect, useRef } from 'react';
+import { throttle } from 'lodash';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
-import type { MarkerPressEvent } from 'react-native-maps';
+import type { Camera, MarkerPressEvent, Region } from 'react-native-maps';
 import MapView, { Callout, Marker } from 'react-native-maps';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import BusLineSheet from '../components/BusLineSheet';
-import regionCoordinates from '../constants/Map';
+import Compass from '../components/Map/Compass';
+import { initialCamera, initialRegion } from '../constants/Map';
 import { firebaseStore } from '../firebase/utils';
 import tw from '../lib/tailwind';
 import type { BusLinesStackScreenProps } from '../navigation/types';
@@ -21,7 +23,9 @@ export default function BusLineDetails({
   const [value, loading, error] = useDocumentDataOnce<BusLine.DocumentData>(
     firebaseStore().doc(`bus-lines/${id}`)
   );
+  const [camera] = useState<Camera>(initialCamera);
   const mapRef = useRef<MapView | null>(null);
+  const [region, setRegion] = useState(initialRegion);
 
   const renderBusStopMarker = useCallback((data: BusLine.DocumentBusStopData) => {
     return (
@@ -77,6 +81,12 @@ export default function BusLineDetails({
     }
   }, [fitToMarkers, loading, value]);
 
+  const regionChangeHandler = (region: Region) => {
+    setRegion(region);
+  };
+
+  const throttledRegionChangeHandler = useMemo(() => throttle(regionChangeHandler, 250), []);
+
   return (
     <View style={tw`flex-1 bg-gray-300`}>
       <View style={tw`flex flex-row items-center h-12 bg-gray-300 px-6 mt-[${insets.top + 8}px]`}>
@@ -104,20 +114,24 @@ export default function BusLineDetails({
       <MapView
         style={tw`w-full h-full`}
         provider="google"
-        initialRegion={{
-          latitude: regionCoordinates.latitude - 0.15,
-          longitude: regionCoordinates.longitude,
-          latitudeDelta: regionCoordinates.latitudeDelta,
-          longitudeDelta: regionCoordinates.longitudeDelta,
-        }}
+        camera={camera}
+        onRegionChange={throttledRegionChangeHandler}
         ref={mapRef}
         onMapLoaded={fitToMarkers}
         onMarkerPress={handleMarkerPress}
         moveOnMarkerPress={false}
+        toolbarEnabled={false}
+        showsCompass={false}
       >
-        {value?.direction[direction]?.['bus-stops']?.length &&
-          value.direction[direction]['bus-stops']?.map(renderBusStopMarker)}
+        {value?.direction[direction]['bus-stops']?.map(renderBusStopMarker)}
       </MapView>
+
+      <SafeAreaView
+        style={tw`absolute right-0 flex flex-col items-end justify-end mx-4 my-4 top-[${48 + 8}px]`}
+        pointerEvents="box-none"
+      >
+        <Compass ref={mapRef} />
+      </SafeAreaView>
 
       {/* pass rudimentary data through here */}
       {/* and grab data from firestore in the bottom sheet component */}
