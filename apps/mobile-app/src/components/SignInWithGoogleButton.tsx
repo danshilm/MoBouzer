@@ -3,6 +3,7 @@ import { useIdTokenAuthRequest } from 'expo-auth-session/providers/google';
 import Constants from 'expo-constants';
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, Text } from 'react-native';
+import { gray } from 'tailwindcss/colors';
 import { firebaseAuth } from '../firebase/utils';
 import tw from '../lib/tailwind';
 import Button from './Common/Button';
@@ -47,7 +48,7 @@ export default function SignInWithGoogleButton() {
         }}
       >
         {loading ? (
-          <ActivityIndicator color={tw.color('gray-800')} />
+          <ActivityIndicator color={gray[800]} />
         ) : (
           <>
             <FontAwesome style={tw`mr-3 text-gray-800`} name="google" size={20} />
