@@ -25,7 +25,7 @@ export default function BusLineDetails({
   );
   const [camera] = useState<Camera>(initialCamera);
   const mapRef = useRef<MapView | null>(null);
-  const [region, setRegion] = useState(initialRegion);
+  const [_region, setRegion] = useState(initialRegion);
 
   const renderBusStopMarker = useCallback((data: BusLine.DocumentBusStopData) => {
     return (
@@ -88,8 +88,8 @@ export default function BusLineDetails({
   const throttledRegionChangeHandler = useMemo(() => throttle(regionChangeHandler, 250), []);
 
   return (
-    <View style={tw`flex-1 bg-gray-300`}>
-      <View style={tw`flex flex-row items-center h-12 bg-gray-300 px-6 mt-[${insets.top + 8}px]`}>
+    <View style={tw`flex-1 bg-gray-100`}>
+      <View style={tw`flex flex-row items-center h-12 bg-gray-100 px-6 mt-[${insets.top + 8}px]`}>
         <TouchableOpacity
           activeOpacity={0.7}
           onPress={() => navigation.goBack()}
