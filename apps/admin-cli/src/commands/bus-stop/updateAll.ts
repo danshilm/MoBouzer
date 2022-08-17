@@ -1,14 +1,22 @@
-import type { BusStop } from '@mobouzer/shared';
+import type { AdminBusStop } from '@mobouzer/shared';
 import { FieldValue } from 'firebase-admin/firestore';
 import ora from 'ora';
 import { getAllBusStopIds } from '../../api/firestore';
 import { firebaseStore } from '../../firebase/config';
 
-export const updateAggregateBusStop = async (force = false) => {
+const updateAggregateBusStop = async (force = false): Promise<void> => {
   const spinner = ora('Initialising').start();
 
-  const allDocSnapshot = await firebaseStore.doc('bus-stops/all').get();
-  const allDocData = allDocSnapshot.data() as BusStop.AllDocumentData;
+  const allDocRef = firebaseStore.doc('bus-stops/all');
+  const allDocData = (await allDocRef.get()).data() as AdminBusStop.AllDocumentData | undefined;
+
+  if (!allDocData) {
+    spinner.info('Aggregate document not found, creating one').start();
+    await allDocRef.set({ 'bus-stops': [] } as AdminBusStop.AllDocumentData);
+
+    return updateAggregateBusStop(force);
+  }
+
   const allDocIds = allDocData['bus-stops'].map((v) => v.id);
   const allBusStopIds = await getAllBusStopIds();
 
@@ -38,8 +46,8 @@ export const updateAggregateBusStop = async (force = false) => {
 
       for await (const missingBusStopId of missing.slice(index * 500, (index + 1) * 500)) {
         const busStopSnapshot = await firebaseStore.doc(`bus-stops/${missingBusStopId}`).get();
-        const busStopData = busStopSnapshot.data() as BusStop.DocumentData;
-        const data: Partial<BusStop.AllDocumentData['bus-stops'][0]> = {
+        const busStopData = busStopSnapshot.data() as AdminBusStop.DocumentData;
+        const data: Partial<AdminBusStop.AllDocumentData['bus-stops'][0]> = {
           id: missingBusStopId,
           location: busStopData.location,
         };
@@ -58,7 +66,7 @@ export const updateAggregateBusStop = async (force = false) => {
         //   }at index ${missing.indexOf(missingBusStopId)}`
         // );
 
-        batch.update(allDocSnapshot.ref, {
+        batch.update(allDocRef, {
           'bus-stops': FieldValue.arrayUnion(data),
         });
       }
@@ -79,9 +87,10 @@ export const updateAggregateBusStop = async (force = false) => {
     }
 
     spinner.succeed(`${missing.length} bus stops updated in the aggregate document`);
-    return missing.length;
   } catch (error) {
     spinner.fail(`Could not update bus stops aggregate document: ${error}`);
     // console.log(`Could not update all bus stops document: ${error}`);
   }
 };
+
+export default updateAggregateBusStop;

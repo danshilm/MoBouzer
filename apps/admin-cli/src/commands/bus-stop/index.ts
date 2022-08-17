@@ -1,5 +1,5 @@
 import { program } from '../../structures/command';
-import { updateAggregateBusStop } from './updateAll';
+import updateAggregateBusStop from './updateAll';
 
 const busStopCommand = program.command('bus-stop').description('commands related to bus stops');
 
