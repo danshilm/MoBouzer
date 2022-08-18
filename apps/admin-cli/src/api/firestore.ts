@@ -27,3 +27,13 @@ export const getAllBusStopIds = async () => {
     console.log(`Could not get all bus stop ids: ${error}`);
   }
 };
+
+export const getAllBusLineIds = async () => {
+  try {
+    const response = await firebaseStore.collection('bus-lines').listDocuments();
+
+    return response.map((v) => v.id).filter((v) => v !== 'all');
+  } catch (error) {
+    console.log(`Could not get all bus line ids: ${error}`);
+  }
+};

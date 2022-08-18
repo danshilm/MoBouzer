@@ -16,7 +16,7 @@ export const loadCommands = async () => {
       logger.debug(
         `Loading command ${CommandGroup.name()} with subcommands ${CommandGroup.commands
           .map((c) => c.name())
-          .join(' ,')}`
+          .join(', ')}`
       );
 
       program.addCommand(CommandGroup);

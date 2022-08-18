@@ -36,6 +36,13 @@ export namespace BusLine {
   export type DocumentData = BaseBusLineDocumentData<App>;
   export type DocumentDirectionData = BaseBusLineDocumentDirectionData<App>;
   export type DocumentBusStopData = BaseBusLineDocumentBusStopData<App>;
+  export interface AllDocumentData {
+    'bus-lines': {
+      id: DocumentData['id'];
+      destination: DocumentDirectionData['destination']['name'];
+      origin: DocumentDirectionData['origin']['name'];
+    }[];
+  }
 }
 
 export namespace AdminBusLine {
@@ -44,4 +51,11 @@ export namespace AdminBusLine {
   export type DocumentData = BaseBusLineDocumentData<App>;
   export type DocumentDirectionData = BaseBusLineDocumentDirectionData<App>;
   export type DocumentBusStopData = BaseBusLineDocumentBusStopData<App>;
+  export interface AllDocumentData {
+    'bus-lines': {
+      id: DocumentData['id'];
+      destination: DocumentDirectionData['destination']['name'];
+      origin: DocumentDirectionData['origin']['name'];
+    }[];
+  }
 }
