@@ -1,4 +1,5 @@
 import { program } from '../../structures/command';
+import logger from '../../utils/logger';
 import updateAggregateBusStop from './updateAll';
 
 const busStopCommand = program.command('bus-stop').description('commands related to bus stops');
@@ -9,7 +10,7 @@ busStopCommand
   .argument('<id>', 'id of the bus stop to grab from overpass and update firestore document')
   .option('-f, --force', "don't merge data, instead update document")
   .action(function (busStopId: string) {
-    console.log(busStopId);
+    logger.info(busStopId);
   });
 
 busStopCommand

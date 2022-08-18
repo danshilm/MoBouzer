@@ -24,7 +24,7 @@ export const getAllBusStopIds = async () => {
 
     return response.map((v) => v.id).filter((v) => v !== 'all');
   } catch (error) {
-    console.log(`Could not get all bus stop ids: ${error}`);
+    logger.error(`Could not get all bus stop ids: ${error}`);
   }
 };
 
@@ -34,6 +34,6 @@ export const getAllBusLineIds = async () => {
 
     return response.map((v) => v.id).filter((v) => v !== 'all');
   } catch (error) {
-    console.log(`Could not get all bus line ids: ${error}`);
+    logger.error(`Could not get all bus line ids: ${error}`);
   }
 };

@@ -1,9 +1,8 @@
 import type { AdminBusLine } from '@mobouzer/shared';
 import { FieldValue } from 'firebase-admin/firestore';
-import ora from 'ora';
 import { getAllBusLineIds } from '../../api/firestore';
 import { firebaseStore } from '../../firebase/config';
-import logger from '../../utils/logger';
+import ora from '../../utils/ora';
 
 const updateAggregateBusLine = async (force = false): Promise<void> => {
   const spinner = ora('Initialising').start();
@@ -12,7 +11,6 @@ const updateAggregateBusLine = async (force = false): Promise<void> => {
   const allDocData = (await allDocRef.get()).data() as AdminBusLine.AllDocumentData | undefined;
 
   if (!allDocData) {
-    logger.info('Aggregate document not found, creating one');
     spinner.info('Aggregate document not found, creating one').start();
     await allDocRef.set({ 'bus-lines': [] } as AdminBusLine.AllDocumentData);
 
@@ -27,7 +25,6 @@ const updateAggregateBusLine = async (force = false): Promise<void> => {
   }
 
   if (!force && allBusLineIds.every((id) => allDocIds.includes(id))) {
-    logger.info('Nothing to update in the bus lines aggregate document');
     spinner.info('Nothing to update in the bus lines aggregate document');
     return;
   }
@@ -37,7 +34,6 @@ const updateAggregateBusLine = async (force = false): Promise<void> => {
     ? allBusLineIds
     : allBusLineIds.filter((id) => !allDocIds.find((value) => value === id));
 
-  logger.debug(`Bus lines to update: ${missing.length}`);
   spinner
     .info(`Bus lines to update: ${missing.length}`)
     .start('Writing bus line documents to batch');
@@ -55,14 +51,6 @@ const updateAggregateBusLine = async (force = false): Promise<void> => {
           origin: busLineData.direction['forward'].origin.name,
         };
 
-        logger.debug(
-          `${missing.indexOf(missingBusLineId)}/${
-            missing.length
-          } Handling bus line ${missingBusLineId} ${
-            busLineData.direction['forward'].origin.name
-          } -> ${busLineData.direction['forward'].destination.name}`
-        );
-
         spinner.text = `${missing.indexOf(missingBusLineId)}/${
           missing.length
         } Handling bus line ${missingBusLineId} ${
@@ -74,12 +62,6 @@ const updateAggregateBusLine = async (force = false): Promise<void> => {
         });
       }
 
-      logger.info(
-        `Batch committing bus lines from index ${index * 500} to ${Math.min(
-          (index + 1) * 500,
-          missing.length
-        )}`
-      );
       spinner
         .info(
           `Batch committing bus lines from index ${index * 500} to ${Math.min(
@@ -91,14 +73,11 @@ const updateAggregateBusLine = async (force = false): Promise<void> => {
 
       await batch.commit();
 
-      logger.info('Done! Onto the next batch, if any');
       spinner.succeed(`Done!`).start('Working');
     }
 
-    logger.info(`${missing.length} bus lines updated in the aggregate document`);
     spinner.succeed(`${missing.length} bus lines updated in the aggregate document`);
   } catch (error) {
-    logger.error(`Could not update bus lines aggregate document: ${error}`);
     spinner.fail(`Could not update bus lines aggregate document: ${error}`);
   }
 };

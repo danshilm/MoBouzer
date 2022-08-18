@@ -1,8 +1,8 @@
 import type { AdminBusStop } from '@mobouzer/shared';
 import { FieldValue } from 'firebase-admin/firestore';
-import ora from 'ora';
 import { getAllBusStopIds } from '../../api/firestore';
 import { firebaseStore } from '../../firebase/config';
+import ora from '../../utils/ora';
 
 const updateAggregateBusStop = async (force = false): Promise<void> => {
   const spinner = ora('Initialising').start();
@@ -21,13 +21,11 @@ const updateAggregateBusStop = async (force = false): Promise<void> => {
   const allBusStopIds = await getAllBusStopIds();
 
   if (!allBusStopIds) {
-    spinner.fail('Could not get all bus stops ids from Firestore');
     throw new Error('Could not get bus stops ids from Firestore');
   }
 
   if (!force && allBusStopIds.every((id) => allDocIds.includes(id))) {
     spinner.info('Nothing to update in the bus stops aggregate document');
-    // console.log('Nothing to update in all bus stops doc');
     return;
   }
 
@@ -60,18 +58,11 @@ const updateAggregateBusStop = async (force = false): Promise<void> => {
           missing.length
         } Handling bus stop ${missingBusStopId}${data.name ? `, named "${data.name}"` : ''}`;
 
-        // console.log(
-        //   `Batch updating bus stop ${missingBusStopId}${
-        //     data.name ? ` ${data.name} ` : ''
-        //   }at index ${missing.indexOf(missingBusStopId)}`
-        // );
-
         batch.update(allDocRef, {
           'bus-stops': FieldValue.arrayUnion(data),
         });
       }
 
-      // console.log(`Batch committing bus stops from index ${index * 500} to ${(index + 1) * 500}`);
       spinner
         .info(
           `Batch committing bus stops from index ${index * 500} to ${Math.min(
@@ -89,7 +80,6 @@ const updateAggregateBusStop = async (force = false): Promise<void> => {
     spinner.succeed(`${missing.length} bus stops updated in the aggregate document`);
   } catch (error) {
     spinner.fail(`Could not update bus stops aggregate document: ${error}`);
-    // console.log(`Could not update all bus stops document: ${error}`);
   }
 };
 
