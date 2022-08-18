@@ -1,4 +1,5 @@
 import { Entypo, Ionicons } from '@expo/vector-icons';
+import type { BusLine } from '@mobouzer/shared';
 import type { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import type { CompositeNavigationProp } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -9,7 +10,7 @@ import tw from '../lib/tailwind';
 import type { BusLinesStackParamList, HomeTabParamList } from '../navigation/types';
 
 interface BusLineProps {
-  data: { line: string; destination: string; origin: string };
+  data: BusLine.AllDocumentBusStopData;
   // use the BusLinesStack navigator so we can be free of the router state when
   // going back to the grandparent navigator
   navigation: CompositeNavigationProp<
@@ -33,12 +34,12 @@ export default function BusLineCard({ data, navigation }: BusLineProps) {
           },
         []
       )}
-      onPress={() => navigation.push('BusLineDetails', { id: data.line, direction: 'forward' })}
+      onPress={() => navigation.push('BusLineDetails', { id: data.id, direction: 'forward' })}
     >
       <View
         style={tw`flex items-center justify-center border border-gray-300 rounded-md w-12 h-7.5`}
       >
-        <Text style={tw`text-base text-gray-800 font-inter`}>{data.line}</Text>
+        <Text style={tw`text-base text-gray-800 font-inter`}>{data.id}</Text>
       </View>
       <View style={tw`ml-2.5 h-full flex justify-center flex-1`}>
         <Text style={tw`text-sm text-gray-800 font-inter`}>
