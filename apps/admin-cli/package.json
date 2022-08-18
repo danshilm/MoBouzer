@@ -42,9 +42,6 @@
   },
   "packageManager": "pnpm@7.8.0",
   "eslintConfig": {
-    "rules": {
-      "no-console": "off"
-    },
     "env": {
       "node": true
     }
