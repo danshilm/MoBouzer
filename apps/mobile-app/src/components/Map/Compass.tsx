@@ -8,9 +8,11 @@ const Compass = (_props, ref: React.Ref<MapView>) => {
   const [heading, setHeading] = useState(0);
 
   useEffect(() => {
-    (ref as React.RefObject<MapView>).current
-      ?.getCamera()
-      .then((camera) => setHeading(camera.heading));
+    if ((ref as React.RefObject<MapView>).current?.state.isReady) {
+      (ref as React.RefObject<MapView>).current
+        ?.getCamera()
+        .then((camera) => setHeading(camera.heading));
+    }
   });
 
   return (
