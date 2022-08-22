@@ -1,13 +1,14 @@
 {
-  "name": "functions",
+  "name": "@mobouzer/functions",
   "scripts": {
-    "lint": "eslint --ext .js,.ts .",
+    "lint": "eslint \"./src/**/*.{ts,tsx}\"",
+    "lint:fix": "eslint \"./src/**/*.{ts,tsx}\" --fix",
     "build": "tsc",
     "build:watch": "tsc --watch",
     "serve": "pnpm run build && firebase emulators:start",
     "shell": "pnpm run build && firebase functions:shell",
     "start": "pnpm run shell",
-    "deploy": "firebase deploy --project mobouzer-ad164 --only functions",
+    "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log"
   },
   "engines": {
@@ -15,6 +16,7 @@
   },
   "main": "lib/index.js",
   "dependencies": {
+    "@google-cloud/billing": "^3.1.0",
     "firebase-admin": "^10.3.0",
     "firebase-functions": "^3.18.0"
   },
