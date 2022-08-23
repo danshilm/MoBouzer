@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import tw from '../lib/tailwind';
 import BusLineStopCard from './BusLineStopCard';
+import Button from './Common/Button';
 
 export default function BusLineSheet({
   busLine,
@@ -58,12 +59,9 @@ export default function BusLineSheet({
   return (
     <>
       <View style={tw`absolute bottom-4 right-4`}>
-        <TouchableOpacity
-          style={tw`flex items-center justify-center w-12 h-12 bg-white shadow-sm rounded-xl`}
-          onPress={() => sheetRef.current?.snapToIndex(1)}
-        >
+        <Button size="sm" onPress={() => sheetRef.current?.snapToIndex(1)}>
           <Ionicons name="information-circle-outline" size={24} />
-        </TouchableOpacity>
+        </Button>
       </View>
       <BottomSheet
         snapPoints={snapPoints}

@@ -4,7 +4,7 @@ import { TouchableOpacity } from 'react-native';
 import type MapView from 'react-native-maps';
 import tw from '../../lib/tailwind';
 
-const Compass = (_props, ref: React.Ref<MapView>) => {
+function Compass(_props, ref: React.Ref<MapView>) {
   const [heading, setHeading] = useState(0);
 
   useEffect(() => {
@@ -24,12 +24,12 @@ const Compass = (_props, ref: React.Ref<MapView>) => {
       }}
     >
       <Ionicons
-        name="compass-outline"
+        name="navigate-circle-outline"
         size={35}
-        style={[tw`w-[33px]`, { transform: [{ rotate: `${(heading - 45 - 90) * -1}deg` }] }]}
+        style={[tw`w-[33px]`, { transform: [{ rotate: `${(heading - 45 + 90) * -1}deg` }] }]}
       />
     </TouchableOpacity>
   );
-};
+}
 
 export default React.forwardRef(Compass) as typeof Compass;

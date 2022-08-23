@@ -4,12 +4,14 @@ import { useDocumentData } from '@skillnation/react-native-firebase-hooks/firest
 import type { GeoJsonProperties } from 'geojson';
 import { throttle } from 'lodash';
 import React, { useCallback, useMemo, useRef, useState } from 'react';
-import { ActivityIndicator, TouchableOpacity, useWindowDimensions, View } from 'react-native';
+import { ActivityIndicator, useWindowDimensions, View } from 'react-native';
 import type { supercluster } from 'react-native-clusterer';
 import { useClusterer } from 'react-native-clusterer';
 import type { Camera, MarkerPressEvent, PoiClickEvent, Region } from 'react-native-maps';
 import MapView, { Marker } from 'react-native-maps';
+import Button from '../components/Common/Button';
 import Compass from '../components/Map/Compass';
+import UserLocation from '../components/Map/UserLocation';
 import ViewWithSearchBar from '../components/SearchBar/ViewWithSearchBar';
 import { initialCamera, initialRegion } from '../constants/Map';
 import { firebaseStore } from '../firebase/utils';
@@ -42,21 +44,19 @@ export default function Map() {
     }
   );
 
-  const mapOverlayButtons: React.ReactNode[] = [];
+  const mapOverlayButtons: React.ReactNode[] = [
+    <UserLocation style={tw`mt-2`} key="user-location" />,
+  ];
 
   if (loading || error) {
-    mapOverlayButtons.push(
-      <TouchableOpacity
-        activeOpacity={0.6}
-        style={tw`flex items-center justify-center w-12 h-12 mt-2 bg-white shadow-sm rounded-xl`}
-        key="markers-loading-indicator"
-      >
+    mapOverlayButtons.unshift(
+      <Button size="sm" key="markers-loading-indicator" style={tw`mt-2`}>
         {loading ? (
           <ActivityIndicator size="small" />
         ) : (
           <Ionicons name="alert-circle-outline" size={24} />
         )}
-      </TouchableOpacity>
+      </Button>
     );
   }
 

@@ -31,12 +31,17 @@ export default function Onboarding({ navigation }: RootStackScreenProps<'Onboard
           </View>
           {/* Sign in buttons */}
           <View style={tw`mt-8`}>
-            <Button style={tw`mb-5`} type="default">
+            <Button style={tw`mb-5`} size="lg">
               <FontAwesome style={tw`mr-3 text-gray-800`} name="apple" size={20} />
               <Text style={tw`text-base text-gray-800 font-inter-medium`}>Continue With Apple</Text>
             </Button>
             <SignInWithGoogleButton />
-            <Button onPress={() => navigation.push('SignIn')} style={tw`mb-5`} type="primary">
+            <Button
+              onPress={() => navigation.push('SignIn')}
+              style={tw`mb-5`}
+              type="primary"
+              size="lg"
+            >
               <FontAwesome style={tw`mr-3 text-gray-100`} name="envelope-o" size={20} />
               <Text style={tw`text-base text-gray-100 font-inter-medium`}>Continue With Email</Text>
             </Button>
