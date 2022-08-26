@@ -1,0 +1,42 @@
+{
+  "expo": {
+    "name": "rnmapbox-maps-test",
+    "slug": "rnmapbox-maps-test",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.danshilm.rnmapboxmapstest"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.danshilm.rnmapboxmapstest"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "@rnmapbox/maps",
+        {
+          "RNMapboxMapsImpl": "mapbox",
+          "RNMapboxMapsDownloadToken": "sk.eyJ1IjoiY3Jhenltb25rIiwiYSI6ImNsNzZvYWthZDA3dGszd3BiMXl5dmw2YWcifQ.PoJNquv6-MpIRgqbtROPgw"
+        }
+      ]
+    ]
+  }
+}
