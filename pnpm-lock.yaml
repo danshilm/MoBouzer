@@ -87,6 +87,7 @@ importers:
       '@react-navigation/bottom-tabs': ^6.0.5
       '@react-navigation/native': ^6.0.2
       '@react-navigation/native-stack': ^6.1.0
+      '@rnmapbox/maps': 10.0.0-beta.32
       '@skillnation/react-native-firebase-hooks': ^0.5.0
       '@types/lodash': ^4.14.182
       '@types/react': ~17.0.21
@@ -141,6 +142,7 @@ importers:
       '@react-navigation/bottom-tabs': 6.3.2_6rwonjqcg3j224gsrcbz5if4si
       '@react-navigation/native': 6.0.11_zqxy7fpkavjkgz5xll7ed4r6rq
       '@react-navigation/native-stack': 6.7.0_6rwonjqcg3j224gsrcbz5if4si
+      '@rnmapbox/maps': 10.0.0-beta.32_zqxy7fpkavjkgz5xll7ed4r6rq
       '@skillnation/react-native-firebase-hooks': 0.5.0_2zetxpmertxqg335exwuntc3he
       dotenv: 16.0.1
       expo: 45.0.8_@babel+core@7.18.10
@@ -3262,6 +3264,33 @@ packages:
       deprecated-react-native-prop-types: 2.3.0
       react: 18.0.0
       react-native: 0.69.4_k6xwmnqmgysg6weibx66ue6pyi
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /@rnmapbox/maps/10.0.0-beta.32_zqxy7fpkavjkgz5xll7ed4r6rq:
+    resolution: {integrity: sha512-rz6RytEohOyOGnMKsvLRHtIdUWF/rX+Mygme8fTOf23MT7bCn/0KsXUVSevK6r420TGhi1wt5mUJ9QCL+SOpUg==}
+    peerDependencies:
+      mapbox-gl: ^ 2.9.0
+      prop-types: '>=15.5.8'
+      react: '>=16.6.1'
+      react-native: '>=0.59.9'
+    peerDependenciesMeta:
+      mapbox-gl:
+        optional: true
+    dependencies:
+      '@expo/config-plugins': 4.1.5
+      '@mapbox/geo-viewport': 0.5.0
+      '@turf/along': 6.5.0
+      '@turf/distance': 6.5.0
+      '@turf/helpers': 6.5.0
+      '@turf/length': 6.5.0
+      '@turf/nearest-point-on-line': 6.5.0
+      '@types/geojson': 7946.0.10
+      debounce: 1.2.1
+      deprecated-react-native-prop-types: 2.3.0
+      react: 17.0.2
+      react-native: 0.68.2_ogpt7jwnl7hws2znhmqhdzydta
     transitivePeerDependencies:
       - supports-color
     dev: false

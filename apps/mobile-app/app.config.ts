@@ -58,12 +58,19 @@ const expoConfig = {
       firebaseAndroidClientId: process.env.FIREBASE_ANDROID_CLIENT_ID,
       firebaseExpoGoClientId: process.env.FIREBASE_EXPO_GO_CLIENT_ID,
       firebaseiOSClientId: process.env.FIREBASE_IOS_CLIENT_ID,
+      mapboxToken: process.env.RNMAPBOX_TOKEN,
     },
     plugins: [
       // only required by @react-native-firebase >= v15.0.0
       // ['expo-build-properties', { ios: { useFrameworks: 'dynamic' } }],
       './plugins/react-native-firebase',
       '@react-native-firebase/app',
+      [
+        '@rnmapbox/maps',
+        {
+          RNMapboxMapsImpl: 'maplibre',
+        },
+      ],
     ],
   } as ExpoConfig,
 };
