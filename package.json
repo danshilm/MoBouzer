@@ -6,6 +6,7 @@
     "cli": "pnpm run --filter @mobouzer/admin-cli",
     "prepare": "husky install",
     "build": "pnpm run -r --if-present build",
+    "lint:fix": "pnpm run -r --if-present lint:fix",
     "recrawl": "watchman watch-del ./; watchman watch-project ./"
   },
   "workspaces": [
@@ -73,10 +74,5 @@
     "env": {
       "es6": true
     }
-  },
-  "lint-staged": {
-    "**/*.{ts,tsx,js}": [
-      "prettier --write"
-    ]
   }
 }

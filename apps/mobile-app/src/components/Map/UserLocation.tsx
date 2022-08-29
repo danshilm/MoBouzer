@@ -7,8 +7,8 @@ import tw from '../../lib/tailwind';
 import Button from '../Common/Button';
 
 export default function UserLocation({ style }: { style?: ViewStyle }) {
-  const [location, setLocation] = useState<LocationObject | null>(null);
-  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [_location, setLocation] = useState<LocationObject | null>(null);
+  const [_errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const requestUserLocation = async () => {
     const { status } = await requestForegroundPermissionsAsync();

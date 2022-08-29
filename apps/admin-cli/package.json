@@ -45,5 +45,11 @@
     "env": {
       "node": true
     }
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
   }
 }

@@ -1,6 +1,5 @@
 import Error from '../components/Error';
-import type { RootStackScreenProps } from '../navigation/types';
 
-export default function NotFoundScreen({ navigation }: RootStackScreenProps<'NotFound'>) {
+export default function NotFoundScreen() {
   return <Error code={404} />;
 }
