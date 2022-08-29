@@ -1,3 +1,5 @@
+import type { CameraStop } from '@rnmapbox/maps';
+
 // latitude = y-axis
 // longitude = x-axis
 // latitude, longitude
@@ -14,9 +16,8 @@ export const initialRegion = {
   longitudeDelta: (northEastCoordinates[1] - southWestCoordinates[1]) * 1.2,
 };
 
-export const initialCamera = {
-  center: { latitude: initialRegion.latitude, longitude: initialRegion.longitude },
-  heading: 0,
-  pitch: 0,
-  zoom: 9.8,
+export const cameraDefaultSettings: CameraStop = {
+  animationDuration: 1000,
+  centerCoordinate: [57.558065, -20.241753],
+  zoomLevel: 8.7,
 };

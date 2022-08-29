@@ -1,15 +1,15 @@
 import { Ionicons } from '@expo/vector-icons';
 import type { BusLine } from '@mobouzer/shared';
+import type { OnPressEvent } from '@rnmapbox/maps';
+import MapboxGL, { Camera, CircleLayer, MapView, ShapeSource } from '@rnmapbox/maps';
 import { useDocumentDataOnce } from '@skillnation/react-native-firebase-hooks/firestore';
-import { throttle } from 'lodash';
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import bbox from '@turf/bbox';
+import type { Point } from 'geojson';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
-import type { Camera, MarkerPressEvent, Region } from 'react-native-maps';
-import MapView, { Callout, Marker } from 'react-native-maps';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import BusLineSheet from '../components/BusLineSheet';
-import Compass from '../components/Map/Compass';
-import { initialCamera, initialRegion } from '../constants/Map';
+import { cameraDefaultSettings } from '../constants/Map';
 import { firebaseStore } from '../firebase/utils';
 import tw from '../lib/tailwind';
 import type { BusLinesStackScreenProps } from '../navigation/types';
@@ -23,57 +23,48 @@ export default function BusLineDetails({
   const [value, loading, error] = useDocumentDataOnce<BusLine.DocumentData>(
     firebaseStore().doc(`bus-lines/${id}`)
   );
-  const [camera] = useState<Camera>(initialCamera);
-  const mapRef = useRef<MapView | null>(null);
-  const [_region, setRegion] = useState(initialRegion);
+  const busStops = value?.direction[direction]['bus-stops'];
+  const cameraRef = useRef<Camera>(null);
 
-  const renderBusStopMarker = useCallback((data: BusLine.DocumentBusStopData) => {
-    return (
-      <Marker
-        coordinate={{ latitude: data.location.latitude, longitude: data.location.longitude }}
-        key={data.id}
-        tracksViewChanges={false}
-      >
-        {data.name && (
-          <Callout tooltip={false}>
-            <Text>{data.name}</Text>
-          </Callout>
-        )}
-      </Marker>
-    );
-  }, []);
+  /**
+   * TODO hook up to bottom sheet
+   */
+  const fitToMarkers = useCallback(
+    (sheetIndex = 2) => {
+      if (busStops?.length) {
+        const bboxCoords = bbox({
+          type: 'FeatureCollection',
+          features: busStops.map((busStop) => ({
+            type: 'Feature',
+            id: `busStop-${busStop.id}`,
+            geometry: {
+              type: 'Point',
+              coordinates: [busStop.location.longitude, busStop.location.latitude],
+            },
+            properties: {},
+          })),
+        });
 
-  const fitToMarkers = useCallback(() => {
-    if (value?.direction[direction]?.['bus-stops']?.length) {
-      mapRef?.current?.fitToCoordinates(
-        value?.direction[direction]['bus-stops']?.map((busStop) => ({
-          latitude: busStop.location.latitude,
-          longitude: busStop.location.longitude,
-        })),
-        {
-          animated: true,
-          edgePadding: {
-            top: 100,
-            right: 50,
-            bottom: 400,
-            left: 50,
+        cameraRef.current?.setCamera({
+          bounds: { ne: [bboxCoords[2], bboxCoords[3]], sw: [bboxCoords[0], bboxCoords[1]] },
+          padding: {
+            paddingTop: 25,
+            paddingBottom:
+              sheetIndex === 0 || sheetIndex === 1
+                ? 120
+                : sheetIndex === 2
+                ? 310
+                : sheetIndex === 3
+                ? 580
+                : 0,
+            paddingLeft: 0,
+            paddingRight: 0,
           },
-        }
-      );
-    }
-  }, [direction, value?.direction]);
-
-  const handleMarkerPress = (e: MarkerPressEvent) => {
-    // account for bottom sheet being open
-    mapRef.current?.animateToRegion(
-      {
-        ...e.nativeEvent.coordinate,
-        latitudeDelta: 0.005,
-        longitudeDelta: 0.005,
-      },
-      1000
-    );
-  };
+        });
+      }
+    },
+    [busStops]
+  );
 
   useEffect(() => {
     if (value && !loading) {
@@ -81,11 +72,14 @@ export default function BusLineDetails({
     }
   }, [fitToMarkers, loading, value]);
 
-  const regionChangeHandler = (region: Region) => {
-    setRegion(region);
-  };
+  const handleMarkerPress = (event: OnPressEvent) => {
+    const centerCoords = (event.features[0].geometry as Point).coordinates;
 
-  const throttledRegionChangeHandler = useMemo(() => throttle(regionChangeHandler, 250), []);
+    cameraRef.current?.setCamera({
+      zoomLevel: 15,
+      centerCoordinate: [centerCoords[0], centerCoords[1]],
+    });
+  };
 
   return (
     <View style={tw`flex-1 bg-gray-100`}>
@@ -111,30 +105,45 @@ export default function BusLineDetails({
         </TouchableOpacity>
       </View>
 
-      <MapView
-        style={tw`w-full h-full`}
-        provider="google"
-        camera={camera}
-        onRegionChange={throttledRegionChangeHandler}
-        ref={mapRef}
-        onMapLoaded={fitToMarkers}
-        onMarkerPress={handleMarkerPress}
-        moveOnMarkerPress={false}
-        toolbarEnabled={false}
-        showsCompass={false}
-      >
-        {value?.direction[direction]['bus-stops']?.map(renderBusStopMarker)}
-      </MapView>
-
-      <SafeAreaView
-        style={tw`absolute right-0 flex flex-col items-end justify-end mx-4 my-4 top-[${48 + 8}px]`}
-        pointerEvents="box-none"
-      >
-        <Compass ref={mapRef} />
+      <SafeAreaView style={tw`flex-1 bg-red-300`} edges={['bottom', 'left', 'right']}>
+        <MapView
+          style={tw`w-full h-full`}
+          styleURL={MapboxGL.StyleURL.Street}
+          compassEnabled={true}
+          compassViewPosition={1}
+          compassFadeWhenNorth={true}
+          compassPosition={{ top: 0, right: 0 }}
+          compassViewMargins={{ y: 10, x: 10 }}
+          attributionEnabled={true}
+          attributionPosition={{ bottom: 10, left: 100 }}
+          logoEnabled={true}
+          logoPosition={{ bottom: 10, left: 10 }}
+        >
+          <Camera defaultSettings={cameraDefaultSettings} ref={cameraRef} />
+          {busStops && (
+            <ShapeSource
+              id={`bus-stops`}
+              shape={{
+                type: 'FeatureCollection',
+                features: value.direction[direction]['bus-stops']!.map((busStop) => ({
+                  type: 'Feature',
+                  id: `busStop-${busStop.id}`,
+                  geometry: {
+                    type: 'Point',
+                    coordinates: [busStop.location.longitude, busStop.location.latitude],
+                  },
+                  properties: {},
+                })),
+              }}
+              cluster={false}
+              onPress={handleMarkerPress}
+            >
+              <CircleLayer id={`layer`} style={{ circleColor: '#000', circleRadius: 5 }} />
+            </ShapeSource>
+          )}
+        </MapView>
       </SafeAreaView>
 
-      {/* pass rudimentary data through here */}
-      {/* and grab data from firestore in the bottom sheet component */}
       <BusLineSheet busLine={value} direction={direction} loading={loading} error={error} />
     </View>
   );

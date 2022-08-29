@@ -89,6 +89,11 @@ importers:
       '@react-navigation/native-stack': ^6.1.0
       '@rnmapbox/maps': 10.0.0-beta.32
       '@skillnation/react-native-firebase-hooks': ^0.5.0
+      '@turf/bbox': ^6.5.0
+      '@turf/center': ^6.5.0
+      '@turf/center-of-mass': ^6.5.0
+      '@turf/helpers': ^6.5.0
+      '@types/geojson': ^7946.0.7
       '@types/lodash': ^4.14.182
       '@types/react': ~17.0.21
       '@types/react-native': ~0.67.6
@@ -110,6 +115,7 @@ importers:
       expo-updates: ~0.13.4
       expo-web-browser: ~10.2.1
       formik: ^2.2.9
+      geojson: ^0.5.0
       jetifier: ^2.0.0
       lodash: ^4.17.21
       moti: ^0.18.0
@@ -117,9 +123,7 @@ importers:
       react-dom: 17.0.2
       react-firebase-hooks: ^5.0.3
       react-native: 0.68.2
-      react-native-clusterer: ^1.2.0
       react-native-gesture-handler: ~2.2.1
-      react-native-maps: 0.30.2
       react-native-reanimated: ~2.8.0
       react-native-safe-area-context: 4.2.4
       react-native-screens: ~3.11.1
@@ -144,6 +148,10 @@ importers:
       '@react-navigation/native-stack': 6.7.0_6rwonjqcg3j224gsrcbz5if4si
       '@rnmapbox/maps': 10.0.0-beta.32_zqxy7fpkavjkgz5xll7ed4r6rq
       '@skillnation/react-native-firebase-hooks': 0.5.0_2zetxpmertxqg335exwuntc3he
+      '@turf/bbox': 6.5.0
+      '@turf/center': 6.5.0
+      '@turf/center-of-mass': 6.5.0
+      '@turf/helpers': 6.5.0
       dotenv: 16.0.1
       expo: 45.0.8_@babel+core@7.18.10
       expo-application: 4.1.0_expo@45.0.8
@@ -162,15 +170,14 @@ importers:
       expo-updates: 0.13.4_expo@45.0.8
       expo-web-browser: 10.2.1_expo@45.0.8
       formik: 2.2.9_react@17.0.2
+      geojson: 0.5.0
       lodash: 4.17.21
       moti: 0.18.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       react-firebase-hooks: 5.0.3_react@17.0.2
       react-native: 0.68.2_ogpt7jwnl7hws2znhmqhdzydta
-      react-native-clusterer: 1.2.0_zqxy7fpkavjkgz5xll7ed4r6rq
       react-native-gesture-handler: 2.2.1
-      react-native-maps: 0.30.2_3jwg325lw2mq7x6febgnkz6brm
       react-native-reanimated: 2.8.0_mzokd7szrayhpouqbsglmu5eba
       react-native-safe-area-context: 4.2.4_zqxy7fpkavjkgz5xll7ed4r6rq
       react-native-screens: 3.11.1_zqxy7fpkavjkgz5xll7ed4r6rq
@@ -182,6 +189,7 @@ importers:
       '@babel/core': 7.18.10
       '@babel/preset-typescript': 7.18.6_@babel+core@7.18.10
       '@expo/config-types': 45.0.0
+      '@types/geojson': 7946.0.10
       '@types/lodash': 4.14.182
       '@types/react': 17.0.48
       '@types/react-native': 0.67.12
@@ -3378,6 +3386,38 @@ packages:
       '@turf/invariant': 6.5.0
     dev: false
 
+  /@turf/center-of-mass/6.5.0:
+    resolution: {integrity: sha512-EWrriU6LraOfPN7m1jZi+1NLTKNkuIsGLZc2+Y8zbGruvUW+QV7K0nhf7iZWutlxHXTBqEXHbKue/o79IumAsQ==}
+    dependencies:
+      '@turf/centroid': 6.5.0
+      '@turf/convex': 6.5.0
+      '@turf/helpers': 6.5.0
+      '@turf/invariant': 6.5.0
+      '@turf/meta': 6.5.0
+    dev: false
+
+  /@turf/center/6.5.0:
+    resolution: {integrity: sha512-T8KtMTfSATWcAX088rEDKjyvQCBkUsLnK/Txb6/8WUXIeOZyHu42G7MkdkHRoHtwieLdduDdmPLFyTdG5/e7ZQ==}
+    dependencies:
+      '@turf/bbox': 6.5.0
+      '@turf/helpers': 6.5.0
+    dev: false
+
+  /@turf/centroid/6.5.0:
+    resolution: {integrity: sha512-MwE1oq5E3isewPprEClbfU5pXljIK/GUOMbn22UM3IFPDJX0KeoyLNwghszkdmFp/qMGL/M13MMWvU+GNLXP/A==}
+    dependencies:
+      '@turf/helpers': 6.5.0
+      '@turf/meta': 6.5.0
+    dev: false
+
+  /@turf/convex/6.5.0:
+    resolution: {integrity: sha512-x7ZwC5z7PJB0SBwNh7JCeCNx7Iu+QSrH7fYgK0RhhNop13TqUlvHMirMLRgf2db1DqUetrAO2qHJeIuasquUWg==}
+    dependencies:
+      '@turf/helpers': 6.5.0
+      '@turf/meta': 6.5.0
+      concaveman: 1.2.1
+    dev: false
+
   /@turf/destination/6.5.0:
     resolution: {integrity: sha512-4cnWQlNC8d1tItOz9B4pmJdWpXqS0vEvv65bI/Pj/genJnsL7evI0/Xw42RvEGROS481MPiU80xzvwxEvhQiMQ==}
     dependencies:
@@ -3488,7 +3528,6 @@ packages:
 
   /@types/geojson/7946.0.10:
     resolution: {integrity: sha512-Nmh0K3iWQJzniTuPRcJn5hxXkfB1T1pgB89SBig5PlJQU5yocazeu4jATJlaA0GYFKWMqDdvYemoSnF2pXgLVA==}
-    dev: false
 
   /@types/geojson/7946.0.8:
     resolution: {integrity: sha512-1rkryxURpr6aWP7R786/UQOkJ3PcpQiWkAXBmdWc7ryFWqN6a4xfK7BtjXvFBKO9LjQ+MWQSWxYeZX1OApnArA==}
@@ -4859,6 +4898,15 @@ packages:
 
   /concat-map/0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
+
+  /concaveman/1.2.1:
+    resolution: {integrity: sha512-PwZYKaM/ckQSa8peP5JpVr7IMJ4Nn/MHIaWUjP4be+KoZ7Botgs8seAZGpmaOM+UZXawcdYRao/px9ycrCihHw==}
+    dependencies:
+      point-in-polygon: 1.1.0
+      rbush: 3.0.1
+      robust-predicates: 2.0.4
+      tinyqueue: 2.0.3
+    dev: false
 
   /configstore/5.0.1:
     resolution: {integrity: sha512-aMKprgk5YhBNyH25hj8wGt2+D52Sw1DRRIzqBwLp2Ya9mFmY8KPvvtvmna8SxVR9JMZ4kzMD68N22vlaRpkeFA==}
@@ -6849,6 +6897,11 @@ packages:
       '@turf/meta': 6.5.0
       '@types/geojson': 7946.0.8
       rbush: 3.0.1
+    dev: false
+
+  /geojson/0.5.0:
+    resolution: {integrity: sha512-/Bx5lEn+qRF4TfQ5aLu6NH+UKtvIv7Lhc487y/c8BdludrCTpiWf9wyI0RTyqg49MFefIAvFDuEi5Dfd/zgNxQ==}
+    engines: {node: '>= 0.10'}
     dev: false
 
   /get-caller-file/2.0.5:
@@ -9788,6 +9841,10 @@ packages:
     engines: {node: '>=10.13.0'}
     dev: false
 
+  /point-in-polygon/1.1.0:
+    resolution: {integrity: sha512-3ojrFwjnnw8Q9242TzgXuTD+eKiutbzyslcq1ydfu82Db2y+Ogbmyrkpv0Hgj31qwT3lbS9+QAAO/pIQM35XRw==}
+    dev: false
+
   /popmotion/11.0.3:
     resolution: {integrity: sha512-Y55FLdj3UxkR7Vl3s7Qr4e9m0onSnP8W7d/xQLsoJM40vs6UKHFdygs6SWryasTZYqugMjm3BepCF4CWXDiHgA==}
     dependencies:
@@ -10239,18 +10296,6 @@ packages:
   /react-is/18.2.0:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
 
-  /react-native-clusterer/1.2.0_zqxy7fpkavjkgz5xll7ed4r6rq:
-    resolution: {integrity: sha512-1lUsM6zDo31eV/vq4zqkxS4tXsQprCZW9JnCskyz2ijB4d3FdJLRqnITkrwbK489oMLfgQf+TiQpsX+zvhYayA==}
-    peerDependencies:
-      react: '*'
-      react-native: '*'
-    dependencies:
-      '@mapbox/geo-viewport': 0.5.0
-      '@types/geojson': 7946.0.10
-      react: 17.0.2
-      react-native: 0.68.2_ogpt7jwnl7hws2znhmqhdzydta
-    dev: false
-
   /react-native-codegen/0.0.17:
     resolution: {integrity: sha512-7GIEUmAemH9uWwB6iYXNNsPoPgH06pxzGRmdBzK98TgFBdYJZ7CBuZFPMe4jmHQTPOkQazKZ/w5O6/71JBixmw==}
     dependencies:
@@ -10291,20 +10336,6 @@ packages:
 
   /react-native-gradle-plugin/0.0.7:
     resolution: {integrity: sha512-+4JpbIx42zGTONhBTIXSyfyHICHC29VTvhkkoUOJAh/XHPEixpuBduYgf6Y4y9wsN1ARlQhBBoptTvXvAFQf5g==}
-    dev: false
-
-  /react-native-maps/0.30.2_3jwg325lw2mq7x6febgnkz6brm:
-    resolution: {integrity: sha512-WVv5e7aWdnNJugqNSG/87U+12Pg4RFWU7x/UigTPG1FEUZx2TbYKChL6xZCMGPOv5m5b4Z7bMeKJnZosg+yPyQ==}
-    peerDependencies:
-      react: '>= 16.0 || < 18.0'
-      react-native: '>= 0.51'
-      react-native-web: '>= 0.11'
-    dependencies:
-      '@types/geojson': 7946.0.10
-      deprecated-react-native-prop-types: 2.3.0
-      react: 17.0.2
-      react-native: 0.68.2_ogpt7jwnl7hws2znhmqhdzydta
-      react-native-web: 0.17.7_sfoxds7t5ydpegc3knd667wn6m
     dev: false
 
   /react-native-reanimated/2.8.0_mzokd7szrayhpouqbsglmu5eba:
@@ -10855,6 +10886,10 @@ packages:
     hasBin: true
     dependencies:
       glob: 7.2.3
+
+  /robust-predicates/2.0.4:
+    resolution: {integrity: sha512-l4NwboJM74Ilm4VKfbAtFeGq7aEjWL+5kVFcmgFA2MrdnQWx9iE/tUGvxY5HyMI7o/WpSIUFLbC5fbeaHgSCYg==}
+    dev: false
 
   /run-parallel/1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
@@ -11656,6 +11691,10 @@ packages:
 
   /tiny-warning/1.0.3:
     resolution: {integrity: sha512-lBN9zLN/oAf68o3zNXYrdCt1kP8WsiGW8Oo2ka41b2IM5JL/S1CTyX1rW0mb/zSuJun0ZUrDxx4sqvYS2FWzPA==}
+    dev: false
+
+  /tinyqueue/2.0.3:
+    resolution: {integrity: sha512-ppJZNDuKGgxzkHihX8v9v9G5f+18gzaTfrukGrq6ueg0lmH4nqVnA2IPG0AEH3jKEk2GRJCUhDoqpoiw3PHLBA==}
     dev: false
 
   /tmp/0.0.33:
