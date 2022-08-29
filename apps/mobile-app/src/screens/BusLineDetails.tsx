@@ -4,9 +4,12 @@ import type { OnPressEvent } from '@rnmapbox/maps';
 import MapboxGL, { Camera, CircleLayer, MapView, ShapeSource } from '@rnmapbox/maps';
 import { useDocumentDataOnce } from '@skillnation/react-native-firebase-hooks/firestore';
 import bbox from '@turf/bbox';
-import type { Point } from 'geojson';
+import center from '@turf/center';
+import { featureCollection } from '@turf/helpers';
+import type { Feature, Point } from 'geojson';
 import React, { useCallback, useEffect, useRef } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
+import { interpolate } from 'react-native-reanimated';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import BusLineSheet from '../components/BusLineSheet';
 import { cameraDefaultSettings } from '../constants/Map';
@@ -25,12 +28,13 @@ export default function BusLineDetails({
   );
   const busStops = value?.direction[direction]['bus-stops'];
   const cameraRef = useRef<Camera>(null);
+  const mapHeight = useRef<number>(0);
 
   /**
-   * TODO hook up to bottom sheet
+   * TODO adjust camera as sheet is being dragged
    */
   const fitToMarkers = useCallback(
-    (sheetIndex = 2) => {
+    (sheetIndex = 1) => {
       if (busStops?.length) {
         const bboxCoords = bbox({
           type: 'FeatureCollection',
@@ -45,18 +49,21 @@ export default function BusLineDetails({
           })),
         });
 
+        // lazy/hacky way of determining the padding of the map based on the screen dimensions
+        const paddingBottom =
+          sheetIndex === -1 || sheetIndex === 0
+            ? interpolate(mapHeight.current, [644, 662], [120, 105])
+            : sheetIndex === 1
+            ? interpolate(mapHeight.current, [644, 662], [310, 280])
+            : sheetIndex === 2
+            ? interpolate(mapHeight.current, [644, 662], [580, 525])
+            : 0;
+
         cameraRef.current?.setCamera({
           bounds: { ne: [bboxCoords[2], bboxCoords[3]], sw: [bboxCoords[0], bboxCoords[1]] },
           padding: {
             paddingTop: 25,
-            paddingBottom:
-              sheetIndex === 0 || sheetIndex === 1
-                ? 120
-                : sheetIndex === 2
-                ? 310
-                : sheetIndex === 3
-                ? 580
-                : 0,
+            paddingBottom,
             paddingLeft: 0,
             paddingRight: 0,
           },
@@ -73,12 +80,17 @@ export default function BusLineDetails({
   }, [fitToMarkers, loading, value]);
 
   const handleMarkerPress = (event: OnPressEvent) => {
-    const centerCoords = (event.features[0].geometry as Point).coordinates;
+    const features = event.features as Feature<Point>[];
+    const isClusterMarker = features.some((v) => v.properties?.cluster === true);
 
-    cameraRef.current?.setCamera({
-      zoomLevel: 15,
-      centerCoordinate: [centerCoords[0], centerCoords[1]],
-    });
+    cameraRef.current?.setCamera(
+      isClusterMarker
+        ? {
+            zoomLevel: 13,
+            centerCoordinate: center(featureCollection(features)).geometry.coordinates,
+          }
+        : { zoomLevel: 15, centerCoordinate: features[0].geometry.coordinates }
+    );
   };
 
   return (
@@ -105,7 +117,13 @@ export default function BusLineDetails({
         </TouchableOpacity>
       </View>
 
-      <SafeAreaView style={tw`flex-1 bg-red-300`} edges={['bottom', 'left', 'right']}>
+      <SafeAreaView
+        style={tw`flex-1`}
+        edges={['left', 'right']}
+        onLayout={(e) => {
+          mapHeight.current = e.nativeEvent.layout.height;
+        }}
+      >
         <MapView
           style={tw`w-full h-full`}
           styleURL={MapboxGL.StyleURL.Street}
@@ -135,7 +153,8 @@ export default function BusLineDetails({
                   properties: {},
                 })),
               }}
-              cluster={false}
+              cluster={true}
+              clusterRadius={5}
               onPress={handleMarkerPress}
             >
               <CircleLayer id={`layer`} style={{ circleColor: '#000', circleRadius: 5 }} />
@@ -144,7 +163,13 @@ export default function BusLineDetails({
         </MapView>
       </SafeAreaView>
 
-      <BusLineSheet busLine={value} direction={direction} loading={loading} error={error} />
+      <BusLineSheet
+        busLine={value}
+        direction={direction}
+        loading={loading}
+        error={error}
+        callback={fitToMarkers}
+      />
     </View>
   );
 }

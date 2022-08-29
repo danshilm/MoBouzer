@@ -3,6 +3,7 @@ import BottomSheet, { BottomSheetScrollView } from '@gorhom/bottom-sheet';
 import type { BusLine } from '@mobouzer/shared';
 import { useFocusEffect } from '@react-navigation/native';
 import React, { useCallback, useMemo, useRef, useState } from 'react';
+import type { ViewProps } from 'react-native';
 import {
   ActivityIndicator,
   Text,
@@ -14,23 +15,27 @@ import tw from '../lib/tailwind';
 import BusLineStopCard from './BusLineStopCard';
 import Button from './Common/Button';
 
+interface BusLineSheetProps extends ViewProps {
+  busLine?: BusLine.DocumentData;
+  direction: 'forward' | 'reverse';
+  loading?: boolean;
+  error?: Error;
+  callback: (sheetPos: number) => void;
+}
+
 export default function BusLineSheet({
   busLine,
   direction = 'forward',
   loading = true,
   error,
-}: {
-  busLine?: BusLine.DocumentData;
-  direction: 'forward' | 'reverse';
-  loading?: boolean;
-  error?: Error;
-}) {
+  callback,
+}: BusLineSheetProps) {
   const sheetRef = useRef<BottomSheet>(null);
   const snapPoints = useMemo(() => [68, 250, 500], []);
   const maxOrder = busLine?.['bus-stops']?.length ?? 0;
   const origin = busLine?.direction[direction].origin.name;
   const destination = busLine?.direction[direction].destination.name;
-  const [sheetPositionIndex, setSheetPositionIndex] = useState(0);
+  const [sheetPositionIndex, setSheetPositionIndex] = useState(1);
 
   const renderItem = useCallback(
     (data: BusLine.DocumentBusStopData, index: number) => (
@@ -56,6 +61,15 @@ export default function BusLineSheet({
     }
   };
 
+  const handleSheetPositionChange = useCallback(
+    (index: number) => {
+      setSheetPositionIndex(index);
+      // fit to markers
+      callback(index);
+    },
+    [callback]
+  );
+
   return (
     <>
       <View style={tw`absolute bottom-4 right-4`}>
@@ -68,7 +82,7 @@ export default function BusLineSheet({
         ref={sheetRef}
         index={1}
         handleComponent={HandleComponent}
-        onChange={setSheetPositionIndex}
+        onChange={handleSheetPositionChange}
         enablePanDownToClose={true}
       >
         {loading ? (
