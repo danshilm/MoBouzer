@@ -5,7 +5,8 @@
     "app": "pnpm run --filter @mobouzer/mobile-app",
     "cli": "pnpm run --filter @mobouzer/admin-cli",
     "prepare": "husky install",
-    "build": "pnpm run -r --if-present build"
+    "build": "pnpm run -r --if-present build",
+    "recrawl": "watchman watch-del ./; watchman watch-project ./"
   },
   "workspaces": [
     "apps/*",
