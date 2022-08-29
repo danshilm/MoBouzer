@@ -121,7 +121,6 @@ importers:
       moti: ^0.18.0
       react: 17.0.2
       react-dom: 17.0.2
-      react-firebase-hooks: ^5.0.3
       react-native: 0.68.2
       react-native-gesture-handler: ~2.2.1
       react-native-reanimated: ~2.8.0
@@ -175,7 +174,6 @@ importers:
       moti: 0.18.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-      react-firebase-hooks: 5.0.3_react@17.0.2
       react-native: 0.68.2_ogpt7jwnl7hws2znhmqhdzydta
       react-native-gesture-handler: 2.2.1
       react-native-reanimated: 2.8.0_mzokd7szrayhpouqbsglmu5eba
@@ -10267,15 +10265,6 @@ packages:
 
   /react-fast-compare/2.0.4:
     resolution: {integrity: sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==}
-    dev: false
-
-  /react-firebase-hooks/5.0.3_react@17.0.2:
-    resolution: {integrity: sha512-0+V2XwInZJNjW8B2cm+U21Hlv4xnp/1tJqIoDg2rjyWzKTQ9VoLPQ9PAt+fMqPumjLz5uCIREY7YqGSSjc439Q==}
-    peerDependencies:
-      firebase: '>= 9.0.0'
-      react: '>= 16.8.0'
-    dependencies:
-      react: 17.0.2
     dev: false
 
   /react-freeze/1.0.3_react@17.0.2:
