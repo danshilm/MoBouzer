@@ -1,17 +1,13 @@
 import { Ionicons } from '@expo/vector-icons';
 import BottomSheet, { BottomSheetScrollView } from '@gorhom/bottom-sheet';
 import type { BusLine } from '@mobouzer/shared';
-import { useFocusEffect } from '@react-navigation/native';
+import type { NavigationProp } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import React, { useCallback, useMemo, useRef, useState } from 'react';
 import type { ViewProps } from 'react-native';
-import {
-  ActivityIndicator,
-  Text,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-  View,
-} from 'react-native';
+import { ActivityIndicator, Pressable, Text, TouchableWithoutFeedback, View } from 'react-native';
 import tw from '../lib/tailwind';
+import type { BusLinesStackParamList } from '../navigation/types';
 import BusLineStopCard from './BusLineStopCard';
 import Button from './Common/Button';
 
@@ -36,6 +32,7 @@ export default function BusLineSheet({
   const origin = busLine?.direction[direction].origin.name;
   const destination = busLine?.direction[direction].destination.name;
   const [sheetPositionIndex, setSheetPositionIndex] = useState(1);
+  const navigation = useNavigation<NavigationProp<BusLinesStackParamList>>();
 
   const renderItem = useCallback(
     (data: BusLine.DocumentBusStopData, index: number) => (
@@ -100,9 +97,21 @@ export default function BusLineSheet({
             >
               <View style={tw`flex-row items-center mx-2`}>
                 <View style={tw`items-center justify-center h-15 w-17`}>
-                  <TouchableOpacity style={tw`items-center justify-center w-8 h-8`}>
+                  <Pressable
+                    style={({ pressed }) =>
+                      tw.style(
+                        `items-center justify-center w-10 h-10 p-1 rounded-lg border-gray-600 border-opacity-60`,
+                        pressed && 'border'
+                      )
+                    }
+                    onPress={() => {
+                      navigation.setParams({
+                        direction: direction === 'forward' ? 'reverse' : 'forward',
+                      });
+                    }}
+                  >
                     <Ionicons name="swap-vertical-outline" size={20} />
-                  </TouchableOpacity>
+                  </Pressable>
                 </View>
                 {loading ? (
                   <ActivityIndicator size="small" />

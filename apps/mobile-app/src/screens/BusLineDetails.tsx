@@ -108,10 +108,7 @@ export default function BusLineDetails({
         </Text>
         <TouchableOpacity
           activeOpacity={0.7}
-          onPress={() =>
-            // todo doesn't work
-            navigation.setParams({ direction: direction === 'forward' ? 'reverse' : 'forward' })
-          }
+          onPress={() => console.log('Show bus line details modal')}
         >
           <Ionicons name="information-circle" size={20} />
         </TouchableOpacity>
