@@ -1,5 +1,5 @@
-import {stopBilling} from "./billing";
-import {initialiseUserDoc} from "./user";
+import * as billing from "./billing";
+import * as user from "./user";
 
-exports.initialiseUserDoc = initialiseUserDoc;
-exports.stopBilling = stopBilling;
+exports.user = user;
+exports.billing = billing;

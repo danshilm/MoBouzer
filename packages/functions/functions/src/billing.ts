@@ -5,12 +5,13 @@ const PROJECT_ID = process.env.GOOGLE_CLOUD_PROJECT;
 const PROJECT_NAME = `projects/${PROJECT_ID}`;
 const billing = new CloudBillingClient();
 
-export const stopBilling = functions
+export const forceStop = functions
     .region("asia-southeast1")
     .pubsub.topic("budget-cap-enforcer")
     .onPublish(async (pubsubEvent) => {
       const pubsubData = JSON.parse(Buffer.from(pubsubEvent.data, "base64")
           .toString());
+
       if (pubsubData.costAmount <= pubsubData.budgetAmount) {
         return functions.logger.log(`No action necessary.
           (Current cost: ${pubsubData.costAmount})`);
@@ -42,6 +43,7 @@ const _isBillingEnabled = async (projectName: string): Promise<boolean> => {
         `Unable to determine if billing is enabled on specified project,
         assuming billing is enabled`
     );
+
     return true;
   }
 };
@@ -56,5 +58,6 @@ const _disableBillingForProject = async (projectName: string) => {
     name: projectName,
     projectBillingInfo: {billingAccountName: ""},
   });
+
   return functions.logger.log(`Billing disabled: ${JSON.stringify(res)}`);
 };

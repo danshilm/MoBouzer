@@ -1,20 +1,24 @@
 import * as admin from "firebase-admin";
 import * as functions from "firebase-functions";
 
-// Start writing Firebase Functions
-// https://firebase.google.com/docs/functions/typescript
-
 admin.initializeApp();
 
-export const initialiseUserDoc = functions
+export const initialiseDoc = functions
     .region("asia-southeast1")
     .auth.user()
-    .onCreate((user) => {
-      if (!user.email) {
-        return;
-      }
-
+    .onCreate(async (user) => {
       functions.logger.log(`Adding user ${user.email} to firestore`, user);
-      return admin.firestore().doc(`users/${user.uid}`)
-          .set({email: user.email, darkMode: false}, {merge: true});
+      return await admin
+          .firestore()
+          .doc(`users/${user.uid}`)
+          .set(
+              {
+                email: user.email,
+                ui: {
+                  darkMode: true,
+                },
+                lastLoggedIn: admin.firestore.FieldValue.serverTimestamp(),
+              },
+              {merge: true}
+          );
     });
