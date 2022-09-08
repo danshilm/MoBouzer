@@ -1,5 +1,6 @@
 import distance from '@turf/distance';
 import type { NodeElement, RelationElement, WayElement } from '../interfaces/overpass';
+import { ElementType } from '../interfaces/overpass';
 
 const capitalCoordinates = [57.501438, -20.161313];
 
@@ -12,7 +13,7 @@ export const getForwardDirectionRelationId = (
   busLineData: (RelationElement | NodeElement | WayElement)[]
 ): number => {
   const busLineDirections = busLineData.filter(
-    (element) => element.type === 'relation'
+    (element) => element.type === ElementType.Relation
   ) as RelationElement[];
 
   if (busLineDirections.length < 2) {
@@ -22,7 +23,7 @@ export const getForwardDirectionRelationId = (
   // todo use a reducer?
   const distancesToCapitalCity = busLineDirections.map((element) => {
     const firstNode = busLineData.find(
-      (node) => node.type === 'node' && node.id === element.members[0].ref
+      (node) => node.type === ElementType.Node && node.id === element.members[0].ref
     ) as NodeElement;
 
     if (!firstNode) {

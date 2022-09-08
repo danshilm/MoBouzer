@@ -49,7 +49,7 @@ const updateBusLine = async ({
       direction === 'forward'
         ? (busLineData.find((v) => v.id === forwardDirectionRelationId) as RelationElement)
         : (busLineData.find(
-            (v) => v.type === 'relation' && v.id !== forwardDirectionRelationId
+            (v) => v.type === ElementType.Relation && v.id !== forwardDirectionRelationId
           ) as RelationElement);
 
     if (toUpdate === 'busStops' || toUpdate === 'both') {
