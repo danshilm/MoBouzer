@@ -13,6 +13,7 @@ class CustomOra {
   }
 
   start(text?: string) {
+    logger.info(text);
     this.oraInstance.start(text);
     return this;
   }
