@@ -7,8 +7,19 @@ interface BaseBusLineDocumentBusStopData<T extends App> {
   ref: DocumentReference<T>;
 }
 
+interface BaseBusLineDocumentWayData<T extends App> {
+  id: string;
+  // these need to be in order to be able to draw them
+  // on a map
+  nodes: {
+    id: string;
+    location: GeoPoint<T>;
+  }[];
+}
+
 interface BaseBusLineDocumentDirectionData<T extends App> {
   'bus-stops'?: BaseBusLineDocumentBusStopData<T>[];
+  ways?: BaseBusLineDocumentWayData<T>[];
   'bus-stops-ids'?: string[];
   destination: {
     id: string;

@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@mobouzer/shared": "workspace:*",
+    "@turf/distance": "^6.5.0",
     "axios": "^0.27.2",
     "commander": "^9.4.0",
     "common-tags": "^1.8.2",

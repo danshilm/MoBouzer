@@ -35,6 +35,7 @@ importers:
     specifiers:
       '@mobouzer/shared': workspace:*
       '@tsconfig/node16': ^1.0.3
+      '@turf/distance': ^6.5.0
       '@types/common-tags': ^1.8.1
       '@types/lodash': ^4.14.182
       '@types/node': ^18.6.2
@@ -52,6 +53,7 @@ importers:
       winston: ^3.8.1
     dependencies:
       '@mobouzer/shared': link:../../packages/shared
+      '@turf/distance': 6.5.0
       axios: 0.27.2
       commander: 9.4.0
       common-tags: 1.8.2

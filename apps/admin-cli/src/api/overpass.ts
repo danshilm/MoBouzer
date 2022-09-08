@@ -1,9 +1,13 @@
 import axios from 'axios';
 import { stripIndent } from 'common-tags';
 import { stringify } from 'qs';
-import type { RawOSMRootObject } from '../interfaces/overpass';
+import type {
+  NodeElement,
+  RawOSMRootObject,
+  RelationElement,
+  WayElement,
+} from '../interfaces/overpass';
 import { mauritiusBBox } from '../utils/location';
-import logger from '../utils/logger';
 
 const overpass = axios.create({
   baseURL: 'https://overpass-api.de',
@@ -27,7 +31,8 @@ const query = (...queries: string[]) => {
       ${queries.map((query) => `${query}${bbox};\n`).join('')}
     );
     out body;
-    >;`;
+    >;
+    out body qt;`;
 };
 
 export const getNode = async (id: number | number[]) => {
@@ -36,9 +41,9 @@ export const getNode = async (id: number | number[]) => {
 
   try {
     const res = await post(data);
-    return res.data.elements[0];
+    return Array.isArray(id) ? res.data.elements : res.data.elements[0];
   } catch (error) {
-    logger.error(`Could not retrieve node from Overpass API: ${error}`);
+    throw new Error(`Could not retrieve node ${id} from Overpass API: ${error}`);
   }
 };
 
@@ -49,6 +54,19 @@ export const getAllNodes = async () => {
     const res = await post(data);
     return res.data.elements;
   } catch (error) {
-    logger.error(`Could not retrieve all nodes from Overpass API: ${error}`);
+    throw new Error(`Could not retrieve all nodes from Overpass API: ${error}`);
+  }
+};
+
+export const getBusLine = async (
+  busLineId: string
+): Promise<(NodeElement | WayElement | RelationElement)[]> => {
+  const data = query(`relation[ref="${busLineId}"][type=route][route=bus]`);
+
+  try {
+    const res = await post(data);
+    return res.data.elements;
+  } catch (error) {
+    throw new Error(`Could not retrieve bus line ${busLineId} from Overpass API: ${error}`);
   }
 };
