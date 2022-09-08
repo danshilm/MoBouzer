@@ -4,17 +4,19 @@ import { getAllBusLineIds } from '../../api/firestore';
 import { firebaseStore } from '../../firebase/config';
 import ora from '../../utils/ora';
 
-const updateAggregateBusLine = async (force = false): Promise<void> => {
+const updateAggregateBusLine = async ({ force }: { force: boolean }): Promise<void> => {
   const spinner = ora('Initialising').start();
 
-  const allDocRef = firebaseStore.doc('bus-lines/all');
-  const allDocData = (await allDocRef.get()).data() as AdminBusLine.AllDocumentData | undefined;
+  const allDocRef = firebaseStore.doc(
+    'bus-lines/all'
+  ) as FirebaseFirestore.DocumentReference<AdminBusLine.AllDocumentData>;
+  const allDocData = (await allDocRef.get()).data();
 
   if (!allDocData) {
     spinner.info('Aggregate document not found, creating one').start();
-    await allDocRef.set({ 'bus-lines': [] } as AdminBusLine.AllDocumentData);
+    await allDocRef.set({ 'bus-lines': [] });
 
-    return updateAggregateBusLine(force);
+    return updateAggregateBusLine({ force });
   }
 
   const allDocIds = allDocData['bus-lines'].map((v) => v.id);
@@ -78,7 +80,7 @@ const updateAggregateBusLine = async (force = false): Promise<void> => {
 
     spinner.succeed(`${missing.length} bus lines updated in the aggregate document`);
   } catch (error) {
-    spinner.fail(`Could not update bus lines aggregate document: ${error}`);
+    spinner.fail(`Failed to update bus lines aggregate document: ${error}`);
   }
 };
 

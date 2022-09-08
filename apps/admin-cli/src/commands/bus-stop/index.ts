@@ -7,7 +7,7 @@ const busStopCommand = program.command('bus-stop').description('commands related
 busStopCommand
   .command('update')
   .description('update bus stop')
-  .argument('<id>', 'id of the bus stop to grab from overpass and update firestore document')
+  .argument('<id>', 'id of the bus stop to grab from overpass and update in firestore')
   .option('-f, --force', "don't merge data, instead update document")
   .action(function (busStopId: string) {
     logger.info(busStopId);
@@ -16,9 +16,9 @@ busStopCommand
 busStopCommand
   .command('update-all')
   .description('update aggregate bus stops document')
-  .option('-f, --force', "don't merge data, instead update document")
+  .option('-f, --force', "don't merge data, instead update document", false)
   .action(async function (options: { force: boolean }) {
-    await updateAggregateBusStop(options.force);
+    await updateAggregateBusStop({ force: options.force });
   });
 
 export default busStopCommand;

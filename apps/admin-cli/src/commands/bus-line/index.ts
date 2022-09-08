@@ -6,9 +6,9 @@ const busLineCommand = program.command('bus-line').description('commands related
 busLineCommand
   .command('update-all')
   .description('update aggregate bus lines document')
-  .option('-f, --force', "don't merge data, instead update document")
+  .option('-f, --force', "don't merge data, instead update document", false)
   .action(async function (options: { force: boolean }) {
-    await updateAggregateBusLine(options.force);
+    await updateAggregateBusLine({ force: options.force });
   });
 
 export default busLineCommand;
