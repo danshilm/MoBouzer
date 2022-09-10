@@ -80,7 +80,7 @@ importers:
       '@expo-google-fonts/space-mono': ^0.2.2
       '@expo/config-types': ^45.0.0
       '@expo/vector-icons': ^13.0.0
-      '@gorhom/bottom-sheet': ^4
+      '@gorhom/bottom-sheet': ^4.4.4
       '@mobouzer/shared': workspace:*
       '@react-native-async-storage/async-storage': ~1.17.3
       '@react-native-firebase/app': 14.11.1
@@ -89,7 +89,7 @@ importers:
       '@react-navigation/bottom-tabs': ^6.0.5
       '@react-navigation/native': ^6.0.2
       '@react-navigation/native-stack': ^6.1.0
-      '@rnmapbox/maps': 10.0.0-beta.32
+      '@rnmapbox/maps': 10.0.0-beta.33
       '@skillnation/react-native-firebase-hooks': ^0.5.0
       '@turf/bbox': ^6.5.0
       '@turf/center': ^6.5.0
@@ -138,7 +138,7 @@ importers:
       '@expo-google-fonts/inter': 0.2.2
       '@expo-google-fonts/space-mono': 0.2.2
       '@expo/vector-icons': 13.0.0
-      '@gorhom/bottom-sheet': 4.4.3_7is3lmsjir4h2vukixnkaxadru
+      '@gorhom/bottom-sheet': 4.4.4_7is3lmsjir4h2vukixnkaxadru
       '@mobouzer/shared': link:../../packages/shared
       '@react-native-async-storage/async-storage': 1.17.7_react-native@0.68.2
       '@react-native-firebase/app': 14.11.1_zqxy7fpkavjkgz5xll7ed4r6rq
@@ -147,7 +147,7 @@ importers:
       '@react-navigation/bottom-tabs': 6.3.2_6rwonjqcg3j224gsrcbz5if4si
       '@react-navigation/native': 6.0.11_zqxy7fpkavjkgz5xll7ed4r6rq
       '@react-navigation/native-stack': 6.7.0_6rwonjqcg3j224gsrcbz5if4si
-      '@rnmapbox/maps': 10.0.0-beta.32_zqxy7fpkavjkgz5xll7ed4r6rq
+      '@rnmapbox/maps': 10.0.0-beta.33_zqxy7fpkavjkgz5xll7ed4r6rq
       '@skillnation/react-native-firebase-hooks': 0.5.0_2zetxpmertxqg335exwuntc3he
       '@turf/bbox': 6.5.0
       '@turf/center': 6.5.0
@@ -2168,8 +2168,8 @@ packages:
       - supports-color
     optional: true
 
-  /@gorhom/bottom-sheet/4.4.3_7is3lmsjir4h2vukixnkaxadru:
-    resolution: {integrity: sha512-ZEbCLbvLaEVNa9c+om/o9Le0q7o9GkEM7smhuoFkqj9CIjv3XbpZof7uEKV86yyta+ONAInNYrCdVSpYQ1Rjkg==}
+  /@gorhom/bottom-sheet/4.4.4_7is3lmsjir4h2vukixnkaxadru:
+    resolution: {integrity: sha512-1hJDbdgUMpNVHvOGi6/bWC2CUCz08nzi7XlQpZdl663dVq/kex6Hd0gc7Af5QCJdoeUpWoAvANjWzgDO/Ck8mQ==}
     peerDependencies:
       react: '*'
       react-native: '*'
@@ -2178,12 +2178,10 @@ packages:
     dependencies:
       '@gorhom/portal': 1.0.13_zqxy7fpkavjkgz5xll7ed4r6rq
       invariant: 2.2.4
-      nanoid: 3.3.4
       react: 17.0.2
       react-native: 0.68.2_ogpt7jwnl7hws2znhmqhdzydta
       react-native-gesture-handler: 2.2.1
       react-native-reanimated: 2.8.0_mzokd7szrayhpouqbsglmu5eba
-      react-native-redash: 16.3.0_7is3lmsjir4h2vukixnkaxadru
     dev: false
 
   /@gorhom/portal/1.0.13_zqxy7fpkavjkgz5xll7ed4r6rq:
@@ -2814,8 +2812,8 @@ packages:
       nanoid: 3.3.4
     dev: false
 
-  /@rnmapbox/maps/10.0.0-beta.32_zqxy7fpkavjkgz5xll7ed4r6rq:
-    resolution: {integrity: sha512-rz6RytEohOyOGnMKsvLRHtIdUWF/rX+Mygme8fTOf23MT7bCn/0KsXUVSevK6r420TGhi1wt5mUJ9QCL+SOpUg==}
+  /@rnmapbox/maps/10.0.0-beta.33_zqxy7fpkavjkgz5xll7ed4r6rq:
+    resolution: {integrity: sha512-TXQVbOM5+E6OMkTmVN2jo/S1qtOo4ReUisCylhczxrOFFexmDsUG/nAUj6BKPTYEGLb8QziDHTypEBxyww0+xA==}
     peerDependencies:
       mapbox-gl: ^ 2.9.0
       prop-types: '>=15.5.8'
@@ -3357,10 +3355,6 @@ packages:
     engines: {node: '>=6.5'}
     dependencies:
       event-target-shim: 5.0.1
-
-  /abs-svg-path/0.1.1:
-    resolution: {integrity: sha512-d8XPSGjfyzlXC3Xx891DJRyZfqk5JU0BJrDQcsWomFIV1/BIzPW5HDH5iDdWpqWaav0YVIEzT1RHTwWr0FFshA==}
-    dev: false
 
   /absolute-path/0.0.0:
     resolution: {integrity: sha512-HQiug4c+/s3WOvEnDRxXVmNtSG5s2gJM9r19BTcqjp7BWcE48PB+Y2G6jE65kqI0LpsQeMZygt/b60Gi4KxGyA==}
@@ -8405,12 +8399,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: false
 
-  /normalize-svg-path/1.1.0:
-    resolution: {integrity: sha512-r9KHKG2UUeB5LoTouwDzBy2VxXlHsiM6fyLQvnJa0S5hrhzqElH/CH7TUGhT1fVvIYBIKf3OpY4YJ4CK+iaqHg==}
-    dependencies:
-      svg-arc-to-cubic-bezier: 3.2.0
-    dev: false
-
   /normalize-url/2.0.1:
     resolution: {integrity: sha512-D6MUW4K/VzoJ4rJ01JFKxDrtY1v9wrgzCX5f2qj/lzH1m/lW6MhUZFKerVsnyjOhOsYzI9Kqqak+10l4LvLpMw==}
     engines: {node: '>=4'}
@@ -8741,10 +8729,6 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       pngjs: 3.4.0
-    dev: false
-
-  /parse-svg-path/0.1.2:
-    resolution: {integrity: sha512-JyPSBnkTJ0AI8GGJLfMXvKq42cj5c006fnLz6fXy6zfoVjJizi8BNTpu8on8ziI1cKy9d9DGNuY17Ce7wuejpQ==}
     dev: false
 
   /parseurl/1.3.3:
@@ -9336,23 +9320,6 @@ packages:
       string-hash-64: 1.0.3
     transitivePeerDependencies:
       - supports-color
-    dev: false
-
-  /react-native-redash/16.3.0_7is3lmsjir4h2vukixnkaxadru:
-    resolution: {integrity: sha512-dhmeYbQ/usGzxZSGZmzmRuIFF2LrtJUKqgseKgf9Jdj0JQ7VM20m/LqTg60+wjxeiyAh2D/vKsQ2U7rMkuoplQ==}
-    peerDependencies:
-      react: '*'
-      react-native: '*'
-      react-native-gesture-handler: '*'
-      react-native-reanimated: '>=2.0.0'
-    dependencies:
-      abs-svg-path: 0.1.1
-      normalize-svg-path: 1.1.0
-      parse-svg-path: 0.1.2
-      react: 17.0.2
-      react-native: 0.68.2_ogpt7jwnl7hws2znhmqhdzydta
-      react-native-gesture-handler: 2.2.1
-      react-native-reanimated: 2.8.0_mzokd7szrayhpouqbsglmu5eba
     dev: false
 
   /react-native-safe-area-context/4.2.4_zqxy7fpkavjkgz5xll7ed4r6rq:
@@ -10393,10 +10360,6 @@ packages:
   /supports-preserve-symlinks-flag/1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
-
-  /svg-arc-to-cubic-bezier/3.2.0:
-    resolution: {integrity: sha512-djbJ/vZKZO+gPoSDThGNpKDO+o+bAeA4XQKovvkNCqnIS2t+S4qnLAGQhyyrulhCFRl1WWzAp0wUDV8PpTVU3g==}
-    dev: false
 
   /swr/1.3.0_react@17.0.2:
     resolution: {integrity: sha512-dkghQrOl2ORX9HYrMDtPa7LTVHJjCTeZoB1dqTbnnEDlSvN8JEKpYIYurDfvbQFUUS8Cg8PceFVZNkW0KNNYPw==}
