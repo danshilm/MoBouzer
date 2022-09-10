@@ -78,7 +78,6 @@ importers:
       '@babel/preset-typescript': ^7.18.6
       '@expo-google-fonts/inter': ^0.2.2
       '@expo-google-fonts/space-mono': ^0.2.2
-      '@expo/config-types': ^45.0.0
       '@expo/vector-icons': ^13.0.0
       '@gorhom/bottom-sheet': ^4.4.4
       '@mobouzer/shared': workspace:*
@@ -188,7 +187,6 @@ importers:
     devDependencies:
       '@babel/core': 7.18.10
       '@babel/preset-typescript': 7.18.6_@babel+core@7.18.10
-      '@expo/config-types': 45.0.0
       '@types/geojson': 7946.0.10
       '@types/lodash': 4.14.182
       '@types/react': 17.0.48
@@ -1759,6 +1757,7 @@ packages:
 
   /@expo/config-types/45.0.0:
     resolution: {integrity: sha512-/QGhhLWyaGautgEyU50UJr5YqKJix5t77ePTwreOVAhmZH+ff3nrrtYTTnccx+qF08ZNQmfAyYMCD3rQfzpiJA==}
+    dev: false
 
   /@expo/config/6.0.26:
     resolution: {integrity: sha512-nMQaZl69r6CMJFhCj0xcGJN9bIi4Uws0k9K6q6rGFPFNarS0z0aexeyNLv93/J+hsTJVn0GEYtGz5Y/R8boXxw==}
