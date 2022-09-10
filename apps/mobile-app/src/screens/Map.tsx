@@ -67,7 +67,7 @@ export default function Map() {
         compassFadeWhenNorth={true}
         compassPosition={{ top: 0, right: 0 }}
         // todo put correct location for compass; take into account screen size
-        compassViewMargins={{ y: 100, x: 10 }}
+        compassViewMargins={{ y: 100, x: 16 }}
         attributionEnabled={true}
         attributionPosition={{ bottom: 10, left: 100 }}
         logoEnabled={true}
