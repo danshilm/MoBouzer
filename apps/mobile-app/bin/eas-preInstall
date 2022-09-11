@@ -1,0 +1,43 @@
+#!/usr/bin/env node
+
+// create google-services.json and GoogleService-Info.plist from env variables in EAS Build
+// or .env file if running locally
+function createFirebaseCredentialsFiles() {
+  const path = require('path');
+  const { readFileSync, writeFileSync } = require('fs');
+  let androidGoogleServicesBase64;
+  let iosGoogleServicesBase64;
+
+  if (process.env.EAS_BUILD_RUNNER === 'eas-build') {
+    // normal workflow
+    androidGoogleServicesBase64 = process.env.GOOGLE_SERVICES_ANDROID_BASE64;
+    iosGoogleServicesBase64 = process.env.GOOGLE_SERVICES_IOS_BASE64;
+  } else {
+    // create google-services.json and GoogleService-Info.plist from .env file
+    const filePath = path.join(__dirname, '../.env');
+    const envFileString = readFileSync(filePath).toString('ascii');
+
+    iosGoogleServicesBase64 = new RegExp(/(?<=GOOGLE_SERVICES_IOS_BASE64=).*/).exec(
+      envFileString
+    )[0];
+
+    androidGoogleServicesBase64 = new RegExp(/(?<=GOOGLE_SERVICES_ANDROID_BASE64=).*/).exec(
+      envFileString
+    )[0];
+  }
+
+  if (!iosGoogleServicesBase64 || !androidGoogleServicesBase64) {
+    throw new Error('Failed to create firebase credentials files');
+  }
+
+  writeFileSync(
+    path.join(__dirname, '../google-services.json'),
+    Buffer.from(androidGoogleServicesBase64, 'base64').toString('ascii')
+  );
+  writeFileSync(
+    path.join(__dirname, '../GoogleService-Info.plist'),
+    Buffer.from(iosGoogleServicesBase64, 'base64').toString('ascii')
+  );
+}
+
+createFirebaseCredentialsFiles();
