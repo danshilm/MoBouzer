@@ -62,6 +62,7 @@ const expoConfig = {
       firebaseExpoGoClientId: process.env.FIREBASE_EXPO_GO_CLIENT_ID,
       firebaseiOSClientId: process.env.FIREBASE_IOS_CLIENT_ID,
       mapboxToken: process.env.RNMAPBOX_TOKEN,
+      sentryDsn: process.env.SENTRY_DSN,
     },
     plugins: [
       // only required by @react-native-firebase >= v15.0.0
@@ -74,7 +75,20 @@ const expoConfig = {
           RNMapboxMapsImpl: 'maplibre',
         },
       ],
+      'sentry-expo',
     ],
+    hooks: {
+      postPublish: [
+        {
+          file: 'sentry-expo/upload-sourcemaps',
+          config: {
+            organization: process.env.SENTRY_ORG,
+            project: process.env.SENTRY_PROJECT,
+            authToken: process.env.SENTRY_AUTH_TOKEN,
+          },
+        },
+      ],
+    },
   } as ExpoConfig,
 };
 

@@ -37,6 +37,7 @@
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/native-stack": "^6.1.0",
     "@rnmapbox/maps": "10.0.0-beta.33",
+    "@sentry/react-native": "4.2.2",
     "@skillnation/react-native-firebase-hooks": "^0.5.0",
     "@turf/bbox": "^6.5.0",
     "@turf/center": "^6.5.0",
@@ -50,6 +51,7 @@
     "expo-checkbox": "~2.2.0",
     "expo-constants": "~13.2.4",
     "expo-dev-client": "~1.2.1",
+    "expo-device": "~4.3.0",
     "expo-font": "~10.2.0",
     "expo-linking": "~3.2.2",
     "expo-location": "~14.3.0",
@@ -71,6 +73,7 @@
     "react-native-safe-area-context": "4.3.1",
     "react-native-screens": "~3.15.0",
     "react-native-web": "~0.18.7",
+    "sentry-expo": "~5.0.0",
     "swr": "^1.2.2",
     "twrnc": "^3.3.2",
     "yup": "^0.32.11"
