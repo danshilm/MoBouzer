@@ -23,6 +23,7 @@ const updateBusLine = async ({
 }) => {
   const spinner = ora('Working...').start();
 
+  // by default, update both the bus-stops and ways
   const toUpdate =
     !options.ways && !options.busStops
       ? 'both'
@@ -35,14 +36,19 @@ const updateBusLine = async ({
   const busLineData = await getBusLine(id);
 
   if (busLineData.length === 0) {
-    return spinner.fail(`No bus lines with the id ${id} can be found`);
+    return spinner.fail(`No bus line ${id} can be found`);
   }
 
   const busLineRef = firebaseStore.doc(
     `bus-lines/${id}`
   ) as FirebaseFirestore.DocumentReference<AdminBusLine.DocumentData>;
 
+  const isNewBusLine = !!(await busLineRef.get()).exists;
+
+  // set the id here since new bus lines won't have any data in their document
   const updatedData = { id };
+  // use this to force the individual bus-stop/way entries to be replaced,
+  // but keep the "top" level keys
   const mergeFields: string[] = [];
 
   try {
@@ -86,7 +92,7 @@ const updateBusLine = async ({
       };
 
       spinner
-        .info(`${updatedBusLineStops.length} bus stops will be added to the ${id} bus line`)
+        .info(`${updatedBusLineStops.length} bus stops will be added to the bus line ${id}`)
         .start('Working...');
 
       set(updatedData, `direction.${direction}.bus-stops`, updatedBusLineStops);
@@ -122,7 +128,7 @@ const updateBusLine = async ({
         });
 
       spinner
-        .info(`${updatedBusLineWays.length} ways will be set for the ${id} bus line`)
+        .info(`${updatedBusLineWays.length} ways will be set for the bus line ${id}`)
         .start(`Working...`);
 
       set(updatedData, `direction.${direction}.ways`, updatedBusLineWays);
@@ -143,7 +149,7 @@ const updateBusLine = async ({
 
     spinner.succeed('Done');
   } catch (error) {
-    spinner.fail(`Failed to update ${id} bus line: ${error}`);
+    spinner.fail(`Failed to update bus line ${id}: ${error}`);
   }
 };
 
