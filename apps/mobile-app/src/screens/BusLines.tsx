@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import type { BusLine } from '@mobouzer/shared';
-import { useDocumentDataOnce } from '@skillnation/react-native-firebase-hooks/firestore';
+import { useDocumentData } from '@skillnation/react-native-firebase-hooks/firestore';
 import React from 'react';
 import { ActivityIndicator, ScrollView, Text, View } from 'react-native';
 import BusLineCard from '../components/BusLineCard';
@@ -10,7 +10,7 @@ import tw from '../lib/tailwind';
 import type { BusLinesStackScreenProps } from '../navigation/types';
 
 export default function BusLines({ navigation }: BusLinesStackScreenProps<'BusLines'>) {
-  const [allBuslines, allBusLinesLoading] = useDocumentDataOnce<BusLine.AllDocumentData>(
+  const [allBuslines, allBusLinesLoading] = useDocumentData<BusLine.AllDocumentData>(
     firebaseStore().doc('bus-lines/all')
   );
 
