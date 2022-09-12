@@ -1,6 +1,5 @@
 import type { AdminBusLine } from '@mobouzer/shared';
 import { GeoPoint } from 'firebase-admin/firestore';
-import set from 'lodash/set';
 import { getBusLine } from '../../api/overpass';
 import { firebaseStore } from '../../firebase/config';
 import type { NodeElement, RelationElement, WayElement } from '../../interfaces/overpass';
@@ -41,8 +40,6 @@ const updateBusLine = async ({
     `bus-lines/${id}`
   ) as FirebaseFirestore.DocumentReference<AdminBusLine.DocumentData>;
 
-  const updatedData: Partial<AdminBusLine.DocumentData> = { id };
-
   try {
     const forwardDirectionRelationId = getForwardDirectionRelationId(busLineData);
     const relationData =
@@ -68,11 +65,11 @@ const updateBusLine = async ({
           };
         });
 
-      set(updatedData, `direction.${direction}.bus-stops`, updatedBusLineStops);
-
       spinner
         .info(`${updatedBusLineStops.length} bus stops will be added to the ${id} bus line`)
         .start('Working...');
+
+      await busLineRef.update(`direction.${direction}.bus-stops`, updatedBusLineStops);
     }
 
     if (toUpdate === 'ways' || toUpdate === 'both') {
@@ -96,14 +93,13 @@ const updateBusLine = async ({
           };
         });
 
-      set(updatedData, `direction.${direction}.ways`, updatedBusLineWays);
-
       spinner
         .info(`${updatedBusLineWays.length} ways will be set for the ${id} bus line`)
         .start(`Working...`);
+
+      await busLineRef.update(`direction.${direction}.ways`, updatedBusLineWays);
     }
 
-    await busLineRef.set(updatedData as AdminBusLine.DocumentData);
     spinner.succeed('Done');
   } catch (error) {
     spinner.fail(`Failed to update ${id} bus line: ${error}`);
