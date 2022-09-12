@@ -59,7 +59,7 @@ export default function FormTextInput({
           autoCorrect={false}
           autoCapitalize={'none'}
           importantForAutofill="yesExcludeDescendants"
-          // placeholderTextColor={gray[300]}
+          placeholderTextColor={gray[300]}
           {...props}
           {...rest}
         />

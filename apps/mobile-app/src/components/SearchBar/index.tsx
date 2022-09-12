@@ -39,7 +39,7 @@ export default function SearchBar({
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
         placeholder={placeholder}
-        // placeholderTextColor={gray[300]}
+        placeholderTextColor={gray[300]}
         value={searchValue}
         onChangeText={(e) => setSearchValue(e)}
       />
