@@ -1,7 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import type { BusLine } from '@mobouzer/shared';
 import type { OnPressEvent } from '@rnmapbox/maps';
-import MapboxGL, { Camera, CircleLayer, MapView, ShapeSource } from '@rnmapbox/maps';
+import MapboxGL, { Camera, CircleLayer, LineLayer, MapView, ShapeSource } from '@rnmapbox/maps';
 import { useDocumentDataOnce } from '@skillnation/react-native-firebase-hooks/firestore';
 import bbox from '@turf/bbox';
 import center from '@turf/center';
@@ -27,6 +27,7 @@ export default function BusLineDetails({
     firebaseStore().doc(`bus-lines/${id}`)
   );
   const busStops = value?.direction[direction]['bus-stops'];
+  const ways = value?.direction[direction].ways;
   const cameraRef = useRef<Camera>(null);
   const mapHeight = useRef<number>(0);
 
@@ -140,7 +141,7 @@ export default function BusLineDetails({
               id={`bus-stops`}
               shape={{
                 type: 'FeatureCollection',
-                features: value.direction[direction]['bus-stops']!.map((busStop) => ({
+                features: busStops.map((busStop) => ({
                   type: 'Feature',
                   id: `busStop-${busStop.id}`,
                   geometry: {
@@ -154,7 +155,28 @@ export default function BusLineDetails({
               clusterRadius={5}
               onPress={handleMarkerPress}
             >
-              <CircleLayer id={`layer`} style={{ circleColor: '#000', circleRadius: 5 }} />
+              <CircleLayer id={`busStops-layer`} style={{ circleColor: '#000', circleRadius: 5 }} />
+            </ShapeSource>
+          )}
+          {ways && (
+            <ShapeSource
+              id={`ways`}
+              shape={{
+                type: 'MultiLineString',
+                coordinates: ways.map((way) =>
+                  way.nodes.map((node) => [node.location.longitude, node.location.latitude])
+                ),
+              }}
+            >
+              <LineLayer
+                id={`ways-layer`}
+                style={{
+                  lineWidth: 5,
+                  lineColor: '#000',
+                  lineCap: 'round',
+                  lineJoin: 'round',
+                }}
+              />
             </ShapeSource>
           )}
         </MapView>
