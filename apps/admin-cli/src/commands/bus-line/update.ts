@@ -7,6 +7,7 @@ import type { NodeElement, RelationElement, WayElement } from '../../interfaces/
 import { ElementType } from '../../interfaces/overpass';
 import { getForwardDirectionRelationId } from '../../utils/bus-line';
 import ora from '../../utils/ora';
+import updateAggregateBusLine from './updateAll';
 
 const updateBusLine = async ({
   id,
@@ -132,6 +133,14 @@ const updateBusLine = async ({
     await busLineRef.set(updatedData as AdminBusLine.DocumentData, {
       mergeFields: mergeFields,
     });
+
+    if (isNewBusLine) {
+      spinner
+        .info(`Bus line ${id} is a new bus line, also updating the aggregate doc`)
+        .start('Working...');
+      await updateAggregateBusLine({ force: false });
+    }
+
     spinner.succeed('Done');
   } catch (error) {
     spinner.fail(`Failed to update ${id} bus line: ${error}`);
