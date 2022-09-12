@@ -1,5 +1,6 @@
 import type { AdminBusLine } from '@mobouzer/shared';
 import { GeoPoint } from 'firebase-admin/firestore';
+import { set } from 'lodash';
 import { getBusLine } from '../../api/overpass';
 import { firebaseStore } from '../../firebase/config';
 import type { NodeElement, RelationElement, WayElement } from '../../interfaces/overpass';
@@ -39,6 +40,9 @@ const updateBusLine = async ({
   const busLineRef = firebaseStore.doc(
     `bus-lines/${id}`
   ) as FirebaseFirestore.DocumentReference<AdminBusLine.DocumentData>;
+
+  const updatedData = { id };
+  const mergeFields: string[] = [];
 
   try {
     const forwardDirectionRelationId = getForwardDirectionRelationId(busLineData);
@@ -84,11 +88,15 @@ const updateBusLine = async ({
         .info(`${updatedBusLineStops.length} bus stops will be added to the ${id} bus line`)
         .start('Working...');
 
-      await Promise.all([
-        busLineRef.update(`direction.${direction}.bus-stops`, updatedBusLineStops),
-        busLineRef.update(`direction.${direction}.origin`, origin),
-        busLineRef.update(`direction.${direction}.destination`, destination),
-      ]);
+      set(updatedData, `direction.${direction}.bus-stops`, updatedBusLineStops);
+      set(updatedData, `direction.${direction}.origin`, origin);
+      set(updatedData, `direction.${direction}.destination`, destination);
+
+      mergeFields.push(
+        `direction.${direction}.bus-stops`,
+        `direction.${direction}.origin`,
+        `direction.${direction}.destination`
+      );
     }
 
     if (toUpdate === 'ways' || toUpdate === 'both') {
@@ -116,9 +124,14 @@ const updateBusLine = async ({
         .info(`${updatedBusLineWays.length} ways will be set for the ${id} bus line`)
         .start(`Working...`);
 
-      await busLineRef.update(`direction.${direction}.ways`, updatedBusLineWays);
+      set(updatedData, `direction.${direction}.ways`, updatedBusLineWays);
+
+      mergeFields.push(`direction.${direction}.ways`);
     }
 
+    await busLineRef.set(updatedData as AdminBusLine.DocumentData, {
+      mergeFields: mergeFields,
+    });
     spinner.succeed('Done');
   } catch (error) {
     spinner.fail(`Failed to update ${id} bus line: ${error}`);
