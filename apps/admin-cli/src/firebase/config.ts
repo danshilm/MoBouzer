@@ -10,5 +10,6 @@ const firebaseApp = initializeApp({
 
 // export const firebaseStore = firestore(firebaseApp);
 export const firebaseStore = getFirestore(firebaseApp);
+firebaseStore.settings({ ignoreUndefinedProperties: true });
 
 export default firebaseApp;
