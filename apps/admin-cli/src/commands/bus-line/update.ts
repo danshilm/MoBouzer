@@ -65,11 +65,30 @@ const updateBusLine = async ({
           };
         });
 
+      const firstBusStop = updatedBusLineStops[0];
+      const lastBusStop = updatedBusLineStops[updatedBusLineStops.length - 1];
+
+      const origin: AdminBusLine.DocumentDirectionData['origin'] = {
+        id: firstBusStop.id,
+        name: relationData.tags.from ?? firstBusStop.name ?? 'Unknown',
+        ref: firebaseStore.doc(`bus-stops/${firstBusStop.id}`),
+      };
+
+      const destination: AdminBusLine.DocumentDirectionData['destination'] = {
+        id: lastBusStop.id,
+        name: relationData.tags.to ?? lastBusStop.name ?? 'Unknown',
+        ref: firebaseStore.doc(`bus-stops/${lastBusStop.id}`),
+      };
+
       spinner
         .info(`${updatedBusLineStops.length} bus stops will be added to the ${id} bus line`)
         .start('Working...');
 
-      await busLineRef.update(`direction.${direction}.bus-stops`, updatedBusLineStops);
+      await Promise.all([
+        busLineRef.update(`direction.${direction}.bus-stops`, updatedBusLineStops),
+        busLineRef.update(`direction.${direction}.origin`, origin),
+        busLineRef.update(`direction.${direction}.destination`, destination),
+      ]);
     }
 
     if (toUpdate === 'ways' || toUpdate === 'both') {
