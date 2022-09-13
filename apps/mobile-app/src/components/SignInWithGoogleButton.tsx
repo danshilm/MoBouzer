@@ -6,6 +6,7 @@ import { ActivityIndicator, Text } from 'react-native';
 import { gray } from 'tailwindcss/colors';
 import { firebaseAuth } from '../firebase/utils';
 import tw from '../lib/tailwind';
+import Sentry from '../utils/sentry';
 import Button from './Common/Button';
 
 export default function SignInWithGoogleButton() {
@@ -28,7 +29,7 @@ export default function SignInWithGoogleButton() {
         // Sign-in the user with the credential
         await firebaseAuth()
           .signInWithCredential(googleCredential)
-          .catch((reason) => console.log(reason));
+          .catch((reason) => Sentry.Native.captureException(reason));
       }
       setLoading(false);
     };

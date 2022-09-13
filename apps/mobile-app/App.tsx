@@ -3,10 +3,10 @@ import 'expo-dev-client';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import * as Sentry from 'sentry-expo';
 import { SettingsProvider } from './src/context/SettingsContext';
 import useCachedResources from './src/hooks/useCachedResources';
 import Navigation from './src/navigation';
+import Sentry from './src/utils/sentry';
 
 Sentry.init({
   dsn: Constants.manifest?.extra?.sentryDsn,
