@@ -1,11 +1,15 @@
 import { Ionicons } from '@expo/vector-icons';
+import type { NavigationProp } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import tw from '../lib/tailwind';
-import { navigationRef } from '../navigation/utils';
+import type { RootStackParamList } from '../navigation/types';
 
 export default function Error({ code }: { code?: number }) {
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+
   const getErrorMessage = (code?: number) => {
     switch (code) {
       case 404:
@@ -25,7 +29,7 @@ export default function Error({ code }: { code?: number }) {
           style={tw`flex-row items-center mt-2`}
           activeOpacity={0.7}
           onPress={() => {
-            navigationRef.navigate('HomeTab', { screen: 'Map' });
+            navigation.navigate('HomeTab', { screen: 'Map' });
           }}
         >
           <Ionicons name="enter-outline" size={25} />
