@@ -23,6 +23,7 @@ import BusLines from '../screens/BusLines';
 import Loading from '../screens/Loading';
 import Map from '../screens/Map';
 import ModalScreen from '../screens/ModalScreen';
+import NotFoundScreen from '../screens/NotFoundScreen';
 import Onboarding from '../screens/Onboarding';
 import SignIn from '../screens/SignIn';
 import SignUp from '../screens/SignUp';
@@ -95,6 +96,7 @@ function RootNavigator() {
         component={ModalScreen}
         options={{ presentation: 'modal', animation: 'slide_from_bottom', headerShown: true }}
       />
+      <Stack.Screen name="NotFound" component={NotFoundScreen} />
     </Stack.Navigator>
   );
 }
