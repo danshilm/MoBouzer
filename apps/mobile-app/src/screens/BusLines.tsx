@@ -7,9 +7,8 @@ import BusLineCard from '../components/BusLineCard';
 import ViewWithSearchBar from '../components/SearchBar/ViewWithSearchBar';
 import { firebaseStore } from '../firebase/utils';
 import tw from '../lib/tailwind';
-import type { BusLinesStackScreenProps } from '../navigation/types';
 
-export default function BusLines({ navigation }: BusLinesStackScreenProps<'BusLines'>) {
+export default function BusLines() {
   const [allBuslines, allBusLinesLoading] = useDocumentData<BusLine.AllDocumentData>(
     firebaseStore().doc('bus-lines/all')
   );
@@ -47,7 +46,7 @@ export default function BusLines({ navigation }: BusLinesStackScreenProps<'BusLi
               </View>
               <View style={tw`mt-3`}>
                 {allBuslines?.['bus-lines'].map((busline) => (
-                  <BusLineCard data={busline} key={busline.id} navigation={navigation} />
+                  <BusLineCard data={busline} key={busline.id} />
                 ))}
               </View>
             </>

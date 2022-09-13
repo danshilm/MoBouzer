@@ -1,25 +1,21 @@
 import { Entypo, Ionicons } from '@expo/vector-icons';
 import type { BusLine } from '@mobouzer/shared';
-import type { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
-import type { CompositeNavigationProp } from '@react-navigation/native';
-import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useNavigation } from '@react-navigation/native';
 import { MotiPressable } from 'moti/interactions';
 import React, { useMemo } from 'react';
 import { Text, View } from 'react-native';
 import tw from '../lib/tailwind';
-import type { BusLinesStackParamList, HomeTabParamList } from '../navigation/types';
+import type { BusLinesStackScreenProps } from '../navigation/types';
 
 interface BusLineProps {
   data: BusLine.AllDocumentBusStopData;
-  // use the BusLinesStack navigator so we can be free of the router state when
-  // going back to the grandparent navigator
-  navigation: CompositeNavigationProp<
-    NativeStackNavigationProp<BusLinesStackParamList, 'BusLines'>,
-    BottomTabNavigationProp<HomeTabParamList, keyof HomeTabParamList>
-  >;
 }
 
-export default function BusLineCard({ data, navigation }: BusLineProps) {
+export default function BusLineCard({ data }: BusLineProps) {
+  // use the BusLinesStack navigator so we can be free of the router state when
+  // going back to the grandparent navigator
+  const navigation = useNavigation<BusLinesStackScreenProps<'BusLines'>['navigation']>();
+
   return (
     <MotiPressable
       style={tw`w-full h-[50px] bg-white rounded-xl flex flex-row px-2.5 py-2.5 my-[2.5px]`}
