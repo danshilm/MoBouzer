@@ -3,7 +3,7 @@ import { Platform, Text, View } from 'react-native';
 import EditScreenInfo from '../components/EditScreenInfo';
 import tw from '../lib/tailwind';
 
-export default function ModalScreen() {
+export default function Modal() {
   return (
     <View style={tw`flex items-center justify-center flex-1 bg-white dark:bg-black`}>
       <Text style={tw`text-xl font-bold dark:text-gray-100`}>Modal</Text>

@@ -22,12 +22,12 @@ import BusLineDetails from '../screens/BusLineDetails';
 import BusLines from '../screens/BusLines';
 import Loading from '../screens/Loading';
 import Map from '../screens/Map';
-import ModalScreen from '../screens/ModalScreen';
-import NotFoundScreen from '../screens/NotFoundScreen';
+import Modal from '../screens/Modal';
+import NotFound from '../screens/NotFound';
 import Onboarding from '../screens/Onboarding';
 import SignIn from '../screens/SignIn';
 import SignUp from '../screens/SignUp';
-import TabOneScreen from '../screens/TabOneScreen';
+import TabOne from '../screens/TabOne';
 import LinkingConfiguration from './LinkingConfiguration';
 import type {
   BusLinesStackParamList,
@@ -93,10 +93,10 @@ function RootNavigator() {
       )}
       <Stack.Screen
         name="Modal"
-        component={ModalScreen}
+        component={Modal}
         options={{ presentation: 'modal', animation: 'slide_from_bottom', headerShown: true }}
       />
-      <Stack.Screen name="NotFound" component={NotFoundScreen} />
+      <Stack.Screen name="NotFound" component={NotFound} />
     </Stack.Navigator>
   );
 }
@@ -124,7 +124,7 @@ function HomeTabNavigator() {
     >
       <BottomTab.Screen
         name="TabOne"
-        component={TabOneScreen}
+        component={TabOne}
         options={({ navigation }: HomeTabScreenProps<'TabOne'>) => ({
           title: 'Tab One',
           headerShown: true,

@@ -3,7 +3,7 @@ import { Text, View } from 'react-native';
 import EditScreenInfo from '../components/EditScreenInfo';
 import tw from '../lib/tailwind';
 
-export default function TabOneScreen() {
+export default function TabOne() {
   return (
     <View style={tw`flex-1 bg-white dark:bg-zinc-900`}>
       <View style={tw`flex items-center justify-center flex-1`}>
