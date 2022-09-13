@@ -48,7 +48,7 @@ const expoConfig = {
     },
     extra: {
       eas: {
-        projectId: 'f33a6450-f743-4b82-8781-8a9389580475',
+        projectId: process.env.EAS_PROJECT_ID,
       },
       firebaseApiKey: process.env.FIREBASE_API_KEY,
       firebaseAuthDomain: process.env.FIREBASE_AUTH_DOMAIN,
