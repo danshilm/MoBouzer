@@ -8,6 +8,7 @@ export const centreCoordinates = [57.558065, -20.241753];
 
 export const cameraDefaultSettings: CameraStop = {
   heading: 0,
+  animationMode: 'flyTo',
   animationDuration: 1000,
   centerCoordinate: centreCoordinates,
   zoomLevel: 8.7,
