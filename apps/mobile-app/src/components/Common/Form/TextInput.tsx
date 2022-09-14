@@ -64,7 +64,11 @@ export default function FormTextInput({
           {...rest}
         />
         {as === 'password' && (
-          <TouchableOpacity activeOpacity={0.7} onPress={() => setIsShown(!isShown)}>
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={() => setIsShown(!isShown)}
+            accessibilityLabel="toggle password input field visibility"
+          >
             <Ionicons
               size={20}
               name={isShown ? 'md-eye-off' : 'md-eye'}

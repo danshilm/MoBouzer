@@ -42,6 +42,7 @@ export default function SearchBar({
         placeholderTextColor={gray[300]}
         value={searchValue}
         onChangeText={(e) => setSearchValue(e)}
+        accessibilityLabel="search input"
       />
       <View style={tw`flex items-center`}>
         <View style={tw`flex justify-center h-full ml-1`}>
@@ -55,6 +56,7 @@ export default function SearchBar({
                 source={{ uri: user.photoURL }}
                 loadingIndicatorSource={require('../../../assets/images/person.png')}
                 style={tw`w-7.5 h-7.5 rounded-md`}
+                accessibilityLabel="profile picture"
               />
             ) : (
               <Ionicons name="person" size={20} color={gray[500]} />

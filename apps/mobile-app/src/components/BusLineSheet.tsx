@@ -92,12 +92,14 @@ export default function BusLineSheet({
           <View style={tw`flex-1`}>
             {/* Header */}
             <TouchableWithoutFeedback
+              accessibilityLabel="bottom sheet header"
               style={tw`h-[15] rounded-[10px]`}
               onPress={handleSheetHeaderPress}
             >
               <View style={tw`flex-row items-center mx-2`}>
                 <View style={tw`items-center justify-center h-15 w-17`}>
                   <Pressable
+                    accessibilityLabel="flip bus line direction"
                     style={({ pressed }) =>
                       tw.style(
                         `items-center justify-center w-10 h-10 p-1 rounded-lg border-gray-600 border-opacity-60`,

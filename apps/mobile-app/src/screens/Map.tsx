@@ -84,6 +84,7 @@ export default function Map() {
         attributionPosition={{ bottom: 10, left: 100 }}
         logoEnabled={true}
         logoPosition={{ bottom: 10, left: 10 }}
+        accessibilityLabel="map"
       >
         <Camera defaultSettings={cameraDefaultSettingsWithPadding} ref={cameraRef} />
         {allBusStops && (

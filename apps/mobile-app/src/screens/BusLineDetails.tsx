@@ -29,6 +29,7 @@ export default function BusLineDetails({
   const busStops = value?.direction[direction]['bus-stops'];
   const ways = value?.direction[direction].ways;
   const cameraRef = useRef<Camera>(null);
+  // used to determine how to adjust the map as the bottom sheet changes position
   const mapHeight = useRef<number>(0);
 
   /**
@@ -101,6 +102,7 @@ export default function BusLineDetails({
           activeOpacity={0.7}
           onPress={() => navigation.goBack()}
           style={tw`flex flex-row items-center h-12 pr-3`}
+          accessibilityLabel="back button"
         >
           <Ionicons name="arrow-back" size={20} style={tw`text-gray-800 dark:text-gray-300`} />
         </TouchableOpacity>
@@ -134,6 +136,7 @@ export default function BusLineDetails({
           attributionPosition={{ bottom: 10, left: 100 }}
           logoEnabled={true}
           logoPosition={{ bottom: 10, left: 10 }}
+          accessibilityLabel="map"
         >
           <Camera defaultSettings={cameraDefaultSettings} ref={cameraRef} />
           {busStops && (

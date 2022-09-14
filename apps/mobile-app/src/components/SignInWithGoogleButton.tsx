@@ -47,6 +47,7 @@ export default function SignInWithGoogleButton() {
           setLoading(true);
           promptAsync();
         }}
+        accessibilityLabel="sign in with google button"
       >
         {loading ? (
           <ActivityIndicator color={gray[800]} />

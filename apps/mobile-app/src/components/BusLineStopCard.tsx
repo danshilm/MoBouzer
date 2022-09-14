@@ -21,7 +21,10 @@ export default function BusLineStopCard({
   const [isLive, _setIsLive] = useState(false);
 
   return (
-    <View style={tw`h-[60px] flex-1 flex-row overflow-hidden`}>
+    <View
+      style={tw`h-[60px] flex-1 flex-row overflow-hidden`}
+      accessibilityLabel={`${data.name ?? 'unnamed'} bus stop card`}
+    >
       <View style={tw`ml-2`}>
         {isFirstStop ? (
           <View style={tw`items-center h-full pt-6 w-17`}>

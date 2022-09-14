@@ -3,7 +3,7 @@ import type { TouchableOpacityProps, ViewStyle } from 'react-native';
 import { TouchableOpacity } from 'react-native';
 import tw from '../../lib/tailwind';
 
-interface ButtonProps extends TouchableOpacityProps {
+export interface ButtonProps extends TouchableOpacityProps {
   children?: React.ReactNode;
   style?: ViewStyle;
   type?: 'default' | 'primary';

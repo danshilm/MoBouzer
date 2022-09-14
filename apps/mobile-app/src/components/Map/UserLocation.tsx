@@ -20,7 +20,12 @@ export default function UserLocation({ style }: { style?: ViewStyle }) {
   };
 
   return (
-    <Button size="sm" style={tw.style('rounded-full', style)} onPress={requestUserLocation}>
+    <Button
+      size="sm"
+      style={tw.style('rounded-full', style)}
+      onPress={requestUserLocation}
+      accessibilityLabel="acquire user location button"
+    >
       <Ionicons name="locate-outline" size={30} />
     </Button>
   );

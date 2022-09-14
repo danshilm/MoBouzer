@@ -31,6 +31,9 @@ export default function BusLineCard({ data }: BusLineProps) {
         []
       )}
       onPress={() => navigation.push('BusLineDetails', { id: data.id, direction: 'forward' })}
+      // show info modal on long press
+      onLongPress={() => undefined}
+      accessibilityLabel={`${data.id} ${data.origin} -> ${data.destination} bus line card`}
     >
       <View
         style={tw`flex items-center justify-center border border-gray-300 rounded-md w-12 h-7.5`}

@@ -31,6 +31,7 @@ export default function DropdownMenu({
               tw.style('w-32 h-9 flex flex-row items-center', pressed && 'bg-gray-100')
             }
             onPress={() => setIsDropdownOpen(false)}
+            accessibilityLabel="profile button"
           >
             <Ionicons name="person-outline" size={18} style={tw`w-4.5 ml-3 mr-2`} />
             <Text style={tw`text-gray-800 font-inter`}>Profile</Text>
@@ -40,6 +41,7 @@ export default function DropdownMenu({
               tw.style('w-32 h-9 flex flex-row items-center', pressed && 'bg-gray-100')
             }
             onPress={() => setIsDropdownOpen(false)}
+            accessibilityLabel="settings button"
           >
             <Ionicons name="settings-outline" size={18} style={tw`w-4.5 ml-3 mr-2`} />
             <Text style={tw`text-gray-800 font-inter`}>Settings</Text>
@@ -49,6 +51,7 @@ export default function DropdownMenu({
               tw.style('w-32 h-9 flex flex-row items-center', pressed && 'bg-gray-100')
             }
             onPress={() => firebaseAuth().signOut()}
+            accessibilityLabel="sign out button"
           >
             <Ionicons name="exit-outline" size={18} style={tw`w-4.5 ml-3 mr-2`} />
             <Text style={tw`text-gray-800 font-inter`}>Log Out</Text>

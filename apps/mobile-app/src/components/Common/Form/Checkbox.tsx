@@ -1,20 +1,24 @@
+import type { CheckboxProps as BaseCheckboxProps } from 'expo-checkbox';
 import Checkbox from 'expo-checkbox';
 import React from 'react';
 import { Text, View } from 'react-native';
 import { gray, red } from 'tailwindcss/colors';
 import tw from '../../../lib/tailwind';
 
+interface CheckboxProps extends BaseCheckboxProps {
+  value: boolean;
+  onValueChange: (value: boolean) => void;
+  errorMessage?: string;
+  children?: React.ReactNode;
+}
+
 export default function FormCheckbox({
   value = false,
   onValueChange,
   errorMessage,
   children,
-}: {
-  value: boolean;
-  onValueChange: (value: boolean) => void;
-  errorMessage?: string;
-  children?: React.ReactNode;
-}) {
+  ...rest
+}: CheckboxProps) {
   return (
     <View>
       <View style={tw`flex flex-row items-center mt-2`}>
@@ -23,6 +27,7 @@ export default function FormCheckbox({
           color={errorMessage ? red[700] : value ? gray[700] : gray[400]}
           value={value}
           onValueChange={onValueChange}
+          {...rest}
         />
         {children}
       </View>

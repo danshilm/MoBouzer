@@ -30,6 +30,7 @@ export default function SignIn({ navigation }: RootStackScreenProps<'SignIn'>) {
               activeOpacity={0.7}
               onPress={() => navigation.goBack()}
               style={tw`flex flex-row items-center h-12`}
+              accessibilityLabel="back button"
             >
               <Ionicons name="arrow-back" size={20} style={tw`text-gray-800 dark:text-gray-300`} />
               <Text style={tw`ml-2 text-base text-gray-800 font-inter-medium dark:text-gray-300`}>
@@ -66,6 +67,7 @@ export default function SignIn({ navigation }: RootStackScreenProps<'SignIn'>) {
                     onChangeText={handleChange('email')}
                     onBlur={handleBlur('email')}
                     errorMessage={errors.email && touched.email ? errors.email : undefined}
+                    accessibilityLabel="email address text input"
                   />
                   <FormTextInput
                     label="Password"
@@ -75,6 +77,7 @@ export default function SignIn({ navigation }: RootStackScreenProps<'SignIn'>) {
                     onChangeText={handleChange('password')}
                     onBlur={handleBlur('password')}
                     errorMessage={errors.password && touched.password ? errors.password : undefined}
+                    accessibilityLabel="password text input"
                   />
                   <FormButton
                     text="Sign In"
@@ -85,6 +88,7 @@ export default function SignIn({ navigation }: RootStackScreenProps<'SignIn'>) {
                         ? 'Oops, something went wrong'
                         : undefined
                     }
+                    accessibilityLabel="sign in button"
                   />
                   <DisplayFirebaseAuthError error={error} />
                 </View>
@@ -100,6 +104,7 @@ export default function SignIn({ navigation }: RootStackScreenProps<'SignIn'>) {
             style={tw`ml-2`}
             activeOpacity={0.7}
             onPress={() => navigation.navigate('SignUp')}
+            accessibilityLabel="link to sign up screen"
           >
             <Text style={tw`text-gray-700 underline dark:text-gray-300 font-inter-semibold`}>
               Sign Up

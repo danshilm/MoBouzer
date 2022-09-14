@@ -34,6 +34,7 @@ export default function SignUp({ navigation }: RootStackScreenProps<'SignUp'>) {
               activeOpacity={0.7}
               onPress={() => navigation.goBack()}
               style={tw`flex flex-row items-center`}
+              accessibilityLabel="back button"
             >
               <AntDesign name="arrowleft" size={20} style={tw`text-gray-800 dark:text-gray-300`} />
               <Text style={tw`ml-2 text-base text-gray-800 font-inter-medium dark:text-gray-300`}>
@@ -71,6 +72,7 @@ export default function SignUp({ navigation }: RootStackScreenProps<'SignUp'>) {
                     onChangeText={handleChange('email')}
                     onBlur={handleBlur('email')}
                     errorMessage={errors.email && touched.email ? errors.email : undefined}
+                    accessibilityLabel="email address text input"
                   />
                   <FormTextInput
                     label="Password"
@@ -80,11 +82,13 @@ export default function SignUp({ navigation }: RootStackScreenProps<'SignUp'>) {
                     onChangeText={handleChange('password')}
                     onBlur={handleBlur('password')}
                     errorMessage={errors.password && touched.password ? errors.password : undefined}
+                    accessibilityLabel="password text input"
                   />
                   <FormCheckbox
                     value={values.tac}
                     onValueChange={(value) => setFieldValue('tac', value)}
                     errorMessage={errors.tac && touched.tac ? errors.tac : undefined}
+                    accessibilityLabel="terms of use & privacy policy checkbox"
                   >
                     <View style={tw`flex flex-row flex-wrap ml-2`}>
                       <Text style={tw`text-gray-800 font-inter dark:text-gray-200`}>
@@ -116,6 +120,7 @@ export default function SignUp({ navigation }: RootStackScreenProps<'SignUp'>) {
                         ? 'Oops, something went wrong'
                         : undefined
                     }
+                    accessibilityLabel="sign up button"
                   />
                   <DisplayFirebaseAuthError error={error} />
                 </View>
@@ -131,6 +136,7 @@ export default function SignUp({ navigation }: RootStackScreenProps<'SignUp'>) {
             style={tw`ml-2`}
             activeOpacity={0.7}
             onPress={() => navigation.navigate('SignIn')}
+            accessibilityLabel="link to sign in screen"
           >
             <Text style={tw`text-gray-700 underline dark:text-gray-300 font-inter-semibold`}>
               Sign In
