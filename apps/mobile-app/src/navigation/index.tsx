@@ -28,6 +28,7 @@ import Onboarding from '../screens/Onboarding';
 import SignIn from '../screens/SignIn';
 import SignUp from '../screens/SignUp';
 import TabOne from '../screens/TabOne';
+import Sentry from '../utils/sentry';
 import LinkingConfiguration from './LinkingConfiguration';
 import type {
   BusLinesStackParamList,
@@ -45,6 +46,8 @@ const MyDarkTheme: Theme = {
   },
 };
 
+export const routingInstrumentation = new Sentry.Native.ReactNavigationInstrumentation();
+
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
     <GestureHandlerRootView style={tw`flex-1`}>
@@ -53,6 +56,9 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
         theme={colorScheme === 'dark' ? MyDarkTheme : DefaultTheme}
         fallback={Loading()}
         ref={navigationRef}
+        onReady={() => {
+          routingInstrumentation.registerNavigationContainer(navigationRef);
+        }}
       >
         <RootNavigator />
       </NavigationContainer>
