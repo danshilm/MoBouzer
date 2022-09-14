@@ -14,10 +14,16 @@ import UserLocation from '../components/Map/UserLocation';
 import ViewWithSearchBar from '../components/SearchBar/ViewWithSearchBar';
 import { cameraDefaultSettings } from '../constants/Map';
 import { firebaseStore } from '../firebase/utils';
+import useSecondBottomTabPress from '../hooks/useSecondBottomTabPress';
 import tw from '../lib/tailwind';
 
 MapboxGL.setWellKnownTileServer(Platform.OS === 'android' ? 'Mapbox' : 'mapbox');
 MapboxGL.setAccessToken(Constants.manifest?.extra?.mapboxToken);
+
+const cameraDefaultSettingsWithPadding = {
+  ...cameraDefaultSettings,
+  padding: { paddingTop: 60, paddingBottom: 0, paddingLeft: 0, paddingRight: 0 },
+};
 
 export default function Map() {
   const cameraRef = useRef<Camera | null>(null);
@@ -25,6 +31,12 @@ export default function Map() {
   const [allBusStops, loading, error] = useDocumentData<BusStop.AllDocumentData>(
     firebaseStore().doc('bus-stops/all')
   );
+
+  const resetCameraSettings = () => {
+    cameraRef.current?.setCamera(cameraDefaultSettingsWithPadding);
+  };
+
+  useSecondBottomTabPress('Map', resetCameraSettings);
 
   const mapOverlayButtons: React.ReactNode[] = [
     <UserLocation style={tw`mt-2`} key="user-location" />,
@@ -73,13 +85,7 @@ export default function Map() {
         logoEnabled={true}
         logoPosition={{ bottom: 10, left: 10 }}
       >
-        <Camera
-          defaultSettings={{
-            ...cameraDefaultSettings,
-            padding: { paddingTop: 60, paddingBottom: 0, paddingLeft: 0, paddingRight: 0 },
-          }}
-          ref={cameraRef}
-        />
+        <Camera defaultSettings={cameraDefaultSettingsWithPadding} ref={cameraRef} />
         {allBusStops && (
           <ShapeSource
             id={`bus-stops`}
