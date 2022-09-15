@@ -109,10 +109,7 @@ export default function BusLineDetails({
         <Text style={tw`flex-1 text-gray-800 font-inter dark:text-gray-300`}>
           United Bus Service
         </Text>
-        <TouchableOpacity
-          activeOpacity={0.7}
-          onPress={() => console.log('Show bus line details modal')}
-        >
+        <TouchableOpacity activeOpacity={0.7}>
           <Ionicons name="information-circle" size={20} />
         </TouchableOpacity>
       </View>
