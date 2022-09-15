@@ -64,10 +64,10 @@ export default function BusLineDetails({
         cameraRef.current?.setCamera({
           bounds: { ne: [bboxCoords[2], bboxCoords[3]], sw: [bboxCoords[0], bboxCoords[1]] },
           padding: {
-            paddingTop: 25,
+            paddingTop: 35,
             paddingBottom,
-            paddingLeft: 0,
-            paddingRight: 0,
+            paddingLeft: 35,
+            paddingRight: 35,
           },
         });
       }
