@@ -43,13 +43,13 @@ const updateBusLine = async ({
     `bus-lines/${id}`
   ) as FirebaseFirestore.DocumentReference<AdminBusLine.DocumentData>;
 
-  const isNewBusLine = !!(await busLineRef.get()).exists;
+  const isNewBusLine = !(await busLineRef.get()).exists;
 
   // set the id here since new bus lines won't have any data in their document
   const updatedData = { id };
   // use this to force the individual bus-stop/way entries to be replaced,
   // but keep the "top" level keys
-  const mergeFields: string[] = [];
+  const mergeFields: string[] = ['id'];
 
   try {
     const forwardDirectionRelationId = getForwardDirectionRelationId(busLineData);
