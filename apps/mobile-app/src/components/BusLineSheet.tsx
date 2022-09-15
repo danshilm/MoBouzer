@@ -103,8 +103,8 @@ export default function BusLineSheet({
                     accessibilityLabel="flip bus line direction"
                     style={({ pressed }) =>
                       tw.style(
-                        `items-center justify-center w-10 h-10 p-1 rounded-lg border-gray-600 border-opacity-60`,
-                        pressed && 'border'
+                        `items-center justify-center w-10 h-10 p-1 rounded-lg`,
+                        pressed && 'bg-gray-100'
                       )
                     }
                     onPress={() => {
