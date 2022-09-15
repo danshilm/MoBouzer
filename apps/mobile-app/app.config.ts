@@ -30,9 +30,6 @@ const expoConfig = {
     ios: {
       bundleIdentifier: 'com.mobouzer',
       supportsTablet: true,
-      config: {
-        googleMapsApiKey: process.env.IOS_MAPS_SDK,
-      },
       googleServicesFile: './GoogleService-Info.plist',
     },
     android: {
@@ -40,11 +37,6 @@ const expoConfig = {
       adaptiveIcon: {
         foregroundImage: './assets/images/adaptive-icon.png',
         backgroundColor: '#ffffff',
-      },
-      config: {
-        googleMaps: {
-          apiKey: process.env.ANDROID_MAPS_API_KEY,
-        },
       },
       googleServicesFile: './google-services.json',
     },
