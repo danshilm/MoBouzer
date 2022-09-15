@@ -28,9 +28,10 @@ export default function BusLineSheet({
 }: BusLineSheetProps) {
   const sheetRef = useRef<BottomSheet>(null);
   const snapPoints = useMemo(() => [68, 250, 500], []);
-  const maxOrder = busLine?.['bus-stops']?.length ?? 0;
-  const origin = busLine?.direction[direction].origin.name;
-  const destination = busLine?.direction[direction].destination.name;
+  const currentDirection = busLine?.direction[direction];
+  const maxOrder = currentDirection?.['bus-stops']?.length ?? 0;
+  const origin = currentDirection?.origin.name;
+  const destination = currentDirection?.destination.name;
   const [sheetPositionIndex, setSheetPositionIndex] = useState(1);
   const navigation = useNavigation<NavigationProp<BusLinesStackParamList>>();
 
@@ -128,13 +129,13 @@ export default function BusLineSheet({
             </TouchableWithoutFeedback>
             {/* Divider */}
             <View style={tw`h-px mx-3 bg-gray-600`} />
-            {error || !busLine.direction[direction]['bus-stops']?.length ? (
+            {error || !currentDirection?.['bus-stops']?.length ? (
               <View style={tw`items-center justify-center flex-1`}>
                 <Ionicons name="alert-circle-outline" size={42} style={tw`text-slate-700`} />
               </View>
             ) : (
               <BottomSheetScrollView focusHook={useFocusEffect}>
-                {busLine.direction[direction]['bus-stops']?.map(renderItem)}
+                {currentDirection?.['bus-stops'].map(renderItem)}
               </BottomSheetScrollView>
             )}
           </View>

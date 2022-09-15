@@ -10,11 +10,11 @@ export default function BusLineStopCard({
   index,
 }: {
   data: BusLine.DocumentBusStopData;
-  maxOrder?: number;
+  maxOrder: number;
   index: number;
 }) {
   const isFirstStop = index === 0;
-  const isLastStop = index === maxOrder;
+  const isLastStop = index === maxOrder - 1;
   // to determine
   const [label, _setLabel] = useState('');
   // grab from `live-buses` collection
@@ -45,7 +45,10 @@ export default function BusLineStopCard({
         )}
       </View>
       <View
-        style={tw`flex-row items-center justify-between flex-1 mr-3 border-b border-b-gray-300`}
+        style={tw.style(
+          `flex-row items-center justify-between flex-1 mr-3 border-b-gray-300`,
+          !isLastStop && 'border-b'
+        )}
       >
         <View>
           <Text style={tw`max-w-[55] text-sm font-inter`} numberOfLines={1}>
