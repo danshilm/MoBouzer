@@ -9,7 +9,7 @@ import Navigation, { routingInstrumentation } from './src/navigation';
 import Sentry from './src/utils/sentry';
 
 Sentry.init({
-  dsn: Constants.manifest?.extra?.sentryDsn,
+  dsn: Constants.expoConfig?.extra?.sentryDsn,
   enableInExpoDevelopment: true,
   maxBreadcrumbs: 150,
   debug: __DEV__,

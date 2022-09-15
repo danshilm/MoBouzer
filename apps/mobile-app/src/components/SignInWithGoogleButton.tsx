@@ -11,10 +11,10 @@ import Button from './Common/Button';
 
 export default function SignInWithGoogleButton() {
   const [_request, response, promptAsync] = useIdTokenAuthRequest({
-    clientId: Constants.manifest?.extra?.firebaseWebClientId,
-    androidClientId: Constants.manifest?.extra?.firebaseAndroidClientId,
-    iosClientId: Constants.manifest?.extra?.firebaseiOSClientId,
-    expoClientId: Constants.manifest?.extra?.firebaseExpoGoClientId,
+    clientId: Constants.expoConfig?.extra?.firebaseWebClientId,
+    androidClientId: Constants.expoConfig?.extra?.firebaseAndroidClientId,
+    iosClientId: Constants.expoConfig?.extra?.firebaseiOSClientId,
+    expoClientId: Constants.expoConfig?.extra?.firebaseExpoGoClientId,
   });
   const [loading, setLoading] = useState(false);
 

@@ -18,7 +18,7 @@ import useSecondBottomTabPress from '../hooks/useSecondBottomTabPress';
 import tw from '../lib/tailwind';
 
 MapboxGL.setWellKnownTileServer(Platform.OS === 'android' ? 'Mapbox' : 'mapbox');
-MapboxGL.setAccessToken(Constants.manifest?.extra?.mapboxToken);
+MapboxGL.setAccessToken(Constants.expoConfig?.extra?.mapboxToken);
 
 const cameraDefaultSettingsWithPadding = {
   ...cameraDefaultSettings,

@@ -10,6 +10,7 @@ const expoConfig = {
     owner: 'danshilm',
     version: '0.0.1',
     orientation: 'portrait',
+    platforms: ['android', 'ios'],
     icon: './assets/images/icon.png',
     scheme: 'mobouzer',
     userInterfaceStyle: 'automatic',
@@ -20,6 +21,10 @@ const expoConfig = {
     },
     updates: {
       fallbackToCacheTimeout: 0,
+      url: `https://u.expo.dev/${process.env.EAS_PROJECT_ID}`,
+    },
+    runtimeVersion: {
+      policy: 'sdkVersion',
     },
     assetBundlePatterns: ['**/*'],
     ios: {
