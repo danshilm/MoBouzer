@@ -25,7 +25,7 @@ export default function SignIn({ navigation }: RootStackScreenProps<'SignIn'>) {
       <View style={tw`flex flex-col justify-between h-full`}>
         <View>
           {/* Header */}
-          <View style={tw`mt-2`}>
+          <View>
             <TouchableOpacity
               activeOpacity={0.7}
               onPress={() => navigation.goBack()}
