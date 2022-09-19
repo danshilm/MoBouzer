@@ -7,6 +7,7 @@ const workspaceRoot = path.resolve(projectRoot, '../..');
 const defaultConfig = getDefaultConfig(__dirname);
 
 // fix error where metro doesn't by default use cjs files that firebase provides
+// https://github.com/expo/expo/issues/17469
 defaultConfig.resolver.assetExts.push('cjs');
 
 // monorepo
