@@ -6,16 +6,18 @@ import { useDocumentData } from '@skillnation/react-native-firebase-hooks/firest
 import center from '@turf/center';
 import { featureCollection } from '@turf/helpers';
 import Constants from 'expo-constants';
-import type { Feature, Point } from 'geojson';
-import React, { useRef } from 'react';
+import { getCurrentPositionAsync } from 'expo-location';
+import type { Feature, Point, Position } from 'geojson';
+import React, { useRef, useState } from 'react';
 import { ActivityIndicator, Platform, View } from 'react-native';
 import Button from '../components/Common/Button';
-import UserLocation from '../components/Map/UserLocation';
+import UserLocationButton from '../components/Map/UserLocationButton';
 import ViewWithSearchBar from '../components/SearchBar/ViewWithSearchBar';
 import { cameraDefaultSettings } from '../constants/Map';
 import { firebaseStore } from '../firebase/utils';
 import useSecondBottomTabPress from '../hooks/useSecondBottomTabPress';
 import tw from '../lib/tailwind';
+import { sleep } from '../utils/common';
 
 MapboxGL.setWellKnownTileServer(Platform.OS === 'android' ? 'Mapbox' : 'mapbox');
 MapboxGL.setAccessToken(Constants.expoConfig?.extra?.mapboxToken);
@@ -28,18 +30,38 @@ const cameraDefaultSettingsWithPadding = {
 export default function Map() {
   const cameraRef = useRef<Camera | null>(null);
   const mapRef = useRef<MapView | null>(null);
+  const centreCoordinate = useRef(cameraDefaultSettings.centerCoordinate as Position);
+  const [followUser, setFollowUser] = useState(false);
   const [allBusStops, loading, error] = useDocumentData<BusStop.AllDocumentData>(
     firebaseStore().doc('bus-stops/all')
   );
 
   const resetCameraSettings = () => {
+    setFollowUser(false);
     cameraRef.current?.setCamera(cameraDefaultSettingsWithPadding);
   };
 
   useSecondBottomTabPress('Map', resetCameraSettings);
 
   const mapOverlayButtons: React.ReactNode[] = [
-    <UserLocation style={tw`mt-2`} key="user-location" />,
+    <UserLocationButton
+      style={tw`mt-2`}
+      key="user-location"
+      callback={async () => {
+        // workaround for setCamera not being called if Camera's followUserLocation is true
+        // https://github.com/rnmapbox/maps/issues/1079
+        const currentPosition = await getCurrentPositionAsync();
+        cameraRef.current?.setCamera({
+          pitch: 50,
+          zoomLevel: 16,
+          animationDuration: 2000,
+          animationMode: 'flyTo',
+          centerCoordinate: [currentPosition.coords.longitude, currentPosition.coords.latitude],
+        });
+        await sleep(2000);
+        setFollowUser(true);
+      }}
+    />,
   ];
 
   if (loading || error) {
@@ -85,8 +107,23 @@ export default function Map() {
         logoEnabled={true}
         logoPosition={{ bottom: 10, left: 10 }}
         accessibilityLabel="map"
+        onRegionIsChanging={(feature) => {
+          centreCoordinate.current = feature.geometry.coordinates;
+        }}
       >
-        <Camera defaultSettings={cameraDefaultSettingsWithPadding} ref={cameraRef} />
+        <Camera
+          defaultSettings={{ ...cameraDefaultSettingsWithPadding }}
+          ref={cameraRef}
+          followUserLocation={followUser}
+          followZoomLevel={16}
+          followUserMode="compass"
+        />
+        <MapboxGL.UserLocation
+          showsUserHeadingIndicator={true}
+          animated={true}
+          renderMode="native"
+          androidRenderMode="compass"
+        />
         {allBusStops && (
           <ShapeSource
             id={`bus-stops`}
