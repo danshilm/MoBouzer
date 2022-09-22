@@ -7,7 +7,7 @@ import center from '@turf/center';
 import { featureCollection } from '@turf/helpers';
 import Constants from 'expo-constants';
 import { getCurrentPositionAsync } from 'expo-location';
-import type { Feature, Point, Position } from 'geojson';
+import type { Feature, Point } from 'geojson';
 import React, { useRef, useState } from 'react';
 import { ActivityIndicator, Platform, View } from 'react-native';
 import Button from '../components/Common/Button';
@@ -30,14 +30,16 @@ const cameraDefaultSettingsWithPadding = {
 export default function Map() {
   const cameraRef = useRef<Camera | null>(null);
   const mapRef = useRef<MapView | null>(null);
-  const centreCoordinate = useRef(cameraDefaultSettings.centerCoordinate as Position);
   const [followUser, setFollowUser] = useState(false);
   const [allBusStops, loading, error] = useDocumentData<BusStop.AllDocumentData>(
     firebaseStore().doc('bus-stops/all')
   );
 
-  const resetCameraSettings = () => {
+  const resetCameraSettings = async () => {
     setFollowUser(false);
+    // have to wait for a bit else the setCamera calls happens when
+    // followUserLocation is still true, and it doesn't do anything
+    await sleep(100);
     cameraRef.current?.setCamera(cameraDefaultSettingsWithPadding);
   };
 
@@ -47,19 +49,34 @@ export default function Map() {
     <UserLocationButton
       style={tw`mt-2`}
       key="user-location"
-      callback={async () => {
-        // workaround for setCamera not being called if Camera's followUserLocation is true
-        // https://github.com/rnmapbox/maps/issues/1079
-        const currentPosition = await getCurrentPositionAsync();
-        cameraRef.current?.setCamera({
-          pitch: 50,
-          zoomLevel: 16,
-          animationDuration: 2000,
-          animationMode: 'flyTo',
-          centerCoordinate: [currentPosition.coords.longitude, currentPosition.coords.latitude],
-        });
-        await sleep(2000);
-        setFollowUser(true);
+      isFollowingUser={followUser}
+      callback={{
+        whenNotFollowingUser: async () => {
+          // workaround for setCamera not being called if Camera's followUserLocation is true
+          // https://github.com/rnmapbox/maps/issues/1079
+          const currentPosition = await getCurrentPositionAsync();
+          cameraRef.current?.setCamera({
+            pitch: 50,
+            zoomLevel: 16,
+            animationDuration: 2000,
+            animationMode: 'flyTo',
+            centerCoordinate: [currentPosition.coords.longitude, currentPosition.coords.latitude],
+          });
+          await sleep(2000);
+          setFollowUser(true);
+        },
+        whenFollowingUser: async () => {
+          setFollowUser(false);
+          // have to wait for a bit else the setCamera calls happens when
+          // followUserLocation is still true, and it doesn't do anything
+          await sleep(100);
+          cameraRef.current?.setCamera({
+            pitch: 0,
+            zoomLevel: 14,
+            animationDuration: 1500,
+            animationMode: 'flyTo',
+          });
+        },
       }}
     />,
   ];
@@ -107,15 +124,17 @@ export default function Map() {
         logoEnabled={true}
         logoPosition={{ bottom: 10, left: 10 }}
         accessibilityLabel="map"
-        onRegionIsChanging={(feature) => {
-          centreCoordinate.current = feature.geometry.coordinates;
-        }}
+        // stop following whenever the user moves the map
+        onRegionIsChanging={(e) =>
+          e.properties.isUserInteraction && followUser === true && setFollowUser(false)
+        }
       >
         <Camera
           defaultSettings={{ ...cameraDefaultSettingsWithPadding }}
           ref={cameraRef}
           followUserLocation={followUser}
           followZoomLevel={16}
+          followPitch={50}
           followUserMode="compass"
         />
         <MapboxGL.UserLocation
@@ -123,6 +142,8 @@ export default function Map() {
           animated={true}
           renderMode="native"
           androidRenderMode="compass"
+          // todo find a way to set this to true when the user grants location permission
+          visible={true}
         />
         {allBusStops && (
           <ShapeSource
@@ -148,7 +169,7 @@ export default function Map() {
         )}
       </MapView>
 
-      <View style={tw`flex-col items-end justify-end flex-1 mx-4 my-4`} pointerEvents="box-none">
+      <View style={tw`flex-col items-end justify-end flex-1 px-4 py-4`} pointerEvents="box-none">
         <View style={tw`flex-1`} />
         {mapOverlayButtons}
       </View>
