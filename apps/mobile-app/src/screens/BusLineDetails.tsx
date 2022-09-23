@@ -136,6 +136,12 @@ export default function BusLineDetails({
           accessibilityLabel="map"
         >
           <Camera defaultSettings={cameraDefaultSettings} ref={cameraRef} />
+          <MapboxGL.UserLocation
+            showsUserHeadingIndicator={true}
+            animated={true}
+            renderMode="native"
+            androidRenderMode="compass"
+          />
           {busStops && (
             <ShapeSource
               id={`bus-stops`}

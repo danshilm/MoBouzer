@@ -144,7 +144,6 @@ export default function Map() {
           animated={true}
           renderMode="native"
           androidRenderMode="compass"
-          // todo find a way to set this to true when the user grants location permission
           visible={userLocationIsShown}
         />
         {allBusStops && (
