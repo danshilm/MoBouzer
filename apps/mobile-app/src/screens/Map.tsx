@@ -6,9 +6,9 @@ import { useDocumentData } from '@skillnation/react-native-firebase-hooks/firest
 import center from '@turf/center';
 import { featureCollection } from '@turf/helpers';
 import Constants from 'expo-constants';
-import { getCurrentPositionAsync } from 'expo-location';
+import { getCurrentPositionAsync, getForegroundPermissionsAsync } from 'expo-location';
 import type { Feature, Point } from 'geojson';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, Platform, View } from 'react-native';
 import Button from '../components/Common/Button';
 import UserLocationButton from '../components/Map/UserLocationButton';
@@ -35,6 +35,17 @@ export default function Map() {
   const [allBusStops, loading, error] = useDocumentData<BusStop.AllDocumentData>(
     firebaseStore().doc('bus-stops/all')
   );
+
+  useEffect(() => {
+    const run = async () => {
+      const response = await getForegroundPermissionsAsync();
+      if (response.granted) {
+        setUserLocationIsShown(true);
+      }
+    };
+
+    run();
+  }, []);
 
   const resetCameraSettings = async () => {
     setFollowUser(false);
