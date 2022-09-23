@@ -31,6 +31,7 @@ export default function Map() {
   const cameraRef = useRef<Camera | null>(null);
   const mapRef = useRef<MapView | null>(null);
   const [followUser, setFollowUser] = useState(false);
+  const [userLocationIsShown, setUserLocationIsShown] = useState(false);
   const [allBusStops, loading, error] = useDocumentData<BusStop.AllDocumentData>(
     firebaseStore().doc('bus-stops/all')
   );
@@ -54,6 +55,7 @@ export default function Map() {
         whenNotFollowingUser: async () => {
           // workaround for setCamera not being called if Camera's followUserLocation is true
           // https://github.com/rnmapbox/maps/issues/1079
+          setUserLocationIsShown(true);
           const currentPosition = await getCurrentPositionAsync();
           cameraRef.current?.setCamera({
             pitch: 50,
@@ -143,7 +145,7 @@ export default function Map() {
           renderMode="native"
           androidRenderMode="compass"
           // todo find a way to set this to true when the user grants location permission
-          visible={true}
+          visible={userLocationIsShown}
         />
         {allBusStops && (
           <ShapeSource

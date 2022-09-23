@@ -21,22 +21,38 @@ export default function UserLocationButton({
     if (isFollowingUser) {
       await callback.whenFollowingUser();
     } else {
-      await requestPermission();
+      if (!response) {
+        return;
+      }
 
-      if (!response?.granted && !response?.canAskAgain) {
-        const secondResponse = await requestPermission();
-        if (!secondResponse.granted) {
-          // open the app settings to ask again
-          if (Platform.OS === 'ios') {
-            Linking.openURL('App-Prefs:Privacy&path=LOCATION');
-          } else {
-            await Linking.openSettings();
-          }
+      // segment adapted from
+      // https://github.com/expo/expo/issues/16701#issuecomment-1080693258
+
+      // if user accepts
+      if (response.granted) {
+        return await callback.whenNotFollowingUser();
+      }
+
+      // if user exited prematurely
+      if (!response.granted && response.canAskAgain) {
+        const tempResponse = await requestPermission();
+
+        if (tempResponse.granted) {
+          return await callback.whenNotFollowingUser();
         }
       }
 
-      if (response?.granted) {
-        await callback.whenNotFollowingUser();
+      // if user rejected previously
+      if (!response.granted && !response.canAskAgain) {
+        const tempResponse = await requestPermission();
+        if (!tempResponse.granted) {
+          // open the app settings for user to allow permission
+          if (Platform.OS === 'ios') {
+            Linking.openURL('App-Prefs:Privacy&path=LOCATION');
+          } else {
+            Linking.openSettings();
+          }
+        }
       }
     }
   };
