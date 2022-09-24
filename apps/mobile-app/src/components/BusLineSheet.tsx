@@ -3,7 +3,10 @@ import BottomSheet, { BottomSheetScrollView } from '@gorhom/bottom-sheet';
 import type { BusLine } from '@mobouzer/shared';
 import type { NavigationProp } from '@react-navigation/native';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
-import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { featureCollection, point } from '@turf/helpers';
+import nearestPoint from '@turf/nearest-point';
+import { getCurrentPositionAsync } from 'expo-location';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { ViewProps } from 'react-native';
 import { ActivityIndicator, Pressable, Text, TouchableWithoutFeedback, View } from 'react-native';
 import tw from '../lib/tailwind';
@@ -34,12 +37,44 @@ export default function BusLineSheet({
   const destination = currentDirection?.destination.name;
   const [sheetPositionIndex, setSheetPositionIndex] = useState(1);
   const navigation = useNavigation<NavigationProp<BusLinesStackParamList>>();
+  const [closestBusStopId, setClosestBusStopId] = useState('');
+
+  useEffect(() => {
+    const run = async () => {
+      const userLocation = await getCurrentPositionAsync();
+
+      if (currentDirection?.['bus-stops']) {
+        const busStopId = nearestPoint(
+          point([userLocation.coords.latitude, userLocation.coords.longitude]),
+          featureCollection(
+            currentDirection?.['bus-stops'].map((busStop) =>
+              point([busStop.location.latitude, busStop.location.longitude], { id: busStop.id })
+            )
+          )
+        ).properties.id as string;
+
+        setClosestBusStopId(busStopId);
+      }
+    };
+
+    try {
+      run();
+    } catch (error) {
+      //
+    }
+  }, [currentDirection]);
 
   const renderItem = useCallback(
     (data: BusLine.DocumentBusStopData, index: number) => (
-      <BusLineStopCard data={data} maxOrder={maxOrder} index={index} key={index} />
+      <BusLineStopCard
+        data={data}
+        maxOrder={maxOrder}
+        index={index}
+        key={index}
+        isClosest={closestBusStopId === data.id}
+      />
     ),
-    [maxOrder]
+    [closestBusStopId, maxOrder]
   );
 
   const HandleComponent = () => {

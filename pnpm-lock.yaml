@@ -95,6 +95,7 @@ importers:
       '@turf/center': ^6.5.0
       '@turf/center-of-mass': ^6.5.0
       '@turf/helpers': ^6.5.0
+      '@turf/nearest-point': ^6.5.0
       '@types/geojson': ^7946.0.10
       '@types/lodash': ^4.14.185
       '@types/react': ~18.0.0
@@ -155,6 +156,7 @@ importers:
       '@turf/center': 6.5.0
       '@turf/center-of-mass': 6.5.0
       '@turf/helpers': 6.5.0
+      '@turf/nearest-point': 6.5.0
       dotenv: 16.0.2
       expo: 46.0.10_@babel+core@7.18.10
       expo-application: 4.2.2_expo@46.0.10
@@ -3242,6 +3244,12 @@ packages:
       '@turf/meta': 6.5.0
     dev: false
 
+  /@turf/clone/6.5.0:
+    resolution: {integrity: sha512-mzVtTFj/QycXOn6ig+annKrM6ZlimreKYz6f/GSERytOpgzodbQyOgkfwru100O1KQhhjSudKK4DsQ0oyi9cTw==}
+    dependencies:
+      '@turf/helpers': 6.5.0
+    dev: false
+
   /@turf/convex/6.5.0:
     resolution: {integrity: sha512-x7ZwC5z7PJB0SBwNh7JCeCNx7Iu+QSrH7fYgK0RhhNop13TqUlvHMirMLRgf2db1DqUetrAO2qHJeIuasquUWg==}
     dependencies:
@@ -3315,6 +3323,15 @@ packages:
       '@turf/helpers': 6.5.0
       '@turf/invariant': 6.5.0
       '@turf/line-intersect': 6.5.0
+      '@turf/meta': 6.5.0
+    dev: false
+
+  /@turf/nearest-point/6.5.0:
+    resolution: {integrity: sha512-fguV09QxilZv/p94s8SMsXILIAMiaXI5PATq9d7YWijLxWUj6Q/r43kxyoi78Zmwwh1Zfqz9w+bCYUAxZ5+euA==}
+    dependencies:
+      '@turf/clone': 6.5.0
+      '@turf/distance': 6.5.0
+      '@turf/helpers': 6.5.0
       '@turf/meta': 6.5.0
     dev: false
 
