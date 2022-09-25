@@ -3,14 +3,16 @@ import BottomSheet, { BottomSheetScrollView } from '@gorhom/bottom-sheet';
 import type { BusLine } from '@mobouzer/shared';
 import type { NavigationProp } from '@react-navigation/native';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import type { Camera } from '@rnmapbox/maps';
 import { featureCollection, point } from '@turf/helpers';
 import nearestPoint from '@turf/nearest-point';
-import { getCurrentPositionAsync } from 'expo-location';
+import { getCurrentPositionAsync, getForegroundPermissionsAsync } from 'expo-location';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { ViewProps } from 'react-native';
 import { ActivityIndicator, Pressable, Text, TouchableWithoutFeedback, View } from 'react-native';
 import tw from '../lib/tailwind';
 import type { BusLinesStackParamList } from '../navigation/types';
+import Sentry from '../utils/sentry';
 import BusLineStopCard from './BusLineStopCard';
 import Button from './Common/Button';
 
@@ -20,6 +22,7 @@ interface BusLineSheetProps extends ViewProps {
   loading?: boolean;
   error?: Error;
   callback: (sheetPos: number) => void;
+  cameraRef: React.RefObject<Camera>;
 }
 
 export default function BusLineSheet({
@@ -28,16 +31,24 @@ export default function BusLineSheet({
   loading = true,
   error,
   callback,
+  cameraRef,
 }: BusLineSheetProps) {
   const sheetRef = useRef<BottomSheet>(null);
   const snapPoints = useMemo(() => [68, 250, 500], []);
+  const [sheetPositionIndex, setSheetPositionIndex] = useState(1);
+
+  // used to not fit viewable area of map to markers if user pressed/focused on a bus stop
+  // whenever the sheet is dragged
+  // might also be good to "blur" (opposite of focusing) the bus stop whenever the
+  // user moves the map like we do on the main Map screen
+  const [isViewingBusStop, setIsViewingBusStop] = useState(false);
+  const navigation = useNavigation<NavigationProp<BusLinesStackParamList>>();
+  const [closestBusStopId, setClosestBusStopId] = useState('');
+
   const currentDirection = busLine?.direction[direction];
   const maxOrder = currentDirection?.['bus-stops']?.length ?? 0;
   const origin = currentDirection?.origin.name;
   const destination = currentDirection?.destination.name;
-  const [sheetPositionIndex, setSheetPositionIndex] = useState(1);
-  const navigation = useNavigation<NavigationProp<BusLinesStackParamList>>();
-  const [closestBusStopId, setClosestBusStopId] = useState('');
 
   useEffect(() => {
     const run = async () => {
@@ -65,7 +76,7 @@ export default function BusLineSheet({
     try {
       run();
     } catch (error) {
-      //
+      Sentry.Native.captureException(error);
     }
   }, [currentDirection]);
 
@@ -77,9 +88,34 @@ export default function BusLineSheet({
         index={index}
         key={index}
         isClosest={closestBusStopId === data.id}
+        onPress={() => {
+          // use temporary variable since the sheet needs to finish its animation
+          // and only then will the state variable be updated
+          let indexToSnapTo: number | undefined;
+          // snap sheet down to middle position so that actually space to see
+          // the area around the bus stop
+          if (sheetPositionIndex === 2) {
+            indexToSnapTo = 1;
+            sheetRef.current?.snapToIndex(indexToSnapTo);
+          }
+
+          setIsViewingBusStop(true);
+          cameraRef.current?.setCamera({
+            zoomLevel: 15,
+            centerCoordinate: [data.location.longitude, data.location.latitude],
+            animationMode: 'flyTo',
+            animationDuration: 1000,
+            padding: {
+              paddingLeft: 0,
+              paddingRight: 0,
+              paddingTop: 0,
+              paddingBottom: (indexToSnapTo ?? sheetPositionIndex) === 1 ? 250 : 100,
+            },
+          });
+        }}
       />
     ),
-    [closestBusStopId, maxOrder]
+    [cameraRef, closestBusStopId, maxOrder, sheetPositionIndex]
   );
 
   const HandleComponent = () => {
@@ -102,16 +138,25 @@ export default function BusLineSheet({
   const handleSheetPositionChange = useCallback(
     (index: number) => {
       setSheetPositionIndex(index);
-      // fit to markers
-      callback(index);
+
+      if (!isViewingBusStop) {
+        // fit to markers
+        callback(index);
+      }
     },
-    [callback]
+    [callback, isViewingBusStop]
   );
 
   return (
     <>
       <View style={tw`absolute bottom-4 right-4`}>
-        <Button size="sm" onPress={() => sheetRef.current?.snapToIndex(1)}>
+        <Button
+          size="sm"
+          onPress={() => {
+            setIsViewingBusStop(false);
+            sheetRef.current?.snapToIndex(1);
+          }}
+        >
           <Ionicons name="information-circle-outline" size={24} />
         </Button>
       </View>

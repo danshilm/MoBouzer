@@ -23,14 +23,15 @@ export default function BusLineDetails({
 }: BusLinesStackScreenProps<'BusLineDetails'>) {
   const { id, direction } = route.params;
   const insets = useSafeAreaInsets();
+  const cameraRef = useRef<Camera>(null);
+  // used to determine how to adjust the map as the bottom sheet changes position
+  const mapHeight = useRef<number>(0);
+
   const [value, loading, error] = useDocumentDataOnce<BusLine.DocumentData>(
     firebaseStore().doc(`bus-lines/${id}`)
   );
   const busStops = value?.direction[direction]['bus-stops'];
   const ways = value?.direction[direction].ways;
-  const cameraRef = useRef<Camera>(null);
-  // used to determine how to adjust the map as the bottom sheet changes position
-  const mapHeight = useRef<number>(0);
 
   /**
    * TODO adjust camera as sheet is being dragged
@@ -194,6 +195,7 @@ export default function BusLineDetails({
         loading={loading}
         error={error}
         callback={fitToMarkers}
+        cameraRef={cameraRef}
       />
     </View>
   );

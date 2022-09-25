@@ -9,11 +9,13 @@ export default function BusLineStopCard({
   maxOrder,
   index,
   isClosest,
+  onPress,
 }: {
   data: BusLine.DocumentBusStopData;
   maxOrder: number;
   index: number;
   isClosest: boolean;
+  onPress: () => void;
 }) {
   const isFirstStop = index === 0;
   const isLastStop = index === maxOrder - 1;
