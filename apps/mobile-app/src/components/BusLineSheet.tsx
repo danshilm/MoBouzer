@@ -41,6 +41,11 @@ export default function BusLineSheet({
 
   useEffect(() => {
     const run = async () => {
+      const permission = await getForegroundPermissionsAsync();
+      if (!permission.granted) {
+        return;
+      }
+
       const userLocation = await getCurrentPositionAsync();
 
       if (currentDirection?.['bus-stops']) {
