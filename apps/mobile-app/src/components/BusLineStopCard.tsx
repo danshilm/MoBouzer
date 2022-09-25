@@ -20,6 +20,7 @@ export default function BusLineStopCard({
   // grab from `live-buses` collection
   const [isLive, _setIsLive] = useState(false);
 
+  // look into laying out the sheet as a column of paths and a column of bus stops
   const busStopPath = isFirstStop ? (
     <View style={tw`items-center h-full pt-6 w-17`}>
       <View style={tw`w-3 h-3 bg-gray-700 rounded-md`} />
@@ -50,8 +51,8 @@ export default function BusLineStopCard({
           !isLastStop && 'border-b'
         )}
       >
-        <TouchableOpacity style={tw`flex-row`} activeOpacity={0.6}>
-          <View>
+        <TouchableOpacity style={tw`flex-row w-full h-full`} activeOpacity={0.6} onPress={onPress}>
+          <View style={tw`justify-center`}>
             <Text style={tw`max-w-[55] text-sm font-inter`} numberOfLines={1}>
               {data.name ?? 'Bus Stop'}
             </Text>
