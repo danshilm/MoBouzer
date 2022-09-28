@@ -83,6 +83,7 @@ export default function BusLineSheet({
     }
   }, [currentDirection]);
 
+  // todo also open bus line marker too
   const renderItem = useCallback(
     (data: BusLine.DocumentBusStopData, index: number) => (
       <BusLineStopCard

@@ -1,17 +1,19 @@
 import { Ionicons } from '@expo/vector-icons';
 import type { BusLine } from '@mobouzer/shared';
 import type { OnPressEvent } from '@rnmapbox/maps';
-import MapboxGL, { Camera, CircleLayer, LineLayer, MapView, ShapeSource } from '@rnmapbox/maps';
+import MapboxGL, { Camera, LineLayer, MapView, ShapeSource, SymbolLayer } from '@rnmapbox/maps';
 import { useDocumentDataOnce } from '@skillnation/react-native-firebase-hooks/firestore';
 import bbox from '@turf/bbox';
 import center from '@turf/center';
 import { featureCollection } from '@turf/helpers';
 import type { Feature, Point } from 'geojson';
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { interpolate } from 'react-native-reanimated';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
+import locationIcon from '../../assets/images/location-filled.png';
 import BusLineSheet from '../components/BusLineSheet';
+import BusStopMarker from '../components/Map/BusStopMarker';
 import { cameraDefaultSettings } from '../constants/Map';
 import { firebaseStore } from '../firebase/utils';
 import tw from '../lib/tailwind';
@@ -33,12 +35,17 @@ export default function BusLineDetails({
   const busStops = value?.direction[direction]['bus-stops'];
   const ways = value?.direction[direction].ways;
 
+  const [selectedPoint, setSelectedPoint] = useState<Feature<Point> | null>(null);
+  const selectedBusStop = busStops?.find(
+    (busStop) => selectedPoint?.id === `busStop-${busStop.id}`
+  );
+
   /**
    * TODO adjust camera as sheet is being dragged
    */
   const fitToMarkers = useCallback(
     (sheetIndex = 1) => {
-      if (busStops?.length) {
+      if (busStops?.length && selectedPoint) {
         const bboxCoords = bbox({
           type: 'FeatureCollection',
           features: busStops.map((busStop) => ({
@@ -86,6 +93,11 @@ export default function BusLineDetails({
     const features = event.features as Feature<Point>[];
     const isClusterMarker = features.some((v) => v.properties?.cluster === true);
 
+    if (!isClusterMarker) {
+      setSelectedPoint(features[0]);
+    }
+
+    // todo set padding depending on what position the bottom sheet is in
     cameraRef.current?.setCamera(
       isClusterMarker
         ? {
@@ -135,6 +147,10 @@ export default function BusLineDetails({
           logoEnabled={true}
           logoPosition={{ bottom: 10, left: 10 }}
           accessibilityLabel="map"
+          onRegionDidChange={(e) => {
+            e.properties.isUserInteraction && selectedPoint && setSelectedPoint(null);
+          }}
+          onPress={() => setSelectedPoint(null)}
         >
           <Camera defaultSettings={cameraDefaultSettings} ref={cameraRef} />
           <MapboxGL.UserLocation
@@ -142,6 +158,11 @@ export default function BusLineDetails({
             animated={true}
             renderMode="native"
             androidRenderMode="compass"
+          />
+          <MapboxGL.Images
+            images={{
+              location: locationIcon,
+            }}
           />
           {busStops && (
             <ShapeSource
@@ -162,9 +183,18 @@ export default function BusLineDetails({
               clusterRadius={5}
               onPress={handleMarkerPress}
             >
-              <CircleLayer id={`busStops-layer`} style={{ circleColor: '#000', circleRadius: 5 }} />
+              <SymbolLayer
+                id={`busStops-layer`}
+                style={{
+                  iconImage: 'location',
+                  iconSize: 0.05,
+                  iconAnchor: 'bottom',
+                  iconIgnorePlacement: true,
+                }}
+              />
             </ShapeSource>
           )}
+          {selectedPoint && <BusStopMarker busStop={selectedBusStop} point={selectedPoint} />}
           {ways && (
             <ShapeSource
               id={`ways`}

@@ -1,7 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import type { BusStop } from '@mobouzer/shared';
 import type { OnPressEvent } from '@rnmapbox/maps';
-import MapboxGL, { Camera, CircleLayer, MapView, ShapeSource } from '@rnmapbox/maps';
+import MapboxGL, { Camera, MapView, ShapeSource, SymbolLayer } from '@rnmapbox/maps';
 import { useDocumentData } from '@skillnation/react-native-firebase-hooks/firestore';
 import center from '@turf/center';
 import { featureCollection } from '@turf/helpers';
@@ -10,7 +10,9 @@ import { getForegroundPermissionsAsync, getLastKnownPositionAsync } from 'expo-l
 import type { Feature, Point } from 'geojson';
 import React, { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, Platform, View } from 'react-native';
+import locationIcon from '../../assets/images/location-filled.png';
 import Button from '../components/Common/Button';
+import BusStopMarker from '../components/Map/BusStopMarker';
 import UserLocationButton from '../components/Map/UserLocationButton';
 import ViewWithSearchBar from '../components/SearchBar/ViewWithSearchBar';
 import { cameraDefaultSettings } from '../constants/Map';
@@ -35,6 +37,10 @@ export default function Map() {
   const [allBusStops, loading, error] = useDocumentData<BusStop.AllDocumentData>(
     firebaseStore().doc('bus-stops/all')
   );
+  const [selectedPoint, setSelectedPoint] = useState<Feature<Point> | null>(null);
+  const selectedBusStop = allBusStops?.['bus-stops'].find(
+    (busStop) => selectedPoint?.id === `busStop-${busStop.id}`
+  );
 
   useEffect(() => {
     const run = async () => {
@@ -49,6 +55,7 @@ export default function Map() {
 
   const resetCameraSettings = async () => {
     setFollowUser(false);
+    setSelectedPoint(null);
     // have to wait for a bit else the setCamera calls happens when
     // followUserLocation is still true, and it doesn't do anything
     await sleep(100);
@@ -114,13 +121,22 @@ export default function Map() {
     const features = e.features as Feature<Point>[];
     const isClusterMarker = features.some((v) => v.properties?.cluster === true);
 
+    if (!isClusterMarker) {
+      setSelectedPoint(features[0]);
+    }
+
     cameraRef.current?.setCamera(
       isClusterMarker
         ? {
+            ...cameraDefaultSettingsWithPadding,
             zoomLevel: 13,
             centerCoordinate: center(featureCollection(features)).geometry.coordinates,
           }
-        : { zoomLevel: 15, centerCoordinate: features[0].geometry.coordinates }
+        : {
+            ...cameraDefaultSettingsWithPadding,
+            zoomLevel: 15,
+            centerCoordinate: features[0].geometry.coordinates,
+          }
     );
   };
 
@@ -142,9 +158,20 @@ export default function Map() {
         logoPosition={{ bottom: 10, left: 10 }}
         accessibilityLabel="map"
         // stop following whenever the user moves the map
-        onRegionIsChanging={(e) =>
-          e.properties.isUserInteraction && followUser === true && setFollowUser(false)
-        }
+        onRegionIsChanging={(e) => {
+          if (e.properties.isUserInteraction && followUser) {
+            setFollowUser(false);
+          }
+        }}
+        // todo this bugs out when pressing on bus stops in quick succession
+        // onRegionDidChange={(e) => {
+        //   if (e.properties.isUserInteraction && !!selectedPoint) {
+        //     setSelectedPoint(null);
+        //   }
+        // }}
+        onPress={() => {
+          setSelectedPoint(null);
+        }}
       >
         <Camera
           defaultSettings={{ ...cameraDefaultSettingsWithPadding }}
@@ -160,6 +187,11 @@ export default function Map() {
           renderMode="native"
           androidRenderMode="compass"
           visible={userLocationIsShown}
+        />
+        <MapboxGL.Images
+          images={{
+            location: locationIcon,
+          }}
         />
         {allBusStops && (
           <ShapeSource
@@ -180,9 +212,18 @@ export default function Map() {
             clusterRadius={5}
             onPress={handleMarkerPress}
           >
-            <CircleLayer id={`layer`} style={{ circleColor: '#000', circleRadius: 5 }} />
+            <SymbolLayer
+              id={`busStops-layer`}
+              style={{
+                iconImage: 'location',
+                iconSize: 0.05,
+                iconAnchor: 'bottom',
+                iconIgnorePlacement: true,
+              }}
+            />
           </ShapeSource>
         )}
+        {selectedPoint && <BusStopMarker busStop={selectedBusStop} point={selectedPoint} />}
       </MapView>
 
       <View style={tw`flex-col items-end justify-end flex-1 px-4 py-4`} pointerEvents="box-none">
