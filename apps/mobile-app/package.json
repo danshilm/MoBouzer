@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "pnpm -w build && expo start --dev-client",
+    "start": "pnpm -w shared build && expo start --dev-client",
     "android": "expo start --dev-client --android",
     "ios": "expo start --dev-client --ios",
     "web": "expo start --web",
@@ -14,7 +14,7 @@
     "format": "prettier --write ./",
     "postinstall": "node ./bin/postInstall",
     "eas-build-pre-install": "node ./bin/eas-preInstall",
-    "eas-build-post-install": "pnpm -w build",
+    "eas-build-post-install": "pnpm -w shared build",
     "eas:build:development": "eas build --platform all --profile development --no-wait",
     "eas:build:development:android": "eas build --platform android --profile development --no-wait",
     "eas:build:development:ios": "eas build --platform ios --profile development --no-wait"
