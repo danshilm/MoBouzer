@@ -6,7 +6,7 @@ import { useDocumentData } from '@skillnation/react-native-firebase-hooks/firest
 import center from '@turf/center';
 import { featureCollection } from '@turf/helpers';
 import Constants from 'expo-constants';
-import { getCurrentPositionAsync, getForegroundPermissionsAsync } from 'expo-location';
+import { getForegroundPermissionsAsync, getLastKnownPositionAsync } from 'expo-location';
 import type { Feature, Point } from 'geojson';
 import React, { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, Platform, View } from 'react-native';
@@ -64,10 +64,14 @@ export default function Map() {
       isFollowingUser={followUser}
       callback={{
         whenNotFollowingUser: async () => {
+          const currentPosition = await getLastKnownPositionAsync();
+          if (!currentPosition) {
+            return;
+          }
+
           // workaround for setCamera not being called if Camera's followUserLocation is true
           // https://github.com/rnmapbox/maps/issues/1079
           setUserLocationIsShown(true);
-          const currentPosition = await getCurrentPositionAsync();
           cameraRef.current?.setCamera({
             pitch: 50,
             zoomLevel: 16,

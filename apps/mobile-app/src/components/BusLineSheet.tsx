@@ -6,7 +6,7 @@ import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import type { Camera } from '@rnmapbox/maps';
 import { featureCollection, point } from '@turf/helpers';
 import nearestPoint from '@turf/nearest-point';
-import { getCurrentPositionAsync, getForegroundPermissionsAsync } from 'expo-location';
+import { getForegroundPermissionsAsync, getLastKnownPositionAsync } from 'expo-location';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { ViewProps } from 'react-native';
 import { ActivityIndicator, Pressable, Text, TouchableWithoutFeedback, View } from 'react-native';
@@ -57,7 +57,10 @@ export default function BusLineSheet({
         return;
       }
 
-      const userLocation = await getCurrentPositionAsync();
+      const userLocation = await getLastKnownPositionAsync();
+      if (!userLocation) {
+        return;
+      }
 
       if (currentDirection?.['bus-stops']) {
         const busStopId = nearestPoint(
