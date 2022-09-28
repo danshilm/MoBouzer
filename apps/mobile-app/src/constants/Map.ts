@@ -1,5 +1,5 @@
 import type { CameraStop } from '@rnmapbox/maps';
-import type { Position } from 'geojson';
+import type { Position } from '@turf/helpers';
 // latitude = y-axis
 // longitude = x-axis
 // longitude, latitude
@@ -12,7 +12,7 @@ export const cameraDefaultSettings: CameraStop = {
   pitch: 0,
   type: 'CameraStop',
   animationMode: 'flyTo',
-  animationDuration: 2000,
+  animationDuration: 1500,
   centerCoordinate: centreCoordinates,
   zoomLevel: 8.7,
 };

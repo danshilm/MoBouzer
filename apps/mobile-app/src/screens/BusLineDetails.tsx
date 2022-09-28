@@ -5,8 +5,8 @@ import MapboxGL, { Camera, LineLayer, MapView, ShapeSource, SymbolLayer } from '
 import { useDocumentDataOnce } from '@skillnation/react-native-firebase-hooks/firestore';
 import bbox from '@turf/bbox';
 import center from '@turf/center';
+import type { Feature, Point } from '@turf/helpers';
 import { featureCollection } from '@turf/helpers';
-import type { Feature, Point } from 'geojson';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { interpolate } from 'react-native-reanimated';

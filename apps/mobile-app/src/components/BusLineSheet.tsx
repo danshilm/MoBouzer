@@ -108,7 +108,7 @@ export default function BusLineSheet({
             zoomLevel: 15,
             centerCoordinate: [data.location.longitude, data.location.latitude],
             animationMode: 'flyTo',
-            animationDuration: 1000,
+            animationDuration: 1500,
             padding: {
               paddingLeft: 0,
               paddingRight: 0,

@@ -4,10 +4,10 @@ import type { OnPressEvent } from '@rnmapbox/maps';
 import MapboxGL, { Camera, MapView, ShapeSource, SymbolLayer } from '@rnmapbox/maps';
 import { useDocumentData } from '@skillnation/react-native-firebase-hooks/firestore';
 import center from '@turf/center';
+import type { Feature, Point } from '@turf/helpers';
 import { featureCollection } from '@turf/helpers';
 import Constants from 'expo-constants';
 import { getForegroundPermissionsAsync, getLastKnownPositionAsync } from 'expo-location';
-import type { Feature, Point } from 'geojson';
 import React, { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, Platform, View } from 'react-native';
 import locationIcon from '../../assets/images/location-filled.png';
@@ -82,7 +82,7 @@ export default function Map() {
           cameraRef.current?.setCamera({
             pitch: 50,
             zoomLevel: 16,
-            animationDuration: 2000,
+            animationDuration: 1500,
             animationMode: 'flyTo',
             centerCoordinate: [currentPosition.coords.longitude, currentPosition.coords.latitude],
           });
