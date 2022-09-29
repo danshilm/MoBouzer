@@ -8,6 +8,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import type { Theme } from '@react-navigation/native';
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { ErrorBoundary } from '@sentry/react-native';
 import { useAuthState } from '@skillnation/react-native-firebase-hooks/auth';
 import * as React from 'react';
 import type { ColorSchemeName } from 'react-native';
@@ -15,6 +16,7 @@ import { Pressable } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { gray, slate, zinc } from 'tailwindcss/colors';
+import Error from '../components/Error';
 import { firebaseAuth } from '../firebase/utils';
 import useSettings from '../hooks/useSettings';
 import tw from '../lib/tailwind';
@@ -54,13 +56,15 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
       <NavigationContainer
         linking={LinkingConfiguration}
         theme={colorScheme === 'dark' ? MyDarkTheme : DefaultTheme}
-        fallback={Loading()}
+        fallback={<Loading />}
         ref={navigationRef}
         onReady={() => {
           routingInstrumentation.registerNavigationContainer(navigationRef);
         }}
       >
-        <RootNavigator />
+        <ErrorBoundary fallback={<Error />}>
+          <RootNavigator />
+        </ErrorBoundary>
       </NavigationContainer>
     </GestureHandlerRootView>
   );
