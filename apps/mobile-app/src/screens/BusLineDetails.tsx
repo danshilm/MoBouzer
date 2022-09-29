@@ -45,7 +45,7 @@ export default function BusLineDetails({
    */
   const fitToMarkers = useCallback(
     (sheetIndex = 1) => {
-      if (busStops?.length && selectedPoint) {
+      if (busStops?.length) {
         const bboxCoords = bbox({
           type: 'FeatureCollection',
           features: busStops.map((busStop) => ({
@@ -147,9 +147,12 @@ export default function BusLineDetails({
           logoEnabled={true}
           logoPosition={{ bottom: 10, left: 10 }}
           accessibilityLabel="map"
-          onRegionDidChange={(e) => {
-            e.properties.isUserInteraction && selectedPoint && setSelectedPoint(null);
-          }}
+          // todo this bugs out when pressing on bus stops in quick succession
+          // onRegionDidChange={(e) => {
+          //   if (e.properties.isUserInteraction && selectedPoint) {
+          //     setSelectedPoint(null);
+          //   }
+          // }}
           onPress={() => setSelectedPoint(null)}
         >
           <Camera defaultSettings={cameraDefaultSettings} ref={cameraRef} />
@@ -224,6 +227,7 @@ export default function BusLineDetails({
         direction={direction}
         loading={loading}
         error={error}
+        isMarkerOpen={!!selectedPoint}
         callback={fitToMarkers}
         cameraRef={cameraRef}
       />

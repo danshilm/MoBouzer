@@ -21,6 +21,7 @@ interface BusLineSheetProps extends ViewProps {
   direction: 'forward' | 'reverse';
   loading?: boolean;
   error?: Error;
+  isMarkerOpen?: boolean;
   callback: (sheetPos: number) => void;
   cameraRef: React.RefObject<Camera>;
 }
@@ -30,6 +31,7 @@ export default function BusLineSheet({
   direction = 'forward',
   loading = true,
   error,
+  isMarkerOpen = false,
   callback,
   cameraRef,
 }: BusLineSheetProps) {
@@ -143,12 +145,12 @@ export default function BusLineSheet({
     (index: number) => {
       setSheetPositionIndex(index);
 
-      if (!isViewingBusStop) {
+      if (!isViewingBusStop && !isMarkerOpen) {
         // fit to markers
         callback(index);
       }
     },
-    [callback, isViewingBusStop]
+    [callback, isMarkerOpen, isViewingBusStop]
   );
 
   return (
