@@ -1,5 +1,7 @@
+import { Ionicons } from '@expo/vector-icons';
+import { reloadAsync } from 'expo-updates';
 import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import tw from '../lib/tailwind';
 
@@ -18,11 +20,23 @@ export default function Error({ code }: { code?: number }) {
   return (
     <SafeAreaView style={tw`items-center justify-center flex-1 bg-white`}>
       <View style={tw`items-center`}>
-        <Text style={tw`text-xl text-gray-800 font-inter-medium`}>{getErrorMessage(code)}</Text>
-        <Text style={tw`mt-1 text-sm font-inter-light`}>Please close and re-open the app</Text>
-        <TouchableOpacity style={tw`flex-row items-center mt-4`} activeOpacity={0.7}>
+        <View style={tw`flex-row items-center`}>
           <Text style={tw`text-xl`}>😥</Text>
-        </TouchableOpacity>
+        </View>
+        <Text style={tw`mt-2 text-xl text-gray-800 font-inter-medium`}>
+          {getErrorMessage(code)}
+        </Text>
+        {!__DEV__ && (
+          <Pressable
+            style={({ pressed }) =>
+              tw.style(`flex-row items-center mt-2 rounded-lg p-2`, pressed && 'bg-gray-200')
+            }
+            onPress={() => reloadAsync()}
+          >
+            <Ionicons name="reload-outline" size={20} />
+            <Text style={tw`ml-3 text-base font-inter`}>Reload the app</Text>
+          </Pressable>
+        )}
       </View>
     </SafeAreaView>
   );
