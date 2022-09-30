@@ -167,6 +167,27 @@ export default function BusLineDetails({
               location: locationIcon,
             }}
           />
+          {ways && (
+            <ShapeSource
+              id={`ways`}
+              shape={{
+                type: 'MultiLineString',
+                coordinates: ways.map((way) =>
+                  way.nodes.map((node) => [node.location.longitude, node.location.latitude])
+                ),
+              }}
+            >
+              <LineLayer
+                id={`ways-layer`}
+                style={{
+                  lineWidth: 5,
+                  lineColor: '#323232',
+                  lineCap: 'round',
+                  lineJoin: 'round',
+                }}
+              />
+            </ShapeSource>
+          )}
           {busStops && (
             <ShapeSource
               id={`bus-stops`}
@@ -183,7 +204,7 @@ export default function BusLineDetails({
                 })),
               }}
               cluster={true}
-              clusterRadius={5}
+              clusterRadius={6}
               onPress={handleMarkerPress}
             >
               <SymbolLayer
@@ -198,27 +219,6 @@ export default function BusLineDetails({
             </ShapeSource>
           )}
           {selectedPoint && <BusStopMarker busStop={selectedBusStop} point={selectedPoint} />}
-          {ways && (
-            <ShapeSource
-              id={`ways`}
-              shape={{
-                type: 'MultiLineString',
-                coordinates: ways.map((way) =>
-                  way.nodes.map((node) => [node.location.longitude, node.location.latitude])
-                ),
-              }}
-            >
-              <LineLayer
-                id={`ways-layer`}
-                style={{
-                  lineWidth: 5,
-                  lineColor: '#000',
-                  lineCap: 'round',
-                  lineJoin: 'round',
-                }}
-              />
-            </ShapeSource>
-          )}
         </MapView>
       </SafeAreaView>
 
