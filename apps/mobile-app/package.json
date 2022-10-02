@@ -17,7 +17,8 @@
     "eas-build-post-install": "pnpm -w shared build",
     "eas:build:development": "eas build --platform all --profile development --no-wait",
     "eas:build:development:android": "eas build --platform android --profile development --no-wait",
-    "eas:build:development:ios": "eas build --platform ios --profile development --no-wait"
+    "eas:build:development:ios": "eas build --platform ios --profile development --no-wait",
+    "upload-sourcemaps": "node -r dotenv/config ./bin/upload-sourcemaps"
   },
   "bin": {
     "eslint": "../../node_modules/.bin/eslint",

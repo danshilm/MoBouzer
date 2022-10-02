@@ -1,0 +1,16 @@
+{
+  "expo": {
+    "name": "MoBouzer",
+    "slug": "mobouzer",
+    "sdkVersion": "46.0.0",
+    "version": "0.0.1",
+    "android": {
+      "package": "com.mobouzer",
+      "versionCode": 1
+    },
+    "ios": {
+      "bundleIdentifier": "com.mobouzer",
+      "buildNumber": "1"
+    }
+  }
+}

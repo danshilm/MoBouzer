@@ -1,0 +1,72 @@
+#!/usr/bin/env node
+
+const path = require('path');
+const fs = require('fs');
+const uploadSourcemapsHook = require('../../../node_modules/sentry-expo/upload-sourcemaps');
+const bundlesDirPath = path.join(__dirname, '../dist/bundles');
+const appConfig = require('../app.json');
+
+const androidBundle = fs
+  .readFileSync(
+    path.join(
+      bundlesDirPath,
+      fs.readdirSync(bundlesDirPath).filter((v) => v.startsWith('android') && v.endsWith('.js'))[0]
+    )
+  )
+  .toString('utf8');
+const androidSourceMap = fs
+  .readFileSync(
+    path.join(
+      bundlesDirPath,
+      fs.readdirSync(bundlesDirPath).filter((v) => v.startsWith('android') && v.endsWith('.map'))[0]
+    )
+  )
+  .toString('utf8');
+
+const iosBundle = fs
+  .readFileSync(
+    path.join(
+      bundlesDirPath,
+      fs.readdirSync(bundlesDirPath).filter((v) => v.startsWith('ios') && v.endsWith('.js'))[0]
+    )
+  )
+  .toString('utf8');
+const iosSourceMap = fs
+  .readFileSync(
+    path.join(
+      bundlesDirPath,
+      fs.readdirSync(bundlesDirPath).filter((v) => v.startsWith('ios') && v.endsWith('.map'))[0]
+    )
+  )
+  .toString('utf8');
+
+const options = {
+  // eslint-disable-next-line no-console
+  log: console.log,
+  projectRoot: path.join(__dirname, '../'),
+  androidManifest: undefined,
+  androidBundle,
+  androidSourceMap,
+  iosManifest: undefined,
+  iosSourceMap,
+  iosBundle,
+  config: {
+    // these should default properly
+    // organization: process.env.SENTRY_ORG,
+    // project: process.env.SENTRY_PROJECT,
+    // authToken: process.env.SENTRY_AUTH_TOKEN,
+    // url: undefined,
+
+    // assuming the android version code and the ios build number are kept the same
+    // else upload the sourcemaps in 2 steps, one for each platform
+    release: `com.mobouzer@${appConfig.expo.version}+${appConfig.expo.ios.buildNumber}`,
+    distribution: appConfig.expo.ios.buildNumber,
+    // platform: undefined,
+
+    // deployEnv: undefined,
+    // setCommits: undefined,
+    // useGlobalSentryCli: undefined,
+  },
+};
+
+uploadSourcemapsHook(options);

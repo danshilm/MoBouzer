@@ -1,14 +1,12 @@
-import { ExpoConfig } from '@expo/config';
+import { ConfigContext, ExpoConfig } from '@expo/config';
 import 'dotenv/config';
 
-const expoConfig = {
-  name: 'MoBouzer',
-  displayName: 'MoBouzer',
-  expo: {
+export default ({ config }: ConfigContext): ExpoConfig => ({
+  ...config,
+  ...{
     name: 'MoBouzer',
     slug: 'mobouzer',
     owner: 'danshilm',
-    version: '0.0.1',
     orientation: 'portrait',
     platforms: ['android', 'ios'],
     icon: './assets/images/icon.png',
@@ -28,17 +26,19 @@ const expoConfig = {
     },
     assetBundlePatterns: ['**/*'],
     ios: {
-      bundleIdentifier: 'com.mobouzer',
       supportsTablet: true,
       googleServicesFile: './GoogleService-Info.plist',
+      bundleIdentifier: config.ios?.bundleIdentifier,
+      buildNumber: config.ios?.buildNumber
     },
     android: {
-      package: 'com.mobouzer',
       adaptiveIcon: {
         foregroundImage: './assets/images/adaptive-icon.png',
         backgroundColor: '#ffffff',
       },
       googleServicesFile: './google-services.json',
+      package: config.android?.package,
+      versionCode: config.android?.versionCode
     },
     web: {
       favicon: './assets/images/favicon.png',
@@ -86,7 +86,5 @@ const expoConfig = {
         },
       ],
     },
-  } as ExpoConfig,
-};
-
-export default expoConfig;
+  }
+});
