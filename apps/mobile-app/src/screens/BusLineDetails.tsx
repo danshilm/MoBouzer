@@ -210,7 +210,7 @@ export default function BusLineDetails({
               <SymbolLayer
                 id={`busStops-layer`}
                 style={{
-                  iconImage: 'location',
+                  iconImage: { uri: locationIcon },
                   iconSize: 0.05,
                   iconAnchor: 'bottom',
                   iconIgnorePlacement: true,

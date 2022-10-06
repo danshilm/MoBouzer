@@ -2,6 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import type { BusStop } from '@mobouzer/shared';
 import type { OnPressEvent } from '@rnmapbox/maps';
 import MapboxGL, { Camera, MapView, ShapeSource, SymbolLayer } from '@rnmapbox/maps';
+import { UserTrackingMode } from '@rnmapbox/maps/javascript/components/Camera';
 import { useDocumentData } from '@skillnation/react-native-firebase-hooks/firestore';
 import center from '@turf/center';
 import type { Feature, Point } from '@turf/helpers';
@@ -179,7 +180,7 @@ export default function Map() {
           followUserLocation={followUser}
           followZoomLevel={16}
           followPitch={50}
-          followUserMode="compass"
+          followUserMode={UserTrackingMode.FollowWithHeading}
         />
         <MapboxGL.UserLocation
           showsUserHeadingIndicator={true}
@@ -215,7 +216,7 @@ export default function Map() {
             <SymbolLayer
               id={`busStops-layer`}
               style={{
-                iconImage: 'location',
+                iconImage: { uri: locationIcon },
                 iconSize: 0.05,
                 iconAnchor: 'bottom',
                 iconIgnorePlacement: true,
