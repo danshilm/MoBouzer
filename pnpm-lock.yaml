@@ -82,9 +82,9 @@ importers:
       '@gorhom/bottom-sheet': ^4.4.4
       '@mobouzer/shared': workspace:*
       '@react-native-async-storage/async-storage': ~1.17.3
-      '@react-native-firebase/app': 14.11.1
-      '@react-native-firebase/auth': 14.11.1
-      '@react-native-firebase/firestore': 14.11.1
+      '@react-native-firebase/app': 15.4.0
+      '@react-native-firebase/auth': 15.4.0
+      '@react-native-firebase/firestore': 15.4.0
       '@react-navigation/bottom-tabs': ^6.3.3
       '@react-navigation/native': ^6.0.12
       '@react-navigation/native-stack': ^6.8.0
@@ -143,15 +143,15 @@ importers:
       '@gorhom/bottom-sheet': 4.4.4_6hvoxcyy47hl6f5o7okf4th4wu
       '@mobouzer/shared': link:../../packages/shared
       '@react-native-async-storage/async-storage': 1.17.7_react-native@0.69.6
-      '@react-native-firebase/app': 14.11.1_gtltrjvtlgj7ga36qzsxajwqwe
-      '@react-native-firebase/auth': 14.11.1_kijl5j5a34ibxr2pv5igp3eaii
-      '@react-native-firebase/firestore': 14.11.1_kijl5j5a34ibxr2pv5igp3eaii
+      '@react-native-firebase/app': 15.4.0_gtltrjvtlgj7ga36qzsxajwqwe
+      '@react-native-firebase/auth': 15.4.0_7macxjwkpmybkb6yzsdxrpee6e
+      '@react-native-firebase/firestore': 15.4.0_7macxjwkpmybkb6yzsdxrpee6e
       '@react-navigation/bottom-tabs': 6.3.3_kau3mf3e3etrgugekn4dmy6fnq
       '@react-navigation/native': 6.0.12_gtltrjvtlgj7ga36qzsxajwqwe
       '@react-navigation/native-stack': 6.8.0_kau3mf3e3etrgugekn4dmy6fnq
       '@rnmapbox/maps': 10.0.0-beta.44_hnhjddv5swjgoskpmxb4vidmjq
       '@sentry/react-native': 4.2.2_gtltrjvtlgj7ga36qzsxajwqwe
-      '@skillnation/react-native-firebase-hooks': 0.5.0_ys4td3hmjnvbr2qbezketczu4m
+      '@skillnation/react-native-firebase-hooks': 0.5.0_7pyib2xi6kromiufbkjsgwpgmy
       '@turf/bbox': 6.5.0
       '@turf/center': 6.5.0
       '@turf/center-of-mass': 6.5.0
@@ -1824,28 +1824,6 @@ packages:
       nullthrows: 1.1.1
     dev: false
 
-  /@expo/config-plugins/4.1.5:
-    resolution: {integrity: sha512-RVvU40RtZt12HavuDAe+LDIq9lHj7sheOfMEHdmpJ/uTA8pgvkbc56XF6JHQD+yRr6+uhhb+JnAasGq49dsQbw==}
-    dependencies:
-      '@expo/config-types': 45.0.0
-      '@expo/json-file': 8.2.36
-      '@expo/plist': 0.0.18
-      '@expo/sdk-runtime-versions': 1.0.0
-      '@react-native/normalize-color': 2.0.0
-      chalk: 4.1.2
-      debug: 4.3.4
-      find-up: 5.0.0
-      getenv: 1.0.0
-      glob: 7.1.6
-      resolve-from: 5.0.0
-      semver: 7.3.8
-      slash: 3.0.0
-      xcode: 3.0.1
-      xml2js: 0.4.23
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
   /@expo/config-plugins/5.0.1:
     resolution: {integrity: sha512-1OfnsOrfeSkB0VZfT01UjQ5Uq6p+yYbq8yNkj0e99K/6NLHpyvIxj+5tZIV0nQXgkOcqBIABL2uA7lwB8CkaBQ==}
     dependencies:
@@ -1866,10 +1844,6 @@ packages:
       xml2js: 0.4.23
     transitivePeerDependencies:
       - supports-color
-    dev: false
-
-  /@expo/config-types/45.0.0:
-    resolution: {integrity: sha512-/QGhhLWyaGautgEyU50UJr5YqKJix5t77ePTwreOVAhmZH+ff3nrrtYTTnccx+qF08ZNQmfAyYMCD3rQfzpiJA==}
     dev: false
 
   /@expo/config-types/46.0.2:
@@ -2819,13 +2793,13 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@react-native-firebase/app/14.11.1_gtltrjvtlgj7ga36qzsxajwqwe:
-    resolution: {integrity: sha512-fkvOK8c7e8MxIbfb2076kO3GtGUc3ZXNEkPyfamRKBnPgANpmnjQaTVIraXpeuIIOfjj5uDK4uw32znWiDusGA==}
+  /@react-native-firebase/app/15.4.0_gtltrjvtlgj7ga36qzsxajwqwe:
+    resolution: {integrity: sha512-1Xf1Q0x6x6dZamRjIpDLCvj4CUwozr1mvH3sc3A4J1avjGUwgqD0RR58DGd7r9akU+JmEXLHB84EZ9Aa68AHDg==}
     peerDependencies:
       react: '*'
       react-native: '*'
     dependencies:
-      '@expo/config-plugins': 4.1.5
+      '@expo/config-plugins': 5.0.1
       opencollective-postinstall: 2.0.3
       react: 18.0.0
       react-native: 0.69.6_k6xwmnqmgysg6weibx66ue6pyi
@@ -2834,12 +2808,12 @@ packages:
       - supports-color
     dev: false
 
-  /@react-native-firebase/auth/14.11.1_kijl5j5a34ibxr2pv5igp3eaii:
-    resolution: {integrity: sha512-IzgFakon2jkuC4FEP8q9wruz8Yu0yem/Yk0v8IwndV2h/5lYmmij/f5Pyk74U3tadGOr9UrBsGkrWZMceiAjHQ==}
+  /@react-native-firebase/auth/15.4.0_7macxjwkpmybkb6yzsdxrpee6e:
+    resolution: {integrity: sha512-8Vm/nJpFzjpBeIbueai+WR4m8WzzUvsOXG7oDyzvPPxAL1CkWAYQ3dKRk6KhcIaqGatvfR9Ue+k3XndRS6jSMA==}
     peerDependencies:
-      '@react-native-firebase/app': 14.11.1
+      '@react-native-firebase/app': 15.4.0
     dependencies:
-      '@react-native-firebase/app': 14.11.1_gtltrjvtlgj7ga36qzsxajwqwe
+      '@react-native-firebase/app': 15.4.0_gtltrjvtlgj7ga36qzsxajwqwe
     dev: false
 
   /@react-native-firebase/firestore/14.11.1:
@@ -2848,12 +2822,12 @@ packages:
       '@react-native-firebase/app': 14.11.1
     dev: true
 
-  /@react-native-firebase/firestore/14.11.1_kijl5j5a34ibxr2pv5igp3eaii:
-    resolution: {integrity: sha512-1/Ap0EDlAueUDHrH7WxU5ZfEF+qcT1NfUJU4qkFBvcg9pdnMS7cch4nzifRHr6jqyfUYiHgFrRe2wYfqQ0gK+w==}
+  /@react-native-firebase/firestore/15.4.0_7macxjwkpmybkb6yzsdxrpee6e:
+    resolution: {integrity: sha512-7Kiqn9c4uzQyURFQ4LGCZ4waeZb/hZb/IWl6MlpfkCtII9PnpdqbvQwEKKKg8RQMocP5sbw0qPsKEdYEYUNKhg==}
     peerDependencies:
-      '@react-native-firebase/app': 14.11.1
+      '@react-native-firebase/app': 15.4.0
     dependencies:
-      '@react-native-firebase/app': 14.11.1_gtltrjvtlgj7ga36qzsxajwqwe
+      '@react-native-firebase/app': 15.4.0_gtltrjvtlgj7ga36qzsxajwqwe
     dev: false
 
   /@react-native/assets/1.0.0:
@@ -3140,7 +3114,7 @@ packages:
     resolution: {integrity: sha512-RNiOoTPkptFtSVzQevY/yWtZwf/RxyVnPy/OcA9HBM3MlGDnBEYL5B41H0MTn0Uec8Hi+2qUtTfG2WWZBmMejQ==}
     dev: false
 
-  /@skillnation/react-native-firebase-hooks/0.5.0_ys4td3hmjnvbr2qbezketczu4m:
+  /@skillnation/react-native-firebase-hooks/0.5.0_7pyib2xi6kromiufbkjsgwpgmy:
     resolution: {integrity: sha512-F4jUqbXvBLEdc3B/Vndn0qdarCXQXHQ6mYAUVw/cft25c4+AZ3Ja1nOl2AmQN5U5N5SDcXqsrDskapDbeM5VdA==}
     peerDependencies:
       '@react-native-firebase/app': '*'
@@ -3151,9 +3125,9 @@ packages:
       react: '*'
       react-native: '*'
     dependencies:
-      '@react-native-firebase/app': 14.11.1_gtltrjvtlgj7ga36qzsxajwqwe
-      '@react-native-firebase/auth': 14.11.1_kijl5j5a34ibxr2pv5igp3eaii
-      '@react-native-firebase/firestore': 14.11.1_kijl5j5a34ibxr2pv5igp3eaii
+      '@react-native-firebase/app': 15.4.0_gtltrjvtlgj7ga36qzsxajwqwe
+      '@react-native-firebase/auth': 15.4.0_7macxjwkpmybkb6yzsdxrpee6e
+      '@react-native-firebase/firestore': 15.4.0_7macxjwkpmybkb6yzsdxrpee6e
       react: 18.0.0
       react-native: 0.69.6_k6xwmnqmgysg6weibx66ue6pyi
     dev: false
