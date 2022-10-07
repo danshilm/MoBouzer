@@ -19,7 +19,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     },
     updates: {
       fallbackToCacheTimeout: 0,
-      url: `https://u.expo.dev/${process.env.EAS_PROJECT_ID}`,
+      url: `https://u.expo.dev/f33a6450-f743-4b82-8781-8a9389580475`,
     },
     runtimeVersion: {
       policy: 'sdkVersion',
@@ -29,7 +29,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       supportsTablet: true,
       googleServicesFile: './GoogleService-Info.plist',
       bundleIdentifier: config.ios?.bundleIdentifier,
-      buildNumber: config.ios?.buildNumber
+      buildNumber: config.ios?.buildNumber,
     },
     android: {
       adaptiveIcon: {
@@ -38,14 +38,14 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       },
       googleServicesFile: './google-services.json',
       package: config.android?.package,
-      versionCode: config.android?.versionCode
+      versionCode: config.android?.versionCode,
     },
     web: {
       favicon: './assets/images/favicon.png',
     },
     extra: {
       eas: {
-        projectId: process.env.EAS_PROJECT_ID,
+        projectId: 'f33a6450-f743-4b82-8781-8a9389580475',
       },
       firebaseApiKey: process.env.FIREBASE_API_KEY,
       firebaseAuthDomain: process.env.FIREBASE_AUTH_DOMAIN,
@@ -86,5 +86,5 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         },
       ],
     },
-  }
+  },
 });
