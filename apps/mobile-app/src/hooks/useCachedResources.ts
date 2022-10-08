@@ -16,9 +16,12 @@ import {
   SpaceMono_700Bold_Italic,
 } from '@expo-google-fonts/space-mono';
 import { FontAwesome } from '@expo/vector-icons';
+import MapboxGL from '@rnmapbox/maps';
+import Constants from 'expo-constants';
 import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect, useState } from 'react';
+import { Platform } from 'react-native';
 import { getSettings } from '../lib/settings';
 import Sentry from '../utils/sentry';
 
@@ -30,6 +33,9 @@ export default function useCachedResources() {
     async function loadResourcesAndDataAsync() {
       try {
         SplashScreen.preventAutoHideAsync();
+
+        MapboxGL.setWellKnownTileServer(Platform.OS === 'android' ? 'Mapbox' : 'mapbox');
+        MapboxGL.setAccessToken(Constants.expoConfig?.extra?.mapboxToken);
 
         // Load fonts
         await Font.loadAsync({

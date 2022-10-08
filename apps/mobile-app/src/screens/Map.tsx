@@ -7,10 +7,9 @@ import { useDocumentData } from '@skillnation/react-native-firebase-hooks/firest
 import center from '@turf/center';
 import type { Feature, Point } from '@turf/helpers';
 import { featureCollection } from '@turf/helpers';
-import Constants from 'expo-constants';
 import { getForegroundPermissionsAsync, getLastKnownPositionAsync } from 'expo-location';
 import React, { useEffect, useRef, useState } from 'react';
-import { ActivityIndicator, Platform, View } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
 import locationIcon from '../../assets/images/location-filled.png';
 import Button from '../components/Common/Button';
 import BusStopMarker from '../components/Map/BusStopMarker';
@@ -21,9 +20,6 @@ import { firebaseStore } from '../firebase/utils';
 import useSecondBottomTabPress from '../hooks/useSecondBottomTabPress';
 import tw from '../lib/tailwind';
 import { sleep } from '../utils/common';
-
-MapboxGL.setWellKnownTileServer(Platform.OS === 'android' ? 'Mapbox' : 'mapbox');
-MapboxGL.setAccessToken(Constants.expoConfig?.extra?.mapboxToken);
 
 const cameraDefaultSettingsWithPadding = {
   ...cameraDefaultSettings,
@@ -189,11 +185,6 @@ export default function Map() {
           androidRenderMode="compass"
           visible={userLocationIsShown}
         />
-        <MapboxGL.Images
-          images={{
-            location: locationIcon,
-          }}
-        />
         {allBusStops && (
           <ShapeSource
             id={`bus-stops`}
@@ -216,7 +207,7 @@ export default function Map() {
             <SymbolLayer
               id={`busStops-layer`}
               style={{
-                iconImage: { uri: locationIcon },
+                iconImage: locationIcon,
                 iconSize: 0.05,
                 iconAnchor: 'bottom',
                 iconIgnorePlacement: true,

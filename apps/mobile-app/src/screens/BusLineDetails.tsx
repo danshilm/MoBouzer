@@ -162,11 +162,6 @@ export default function BusLineDetails({
             renderMode="native"
             androidRenderMode="compass"
           />
-          <MapboxGL.Images
-            images={{
-              location: locationIcon,
-            }}
-          />
           {ways && (
             <ShapeSource
               id={`ways`}
@@ -210,7 +205,7 @@ export default function BusLineDetails({
               <SymbolLayer
                 id={`busStops-layer`}
                 style={{
-                  iconImage: { uri: locationIcon },
+                  iconImage: locationIcon,
                   iconSize: 0.05,
                   iconAnchor: 'bottom',
                   iconIgnorePlacement: true,
