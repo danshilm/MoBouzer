@@ -1,11 +1,11 @@
-import type { BusStop } from '@mobouzer/shared';
+import type { AdminBusStop } from '@mobouzer/shared';
 import type { GeoPoint } from 'firebase-admin/firestore';
 import { firebaseStore } from '../firebase/config';
 import logger from '../utils/logger';
 
 export const updateBusStop = async (busStopId: string, location: GeoPoint, name?: string) => {
   const busStopRef = firebaseStore.doc(`bus-stops/${busStopId}`);
-  const data: BusStop.DocumentData = { location, id: busStopId };
+  const data: AdminBusStop.DocumentData = { location, id: busStopId };
 
   if (name) {
     data.name = name;
