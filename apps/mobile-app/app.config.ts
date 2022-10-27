@@ -62,9 +62,14 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       sentryDsn: process.env.SENTRY_DSN,
     },
     plugins: [
-      // only required by @react-native-firebase >= v15.0.0
-      // ['expo-build-properties', { ios: { useFrameworks: 'dynamic' } }],
-      './plugins/react-native-firebase',
+      [
+        'expo-build-properties',
+        {
+          ios: {
+            useFrameworks: 'static',
+          },
+        },
+      ],
       '@react-native-firebase/app',
       [
         '@rnmapbox/maps',
