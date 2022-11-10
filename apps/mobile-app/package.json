@@ -46,7 +46,7 @@
     "@turf/helpers": "^6.5.0",
     "@turf/nearest-point": "^6.5.0",
     "dotenv": "^16.0.2",
-    "expo": "^46.0.14",
+    "expo": "~46.0.17",
     "expo-application": "~4.2.2",
     "expo-asset": "~8.6.1",
     "expo-auth-session": "~3.7.1",
