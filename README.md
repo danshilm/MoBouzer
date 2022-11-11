@@ -1,4 +1,4 @@
-[![Expo Project Page](https://img.shields.io/badge/-Made_With_Expo-000?style=flat&logo=expo)](https://expo.dev/@danshilm/mobouzer)
+[![Expo Project Page](https://img.shields.io/badge/Made_With_Expo-000?style=for-the-badge&logo=expo&labelColor=4630eb&logoWidth=20)](https://expo.dev/@danshilm/mobouzer)
 
 # MoBouzer
 
@@ -37,7 +37,7 @@ This repository is the home of the mobile app as well as all associated services
 - [`apps/mobile-app`](apps/mobile-app/) is the React Native app itself
 - [`apps/admin-cli`](apps/admin-cli) is a small CLI tool made to manage the data (for bus stops & bus lines) that's used in the mobile application
 - [`packages/functions`](packages/functions) contains serverless functions running on GCP related to MoBouzer and the MoBouzer GCP project itself
-- [`packages/shared`](packages/shared) holds interfaces/procedures used in both the admin CLI and the mobile app, hence the name
+- [`packages/shared`](packages/shared) holds interfaces/procedures used in both the admin CLI and the mobile app, hence the name (_obviously_)
 
 ## Acknowledgements
 
