@@ -16,7 +16,7 @@ export interface Stops {
    * * Required for locations which are stops (location_type=0), stations (location_type=1) or entrances/exits (location_type=2).
    * * Optional for locations which are generic nodes (location_type=3) or boarding areas (location_type=4).
    */
-  stop_name?: string;
+  stop_name: string;
   /** Description of the location that provides useful, quality information. Do not simply duplicate the name of the location. */
   stop_desc?: string;
   /** 
