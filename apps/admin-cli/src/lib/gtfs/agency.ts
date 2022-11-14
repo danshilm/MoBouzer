@@ -1,5 +1,5 @@
 import { GTFSFile } from '.';
-import { Agency } from '../../interfaces/gtfs/agency';
+import type { Agency } from '../../interfaces/gtfs/agency';
 
 // from https://nlta.govmu.org/Pages/Procedures/Bus-Timetable.aspx
 // also saved on the web archive
@@ -49,6 +49,6 @@ const data = async (): Promise<Agency[]> => {
   ];
 };
 
-const Agency = new GTFSFile('agency', data);
+const AgencyFile = new GTFSFile('agency', data);
 
-export default Agency;
+export default AgencyFile;
