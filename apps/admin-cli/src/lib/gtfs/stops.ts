@@ -21,7 +21,8 @@ const getAllBusStops = async (): Promise<Stops[]> => {
       stop_lat: busStopData.location.latitude,
       stop_long: busStopData.location.longitude,
       location_type: 0,
-      stop_name: busStopData.name ?? 'Bus Stop',
+      // replace commas since that's the delimiter for the gtfs file
+      stop_name: busStopData.name?.replace(',', '') ?? 'Bus Stop',
     });
   });
 
