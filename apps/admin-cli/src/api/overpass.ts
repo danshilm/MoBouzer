@@ -47,14 +47,14 @@ export const getNode = async (id: number | number[]) => {
   }
 };
 
-export const getAllNodes = async () => {
+export const getAllBuses = async () => {
   const data = query('node[bus=yes]', 'node[highway=bus_stop]');
 
   try {
     const res = await post(data);
     return res.data.elements;
   } catch (error) {
-    throw new Error(`Could not retrieve all nodes from Overpass API: ${error}`);
+    throw new Error(`Could not retrieve all buses from Overpass API: ${error}`);
   }
 };
 
