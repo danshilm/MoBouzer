@@ -2,7 +2,7 @@
   "expo": {
     "name": "MoBouzer",
     "slug": "mobouzer",
-    "sdkVersion": "46.0.0",
+    "sdkVersion": "47.0.0",
     "version": "0.0.1",
     "android": {
       "package": "com.mobouzer",
