@@ -88,7 +88,7 @@ importers:
       '@react-navigation/bottom-tabs': ^6.3.3
       '@react-navigation/native': ^6.0.12
       '@react-navigation/native-stack': ^6.8.0
-      '@rnmapbox/maps': 10.0.0-beta.44
+      '@rnmapbox/maps': 10.0.0-beta.57
       '@sentry/react-native': 4.2.2
       '@skillnation/react-native-firebase-hooks': ^0.5.0
       '@turf/bbox': ^6.5.0
@@ -121,9 +121,8 @@ importers:
       expo-web-browser: ~12.0.0
       formik: ^2.2.9
       geojson: ^0.5.0
-      jetifier: ^2.0.0
       lodash: ^4.17.21
-      moti: ^0.18.0
+      moti: ^0.21.0
       react: 18.1.0
       react-dom: 18.1.0
       react-native: 0.70.5
@@ -132,9 +131,8 @@ importers:
       react-native-safe-area-context: 4.4.1
       react-native-screens: ~3.18.0
       react-native-web: ~0.18.7
-      react-test-renderer: 18.2.0
       sentry-expo: ~5.0.0
-      twrnc: ^3.4.0
+      twrnc: ^3.4.1
       typescript: ^4.6.3
       yup: ^0.32.11
     dependencies:
@@ -150,7 +148,7 @@ importers:
       '@react-navigation/bottom-tabs': 6.3.3_bsqir3c2rwfy275kprnhxs4m7q
       '@react-navigation/native': 6.0.12_tj3nonr5gneraukzjkxpsiy7yu
       '@react-navigation/native-stack': 6.8.0_bsqir3c2rwfy275kprnhxs4m7q
-      '@rnmapbox/maps': 10.0.0-beta.44_dwqif7lcmndkqc63wzclvztc7u
+      '@rnmapbox/maps': 10.0.0-beta.57_dwqif7lcmndkqc63wzclvztc7u
       '@sentry/react-native': 4.2.2_tj3nonr5gneraukzjkxpsiy7yu
       '@skillnation/react-native-firebase-hooks': 0.5.0_vlvy32ivdgrl55ii3nyhryvw2u
       '@turf/bbox': 6.5.0
@@ -180,7 +178,7 @@ importers:
       formik: 2.2.9_react@18.1.0
       geojson: 0.5.0
       lodash: 4.17.21
-      moti: 0.18.0_ef5jwxihqo6n7gxfmzogljlgcm
+      moti: 0.21.0_ud7f2lmrqdqtnk35idy5n2spl4
       react: 18.1.0
       react-dom: 18.1.0_react@18.1.0
       react-native: 0.70.5_naleetjjl2tr2dal5iyxdlhv3y
@@ -190,7 +188,7 @@ importers:
       react-native-screens: 3.18.2_tj3nonr5gneraukzjkxpsiy7yu
       react-native-web: 0.18.9_ef5jwxihqo6n7gxfmzogljlgcm
       sentry-expo: 5.0.2_k7v3cm7v4njevnwew7hgjc6ycu
-      twrnc: 3.4.0_react-native@0.70.5
+      twrnc: 3.4.1_react-native@0.70.5
       yup: 0.32.11
     devDependencies:
       '@babel/core': 7.20.2
@@ -199,8 +197,6 @@ importers:
       '@types/lodash': 4.14.185
       '@types/react': 18.0.25
       '@types/react-native': 0.70.6
-      jetifier: 2.0.0
-      react-test-renderer: 18.2.0_react@18.1.0
       typescript: 4.7.4
 
   packages/functions/functions:
@@ -2448,24 +2444,6 @@ packages:
     hasBin: true
     dev: false
 
-  /@motify/components/0.18.0_ef5jwxihqo6n7gxfmzogljlgcm:
-    resolution: {integrity: sha512-1StICST4CKXvWwkkoKtt6Pml//gE2fPI99Byxa+TbrFw4KieATeCYBRjSKD0BghmFmoF+2mRM2uf9FRYfJCGtQ==}
-    dependencies:
-      '@motify/core': 0.18.0_ef5jwxihqo6n7gxfmzogljlgcm
-    transitivePeerDependencies:
-      - react
-      - react-dom
-    dev: false
-
-  /@motify/core/0.18.0_ef5jwxihqo6n7gxfmzogljlgcm:
-    resolution: {integrity: sha512-8C4xnC5dZ+S/NEx5wIsHAccofffSOzo7M6lKYR8Ty0QA/XtfwNRL9jQBQafj0pon4h2XP7u2NcJ4lc0ANOsx3A==}
-    dependencies:
-      framer-motion: 6.5.1_ef5jwxihqo6n7gxfmzogljlgcm
-    transitivePeerDependencies:
-      - react
-      - react-dom
-    dev: false
-
   /@motionone/animation/10.14.0:
     resolution: {integrity: sha512-h+1sdyBP8vbxEBW5gPFDnj+m2DCqdlAuf2g6Iafb1lcMnqjsRXWlPw1AXgvUMXmreyhqmPbJqoNfIKdytampRQ==}
     dependencies:
@@ -2937,8 +2915,8 @@ packages:
       nanoid: 3.3.4
     dev: false
 
-  /@rnmapbox/maps/10.0.0-beta.44_dwqif7lcmndkqc63wzclvztc7u:
-    resolution: {integrity: sha512-QmmfIR5wZAgR0Af4B6PXiz3IIkVJSWnC/kTHPappGj8uwwFckaKeQFj7eP2SbYKIFh13yytH2NlEz15tCwhjxA==}
+  /@rnmapbox/maps/10.0.0-beta.57_dwqif7lcmndkqc63wzclvztc7u:
+    resolution: {integrity: sha512-hA1F222yYdPxWDz5NF4WzxJAoHYlRsXjCwF1UGEw0YXeh/IQZvPAkruV8aP/uYnI4J/l1n2DmNUVV00uElkK1w==}
     peerDependencies:
       expo: '*'
       mapbox-gl: ^ 2.9.0
@@ -7523,11 +7501,6 @@ packages:
       supports-color: 8.1.1
     dev: false
 
-  /jetifier/2.0.0:
-    resolution: {integrity: sha512-J4Au9KuT74te+PCCCHKgAjyLlEa+2VyIAEPNCdE5aNkAJ6FAJcAqcdzEkSnzNksIa9NkGmC4tPiClk2e7tCJuQ==}
-    hasBin: true
-    dev: true
-
   /jimp-compact/0.16.1:
     resolution: {integrity: sha512-dZ6Ra7u1G8c4Letq/B5EzAxj4tLFHL+cGtdpR+PVm4yzPDj+lCk+AbivWt1eOM+ikzkowtyV7qSqX6qr3t71Ww==}
     dev: false
@@ -8644,11 +8617,13 @@ packages:
     hasBin: true
     dev: false
 
-  /moti/0.18.0_ef5jwxihqo6n7gxfmzogljlgcm:
-    resolution: {integrity: sha512-/OJYET+TkLA+LTCE6hYeCaHYDv4IIRVDLfFmA7WrcocfS0PSj99VwUb48HZ40GAwrr0atkGDBRizdj5q5sFn3Q==}
+  /moti/0.21.0_ud7f2lmrqdqtnk35idy5n2spl4:
+    resolution: {integrity: sha512-b4UJux4sbHeTDWLU7IfJ1ct3p2N/v6fabQTjeXTXrBcna/Ha3QFJ5TKq3F7hOGeHzt5b8vLanfLdPbJRC/v3jg==}
+    peerDependencies:
+      react-native-reanimated: '*'
     dependencies:
-      '@motify/components': 0.18.0_ef5jwxihqo6n7gxfmzogljlgcm
-      '@motify/core': 0.18.0_ef5jwxihqo6n7gxfmzogljlgcm
+      framer-motion: 6.5.1_ef5jwxihqo6n7gxfmzogljlgcm
+      react-native-reanimated: 2.12.0_6puqyg2n45u266kros6m47lk7e
     transitivePeerDependencies:
       - react
       - react-dom
@@ -9697,6 +9672,7 @@ packages:
 
   /react-is/18.2.0:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
+    dev: false
 
   /react-native-codegen/0.70.6:
     resolution: {integrity: sha512-kdwIhH2hi+cFnG5Nb8Ji2JwmcCxnaOOo9440ov7XDzSvGfmUStnCzl+MCW8jLjqHcE4icT7N9y+xx4f50vfBTw==}
@@ -9853,23 +9829,14 @@ packages:
       object-assign: 4.1.1
       react: 18.1.0
       react-is: 18.2.0
-
-  /react-test-renderer/18.2.0_react@18.1.0:
-    resolution: {integrity: sha512-JWD+aQ0lh2gvh4NM3bBM42Kx+XybOxCpgYK7F8ugAlpaTSnWsX+39Z4XkOykGZAHrjwwTZT3x3KxswVWxHPUqA==}
-    peerDependencies:
-      react: ^18.2.0
-    dependencies:
-      react: 18.1.0
-      react-is: 18.2.0
-      react-shallow-renderer: 16.15.0_react@18.1.0
-      scheduler: 0.23.0
-    dev: true
+    dev: false
 
   /react/18.1.0:
     resolution: {integrity: sha512-4oL8ivCz5ZEPyclFQXaNksK3adutVS8l2xzZU0cqEFrE9Sb7fC0EFK5uEk74wIreL1DERyjvsU915j1pcT2uEQ==}
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
+    dev: false
 
   /read-cache/1.0.0:
     resolution: {integrity: sha512-Owdv/Ft7IjOgm/i0xvNDZ1LrRANRfew4b2prF3OWMQLxLfu3bS8FVhCsrSCMK4lR56Y9ya+AThoTpDCTxCmpRA==}
@@ -10230,12 +10197,6 @@ packages:
     dependencies:
       loose-envify: 1.4.0
     dev: false
-
-  /scheduler/0.23.0:
-    resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
-    dependencies:
-      loose-envify: 1.4.0
-    dev: true
 
   /semver/5.7.1:
     resolution: {integrity: sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==}
@@ -11183,8 +11144,8 @@ packages:
       typescript: 4.7.4
     dev: true
 
-  /twrnc/3.4.0_react-native@0.70.5:
-    resolution: {integrity: sha512-zJzueyC+LUphbrUEyeVmbR7VfAFObq2mr6ALfMytusHxzHJnOMCdxsw2GCTD67nThP1V22QFp9CZ/DulcZMl1g==}
+  /twrnc/3.4.1_react-native@0.70.5:
+    resolution: {integrity: sha512-sx06LpxIE11siE9mlK7qsXeNE9Hk0dU1ACEQztgdR0/V/kDm+U9XJ1L0ibtvqEstX8R5o1NzKrpHPewgvCn5ZA==}
     peerDependencies:
       react-native: '>=0.63.0'
     dependencies:
