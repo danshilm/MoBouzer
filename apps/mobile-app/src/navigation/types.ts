@@ -12,7 +12,6 @@ export type RootStackParamList = {
   SignIn: undefined;
   SignUp: undefined;
   HomeTab: NavigatorScreenParams<HomeTabParamList> | undefined;
-  Modal: undefined;
   NotFound: undefined;
   Loading: undefined;
 };
@@ -24,9 +23,7 @@ export type RootStackScreenProps<Screen extends keyof RootStackParamList> = Nati
 
 export type HomeTabParamList = {
   Map: undefined;
-  BusStops: undefined;
   BusLinesStack: NavigatorScreenParams<BusLinesStackParamList>;
-  TabOne: undefined;
 };
 
 export type HomeTabScreenProps<Screen extends keyof HomeTabParamList> = CompositeScreenProps<

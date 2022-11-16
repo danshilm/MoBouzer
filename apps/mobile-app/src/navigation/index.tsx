@@ -1,9 +1,4 @@
-/**
- * If you are not familiar with React Navigation, refer to the "Fundamentals" guide:
- * https://reactnavigation.org/docs/getting-started
- *
- */
-import { FontAwesome, Ionicons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import type { Theme } from '@react-navigation/native';
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
@@ -12,32 +7,23 @@ import { ErrorBoundary } from '@sentry/react-native';
 import { useAuthState } from '@skillnation/react-native-firebase-hooks/auth';
 import * as React from 'react';
 import type { ColorSchemeName } from 'react-native';
-import { Pressable } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { gray, slate, zinc } from 'tailwindcss/colors';
+import { slate, zinc } from 'tailwindcss/colors';
 import Error from '../components/Error';
 import { firebaseAuth } from '../firebase/utils';
-import useSettings from '../hooks/useSettings';
 import tw from '../lib/tailwind';
 import BusLineDetails from '../screens/BusLineDetails';
 import BusLines from '../screens/BusLines';
 import Loading from '../screens/Loading';
 import Map from '../screens/Map';
-import Modal from '../screens/Modal';
 import NotFound from '../screens/NotFound';
 import Onboarding from '../screens/Onboarding';
 import SignIn from '../screens/SignIn';
 import SignUp from '../screens/SignUp';
-import TabOne from '../screens/TabOne';
 import Sentry from '../utils/sentry';
 import LinkingConfiguration from './LinkingConfiguration';
-import type {
-  BusLinesStackParamList,
-  HomeTabParamList,
-  HomeTabScreenProps,
-  RootStackParamList,
-} from './types';
+import type { BusLinesStackParamList, HomeTabParamList, RootStackParamList } from './types';
 import { navigationRef } from './utils';
 
 const MyDarkTheme: Theme = {
@@ -101,11 +87,6 @@ function RootNavigator() {
           <Stack.Screen name="HomeTab" component={HomeTabNavigator} />
         </>
       )}
-      <Stack.Screen
-        name="Modal"
-        component={Modal}
-        options={{ presentation: 'modal', animation: 'slide_from_bottom', headerShown: true }}
-      />
       <Stack.Screen name="NotFound" component={NotFound} />
     </Stack.Navigator>
   );
@@ -118,7 +99,6 @@ function RootNavigator() {
 const BottomTab = createBottomTabNavigator<HomeTabParamList>();
 
 function HomeTabNavigator() {
-  const { settings, setSettings } = useSettings();
   const { bottom } = useSafeAreaInsets();
 
   return (
@@ -132,27 +112,6 @@ function HomeTabNavigator() {
         headerShown: false,
       }}
     >
-      <BottomTab.Screen
-        name="TabOne"
-        component={TabOne}
-        options={({ navigation }: HomeTabScreenProps<'TabOne'>) => ({
-          title: 'Tab One',
-          headerShown: true,
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Pressable
-              onPress={() => {
-                setSettings({ ...settings, isDarkMode: !settings.isDarkMode });
-                // firebaseAuth.signOut();
-                navigation.navigate('Modal');
-              }}
-              style={({ pressed }) => tw`${pressed ? 'opacity-50' : 'opacity-100'}`}
-            >
-              <Ionicons name="contrast-outline" size={25} color={gray[800]} style={tw`mr-4`} />
-            </Pressable>
-          ),
-        })}
-      />
       <BottomTab.Screen
         name="Map"
         component={Map}
@@ -196,14 +155,4 @@ function BusLinesNavigator() {
       />
     </BusLinesStack.Navigator>
   );
-}
-
-/**
- * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
- */
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
-  color: string;
-}) {
-  return <FontAwesome size={25} style={tw`mb-0`} {...props} />;
 }

@@ -17,15 +17,13 @@ const linking: LinkingOptions<RootStackParamList> = {
           BusLinesStack: {
             screens: {
               BusLines: 'bus-lines',
-              // id available in route.params.id as a string
-              BusLineDetails: 'bus-lines/:id/:section',
+              // id & direction available in route.params.id as a string
+              BusLineDetails: 'bus-lines/:id/:direction',
             },
           } as PathConfig<BusLinesStackParamList>,
           Map: 'map',
-          TabOne: 'tab-one',
         },
       },
-      Modal: 'modal',
       Loading: 'loading',
       SignIn: 'signin',
       SignUp: 'signup',
