@@ -5,7 +5,7 @@
     "app": "pnpm run --filter @mobouzer/mobile-app",
     "cli": "pnpm run --filter @mobouzer/admin-cli",
     "shared": "pnpm run --filter @mobouzer/shared",
-    "prepare": "husky install",
+    "prepare": "node bin/prepare.js",
     "build": "pnpm run -r --if-present build",
     "lint:fix": "pnpm run -r --if-present lint:fix",
     "recrawl": "watchman watch-del ./; watchman watch-project ./"
@@ -74,6 +74,9 @@
     ],
     "env": {
       "es6": true
-    }
+    },
+    "ignorePatterns": [
+      "bin/**/*.js"
+    ]
   }
 }
