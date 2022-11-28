@@ -82,9 +82,9 @@ importers:
       '@gorhom/bottom-sheet': ^4.4.4
       '@mobouzer/shared': workspace:*
       '@react-native-async-storage/async-storage': ~1.17.3
-      '@react-native-firebase/app': 15.4.0
-      '@react-native-firebase/auth': 15.4.0
-      '@react-native-firebase/firestore': 15.4.0
+      '@react-native-firebase/app': 16.4.6
+      '@react-native-firebase/auth': 16.4.6
+      '@react-native-firebase/firestore': 16.4.6
       '@react-navigation/bottom-tabs': ^6.3.3
       '@react-navigation/native': ^6.0.12
       '@react-navigation/native-stack': ^6.8.0
@@ -142,15 +142,15 @@ importers:
       '@gorhom/bottom-sheet': 4.4.4_hc3xacyngf3bvaupo2hzzhxixy
       '@mobouzer/shared': link:../../packages/shared
       '@react-native-async-storage/async-storage': 1.17.7_react-native@0.70.5
-      '@react-native-firebase/app': 15.4.0_tj3nonr5gneraukzjkxpsiy7yu
-      '@react-native-firebase/auth': 15.4.0_7macxjwkpmybkb6yzsdxrpee6e
-      '@react-native-firebase/firestore': 15.4.0_7macxjwkpmybkb6yzsdxrpee6e
+      '@react-native-firebase/app': 16.4.6_tj3nonr5gneraukzjkxpsiy7yu
+      '@react-native-firebase/auth': 16.4.6_bwuheuo7l7qgflnog4qmu7b5t4
+      '@react-native-firebase/firestore': 16.4.6_bwuheuo7l7qgflnog4qmu7b5t4
       '@react-navigation/bottom-tabs': 6.3.3_bsqir3c2rwfy275kprnhxs4m7q
       '@react-navigation/native': 6.0.12_tj3nonr5gneraukzjkxpsiy7yu
       '@react-navigation/native-stack': 6.8.0_bsqir3c2rwfy275kprnhxs4m7q
       '@rnmapbox/maps': 10.0.0-beta.57_dwqif7lcmndkqc63wzclvztc7u
       '@sentry/react-native': 4.2.2_tj3nonr5gneraukzjkxpsiy7yu
-      '@skillnation/react-native-firebase-hooks': 0.5.0_vlvy32ivdgrl55ii3nyhryvw2u
+      '@skillnation/react-native-firebase-hooks': 0.5.0_epxfkctzklkygu6kmwyjto2jg4
       '@turf/bbox': 6.5.0
       '@turf/center': 6.5.0
       '@turf/center-of-mass': 6.5.0
@@ -1774,28 +1774,6 @@ packages:
       nullthrows: 1.1.1
     dev: false
 
-  /@expo/config-plugins/5.0.1:
-    resolution: {integrity: sha512-1OfnsOrfeSkB0VZfT01UjQ5Uq6p+yYbq8yNkj0e99K/6NLHpyvIxj+5tZIV0nQXgkOcqBIABL2uA7lwB8CkaBQ==}
-    dependencies:
-      '@expo/config-types': 46.0.2
-      '@expo/json-file': 8.2.36
-      '@expo/plist': 0.0.18
-      '@expo/sdk-runtime-versions': 1.0.0
-      '@react-native/normalize-color': 2.0.0
-      chalk: 4.1.2
-      debug: 4.3.4
-      find-up: 5.0.0
-      getenv: 1.0.0
-      glob: 7.1.6
-      resolve-from: 5.0.0
-      semver: 7.3.8
-      slash: 3.0.0
-      xcode: 3.0.1
-      xml2js: 0.4.23
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
   /@expo/config-plugins/5.0.4:
     resolution: {integrity: sha512-vzUcVpqOMs3h+hyRdhGwk+eGIOhXa5xYdd92yO17RMNHav3v/+ekMbs7XA2c3lepMO8Yd4/5hqmRw9ZTL6jGzg==}
     dependencies:
@@ -2788,13 +2766,13 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@react-native-firebase/app/15.4.0_tj3nonr5gneraukzjkxpsiy7yu:
-    resolution: {integrity: sha512-1Xf1Q0x6x6dZamRjIpDLCvj4CUwozr1mvH3sc3A4J1avjGUwgqD0RR58DGd7r9akU+JmEXLHB84EZ9Aa68AHDg==}
+  /@react-native-firebase/app/16.4.6_tj3nonr5gneraukzjkxpsiy7yu:
+    resolution: {integrity: sha512-rL/vhylwzj9ziKAqEOI6G3eIGiJRcI9dcM93+gG7pEv1mNBHKmhnuq9VPS8nR01qyI/PYWoKN6XecE0w7A7n4w==}
     peerDependencies:
       react: '*'
       react-native: '*'
     dependencies:
-      '@expo/config-plugins': 5.0.1
+      '@expo/config-plugins': 5.0.4
       opencollective-postinstall: 2.0.3
       react: 18.1.0
       react-native: 0.70.5_naleetjjl2tr2dal5iyxdlhv3y
@@ -2803,12 +2781,16 @@ packages:
       - supports-color
     dev: false
 
-  /@react-native-firebase/auth/15.4.0_7macxjwkpmybkb6yzsdxrpee6e:
-    resolution: {integrity: sha512-8Vm/nJpFzjpBeIbueai+WR4m8WzzUvsOXG7oDyzvPPxAL1CkWAYQ3dKRk6KhcIaqGatvfR9Ue+k3XndRS6jSMA==}
+  /@react-native-firebase/auth/16.4.6_bwuheuo7l7qgflnog4qmu7b5t4:
+    resolution: {integrity: sha512-le9SkPa7xNawHa58xyNE6ZzBLseVOz7LA1qYZDYrwqiVYZ6vGrHCiV9wRDmEz2MgQD2znigZnsUNd4p5RHvMWw==}
     peerDependencies:
-      '@react-native-firebase/app': 15.4.0
+      '@react-native-firebase/app': 16.4.6
     dependencies:
-      '@react-native-firebase/app': 15.4.0_tj3nonr5gneraukzjkxpsiy7yu
+      '@expo/config-plugins': 5.0.4
+      '@react-native-firebase/app': 16.4.6_tj3nonr5gneraukzjkxpsiy7yu
+      plist: 3.0.6
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   /@react-native-firebase/firestore/14.11.1:
@@ -2817,12 +2799,12 @@ packages:
       '@react-native-firebase/app': 14.11.1
     dev: true
 
-  /@react-native-firebase/firestore/15.4.0_7macxjwkpmybkb6yzsdxrpee6e:
-    resolution: {integrity: sha512-7Kiqn9c4uzQyURFQ4LGCZ4waeZb/hZb/IWl6MlpfkCtII9PnpdqbvQwEKKKg8RQMocP5sbw0qPsKEdYEYUNKhg==}
+  /@react-native-firebase/firestore/16.4.6_bwuheuo7l7qgflnog4qmu7b5t4:
+    resolution: {integrity: sha512-8O0k0Usx908I5Ra+H2ALCxYDvmcvIL+dUYGRn+oUrnDkIL2crKU7QqV157phpC74tFMMWXIaUuFrqtGQgXBCww==}
     peerDependencies:
-      '@react-native-firebase/app': 15.4.0
+      '@react-native-firebase/app': 16.4.6
     dependencies:
-      '@react-native-firebase/app': 15.4.0_tj3nonr5gneraukzjkxpsiy7yu
+      '@react-native-firebase/app': 16.4.6_tj3nonr5gneraukzjkxpsiy7yu
     dev: false
 
   /@react-native/assets/1.0.0:
@@ -3113,7 +3095,7 @@ packages:
     resolution: {integrity: sha512-1P1OROm/rdubP5aFDSZQILU0vrLCJ4fvHt6EoqHEM+2D/G5MK3bIaymUKLit8Js9gbns5UyJnkP/TZROLw4tUA==}
     dev: false
 
-  /@skillnation/react-native-firebase-hooks/0.5.0_vlvy32ivdgrl55ii3nyhryvw2u:
+  /@skillnation/react-native-firebase-hooks/0.5.0_epxfkctzklkygu6kmwyjto2jg4:
     resolution: {integrity: sha512-F4jUqbXvBLEdc3B/Vndn0qdarCXQXHQ6mYAUVw/cft25c4+AZ3Ja1nOl2AmQN5U5N5SDcXqsrDskapDbeM5VdA==}
     peerDependencies:
       '@react-native-firebase/app': '*'
@@ -3124,9 +3106,9 @@ packages:
       react: '*'
       react-native: '*'
     dependencies:
-      '@react-native-firebase/app': 15.4.0_tj3nonr5gneraukzjkxpsiy7yu
-      '@react-native-firebase/auth': 15.4.0_7macxjwkpmybkb6yzsdxrpee6e
-      '@react-native-firebase/firestore': 15.4.0_7macxjwkpmybkb6yzsdxrpee6e
+      '@react-native-firebase/app': 16.4.6_tj3nonr5gneraukzjkxpsiy7yu
+      '@react-native-firebase/auth': 16.4.6_bwuheuo7l7qgflnog4qmu7b5t4
+      '@react-native-firebase/firestore': 16.4.6_bwuheuo7l7qgflnog4qmu7b5t4
       react: 18.1.0
       react-native: 0.70.5_naleetjjl2tr2dal5iyxdlhv3y
     dev: false
