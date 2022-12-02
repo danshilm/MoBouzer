@@ -5,15 +5,14 @@
 A cross-platform mobile app for navigating Mauritius by bus (and soon via the metro too!) based on public transport data and user contributions to OpenStreetMaps.
 
 <!-- <a href="" >
-  <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us" alt="Download on the App Store" width='155' height='78' >
+  <img src=".github/download_on_the_app_store.svg" alt="Download on the App Store" height='50' />
 </a> -->
-<!-- <a href=''>
-  <img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' height='78' />
+<!-- <a href="" >
+  <img src='.github/get_it_on_google_play.png' alt='Get it on Google Play' height='50' />
 </a> -->
 
 [![iOS Preview](https://img.shields.io/badge/-iOS%20Preview%20Build-000?style=flat&logo=apple)](https://expo.dev/artifacts/eas/Cejp7LDV2Qp6pFEFrsNEV.tar.gz)
 <!-- [![Android Preview](https://img.shields.io/badge/-Android%20Preview%20Build-000?style=flat&logo=android)]() -->
-
 
 ## Screenshots
 
