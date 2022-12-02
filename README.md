@@ -40,8 +40,14 @@ This repository is the home of the mobile app as well as all associated services
 
 ## Acknowledgements
 
-This project wouldn't have been started if I hadn't come across the awesome [`mauritius-buses.com`](https://mauritius-buses.com) website where people can get routes to their destination and the buses they can take to get there.
+- This project wouldn't have been started if I hadn't come across the awesome [`mauritius-buses.com`](https://mauritius-buses.com) website where people can get routes to their destination and the buses they can take to get there.
 
-I personally used that website for years before coming up with the idea for MoBouzer. 
+  I personally used that website for years before coming up with the idea for MoBouzer. 
 That was mainly due to the bus stops on `mauritius-buses.com` not being individually visible; bus stops are grouped by stage (a unit of measurement used to calculate the bus fare). 
 Therefore, it is pretty hard to use `mauritius-buses.com` to travel to unknown areas since one has to estimate when they have reached their destination.
+
+- This project is tested with [BrowserStack](https://www.browserstack.com/).
+
+  <a href="https://www.browserstack.com/">
+    <img src=".github/browserstack-banner.png" alt="BrowserStack Banner" height="50" />
+  </a>
