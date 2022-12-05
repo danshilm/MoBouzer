@@ -26,18 +26,16 @@ Sentry.init({
       enableAppStartTracking: true,
       enableNativeFramesTracking: true,
       // tracingOrigins: ['localhost', /^\//, /^https:\/\//],
-      beforeNavigate: (context) => {
-        // my solution to both
-        // [ReactNavigationInstrumentation] Will not send transaction "<screen name>" due to beforeNavigate.
-        // [Tracing] Discarding transaction because its trace was not chosen to be sampled.
-        // but this causes
-        // [NativeFrames] Could not fetch native frames for navigation transaction <screen name>. Not adding native frames measurements.
-        context.sampled = true;
-        return context;
-      },
     }),
   ],
+
+  // how often to send samples
   sampleRate: 1.0,
+  tracesSampleRate: 1.0,
+
+  // dist is either the app version or the build version when there are no OTA updates
+  // else it's the update id
+  // release is set to DEVELOPMENT or the full app version + build version
 });
 
 function App() {
