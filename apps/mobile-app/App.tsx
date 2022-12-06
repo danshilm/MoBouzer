@@ -38,6 +38,10 @@ Sentry.init({
   // release is set to DEVELOPMENT or the full app version + build version
 });
 
+Sentry.Native.setTags({
+  buildProfile: process.env.APP_ENV ?? 'unknown',
+});
+
 function App() {
   const isLoadingComplete = useCachedResources();
 
