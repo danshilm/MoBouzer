@@ -6,7 +6,7 @@
     "development": {
       "developmentClient": true,
       "distribution": "internal",
-      "channel": "develop",
+      "channel": "development",
       "ios": {
         "simulator": true
       },
