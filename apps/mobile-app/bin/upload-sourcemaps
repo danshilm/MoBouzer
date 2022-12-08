@@ -17,8 +17,6 @@ const appConfig = require('../app.json');
 const { program, Option } = require('commander');
 
 const run = async (options) => {
-  console.log(options);
-
   if (!options.platform) {
     throw new Error(
       "A platform needs to be specified; valid options are 'android', 'ios' and 'all'"
@@ -84,7 +82,7 @@ const run = async (options) => {
       },
     };
 
-    // await uploadSourcemapsHook(finalOptions);
+    await uploadSourcemapsHook(finalOptions);
   }
 
   if (platform === 'ios' || platform === 'all') {
@@ -116,7 +114,7 @@ const run = async (options) => {
       },
     };
 
-    // await uploadSourcemapsHook(finalOptions);
+    await uploadSourcemapsHook(finalOptions);
   }
 };
 
