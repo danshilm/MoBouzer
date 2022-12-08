@@ -25,7 +25,16 @@ Sentry.init({
       routingInstrumentation,
       enableAppStartTracking: true,
       enableNativeFramesTracking: true,
-      // tracePropagationTargets: ['localhost', /^\//, /^https:\/\//],
+      tracePropagationTargets: ['localhost', /^\//, /^https:\/\//],
+      shouldCreateSpanForRequest: (url) => {
+        const stringsToFilter = ['/logs', '/symbolicate'];
+
+        if (stringsToFilter.some((string) => url.includes(string))) {
+          return false;
+        }
+
+        return true;
+      },
     }),
   ],
 
