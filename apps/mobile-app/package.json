@@ -21,7 +21,7 @@
     "eas:build:preview": "eas build --platform all --profile preview --no-wait",
     "eas:build:preview:android": "eas build --platform android --profile preview --no-wait",
     "eas:build:preview:ios": "eas build --platform ios --profile preview --no-wait",
-    "upload-sourcemaps": "node -r dotenv/config ./bin/upload-sourcemaps"
+    "upload-sourcemaps": "node ./bin/upload-sourcemaps"
   },
   "bin": {
     "eslint": "../../node_modules/.bin/eslint",
@@ -90,6 +90,7 @@
     "@types/lodash": "^4.14.185",
     "@types/react": "~18.0.24",
     "@types/react-native": "~0.70.6",
+    "commander": "^9.4.0",
     "typescript": "^4.6.3"
   },
   "eslintConfig": {

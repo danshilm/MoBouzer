@@ -1,72 +1,143 @@
 #!/usr/bin/env node
 
+/**
+ * This is a script that uses expo's upload sourcemaps hook that runs after an update is pushed
+ * It can either be invoked by running it with nodejs or by importing in a JS script
+ *
+ * Parameters:
+ *  - platform [android, ios, all]
+ *  - distribution (buildNumber/versionCode of build OR the update ID if an OTA update has been created with EAS)
+ */
+
 const path = require('path');
 const fs = require('fs');
 const uploadSourcemapsHook = require('../../../node_modules/sentry-expo/upload-sourcemaps');
 const bundlesDirPath = path.join(__dirname, '../dist/bundles');
 const appConfig = require('../app.json');
+const { program, Option } = require('commander');
 
-const androidBundle = fs
-  .readFileSync(
-    path.join(
-      bundlesDirPath,
-      fs.readdirSync(bundlesDirPath).filter((v) => v.startsWith('android') && v.endsWith('.js'))[0]
-    )
-  )
-  .toString('utf8');
-const androidSourceMap = fs
-  .readFileSync(
-    path.join(
-      bundlesDirPath,
-      fs.readdirSync(bundlesDirPath).filter((v) => v.startsWith('android') && v.endsWith('.map'))[0]
-    )
-  )
-  .toString('utf8');
+const run = async (options) => {
+  console.log(options);
 
-const iosBundle = fs
-  .readFileSync(
-    path.join(
-      bundlesDirPath,
-      fs.readdirSync(bundlesDirPath).filter((v) => v.startsWith('ios') && v.endsWith('.js'))[0]
-    )
-  )
-  .toString('utf8');
-const iosSourceMap = fs
-  .readFileSync(
-    path.join(
-      bundlesDirPath,
-      fs.readdirSync(bundlesDirPath).filter((v) => v.startsWith('ios') && v.endsWith('.map'))[0]
-    )
-  )
-  .toString('utf8');
+  if (!options.platform) {
+    throw new Error(
+      "A platform needs to be specified; valid options are 'android', 'ios' and 'all'"
+    );
+  }
 
-const options = {
-  // eslint-disable-next-line no-console
-  log: console.log,
-  projectRoot: path.join(__dirname, '../'),
-  androidManifest: undefined,
-  androidBundle,
-  androidSourceMap,
-  iosManifest: undefined,
-  iosSourceMap,
-  iosBundle,
-  config: {
-    // these should default properly
-    // organization: process.env.SENTRY_ORG,
-    // project: process.env.SENTRY_PROJECT,
-    // authToken: process.env.SENTRY_AUTH_TOKEN,
-    // url: undefined,
+  const platform = options.platform;
+  const distribution = options.distribution;
 
-    // assuming the android version code and the ios build number are kept the same
-    // else upload the sourcemaps in 2 steps, one for each platform
-    release: `com.mobouzer@${appConfig.expo.version}+${appConfig.expo.ios.buildNumber}`,
-    distribution: appConfig.expo.ios.buildNumber,
-    // platform: undefined,
+  const baseOptions = {
+    // eslint-disable-next-line no-console
+    log: console.log,
+    projectRoot: path.join(__dirname, '../'),
+    androidManifest: undefined,
+    iosManifest: undefined,
+    config: {
+      // these should default properly
+      // organization: process.env.SENTRY_ORG,
+      // project: process.env.SENTRY_PROJECT,
+      // authToken: process.env.SENTRY_AUTH_TOKEN,
+      // url: undefined,
+      // assuming the android version code and the ios build number are kept the same
+      // else upload the sourcemaps in 2 steps, one for each platform
+      // release: `com.mobouzer@${appConfig.expo.version}+${appConfig.expo.ios.buildNumber}`,
+      // distribution: appConfig.expo.ios.buildNumber,
+      // platform: undefined,
+      // deployEnv: undefined,
+      // setCommits: undefined,
+      // useGlobalSentryCli: undefined,
+    },
+  };
 
-    // deployEnv: undefined,
-    // setCommits: undefined,
-    // useGlobalSentryCli: undefined,
-  },
+  if (platform === 'android' || platform === 'all') {
+    const androidBundle = fs
+      .readFileSync(
+        path.join(
+          bundlesDirPath,
+          fs
+            .readdirSync(bundlesDirPath)
+            .filter((v) => v.startsWith('android') && v.endsWith('.js'))[0]
+        )
+      )
+      .toString('utf8');
+    const androidSourceMap = fs
+      .readFileSync(
+        path.join(
+          bundlesDirPath,
+          fs
+            .readdirSync(bundlesDirPath)
+            .filter((v) => v.startsWith('android') && v.endsWith('.map'))[0]
+        )
+      )
+      .toString('utf8');
+
+    const finalOptions = {
+      ...baseOptions,
+      androidBundle,
+      androidSourceMap,
+      config: {
+        release: `${appConfig.expo.android.package}@${appConfig.expo.version}+${appConfig.expo.android.versionCode}`,
+        distribution: distribution ?? appConfig.expo.android.versionCode.toString(),
+        platform: 'android',
+      },
+    };
+
+    // await uploadSourcemapsHook(finalOptions);
+  }
+
+  if (platform === 'ios' || platform === 'all') {
+    const iosBundle = fs
+      .readFileSync(
+        path.join(
+          bundlesDirPath,
+          fs.readdirSync(bundlesDirPath).filter((v) => v.startsWith('ios') && v.endsWith('.js'))[0]
+        )
+      )
+      .toString('utf8');
+    const iosSourceMap = fs
+      .readFileSync(
+        path.join(
+          bundlesDirPath,
+          fs.readdirSync(bundlesDirPath).filter((v) => v.startsWith('ios') && v.endsWith('.map'))[0]
+        )
+      )
+      .toString('utf8');
+
+    const finalOptions = {
+      ...baseOptions,
+      iosBundle,
+      iosSourceMap,
+      config: {
+        release: `${appConfig.expo.ios.bundleIdentifier}@${appConfig.expo.version}+${appConfig.expo.ios.buildNumber}`,
+        distribution: distribution ?? appConfig.expo.ios.buildNumber,
+        platform: 'ios',
+      },
+    };
+
+    // await uploadSourcemapsHook(finalOptions);
+  }
 };
 
-uploadSourcemapsHook(options);
+program
+  .addOption(
+    new Option(
+      '-p, --platform <platform>',
+      'platform for which to indicate the sourcemap is for'
+    ).choices(['all', 'android', 'ios'])
+  )
+  .option(
+    '-d, --distribution <distribution>',
+    'buildNumber/versionCode of the build or the update id if applicable'
+  )
+  .action(async function (options) {
+    // this would still be ran when not executing the file with nodejs
+    // so, only run when using file with nodejs directly otherwise process.argv is empty
+    if (process.argv.slice(2).length > 0) {
+      await run(options);
+    }
+  })
+  .parse();
+
+module.exports = run;
