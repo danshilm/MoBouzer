@@ -25,7 +25,7 @@ Sentry.init({
       routingInstrumentation,
       enableAppStartTracking: true,
       enableNativeFramesTracking: true,
-      // tracingOrigins: ['localhost', /^\//, /^https:\/\//],
+      // tracePropagationTargets: ['localhost', /^\//, /^https:\/\//],
     }),
   ],
 
