@@ -13,7 +13,7 @@
     "lint:fix": "eslint \"./src/**/*.{ts,tsx}\" --fix",
     "format": "prettier --write ./",
     "postinstall": "node ./bin/postInstall",
-    "eas-build-pre-install": "node ./bin/eas-preInstall",
+    "eas-build-pre-install": "node ./bin/eas-pre-install",
     "eas-build-post-install": "pnpm -w shared build",
     "eas:build:development": "eas build --platform all --profile development --no-wait",
     "eas:build:development:android": "eas build --platform android --profile development --no-wait",

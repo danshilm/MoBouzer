@@ -1,11 +1,20 @@
 #!/usr/bin/env node
 
-// create google-services.json and GoogleService-Info.plist from env variables in EAS Build
-// or .env file if running locally
+/**
+ * Create google-services.json and GoogleService-Info.plist from 
+ *  - env variables in EAS Build
+ *  - .env file if running locally
+ */
 function createFirebaseCredentialsFiles() {
   const path = require('path');
   const { readFileSync, writeFileSync } = require('fs');
+  /**
+   * @type string | undefined
+   */
   let androidGoogleServicesBase64;
+  /**
+   * @type string | undefined
+   */
   let iosGoogleServicesBase64;
 
   if (process.env.EAS_BUILD_RUNNER === 'eas-build') {

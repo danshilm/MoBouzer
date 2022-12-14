@@ -1,14 +1,5 @@
 #!/usr/bin/env node
 
-/**
- * This is a script that uses expo's upload sourcemaps hook that runs after an update is pushed
- * It can either be invoked by running it with nodejs or by importing in a JS script
- *
- * Parameters:
- *  - platform [android, ios, all]
- *  - distribution (buildNumber/versionCode of build OR the update ID if an OTA update has been created with EAS)
- */
-
 const path = require('path');
 const fs = require('fs');
 const uploadSourcemapsHook = require('../../../node_modules/sentry-expo/upload-sourcemaps');
@@ -16,6 +7,14 @@ const bundlesDirPath = path.join(__dirname, '../dist/bundles');
 const appConfig = require('../app.json');
 const { program, Option } = require('commander');
 
+/**
+ * Main function in a script that uses expo's upload sourcemaps hook that runs after an update is pushed
+ *
+ * It can either be invoked by running it with nodejs or by importing in a JS script
+ * @param { Object } options the parameters to use when uploading the sourcemap
+ * @param { string | undefined } options.platform ios/android/all
+ * @param { string | undefined } options.distribution buildNumber/versionCode of build OR the update ID if an OTA update has been created with EAS
+ */
 const run = async (options) => {
   if (!options.platform) {
     throw new Error(
@@ -82,6 +81,7 @@ const run = async (options) => {
       },
     };
 
+    console.log(`Uploading sourcemaps with config ${JSON.stringify(finalOptions.config)}`);
     await uploadSourcemapsHook(finalOptions);
   }
 
@@ -114,6 +114,7 @@ const run = async (options) => {
       },
     };
 
+    console.log(`Uploading sourcemaps with config ${JSON.stringify(finalOptions.config)}`);
     await uploadSourcemapsHook(finalOptions);
   }
 };
@@ -130,7 +131,7 @@ program
     'buildNumber/versionCode of the build or the update id if applicable'
   )
   .action(async function (options) {
-    // this would still be ran when not executing the file with nodejs
+    // this action would still be executed when not running the file with nodejs
     // so, only run when using file with nodejs directly otherwise process.argv is empty
     if (process.argv.slice(2).length > 0) {
       await run(options);

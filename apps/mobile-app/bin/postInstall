@@ -24,7 +24,10 @@ if (process.platform === 'darwin') {
   run('if [ -d "ios" ]; then cd ios && pod repo update && pod install && cd -; fi');
 }
 
-// Run baby run
+/**
+ * Run baby run
+ * @param command { string }
+ */
 function run(command) {
   console.log(`./bin/postInstall script running: ${command}`);
 
