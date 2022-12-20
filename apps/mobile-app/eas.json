@@ -47,6 +47,22 @@
     }
   },
   "submit": {
-    "production": {}
+    "base": {
+      "android": {
+        "serviceAccountKeyPath": "credentials/play-console/google-service-account.json"
+      }
+    },
+    "preview": {
+      "extends": "base",
+      "android": {
+        "track": "alpha"
+      }
+    },
+    "production": {
+      "extends": "base",
+      "android": {
+        "track": "production"
+      }
+    }
   }
 }
