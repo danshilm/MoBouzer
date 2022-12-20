@@ -21,6 +21,9 @@
     "eas:build:preview": "eas build --platform all --profile preview --no-wait",
     "eas:build:preview:android": "eas build --platform android --profile preview --no-wait",
     "eas:build:preview:ios": "eas build --platform ios --profile preview --no-wait",
+    "eas:build:preview:store": "eas build --platform all --profile preview:store --no-wait",
+    "eas:build:preview:store:android": "eas build --platform android --profile preview:store --no-wait",
+    "eas:build:preview:store:ios": "eas build --platform ios --profile preview:store --no-wait",
     "upload-sourcemaps": "node ./bin/upload-sourcemaps"
   },
   "bin": {
