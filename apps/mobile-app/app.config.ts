@@ -22,7 +22,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       url: `https://u.expo.dev/f33a6450-f743-4b82-8781-8a9389580475`,
     },
     runtimeVersion: {
-      policy: 'sdkVersion',
+      policy: 'appVersion',
     },
     assetBundlePatterns: ['**/*'],
     ios: {
