@@ -3,6 +3,7 @@
 
 node_modules/
 dist/
+.tmp/
 npm-debug.*
 yarn-error.*
 .pnpm-debug.*
