@@ -1,0 +1,24 @@
+#!/usr/bin/env node
+
+const appConfig = require('../app.json');
+const uploadSourcemaps = require('./upload-sourcemaps');
+
+const platform = process.env.EAS_BUILD_PLATFORM;
+
+if (platform !== 'android' && platform !== 'ios') {
+  throw new Error('Platform is neither android or ios 👀');
+}
+
+const version = appConfig.expo.version;
+let distribution;
+
+if (platform === 'android') {
+  distribution = appConfig.expo.android.versionCode.toString();
+} else {
+  distribution = appConfig.expo.ios.buildNumber;
+}
+
+console.log(
+  `Running upload-sourcemaps script for platform ${platform} and version ${version}+${distribution}`
+);
+uploadSourcemaps({ platform, distribution });
