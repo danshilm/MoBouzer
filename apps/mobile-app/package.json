@@ -129,7 +129,8 @@
       }
     ],
     "ignorePatterns": [
-      "app.config.ts"
+      "app.config.ts",
+      "bin"
     ],
     "plugins": [
       "jsx-a11y",

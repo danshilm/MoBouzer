@@ -78,5 +78,10 @@
     "ignorePatterns": [
       "bin/**/*.js"
     ]
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "sentry-expo@6.0.0": "patches/sentry-expo@6.0.0.patch"
+    }
   }
 }
