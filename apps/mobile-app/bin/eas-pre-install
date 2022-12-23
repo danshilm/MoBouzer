@@ -2,6 +2,7 @@
 
 const env = require('./utils/env');
 const path = require('path');
+const { writeFileSync } = require('fs');
 
 /**
  * Create google-services.json and GoogleService-Info.plist
