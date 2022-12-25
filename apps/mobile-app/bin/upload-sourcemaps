@@ -2,11 +2,11 @@
 
 const path = require('path');
 const fs = require('fs');
-const uploadSourcemapsHook = require('../../../node_modules/sentry-expo/upload-sourcemaps');
+const uploadSourcemapsHook = require('sentry-expo/upload-sourcemaps');
 const bundlesDirPath = path.join(__dirname, '../dist/bundles');
 const appConfig = require('../app.json');
 const { program, Option } = require('commander');
-const spawnAsync = require('../../../node_modules/@expo/spawn-async/build/spawnAsync');
+const spawnAsync = require('@expo/spawn-async');
 require('dotenv').config({ path: path.join(__dirname, '../.env') });
 
 /**
@@ -66,26 +66,8 @@ const run = async (options) => {
   };
 
   if (platform === 'android' || platform === 'all') {
-    const androidBundle = fs
-      .readFileSync(
-        path.join(
-          bundlesDirPath,
-          fs
-            .readdirSync(bundlesDirPath)
-            .filter((v) => v.startsWith('android') && v.endsWith('.js'))[0]
-        )
-      )
-      .toString('utf8');
-    const androidSourceMap = fs
-      .readFileSync(
-        path.join(
-          bundlesDirPath,
-          fs
-            .readdirSync(bundlesDirPath)
-            .filter((v) => v.startsWith('android') && v.endsWith('.map'))[0]
-        )
-      )
-      .toString('utf8');
+    const androidBundle = readBundleFileContents('android', '.js');
+    const androidSourceMap = readBundleFileContents('android', '.map');
 
     const finalOptions = {
       ...baseOptions,
@@ -104,22 +86,8 @@ const run = async (options) => {
   }
 
   if (platform === 'ios' || platform === 'all') {
-    const iosBundle = fs
-      .readFileSync(
-        path.join(
-          bundlesDirPath,
-          fs.readdirSync(bundlesDirPath).filter((v) => v.startsWith('ios') && v.endsWith('.js'))[0]
-        )
-      )
-      .toString('utf8');
-    const iosSourceMap = fs
-      .readFileSync(
-        path.join(
-          bundlesDirPath,
-          fs.readdirSync(bundlesDirPath).filter((v) => v.startsWith('ios') && v.endsWith('.map'))[0]
-        )
-      )
-      .toString('utf8');
+    const iosBundle = readBundleFileContents('ios', '.js');
+    const iosSourceMap = readBundleFileContents('ios', '.map');
 
     const finalOptions = {
       ...baseOptions,
@@ -136,6 +104,24 @@ const run = async (options) => {
     console.log(`Uploading sourcemaps with config ${JSON.stringify(finalOptions.config)}`);
     await uploadSourcemapsHook(finalOptions);
   }
+};
+
+/**
+ * @param startsWith { string }
+ * @param endsWith { string }
+ * @returns { string } contents of the bundle file that matches the specified criteria
+ */
+const readBundleFileContents = (startsWith, endsWith) => {
+  return fs
+    .readFileSync(
+      path.join(
+        bundlesDirPath,
+        fs
+          .readdirSync(bundlesDirPath)
+          .filter((v) => v.startsWith(startsWith) && v.endsWith(endsWith))[0]
+      )
+    )
+    .toString('utf-8');
 };
 
 program
