@@ -6,7 +6,7 @@ const uploadSourcemapsHook = require('../../../node_modules/sentry-expo/upload-s
 const bundlesDirPath = path.join(__dirname, '../dist/bundles');
 const appConfig = require('../app.json');
 const { program, Option } = require('commander');
-const spawnAsync = require('../../../node_modules/@expo/spawn-async/index');
+const spawnAsync = require('../../../node_modules/@expo/spawn-async/build/spawnAsync');
 require('dotenv').config({ path: path.join(__dirname, '../.env') });
 
 /**
