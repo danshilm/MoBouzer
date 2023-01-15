@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/danshilm/MoBouzer/compare/mobile-app@v1.0.0...mobile-app@v1.0.1) (2023-01-15)
+
+
+### Bug Fixes
+
+* **build:** update tag for semantic release ([f4b9d55](https://github.com/danshilm/MoBouzer/commit/f4b9d554614f08a260643780d1fcaf3e8555609f))
+
 # 1.0.0 (2023-01-15)
 
 
