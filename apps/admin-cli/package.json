@@ -1,7 +1,10 @@
 {
   "name": "@mobouzer/admin-cli",
-  "version": "1.0.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danshilm/MoBouzer.git"
+  },
   "scripts": {
     "build": "tsc --build",
     "watch": "tsc --build --watch",

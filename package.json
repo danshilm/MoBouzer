@@ -1,6 +1,10 @@
 {
   "name": "@mobouzer/monorepo",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danshilm/MoBouzer.git"
+  },
   "scripts": {
     "app": "pnpm run --filter @mobouzer/mobile-app",
     "cli": "pnpm run --filter @mobouzer/admin-cli",

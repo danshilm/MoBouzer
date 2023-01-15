@@ -5,10 +5,10 @@
 A cross-platform mobile app for navigating Mauritius by bus (and soon via the metro too!) based on public transport data and user contributions to OpenStreetMaps.
 
 <!-- <a href="" >
-  <img src=".github/download_on_the_app_store.svg" alt="Download on the App Store" height='50' />
+  <img src=".github/images/download_on_the_app_store.svg" alt="Download on the App Store" height='50' />
 </a> -->
 <!-- <a href="" >
-  <img src='.github/get_it_on_google_play.png' alt='Get it on Google Play' height='50' />
+  <img src='.github/images/get_it_on_google_play.png' alt='Get it on Google Play' height='50' />
 </a> -->
 
 [![iOS Preview](https://img.shields.io/badge/-iOS%20Preview%20Build-000?style=flat&logo=apple)](https://expo.dev/artifacts/eas/Cejp7LDV2Qp6pFEFrsNEV.tar.gz)
@@ -49,5 +49,5 @@ Therefore, it is pretty hard to use `mauritius-buses.com` to travel to unknown a
 - This project is tested with [BrowserStack](https://www.browserstack.com/).
 
   <a href="https://www.browserstack.com/">
-    <img src=".github/browserstack-banner.png" alt="BrowserStack Banner" height="50" />
+    <img src=".github/images/browserstack-banner.png" alt="BrowserStack Banner" height="50" />
   </a>
