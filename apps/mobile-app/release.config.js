@@ -38,5 +38,5 @@ module.exports = {
     ],
     '@semantic-release/github',
   ],
-  tagFormat: '@mobouzer/app@v${version}',
+  tagFormat: 'mobile-app@v${version}',
 };
