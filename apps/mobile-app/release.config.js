@@ -13,7 +13,7 @@ const conventionalCommitsParserOptions = {
 };
 
 module.exports = {
-  branches: ['develop'],
+  branches: ['main'],
   plugins: [
     [
       '@semantic-release/commit-analyzer',
