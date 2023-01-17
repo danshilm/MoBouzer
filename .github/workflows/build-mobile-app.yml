@@ -1,0 +1,90 @@
+name: Build Mobile App
+
+on:
+  workflow_dispatch:
+    inputs:
+      platform:
+        description: Platform to build for
+        type: choice
+        required: true
+        default: all
+        options:
+          - all
+          - android
+          - ios
+
+      profile:
+        description: EAS build profile
+        type: choice
+        required: true
+        default: development
+        options:
+          - development
+          - preview
+          - preview:store
+          - production
+
+jobs:
+  eas-build:
+    name: EAS Build
+    runs-on: ubuntu-latest
+    outputs:
+      androidArtifactUrl: ${{ steps.get-artifact-url.outputs.androidArtifactUrl }}
+      iosArtifactUrl: ${{ steps.get-artifact-url.outputs.iosArtifactUrl }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7.x
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: pnpm
+      
+      - name: 🏗 Setup Expo
+        uses: expo/expo-github-action@v7
+        with:
+          eas-version: latest
+          expo-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Install dependencies
+        run: pnpm install
+      
+      - name: Build mobile app
+        working-directory: apps/mobile-app
+        run: eas build --non-interactive --wait --platform=${{ github.event.inputs.platform }} --profile=${{ github.event.inputs.profile }}
+
+      - name: Get artifact URL
+        id: get-artifact-url
+        working-directory: apps/mobile-app
+        run: |
+          INPUT_PLATFORM=${{ github.event.inputs.platform }}
+
+          if [[ $INPUT_PLATFORM == "all" || $INPUT_PLATFORM == "android" ]]; then
+            echo "androidArtifactUrl=$(eas build:list --platform android --buildProfile ${{ github.event.inputs.profile }} --limit 1 --non-interactive --json | jq -r '.[0].artifacts.applicationArchiveUrl')" >> $GITHUB_OUTPUT
+          elif [[ $INPUT_PLATFORM == "all" || $INPUT_PLATFORM == "ios" ]]; then
+            echo "iosArtifactUrl=$(eas build:list --platform ios --buildProfile ${{ github.event.inputs.profile }} --limit 1 --non-interactive --json | jq -r '.[0].artifacts.applicationArchiveUrl')" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Update preview artifact link in README
+        if: ${{ github.event.inputs.profile == 'preview' }}
+        run: |
+          if [[ -n ${{ steps.get-artifact-url.outputs.androidArtifactUrl }} ]]; then
+            sed -i "s https:\/\/expo.dev\/artifacts\/eas\/.*\.apk ${{ steps.get-artifact-url.outputs.androidArtifactUrl }} " README.md
+          elif [[ -n ${{ steps.get-artifact-url.outputs.iosArtifactUrl }} ]]; then
+            sed -i "s https:\/\/expo.dev\/artifacts\/eas\/.*\.tar.gz ${{ steps.get-artifact-url.outputs.iosArtifactUrl }} " README.md
+          fi
+
+          git config --global user.name "Danshil Kokil Mungur"
+          git config --global user.email "me@danshilm.com"
+          git add -A
+          git commit -m "[app] chore(release): update link to preview build"
+          git push
