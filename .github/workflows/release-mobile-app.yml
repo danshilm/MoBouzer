@@ -10,26 +10,26 @@ jobs:
     name: Semantic Release
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: 🧳 Checkout
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      - name: Setup PNPM
+      - name: 🏗 Setup PNPM
         uses: pnpm/action-setup@v2
         with:
           version: 7.x
 
-      - name: Setup Node.js
+      - name: 🏗 Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 16.x
           cache: pnpm
 
-      - name: Install dependencies
+      - name: 📦 Install dependencies
         run: pnpm install
 
-      - name: Release
+      - name: 📑 Release
         working-directory: apps/mobile-app
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
