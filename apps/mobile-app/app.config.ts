@@ -27,7 +27,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     assetBundlePatterns: ['**/*'],
     ios: {
       supportsTablet: true,
-      googleServicesFile: './GoogleService-Info.plist',
+      googleServicesFile: process.env.GOOGLE_SERVICES_IOS_FILE,
       bundleIdentifier: config.ios?.bundleIdentifier,
       buildNumber: config.ios?.buildNumber,
     },
@@ -36,7 +36,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         foregroundImage: './assets/images/adaptive-icon.png',
         backgroundColor: '#ffffff',
       },
-      googleServicesFile: './google-services.json',
+      googleServicesFile: process.env.GOOGLE_SERVICES_ANDROID_FILE,
       package: config.android?.package,
       versionCode: config.android?.versionCode,
     },
