@@ -11,8 +11,8 @@ A cross-platform mobile app for navigating Mauritius by bus (and soon via the me
   <img src='.github/images/get_it_on_google_play.png' alt='Get it on Google Play' height='50' />
 </a> -->
 
-[![iOS Preview](https://img.shields.io/badge/-iOS%20Preview%20Build-000?style=flat&logo=apple)](https://expo.dev/artifacts/eas/Cejp7LDV2Qp6pFEFrsNEV.tar.gz)
-[![Android Preview](https://img.shields.io/badge/-Android%20Preview%20Build-000?style=flat&logo=android)](https://expo.dev/artifacts/eas/upz6oZVKXqRn2KxKR1tm6U.apk)
+[![iOS Preview](https://img.shields.io/badge/-iOS%20Preview%20Build-000?style=flat&logo=apple)](https://expo.dev/artifacts/eas/pHMEzYgUyAaeahXHALeAss.tar.gz)
+[![Android Preview](https://img.shields.io/badge/-Android%20Preview%20Build-000?style=flat&logo=android)](https://expo.dev/artifacts/eas/orMrjDoZpHVp3uuXjXmEmH.apk)
 
 ## Screenshots
 
