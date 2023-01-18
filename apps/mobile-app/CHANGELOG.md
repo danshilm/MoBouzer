@@ -1,3 +1,16 @@
+# [1.2.0](https://github.com/danshilm/MoBouzer/compare/mobile-app@v1.1.0...mobile-app@v1.2.0) (2023-01-18)
+
+
+### Bug Fixes
+
+* **build:** correctly update artifact links for both platforms in readme ([46f65d4](https://github.com/danshilm/MoBouzer/commit/46f65d4d43162cb46e559f405b92a07b161e976a))
+
+
+### Features
+
+* **build:** update links to artifacts on develop branch too ([897ec22](https://github.com/danshilm/MoBouzer/commit/897ec22b57169f78db1ce04f5c73ec7ab0d58644))
+* **build:** use m1 resource class for EAS Build ([#10](https://github.com/danshilm/MoBouzer/issues/10)) ([4da4b76](https://github.com/danshilm/MoBouzer/commit/4da4b765317bd7f73d134a85792a6219396297f4))
+
 # [1.1.0](https://github.com/danshilm/MoBouzer/compare/mobile-app@v1.0.1...mobile-app@v1.1.0) (2023-01-18)
 
 

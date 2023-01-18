@@ -3,14 +3,14 @@
     "name": "MoBouzer",
     "slug": "mobouzer",
     "sdkVersion": "47.0.0",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "android": {
       "package": "com.mobouzer",
-      "versionCode": 470010100
+      "versionCode": 470010200
     },
     "ios": {
       "bundleIdentifier": "com.mobouzer",
-      "buildNumber": "1.1.0"
+      "buildNumber": "1.2.0"
     }
   }
 }
