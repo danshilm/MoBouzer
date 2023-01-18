@@ -1,3 +1,19 @@
+# [1.1.0](https://github.com/danshilm/MoBouzer/compare/mobile-app@v1.0.1...mobile-app@v1.1.0) (2023-01-18)
+
+
+### Bug Fixes
+
+* **build:** don't upload sourcemaps for dev builds ([beb98a2](https://github.com/danshilm/MoBouzer/commit/beb98a27a1313d8c340f45f7f191790668982749))
+* **build:** move workflow file to correct location ([dcbd022](https://github.com/danshilm/MoBouzer/commit/dcbd0227899a51b6b5088392b8597bffc18c480a))
+* **build:** update tag for semantic release ([f09cb4b](https://github.com/danshilm/MoBouzer/commit/f09cb4b84dc8be529bcd9956fc6b3e78b57880b2))
+* **build:** use EAS secret files for GCP credentials ([fd91ec4](https://github.com/danshilm/MoBouzer/commit/fd91ec46167534926db0f7d783d76cda370f71b7))
+
+
+### Features
+
+* **build:** only update build artifact URLs when using preview profile + emojify workflows ([6e47a64](https://github.com/danshilm/MoBouzer/commit/6e47a640db29cc0a4212729d79e23ee1a5470cbe))
+* **release:** add manual workflow for building mobile app with EAS Build ([26d94c2](https://github.com/danshilm/MoBouzer/commit/26d94c2592d68873e24ecdefca58b5c532a0fdf8))
+
 ## [1.0.1](https://github.com/danshilm/MoBouzer/compare/mobile-app@v1.0.0...mobile-app@v1.0.1) (2023-01-15)
 
 
