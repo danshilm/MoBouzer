@@ -25,7 +25,8 @@
         "buildType": "apk"
       },
       "ios": {
-        "simulator": true
+        "simulator": true,
+        "resourceClass": "m1-medium"
       },
       "env": {
         "APP_ENV": "preview"
@@ -37,13 +38,17 @@
         "buildType": "app-bundle"
       },
       "ios": {
-        "simulator": false
+        "simulator": false,
+        "resourceClass": "m1-medium"
       }
     },
     "production": {
       "channel": "production",
       "env": {
         "APP_ENV": "production"
+      },
+      "ios": {
+        "resourceClass": "m1-medium"
       }
     }
   },
