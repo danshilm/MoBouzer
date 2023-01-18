@@ -69,7 +69,8 @@ jobs:
           if [[ $INPUT_PLATFORM == "all" || $INPUT_PLATFORM == "android" ]]; then
             ANDROID_ARTIFACT_URL=$(eas build:list --platform android --buildProfile preview --limit 1 --non-interactive --json | jq -r '.[0].artifacts.applicationArchiveUrl')
             sed -i "s https:\/\/expo.dev\/artifacts\/eas\/.*\.apk $ANDROID_ARTIFACT_URL " ../../README.md
-          elif [[ $INPUT_PLATFORM == "all" || $INPUT_PLATFORM == "ios" ]]; then
+          fi
+          if [[ $INPUT_PLATFORM == "all" || $INPUT_PLATFORM == "ios" ]]; then
             IOS_ARTIFACT_URL=$(eas build:list --platform ios --buildProfile preview --limit 1 --non-interactive --json | jq -r '.[0].artifacts.applicationArchiveUrl')
             sed -i "s https:\/\/expo.dev\/artifacts\/eas\/.*\.tar.gz $IOS_ARTIFACT_URL " ../../README.md
           fi
