@@ -8,6 +8,12 @@ const { writeFileSync } = require('fs');
  * Create google-services.json and GoogleService-Info.plist
  */
 function createFirebaseCredentialsFiles() {
+  if (process.env.EAS_BUILD_RUNNER === 'eas-build') {
+    return console.log(
+      'Skipping file creation for Firebase since EAS Build already uses file secrets to do so.'
+    );
+  }
+
   const androidGoogleServicesBase64 = env('GOOGLE_SERVICES_ANDROID_BASE64');
   const iosGoogleServicesBase64 = env('GOOGLE_SERVICES_IOS_BASE64');
 

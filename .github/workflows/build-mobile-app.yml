@@ -1,0 +1,81 @@
+name: Build Mobile App
+
+on:
+  workflow_dispatch:
+    inputs:
+      platform:
+        description: Platform to build for
+        type: choice
+        required: true
+        default: all
+        options:
+          - all
+          - android
+          - ios
+
+      profile:
+        description: EAS build profile
+        type: choice
+        required: true
+        default: development
+        options:
+          - development
+          - preview
+          - preview:store
+          - production
+
+jobs:
+  eas-build:
+    name: EAS Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🧳 Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: 🏗 Setup PNPM
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7.x
+
+      - name: 🏗 Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: pnpm
+
+      - name: 🏗 Setup Expo
+        uses: expo/expo-github-action@v7
+        with:
+          eas-version: latest
+          expo-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: 📦 Install dependencies
+        run: pnpm install
+
+      - name: 🚀 Build mobile app
+        working-directory: apps/mobile-app
+        run: eas build --non-interactive --wait --platform=${{ github.event.inputs.platform }} --profile=${{ github.event.inputs.profile }}
+
+      - name: 📝 Get build artifact URL and update README
+        id: update-artifact-url
+        working-directory: apps/mobile-app
+        if: ${{ github.event.inputs.profile == 'preview' }}
+        run: |
+          INPUT_PLATFORM=${{ github.event.inputs.platform }}
+
+          if [[ $INPUT_PLATFORM == "all" || $INPUT_PLATFORM == "android" ]]; then
+            ANDROID_ARTIFACT_URL=$(eas build:list --platform android --buildProfile preview --limit 1 --non-interactive --json | jq -r '.[0].artifacts.applicationArchiveUrl')
+            sed -i "s https:\/\/expo.dev\/artifacts\/eas\/.*\.apk $ANDROID_ARTIFACT_URL " ../../README.md
+          elif [[ $INPUT_PLATFORM == "all" || $INPUT_PLATFORM == "ios" ]]; then
+            IOS_ARTIFACT_URL=$(eas build:list --platform ios --buildProfile preview --limit 1 --non-interactive --json | jq -r '.[0].artifacts.applicationArchiveUrl')
+            sed -i "s https:\/\/expo.dev\/artifacts\/eas\/.*\.tar.gz $IOS_ARTIFACT_URL " ../../README.md
+          fi
+
+          git config --global user.name "Danshil Kokil Mungur"
+          git config --global user.email "me@danshilm.com"
+          git add -A
+          git commit -m "[app] chore(release): update link to preview build"
+          git push

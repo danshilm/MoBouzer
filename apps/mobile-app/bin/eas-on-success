@@ -1,5 +1,11 @@
 #!/usr/bin/env node
 
+const isDevelopmentBuild = process.env.EAS_BUILD_PROFILE === 'development';
+
+if (isDevelopmentBuild) {
+  return console.log('Not running upload-sourcemaps script for development build. Exiting...');
+}
+
 const appConfig = require('../app.json');
 const uploadSourcemaps = require('./upload-sourcemaps');
 
