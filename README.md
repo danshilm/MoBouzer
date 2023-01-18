@@ -12,7 +12,7 @@ A cross-platform mobile app for navigating Mauritius by bus (and soon via the me
 </a> -->
 
 [![iOS Preview](https://img.shields.io/badge/-iOS%20Preview%20Build-000?style=flat&logo=apple)](https://expo.dev/artifacts/eas/Cejp7LDV2Qp6pFEFrsNEV.tar.gz)
-[![Android Preview](https://img.shields.io/badge/-Android%20Preview%20Build-000?style=flat&logo=android)](https://expo.dev/artifacts/eas/u9T5NeasvABqn1A4Wo83CZ.apk)
+[![Android Preview](https://img.shields.io/badge/-Android%20Preview%20Build-000?style=flat&logo=android)](https://expo.dev/artifacts/eas/upz6oZVKXqRn2KxKR1tm6U.apk)
 
 ## Screenshots
 
