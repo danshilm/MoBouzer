@@ -17,7 +17,7 @@ on:
         description: EAS build profile
         type: choice
         required: true
-        default: development
+        default: preview
         options:
           - development
           - preview
@@ -69,13 +69,21 @@ jobs:
           if [[ $INPUT_PLATFORM == "all" || $INPUT_PLATFORM == "android" ]]; then
             ANDROID_ARTIFACT_URL=$(eas build:list --platform android --buildProfile preview --limit 1 --non-interactive --json | jq -r '.[0].artifacts.applicationArchiveUrl')
             sed -i "s https:\/\/expo.dev\/artifacts\/eas\/.*\.apk $ANDROID_ARTIFACT_URL " ../../README.md
-          elif [[ $INPUT_PLATFORM == "all" || $INPUT_PLATFORM == "ios" ]]; then
+          fi
+          if [[ $INPUT_PLATFORM == "all" || $INPUT_PLATFORM == "ios" ]]; then
             IOS_ARTIFACT_URL=$(eas build:list --platform ios --buildProfile preview --limit 1 --non-interactive --json | jq -r '.[0].artifacts.applicationArchiveUrl')
             sed -i "s https:\/\/expo.dev\/artifacts\/eas\/.*\.tar.gz $IOS_ARTIFACT_URL " ../../README.md
           fi
 
           git config --global user.name "Danshil Kokil Mungur"
           git config --global user.email "me@danshilm.com"
+
           git add -A
           git commit -m "[app] chore(release): update link to preview build"
+          git push
+
+          # Cherry pick that commit to the develop branch
+          MAIN_COMMIT_SHA=$(git log -1 --format="%H")
+          git checkout develop
+          git cherry-pick "$MAIN_COMMIT_SHA"
           git push
