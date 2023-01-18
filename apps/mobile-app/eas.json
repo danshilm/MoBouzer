@@ -8,7 +8,8 @@
       "distribution": "internal",
       "channel": "development",
       "ios": {
-        "simulator": true
+        "simulator": true,
+        "resourceClass": "m1-medium"
       },
       "android": {
         "buildType": "apk"
