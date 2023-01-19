@@ -34,6 +34,14 @@
     "prettier": "^2.7.1",
     "typescript": "^4.7.4"
   },
+  "pnpm": {
+    "patchedDependencies": {
+      "sentry-expo@6.0.0": "patches/sentry-expo@6.0.0.patch"
+    },
+    "overrides": {
+      "tslib": "^2.4.1"
+    }
+  },
   "prettier": {
     "printWidth": 100,
     "singleQuote": true,
@@ -82,10 +90,5 @@
     "ignorePatterns": [
       "bin/**/*.js"
     ]
-  },
-  "pnpm": {
-    "patchedDependencies": {
-      "sentry-expo@6.0.0": "patches/sentry-expo@6.0.0.patch"
-    }
   }
 }
