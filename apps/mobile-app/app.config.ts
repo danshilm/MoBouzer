@@ -60,6 +60,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       firebaseiOSClientId: process.env.FIREBASE_IOS_CLIENT_ID,
       mapboxToken: process.env.RNMAPBOX_TOKEN,
       sentryDsn: process.env.SENTRY_DSN,
+      buildProfile: process.env.APP_ENV
     },
     plugins: [
       [

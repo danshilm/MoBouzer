@@ -48,7 +48,7 @@ Sentry.init({
 });
 
 Sentry.Native.setTags({
-  buildProfile: process.env.APP_ENV ?? 'unknown',
+  buildProfile: Constants.expoConfig?.extra?.buildProfile ?? 'unknown',
 });
 
 function App() {
