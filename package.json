@@ -88,7 +88,8 @@
       "es6": true
     },
     "ignorePatterns": [
-      "bin/**/*.js"
+      "bin/**/*.js",
+      "apps/**/*.config.js"
     ]
   }
 }
