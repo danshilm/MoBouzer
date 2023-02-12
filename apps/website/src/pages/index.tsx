@@ -14,7 +14,10 @@ const Home: NextPage = () => {
         muted
         className="fixed z-0 hidden w-auto h-auto min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 max-w-none top-1/2 left-1/2 sm:block"
       >
-        <source src="/videos/bg.mp4" type="video/mp4" />
+        <source
+          src="https://res.cloudinary.com/dtmy6u95y/video/upload/v1676230007/Website/background-video.mp4"
+          type="video/mp4"
+        />
       </video>
       <div className="flex flex-col flex-1 min-h-screen">
         <div className="z-10 flex flex-1 bg-teal-800/30">
