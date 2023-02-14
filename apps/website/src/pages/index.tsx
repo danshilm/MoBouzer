@@ -5,7 +5,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>MoBouzer</title>
+        <title>MoBouzer: Coming Soon</title>
       </Head>
       <video
         playsInline
