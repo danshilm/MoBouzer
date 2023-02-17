@@ -19,17 +19,17 @@ const Home: NextPage = () => {
           type="video/mp4"
         />
       </video>
-      <div className="flex flex-col flex-1 min-h-screen">
-        <div className="z-10 flex flex-1 bg-teal-800/30">
-          <div className="flex items-center justify-center overflow-hidden text-white origin-top-right sm:-skew-x-6 sm:w-9/12 bg-black/90">
-            <div className="skew-x-6 max-w-[40rem] pr-36 pl-16">
+      <div className="flex flex-1 min-h-screen">
+        <div className="z-10 flex flex-col flex-1 sm:flex-row bg-teal-800/30">
+          <div className="flex items-center justify-center overflow-hidden text-white origin-top-right sm:-skew-x-6 sm:w-9/12 h-5/6 sm:h-full bg-black/90">
+            <div className="sm:skew-x-6 max-w-[40rem] sm:pr-36 sm:pl-16 w-4/5 sm:w-full">
               <p className="mb-6 text-5xl italic font-semibold">Our Website is Coming Soon</p>
               <p className="text-xl">
                 We&apos;re working hard to finish the development of this site.
               </p>
             </div>
           </div>
-          <div className="flex flex-col items-end justify-center flex-1 gap-6 mr-16">
+          <div className="flex items-center justify-center flex-1 gap-6 sm:mr-16 sm:flex-col sm:items-end">
             <a href="https://github.com/danshilm/mobouzer" target="_blank" rel="noreferrer">
               <div className="flex items-center justify-center w-12 h-12 shadow-md bg-black/90 rounded-xl">
                 <svg
