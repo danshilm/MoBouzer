@@ -19,9 +19,9 @@ const Home: NextPage = () => {
           type="video/mp4"
         />
       </video>
-      <div className="flex flex-1 min-h-screen">
+      <div className="flex flex-1 min-h-screen bg-[url('/images/bg-mobile-fallback.jpg')] bg-cover bg-center sm:bg-none">
         <div className="z-10 flex flex-col flex-1 sm:flex-row bg-teal-800/30">
-          <div className="flex items-center justify-center overflow-hidden text-white origin-top-right sm:-skew-x-6 sm:w-9/12 h-5/6 sm:h-full bg-black/90">
+          <div className="flex items-center justify-center overflow-hidden text-white origin-top-right sm:-skew-x-6 sm:w-9/12 h-5/6 sm:h-full bg-black/[.85]">
             <div className="sm:skew-x-6 max-w-[40rem] sm:pr-36 sm:pl-16 w-4/5 sm:w-full">
               <p className="mb-6 text-5xl italic font-semibold">Our Website is Coming Soon</p>
               <p className="text-xl">
