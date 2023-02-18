@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import BackgroundVideo from '../components/BackgroundVideo';
 
 const Home: NextPage = () => {
   return (
@@ -7,19 +8,16 @@ const Home: NextPage = () => {
       <Head>
         <title>MoBouzer: Coming Soon</title>
       </Head>
-      <video
+      <BackgroundVideo
         playsInline
         autoPlay
         loop
         muted
         className="fixed z-0 hidden w-auto h-auto min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 max-w-none top-1/2 left-1/2 sm:block"
-      >
-        <source
-          src="https://res.cloudinary.com/dtmy6u95y/video/upload/v1676230007/Website/background-video.mp4"
-          type="video/mp4"
-        />
-      </video>
-      <div className="flex flex-1 min-h-screen bg-[url('/images/bg-mobile-fallback.jpg')] bg-cover bg-center sm:bg-none">
+        placeholder="bg-[url('/images/background.jpg')] bg-cover bg-center"
+        src="https://res.cloudinary.com/dtmy6u95y/video/upload/v1676230007/Website/background-video.mp4"
+      />
+      <div className="flex flex-1 min-h-screen bg-[url('/images/background.jpg')] bg-cover bg-center sm:bg-none">
         <div className="z-10 flex flex-col flex-1 sm:flex-row bg-teal-800/30">
           <div className="flex items-center justify-center overflow-hidden text-white origin-top-right sm:-skew-x-6 sm:w-9/12 h-5/6 sm:h-full bg-black/[.85]">
             <div className="sm:skew-x-6 max-w-[40rem] sm:pr-36 sm:pl-16 w-4/5 sm:w-full">
