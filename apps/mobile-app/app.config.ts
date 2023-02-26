@@ -30,7 +30,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       googleServicesFile: process.env.GOOGLE_SERVICES_IOS_FILE,
       bundleIdentifier: config.ios?.bundleIdentifier,
       buildNumber: config.ios?.buildNumber,
-      jsEngine: 'jsc',
+      jsEngine: 'hermes',
     },
     android: {
       adaptiveIcon: {
@@ -40,7 +40,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       googleServicesFile: process.env.GOOGLE_SERVICES_ANDROID_FILE,
       package: config.android?.package,
       versionCode: config.android?.versionCode,
-      jsEngine: 'jsc',
+      jsEngine: 'hermes',
     },
     web: {
       favicon: './assets/images/favicon.png',
