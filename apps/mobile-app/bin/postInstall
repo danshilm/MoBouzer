@@ -11,9 +11,6 @@ const childProcess = require('child_process');
  * From: infinitered/ignite
  */
 
-// Patch any packages that need patching
-run('npx patch-package');
-
 // Kill the metro bundler if it's running.
 if (['darwin', 'linux'].includes(process.platform)) {
   run('pkill -f "cli.js start" || set exit 0');

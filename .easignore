@@ -80,3 +80,7 @@ credentials
 # firebase ios & android app credentials
 google-services.json
 GoogleService-Info.plist
+
+# next.js
+.next/
+out/

@@ -33,8 +33,9 @@ _Soon_
 
 This repository is the home of the mobile app as well as all associated services to run and manage the application, in a monorepo structure using PNPM workspaces.
 
-- [`apps/mobile-app`](apps/mobile-app/) is the React Native app itself
-- [`apps/admin-cli`](apps/admin-cli) is a small CLI tool made to manage the data (for bus stops & bus lines) that's used in the mobile application
+- [`apps/mobile-app`](apps/mobile-app/) is the React Native app itself made with Expo and built with EAS Build
+- [`apps/admin-cli`](apps/admin-cli) is a small CLI tool made to manage the data on Firestore (for bus stops & bus lines) that's used in the mobile application
+- [`apps/website`](apps/website) is the [website](https://mobouzer.com) built with NextJS 13 and hosted on Vercel
 - [`packages/functions`](packages/functions) contains serverless functions running on GCP related to MoBouzer and the MoBouzer GCP project itself
 - [`packages/shared`](packages/shared) holds interfaces/procedures used in both the admin CLI and the mobile app, hence the name (_obviously_)
 

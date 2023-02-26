@@ -30,6 +30,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       googleServicesFile: process.env.GOOGLE_SERVICES_IOS_FILE,
       bundleIdentifier: config.ios?.bundleIdentifier,
       buildNumber: config.ios?.buildNumber,
+      jsEngine: 'hermes',
     },
     android: {
       adaptiveIcon: {
@@ -39,6 +40,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       googleServicesFile: process.env.GOOGLE_SERVICES_ANDROID_FILE,
       package: config.android?.package,
       versionCode: config.android?.versionCode,
+      jsEngine: 'hermes',
     },
     web: {
       favicon: './assets/images/favicon.png',
@@ -60,6 +62,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       firebaseiOSClientId: process.env.FIREBASE_IOS_CLIENT_ID,
       mapboxToken: process.env.RNMAPBOX_TOKEN,
       sentryDsn: process.env.SENTRY_DSN,
+      buildProfile: process.env.APP_ENV,
     },
     plugins: [
       [
