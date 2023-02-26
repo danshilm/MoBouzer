@@ -1,3 +1,18 @@
+# [1.3.0](https://github.com/danshilm/MoBouzer/compare/mobile-app@v1.2.0...mobile-app@v1.3.0) (2023-02-26)
+
+
+### Bug Fixes
+
+* **build:** correctly set build profile sentry tag ([135b5ae](https://github.com/danshilm/MoBouzer/commit/135b5aed1e5a7b822d49a418f5b86c83ae472980))
+* **build:** remove redundant patch-package in postinstall ([9552ad0](https://github.com/danshilm/MoBouzer/commit/9552ad05236852de73610b215b001699e3e94a3c))
+* **build:** specify minimum version for m1 EAS workers ([ae391ad](https://github.com/danshilm/MoBouzer/commit/ae391ad1b85353042aa1fd1f54ad9c21c97fa556))
+* **build:** use correct sdkversion in app config ([bfc70b6](https://github.com/danshilm/MoBouzer/commit/bfc70b6b50817911ca7b2a893b83bbfa1cd00d32))
+
+
+### Features
+
+* **build:** use hermes engine ([5851b89](https://github.com/danshilm/MoBouzer/commit/5851b89886945446cb42efc03aea3fadbd7bbe85))
+
 # [1.2.0](https://github.com/danshilm/MoBouzer/compare/mobile-app@v1.1.0...mobile-app@v1.2.0) (2023-01-18)
 
 
