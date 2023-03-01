@@ -9,17 +9,15 @@
     "lint:fix": "eslint \"./src/**/*.{ts,tsx}\" --fix",
     "format": "prettier --write ./"
   },
-  "bin": {
-    "eslint": "../../node_modules/.bin/eslint",
-    "prettier": "../../node_modules/.bin/prettier"
-  },
   "devDependencies": {
+    "@mobouzer/eslint-config": "workspace:*",
     "@react-native-firebase/firestore": "14.11.1",
     "@tsconfig/node16": "^1.0.3",
     "firebase-admin": "^11.0.1",
     "typescript": "^4.7.4"
   },
   "eslintConfig": {
+    "extends": "@mobouzer/eslint-config",
     "parserOptions": {
       "sourceType": "module"
     }

@@ -1,4 +1,5 @@
 {
+  "name": "@mobouzer/website",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -6,20 +7,18 @@
     "start": "next start",
     "lint": "next lint"
   },
-  "bin": {
-    "eslint": "../../node_modules/.bin/eslint",
-    "prettier": "../../node_modules/.bin/prettier"
-  },
   "dependencies": {
     "next": "13.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "@mobouzer/eslint-config": "workspace:*",
     "@types/node": "18.11.3",
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",
     "autoprefixer": "^10.4.12",
+    "eslint": "^8.35.0",
     "eslint-config-next": "^13.1.6",
     "postcss": "^8.4.18",
     "tailwindcss": "^3.2.4",

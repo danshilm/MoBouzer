@@ -14,11 +14,8 @@
     "lint:fix": "eslint \"./src/**/*.{ts,tsx}\" --fix",
     "format": "prettier --write ./"
   },
-  "bin": {
-    "eslint": "../../node_modules/.bin/eslint",
-    "prettier": "../../node_modules/.bin/prettier"
-  },
   "dependencies": {
+    "@mobouzer/eslint-config": "workspace:*",
     "@mobouzer/shared": "workspace:*",
     "@turf/distance": "^6.5.0",
     "axios": "^0.27.2",
@@ -46,9 +43,7 @@
   },
   "packageManager": "pnpm@7.8.0",
   "eslintConfig": {
-    "env": {
-      "node": true
-    }
+    "extends": "@mobouzer/eslint-config"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
