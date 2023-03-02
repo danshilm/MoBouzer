@@ -13,18 +13,16 @@ const getAllBusStops = async (): Promise<Stops[]> => {
     throw new Error('Cannot get data from aggregate bus stops document');
   }
 
-  const data: Stops[] = [];
-
-  allBusStopsData['bus-stops'].map((busStopData) => {
-    data.push({
+  const data = allBusStopsData['bus-stops'].map(
+    (busStopData): Stops => ({
       stop_id: busStopData.id,
       stop_lat: busStopData.location.latitude,
       stop_long: busStopData.location.longitude,
       location_type: 0,
       // replace commas since that's the delimiter for the gtfs file
       stop_name: busStopData.name?.replace(',', '') ?? 'Bus Stop',
-    });
-  });
+    })
+  );
 
   return data;
 };

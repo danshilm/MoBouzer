@@ -1,4 +1,4 @@
-export interface Agency {
+export interface Agency extends Record<string, unknown> {
   /**
    * Identifies a transit brand which is often synonymous with a transit agency.
    * Note that in some cases, such as when a single agency operates multiple separate services, agencies and brands are distinct.
