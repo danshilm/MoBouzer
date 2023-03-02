@@ -1,4 +1,4 @@
-export interface Stops {
+export interface Stops extends Record<string, unknown> {
   /** 
    * Identifies a stop, station, or station entrance.
 
