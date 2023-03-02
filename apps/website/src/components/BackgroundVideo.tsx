@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from 'react';
 interface BackgroundVideoProps
   extends DetailedHTMLProps<VideoHTMLAttributes<HTMLVideoElement>, HTMLVideoElement> {
   placeholder: string;
+  // added because of type mismatch when using ...props spread
+  crossOrigin?: 'anonymous' | 'use-credentials' | '' | undefined;
 }
 
 export default function BackgroundVideo({
