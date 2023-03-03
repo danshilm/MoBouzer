@@ -1,5 +1,6 @@
 import ora from 'ora';
 import AgencyFile from '../../lib/gtfs/agency';
+import RoutesFile from '../../lib/gtfs/routes';
 import StopsFile from '../../lib/gtfs/stops';
 
 export const generateGtfsFiles = async () => {
@@ -7,7 +8,11 @@ export const generateGtfsFiles = async () => {
 
   try {
     spinner.text = 'Working';
-    await Promise.all([AgencyFile.writeToFile(), StopsFile.writeToFile()]);
+    await Promise.all([
+      AgencyFile.writeToFile(),
+      StopsFile.writeToFile(),
+      RoutesFile.writeToFile(),
+    ]);
   } catch (error) {
     spinner.fail(`Failed to generate GTFS files: ${error}`);
   } finally {

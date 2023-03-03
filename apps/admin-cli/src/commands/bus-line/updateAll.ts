@@ -51,6 +51,7 @@ const updateAggregateBusLine = async ({ force }: { force: boolean }): Promise<vo
           id: missingBusLineId,
           destination: busLineData.direction['forward'].destination.name,
           origin: busLineData.direction['forward'].origin.name,
+          operator: busLineData.operator,
         };
 
         spinner.text = `${missing.indexOf(missingBusLineId)}/${
@@ -75,10 +76,10 @@ const updateAggregateBusLine = async ({ force }: { force: boolean }): Promise<vo
 
       await batch.commit();
 
-      spinner.succeed(`Done!`).start('Working');
+      spinner.succeed(`Changes have been commited to the database!`).start('Working');
     }
 
-    spinner.succeed(`${missing.length} bus lines updated in the aggregate document`);
+    spinner.succeed(`${missing.length} bus line(s) updated in the aggregate document`);
   } catch (error) {
     spinner.fail(`Failed to update bus lines aggregate document: ${error}`);
   }
