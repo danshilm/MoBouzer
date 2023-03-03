@@ -35,9 +35,13 @@ export interface Stops extends Record<string, unknown> {
    * * Optional for locations which are generic nodes (location_type=3) or boarding areas (location_type=4).
    */
   stop_long: number;
-  /** Identifies the fare zone for a stop. This field is required if providing fare information using fare_rules.txt, otherwise it is optional. If this record represents a station or station entrance, the zone_id is ignored. */
+  /** Identifies the fare zone for a stop.
+   *
+   * This field is required if providing fare information using fare_rules.txt, otherwise it is optional. If this record represents a station or station entrance, the zone_id is ignored. */
   zone_id?: string;
-  /** URL of a web page about the location. This should be different from the agency.agency_url and the routes.route_url field values. */
+  /** URL of a web page about the location.
+   *
+   * This should be different from the agency.agency_url and the routes.route_url field values. */
   stop_url?: string;
   /**
    * Type of the location:

@@ -13,19 +13,27 @@ export interface Route extends Record<string, unknown> {
    */
   route_id: string;
   /**
-   * Agency for the specified route. This field is required when the dataset provides data for routes from more than one agency in agency.txt, otherwise it is optional.
+   * Agency for the specified route.
+   *
+   * This field is required when the dataset provides data for routes from more than one agency in agency.txt, otherwise it is optional.
    */
   agency_id?: string;
   /**
-   * Short name of a route. This will often be a short, abstract identifier like "32", "100X", or "Green" that riders use to identify a route, but which doesn't give any indication of what places the route serves. Either route_short_name or route_long_name must be specified, or potentially both if appropriate.
+   * Short name of a route.
+   *
+   * This will often be a short, abstract identifier like "32", "100X", or "Green" that riders use to identify a route, but which doesn't give any indication of what places the route serves. Either route_short_name or route_long_name must be specified, or potentially both if appropriate.
    */
   route_short_name?: string;
   /**
-   * Full name of a route. This name is generally more descriptive than the route_short_name and often includes the route's destination or stop. Either route_short_name or route_long_name must be specified, or potentially both if appropriate.
+   * Full name of a route.
+   *
+   * This name is generally more descriptive than the route_short_name and often includes the route's destination or stop. Either route_short_name or route_long_name must be specified, or potentially both if appropriate.
    */
   route_long_name?: string;
   /**
-   * Description of a route that provides useful, quality information. Do not simply duplicate the name of the route. Example: "A" trains operate between Inwood-207 St, Manhattan and Far Rockaway-Mott Avenue, Queens at all times. Also from about 6AM until about midnight, additional "A" trains operate between Inwood-207 St and Lefferts Boulevard (trains typically alternate between Lefferts Blvd and Far Rockaway).
+   * Description of a route that provides useful, quality information.
+   *
+   * Do not simply duplicate the name of the route. Example: "A" trains operate between Inwood-207 St, Manhattan and Far Rockaway-Mott Avenue, Queens at all times. Also from about 6AM until about midnight, additional "A" trains operate between Inwood-207 St and Lefferts Boulevard (trains typically alternate between Lefferts Blvd and Far Rockaway).
    */
   route_desc?: string;
   /**
@@ -44,23 +52,33 @@ export interface Route extends Record<string, unknown> {
    */
   route_type: VehicleType;
   /**
-   * URL of a web page about the particular route. Should be different from the agency.agency_url value.
+   * URL of a web page about the particular route.
+   *
+   * Should be different from the agency.agency_url value.
    */
   route_url?: string;
   /**
-   * Route color designation that matches public facing material. Defaults to white (FFFFFF) when omitted or left empty. The color difference between route_color and route_text_color should provide sufficient contrast when viewed on a black and white screen.
+   * Route color designation that matches public facing material.
+   *
+   * Defaults to white (FFFFFF) when omitted or left empty. The color difference between route_color and route_text_color should provide sufficient contrast when viewed on a black and white screen.
    */
   route_color?: string;
   /**
-   * Legible color to use for text drawn against a background of route_color. Defaults to black (000000) when omitted or left empty. The color difference between route_color and route_text_color should provide sufficient contrast when viewed on a black and white screen.
+   * Legible color to use for text drawn against a background of route_color.
+   *
+   * Defaults to black (000000) when omitted or left empty. The color difference between route_color and route_text_color should provide sufficient contrast when viewed on a black and white screen.
    */
   route_text_color?: string;
   /**
-   * Orders the routes in a way which is ideal for presentation to customers. Routes with smaller route_sort_order values should be displayed first.
+   * Orders the routes in a way which is ideal for presentation to customers.
+   *
+   * Routes with smaller route_sort_order values should be displayed first.
    */
   route_sort_order?: number;
   /**
-   * Indicates whether a rider can board the transit vehicle anywhere along the vehicle’s travel path. The path is described by shapes.txt on every trip of the route. Valid options are:
+   * Indicates whether a rider can board the transit vehicle anywhere along the vehicle’s travel path. 
+   * 
+   * The path is described by shapes.txt on every trip of the route. Valid options are:
 
      - 0 - Continuous stopping pickup.
      - 1 or empty - No continuous stopping pickup.
@@ -71,7 +89,9 @@ export interface Route extends Record<string, unknown> {
    */
   continuous_pickup?: PickupDropoffType | '';
   /**
-   * Indicates whether a rider can alight from the transit vehicle at any point along the vehicle’s travel path. The path is described by shapes.txt on every trip of the route. Valid options are:
+   * Indicates whether a rider can alight from the transit vehicle at any point along the vehicle’s travel path. 
+   * 
+   * The path is described by shapes.txt on every trip of the route. Valid options are:
 
      - 0 - Continuous stopping drop-off.
      - 1 or empty - No continuous stopping drop-off.
