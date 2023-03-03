@@ -49,7 +49,7 @@ const updateBusLine = async ({
   const updatedData = { id };
   // use this to force the individual bus-stop/way entries to be replaced,
   // but keep the "top" level keys
-  const mergeFields: string[] = ['id'];
+  const mergeFields: string[] = ['id', 'operator'];
 
   try {
     const forwardDirectionRelationId = getForwardDirectionRelationId(busLineData);
@@ -59,6 +59,16 @@ const updateBusLine = async ({
         : (busLineData.find(
             (v) => v.type === ElementType.Relation && v.id !== forwardDirectionRelationId
           ) as RelationElement);
+
+    // relations of type route_master cannot be queried with the overpass api (only the children can)
+    // thus, the children relations are the ones which need to have the operator tag
+    if (relationData.tags.operator) {
+      spinner
+        .info(`Bus line ${id} is operated by ${relationData.tags.operator}`)
+        .start('Working...');
+
+      set(updatedData, 'operator', relationData.tags.operator?.toLowerCase());
+    }
 
     if (toUpdate === 'busStops' || toUpdate === 'both') {
       const updatedBusLineStops = relationData.members
