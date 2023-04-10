@@ -1,9 +1,4 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-## temporary fix for https://github.com/okonet/lint-staged/issues/1164
-if [ -t 2 ]; then
-  exec >/dev/tty 2>&1
-fi
-
 pnpm exec lint-staged
