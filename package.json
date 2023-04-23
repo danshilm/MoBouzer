@@ -27,7 +27,7 @@
   },
   "pnpm": {
     "patchedDependencies": {
-      "sentry-expo@6.0.0": "patches/sentry-expo@6.0.0.patch"
+      "sentry-expo@6.1.1": "patches/sentry-expo@6.1.1.patch"
     },
     "overrides": {
       "tslib": "^2.4.1"
