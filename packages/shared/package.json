@@ -11,10 +11,10 @@
   },
   "devDependencies": {
     "@mobouzer/eslint-config": "workspace:*",
-    "@react-native-firebase/firestore": "14.11.1",
+    "@react-native-firebase/firestore": "16.4.6",
     "@tsconfig/node16": "^1.0.3",
-    "firebase-admin": "^11.0.1",
-    "typescript": "^4.7.4"
+    "firebase-admin": "^11.6.0",
+    "typescript": "^5.0.4"
   },
   "engines": {
     "node": ">=16.18.1",

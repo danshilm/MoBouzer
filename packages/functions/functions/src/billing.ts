@@ -9,8 +9,9 @@ export const forceStop = functions
     .region("asia-southeast1")
     .pubsub.topic("budget-cap-enforcer")
     .onPublish(async (pubsubEvent) => {
-      const pubsubData = JSON.parse(Buffer.from(pubsubEvent.data, "base64")
-          .toString());
+      const pubsubData = JSON.parse(
+          Buffer.from(pubsubEvent.data, "base64").toString()
+      );
 
       if (pubsubData.costAmount <= pubsubData.budgetAmount) {
         return functions.logger.log(`No action necessary.

@@ -4,7 +4,8 @@
     "outDir": "./dist",
     "declaration": true,
     "declarationMap": true,
-    "importsNotUsedAsValues": "error"
+    "importsNotUsedAsValues": "error",
+    "ignoreDeprecations": "5.0"
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"],
