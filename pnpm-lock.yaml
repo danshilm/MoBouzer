@@ -65,8 +65,8 @@ importers:
         specifier: ^3.8.2
         version: 3.8.2
     devDependencies:
-      '@tsconfig/node18':
-        specifier: ^1.0.1
+      '@tsconfig/node16':
+        specifier: ^1.0.3
         version: 1.0.3
       '@types/common-tags':
         specifier: ^1.8.1
@@ -3706,10 +3706,6 @@ packages:
 
   /@tsconfig/node16@1.0.3:
     resolution: {integrity: sha512-yOlFc+7UtL/89t2ZhjPvvB/DeAr3r+Dq58IgzsFkOAvVC6NMJXmCGjbptdXdR9qsX7pKcTL+s87FtYREi2dEEQ==}
-
-  /@tsconfig/node18@1.0.3:
-    resolution: {integrity: sha512-RbwvSJQsuN9TB04AQbGULYfOGE/RnSFk/FLQ5b0NmDf5Kx2q/lABZbHQPKCO1vZ6Fiwkplu+yb9pGdLy1iGseQ==}
-    dev: true
 
   /@turf/along@6.5.0:
     resolution: {integrity: sha512-LLyWQ0AARqJCmMcIEAXF4GEu8usmd4Kbz3qk1Oy5HoRNpZX47+i5exQtmIWKdqJ1MMhW26fCTXgpsEs5zgJ5gw==}
