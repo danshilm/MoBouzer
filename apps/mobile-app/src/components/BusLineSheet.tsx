@@ -1,9 +1,9 @@
 import { Ionicons } from '@expo/vector-icons';
 import BottomSheet, { BottomSheetScrollView } from '@gorhom/bottom-sheet';
+import type MapLibreGL from '@maplibre/maplibre-react-native';
 import type { BusLine } from '@mobouzer/shared';
 import type { NavigationProp } from '@react-navigation/native';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
-import type { Camera } from '@rnmapbox/maps';
 import { featureCollection, point } from '@turf/helpers';
 import nearestPoint from '@turf/nearest-point';
 import { getForegroundPermissionsAsync, getLastKnownPositionAsync } from 'expo-location';
@@ -23,7 +23,7 @@ interface BusLineSheetProps extends ViewProps {
   error?: Error;
   isMarkerOpen?: boolean;
   callback: (sheetPos: number) => void;
-  cameraRef: React.RefObject<Camera>;
+  cameraRef: React.RefObject<MapLibreGL.Camera>;
 }
 
 export default function BusLineSheet({

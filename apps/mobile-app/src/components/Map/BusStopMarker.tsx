@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
+import MapLibreGL from '@maplibre/maplibre-react-native';
 import type { BusStop } from '@mobouzer/shared';
-import { MarkerView } from '@rnmapbox/maps';
 import type { Feature, Point } from '@turf/helpers';
 import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
@@ -14,7 +14,9 @@ export default function BusStopMarker({
   busStop: BusStop.DocumentData | undefined;
 }) {
   return (
-    <MarkerView
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    <MapLibreGL.MarkerView
       coordinate={point.geometry.coordinates as [number, number]}
       anchor={{ y: 1.8, x: 0.5 }}
     >
@@ -35,6 +37,6 @@ export default function BusStopMarker({
           />
         </View>
       </TouchableOpacity>
-    </MarkerView>
+    </MapLibreGL.MarkerView>
   );
 }

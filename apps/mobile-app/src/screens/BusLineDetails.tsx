@@ -1,7 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
+import type { OnPressEvent } from '@maplibre/maplibre-react-native';
+import MapLibreGL from '@maplibre/maplibre-react-native';
 import type { BusLine } from '@mobouzer/shared';
-import type { OnPressEvent } from '@rnmapbox/maps';
-import MapboxGL, { Camera, LineLayer, MapView, ShapeSource, SymbolLayer } from '@rnmapbox/maps';
 import { useDocumentDataOnce } from '@skillnation/react-native-firebase-hooks/firestore';
 import bbox from '@turf/bbox';
 import center from '@turf/center';
@@ -25,7 +25,7 @@ export default function BusLineDetails({
 }: BusLinesStackScreenProps<'BusLineDetails'>) {
   const { id, direction } = route.params;
   const insets = useSafeAreaInsets();
-  const cameraRef = useRef<Camera>(null);
+  const cameraRef = useRef<MapLibreGL.Camera>(null);
   // used to determine how to adjust the map as the bottom sheet changes position
   const mapHeight = useRef<number>(0);
 
@@ -134,13 +134,12 @@ export default function BusLineDetails({
           mapHeight.current = e.nativeEvent.layout.height;
         }}
       >
-        <MapView
+        <MapLibreGL.MapView
           style={tw`w-full h-full`}
-          styleURL={MapboxGL.StyleURL.Street}
+          styleURL="https://demotiles.maplibre.org/style.json"
           compassEnabled={true}
           compassViewPosition={1}
-          compassFadeWhenNorth={true}
-          compassPosition={{ top: 0, right: 0 }}
+          // compassPosition={{ top: 0, right: 0 }}
           compassViewMargins={{ y: 10, x: 10 }}
           attributionEnabled={true}
           attributionPosition={{ bottom: 10, left: 100 }}
@@ -155,15 +154,15 @@ export default function BusLineDetails({
           // }}
           onPress={() => setSelectedPoint(null)}
         >
-          <Camera defaultSettings={cameraDefaultSettings} ref={cameraRef} />
-          <MapboxGL.UserLocation
+          <MapLibreGL.Camera defaultSettings={cameraDefaultSettings} ref={cameraRef} />
+          <MapLibreGL.UserLocation
             showsUserHeadingIndicator={true}
             animated={true}
             renderMode="native"
             androidRenderMode="compass"
           />
           {ways && (
-            <ShapeSource
+            <MapLibreGL.ShapeSource
               id={`ways`}
               shape={{
                 type: 'MultiLineString',
@@ -172,7 +171,7 @@ export default function BusLineDetails({
                 ),
               }}
             >
-              <LineLayer
+              <MapLibreGL.LineLayer
                 id={`ways-layer`}
                 style={{
                   lineWidth: 5,
@@ -181,10 +180,10 @@ export default function BusLineDetails({
                   lineJoin: 'round',
                 }}
               />
-            </ShapeSource>
+            </MapLibreGL.ShapeSource>
           )}
           {busStops && (
-            <ShapeSource
+            <MapLibreGL.ShapeSource
               id={`bus-stops`}
               shape={{
                 type: 'FeatureCollection',
@@ -202,7 +201,7 @@ export default function BusLineDetails({
               clusterRadius={6}
               onPress={handleMarkerPress}
             >
-              <SymbolLayer
+              <MapLibreGL.SymbolLayer
                 id={`busStops-layer`}
                 style={{
                   iconImage: locationIcon,
@@ -211,10 +210,10 @@ export default function BusLineDetails({
                   iconIgnorePlacement: true,
                 }}
               />
-            </ShapeSource>
+            </MapLibreGL.ShapeSource>
           )}
           {selectedPoint && <BusStopMarker busStop={selectedBusStop} point={selectedPoint} />}
-        </MapView>
+        </MapLibreGL.MapView>
       </SafeAreaView>
 
       <BusLineSheet

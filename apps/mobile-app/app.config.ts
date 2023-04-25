@@ -74,12 +74,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         },
       ],
       '@react-native-firebase/app',
-      [
-        '@rnmapbox/maps',
-        {
-          RNMapboxMapsImpl: 'maplibre',
-        },
-      ],
+      '@maplibre/maplibre-react-native',
       'sentry-expo',
     ],
     hooks: {

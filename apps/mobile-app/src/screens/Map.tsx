@@ -1,8 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
+import type { OnPressEvent } from '@maplibre/maplibre-react-native';
+import MapLibreGL from '@maplibre/maplibre-react-native';
 import type { BusStop } from '@mobouzer/shared';
-import type { OnPressEvent } from '@rnmapbox/maps';
-import MapboxGL, { Camera, MapView, ShapeSource, SymbolLayer } from '@rnmapbox/maps';
-import { UserTrackingMode } from '@rnmapbox/maps/javascript/components/Camera';
 import { useDocumentData } from '@skillnation/react-native-firebase-hooks/firestore';
 import center from '@turf/center';
 import type { Feature, Point } from '@turf/helpers';
@@ -27,8 +26,8 @@ const cameraDefaultSettingsWithPadding = {
 };
 
 export default function Map() {
-  const cameraRef = useRef<Camera | null>(null);
-  const mapRef = useRef<MapView | null>(null);
+  const cameraRef = useRef<MapLibreGL.Camera | null>(null);
+  const mapRef = useRef<MapLibreGL.MapView | null>(null);
   const [followUser, setFollowUser] = useState(false);
   const [userLocationIsShown, setUserLocationIsShown] = useState(false);
   const [allBusStops, loading, error] = useDocumentData<BusStop.AllDocumentData>(
@@ -139,14 +138,14 @@ export default function Map() {
 
   return (
     <ViewWithSearchBar style={tw`flex flex-1`} placeholder="Search for your destination">
-      <MapView
+      <MapLibreGL.MapView
         ref={mapRef}
         style={tw`absolute top-0 bottom-0 left-0 right-0`}
-        styleURL={MapboxGL.StyleURL.Street}
+        styleURL={MapLibreGL.StyleURL.Street}
         compassEnabled={true}
         compassViewPosition={1}
-        compassFadeWhenNorth={true}
-        compassPosition={{ top: 0, right: 0 }}
+        // compassFadeWhenNorth={true}
+        // compassPosition={{ top: 0, right: 0 }}
         // todo put correct location for compass; take into account screen size
         compassViewMargins={{ y: 100, x: 16 }}
         attributionEnabled={true}
@@ -170,15 +169,15 @@ export default function Map() {
           setSelectedPoint(null);
         }}
       >
-        <Camera
+        <MapLibreGL.Camera
           defaultSettings={{ ...cameraDefaultSettingsWithPadding }}
           ref={cameraRef}
           followUserLocation={followUser}
           followZoomLevel={16}
           followPitch={50}
-          followUserMode={UserTrackingMode.FollowWithHeading}
+          followUserMode={MapLibreGL.UserTrackingModes.FollowWithHeading}
         />
-        <MapboxGL.UserLocation
+        <MapLibreGL.UserLocation
           showsUserHeadingIndicator={true}
           animated={true}
           renderMode="native"
@@ -186,7 +185,7 @@ export default function Map() {
           visible={userLocationIsShown}
         />
         {allBusStops && (
-          <ShapeSource
+          <MapLibreGL.ShapeSource
             id={`bus-stops`}
             shape={{
               type: 'FeatureCollection',
@@ -204,7 +203,7 @@ export default function Map() {
             clusterRadius={5}
             onPress={handleMarkerPress}
           >
-            <SymbolLayer
+            <MapLibreGL.SymbolLayer
               id={`busStops-layer`}
               style={{
                 iconImage: locationIcon,
@@ -213,10 +212,10 @@ export default function Map() {
                 iconIgnorePlacement: true,
               }}
             />
-          </ShapeSource>
+          </MapLibreGL.ShapeSource>
         )}
         {selectedPoint && <BusStopMarker busStop={selectedBusStop} point={selectedPoint} />}
-      </MapView>
+      </MapLibreGL.MapView>
 
       <View style={tw`flex-col items-end justify-end flex-1 px-4 py-4`} pointerEvents="box-none">
         <View style={tw`flex-1`} />
