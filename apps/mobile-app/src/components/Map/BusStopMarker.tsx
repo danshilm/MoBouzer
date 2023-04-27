@@ -17,6 +17,7 @@ export default function BusStopMarker({
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     <MapLibreGL.MarkerView
+      id={`busStop-${busStop?.id}`}
       coordinate={point.geometry.coordinates as [number, number]}
       anchor={{ y: 1.8, x: 0.5 }}
     >

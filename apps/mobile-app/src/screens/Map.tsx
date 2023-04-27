@@ -148,10 +148,8 @@ export default function Map() {
         // compassPosition={{ top: 0, right: 0 }}
         // todo put correct location for compass; take into account screen size
         compassViewMargins={{ y: 100, x: 16 }}
-        attributionEnabled={true}
-        attributionPosition={{ bottom: 10, left: 100 }}
-        logoEnabled={true}
-        logoPosition={{ bottom: 10, left: 10 }}
+        attributionEnabled={false}
+        logoEnabled={false}
         accessibilityLabel="map"
         // stop following whenever the user moves the map
         onRegionIsChanging={(e) => {

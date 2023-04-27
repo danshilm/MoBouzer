@@ -141,10 +141,8 @@ export default function BusLineDetails({
           compassViewPosition={1}
           // compassPosition={{ top: 0, right: 0 }}
           compassViewMargins={{ y: 10, x: 10 }}
-          attributionEnabled={true}
-          attributionPosition={{ bottom: 10, left: 100 }}
-          logoEnabled={true}
-          logoPosition={{ bottom: 10, left: 10 }}
+          attributionEnabled={false}
+          logoEnabled={false}
           accessibilityLabel="map"
           // todo this bugs out when pressing on bus stops in quick succession
           // onRegionDidChange={(e) => {
