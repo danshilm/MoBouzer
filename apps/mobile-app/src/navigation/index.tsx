@@ -4,14 +4,15 @@ import type { Theme } from '@react-navigation/native';
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ErrorBoundary } from '@sentry/react-native';
-import { useAuthState } from '@skillnation/react-native-firebase-hooks/auth';
+import { SessionContextProvider, useUser } from '@supabase/auth-helpers-react';
 import * as React from 'react';
+import { useEffect, useState } from 'react';
 import type { ColorSchemeName } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { slate, zinc } from 'tailwindcss/colors';
 import Error from '../components/Error';
-import { firebaseAuth } from '../firebase/utils';
+import { supabase } from '../lib/supabase';
 import tw from '../lib/tailwind';
 import BusLineDetails from '../screens/BusLineDetails';
 import BusLines from '../screens/BusLines';
@@ -49,7 +50,9 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
         }}
       >
         <ErrorBoundary fallback={<Error />}>
-          <RootNavigator />
+          <SessionContextProvider supabaseClient={supabase}>
+            <RootNavigator />
+          </SessionContextProvider>
         </ErrorBoundary>
       </NavigationContainer>
     </GestureHandlerRootView>
@@ -65,7 +68,13 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function RootNavigator() {
   // everything under one navigator so screen transitions happen smoothly
   // https://reactnavigation.org/docs/auth-flow/
-  const [user, loading] = useAuthState(firebaseAuth);
+  const [loading, setLoading] = useState(true);
+
+  const user = useUser();
+
+  useEffect(() => {
+    setLoading(false);
+  }, []);
 
   return (
     <Stack.Navigator

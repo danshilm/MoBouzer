@@ -63,6 +63,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       mapboxToken: process.env.RNMAPBOX_TOKEN,
       sentryDsn: process.env.SENTRY_DSN,
       buildProfile: process.env.APP_ENV,
+      supabaseUrl: process.env.SUPABASE_URL,
+      supabaseKey: process.env.SUPABASE_KEY,
     },
     plugins: [
       [

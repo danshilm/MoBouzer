@@ -3,7 +3,7 @@ import { AnimatePresence, MotiView } from 'moti';
 import React from 'react';
 import { Pressable, Text } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { firebaseAuth } from '../../firebase/utils';
+import { supabase } from '../../lib/supabase';
 import tw from '../../lib/tailwind';
 
 export default function DropdownMenu({
@@ -50,7 +50,7 @@ export default function DropdownMenu({
             style={({ pressed }) =>
               tw.style('w-32 h-9 flex flex-row items-center', pressed && 'bg-gray-100')
             }
-            onPress={() => firebaseAuth().signOut()}
+            onPress={() => supabase.auth.signOut()}
             accessibilityLabel="sign out button"
           >
             <Ionicons name="exit-outline" size={18} style={tw`w-4.5 ml-3 mr-2`} />

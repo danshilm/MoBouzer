@@ -1,17 +1,16 @@
 import { AntDesign } from '@expo/vector-icons';
-import { useCreateUserWithEmailAndPassword } from '@skillnation/react-native-firebase-hooks/auth';
 import { Formik } from 'formik';
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as Yup from 'yup';
 import FormButton from '../components/Common/Form/Button';
 import FormCheckbox from '../components/Common/Form/Checkbox';
 import FormTextInput from '../components/Common/Form/TextInput';
-import { canHumaniseFirebaseAuthError, DisplayFirebaseAuthError } from '../firebase/errors';
-import { firebaseAuth } from '../firebase/utils';
+import { supabase } from '../lib/supabase';
 import tw from '../lib/tailwind';
 import type { RootStackScreenProps } from '../navigation/types';
+import Sentry from '../utils/sentry';
 
 const signInSchema = Yup.object().shape({
   email: Yup.string().required('Enter an email address'),
@@ -22,7 +21,18 @@ const signInSchema = Yup.object().shape({
 });
 
 export default function SignUp({ navigation }: RootStackScreenProps<'SignUp'>) {
-  const [createUser, , , error] = useCreateUserWithEmailAndPassword(firebaseAuth);
+  const [error, setError] = useState('');
+  async function createUser(email: string, password: string) {
+    try {
+      const { error } = await supabase.auth.signUp({ email, password });
+      if (error) {
+        Sentry.Native.captureException(error);
+        setError(error.message);
+      }
+    } catch (error) {
+      setError('Sign Up attempt failed');
+    }
+  }
 
   return (
     <SafeAreaView style={tw`px-6`}>
@@ -115,14 +125,9 @@ export default function SignUp({ navigation }: RootStackScreenProps<'SignUp'>) {
                     text="Sign Up"
                     isSubmitting={isSubmitting}
                     onPress={handleSubmit}
-                    errorMessage={
-                      error && !canHumaniseFirebaseAuthError(error)
-                        ? 'Oops, something went wrong'
-                        : undefined
-                    }
+                    errorMessage={error}
                     accessibilityLabel="sign up button"
                   />
-                  <DisplayFirebaseAuthError error={error} />
                 </View>
               )}
             </Formik>

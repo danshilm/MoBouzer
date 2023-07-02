@@ -1,10 +1,8 @@
 import { Ionicons } from '@expo/vector-icons';
-import { useAuthState } from '@skillnation/react-native-firebase-hooks/auth';
 import React, { useState } from 'react';
 import type { StyleProp, ViewStyle } from 'react-native';
 import { Image, TextInput, TouchableOpacity, View } from 'react-native';
 import { gray } from 'tailwindcss/colors';
-import { firebaseAuth } from '../../firebase/utils';
 import useDebouncedState from '../../hooks/useDebouncedState';
 import tw from '../../lib/tailwind';
 
@@ -21,7 +19,8 @@ export default function SearchBar({
 }) {
   const [focused, setFocused] = useState(false);
   const { value: searchValue, setValue: setSearchValue } = useDebouncedState('');
-  const [user] = useAuthState(firebaseAuth);
+  /** TODO Use gravatar? */
+  const [photoURL] = useState('');
 
   return (
     <View
@@ -51,9 +50,9 @@ export default function SearchBar({
             activeOpacity={0.7}
             onPress={() => setIsDropdownOpen(!isDropdownOpen)}
           >
-            {user?.photoURL ? (
+            {photoURL ? (
               <Image
-                source={{ uri: user.photoURL }}
+                source={{ uri: photoURL }}
                 loadingIndicatorSource={require('../../../assets/images/person.png')}
                 style={tw`w-7.5 h-7.5 rounded-md`}
                 accessibilityLabel="profile picture"
