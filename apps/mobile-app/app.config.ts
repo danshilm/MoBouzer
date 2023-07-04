@@ -40,6 +40,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       googleServicesFile: process.env.GOOGLE_SERVICES_ANDROID_FILE,
       package: config.android?.package,
       versionCode: config.android?.versionCode,
+      softwareKeyboardLayoutMode: 'pan',
       jsEngine: 'hermes',
     },
     web: {
