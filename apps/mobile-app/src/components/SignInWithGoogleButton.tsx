@@ -1,41 +1,60 @@
 import { FontAwesome } from '@expo/vector-icons';
-import { useIdTokenAuthRequest } from 'expo-auth-session/providers/google';
 import Constants from 'expo-constants';
-import React, { useEffect, useState } from 'react';
+import * as WebBrowser from 'expo-web-browser';
+import React, { useState } from 'react';
 import { ActivityIndicator, Text } from 'react-native';
 import { gray } from 'tailwindcss/colors';
-import { firebaseAuth } from '../firebase/utils';
+import { supabase } from '../lib/supabase';
 import tw from '../lib/tailwind';
 import Sentry from '../utils/sentry';
 import Button from './Common/Button';
 
 export default function SignInWithGoogleButton() {
-  const [_request, response, promptAsync] = useIdTokenAuthRequest({
-    clientId: Constants.expoConfig?.extra?.firebaseWebClientId,
-    androidClientId: Constants.expoConfig?.extra?.firebaseAndroidClientId,
-    iosClientId: Constants.expoConfig?.extra?.firebaseiOSClientId,
-    expoClientId: Constants.expoConfig?.extra?.firebaseExpoGoClientId,
-  });
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    const login = async () => {
-      if (response?.type === 'success') {
-        const { id_token } = response.params;
+  const handleGoogleSignIn = async () => {
+    try {
+      const redirectUri = 'mobouzer://signin';
+      const provider = 'google';
+      const response = await WebBrowser.openAuthSessionAsync(
+        `${
+          Constants.expoConfig?.extra?.supabaseUrl ?? ''
+        }/auth/v1/authorize?provider=${provider}&redirect_to=${redirectUri}`,
+        redirectUri
+      );
 
-        // Create a Google credential with the token
-        const googleCredential = firebaseAuth.GoogleAuthProvider.credential(id_token);
+      if (response.type === 'success') {
+        const url = response.url;
+        const urlParams = new URLSearchParams(url);
+        const accessToken = urlParams.get('access_token');
+        const refreshToken = urlParams.get('refresh_token');
 
-        // Sign-in the user with the credential
-        await firebaseAuth()
-          .signInWithCredential(googleCredential)
-          .catch((reason) => Sentry.Native.captureException(reason));
+        if (!accessToken || !refreshToken) {
+          Sentry.Native.captureMessage(
+            'No access token or refresh token retrieved from Supabase',
+            'error'
+          );
+          return;
+        }
+
+        const { error } = await supabase.auth.setSession({
+          access_token: accessToken,
+          refresh_token: refreshToken,
+        });
+        if (error) {
+          Sentry.Native.captureException(error);
+        }
+      }
+    } catch (error) {
+      Sentry.Native.captureException(error);
+    } finally {
+      const result = WebBrowser.maybeCompleteAuthSession();
+      if (result.type === 'failed') {
+        Sentry.Native.captureMessage(result.message, 'error');
       }
       setLoading(false);
-    };
-
-    login();
-  }, [response]);
+    }
+  };
 
   return (
     <>
@@ -45,7 +64,7 @@ export default function SignInWithGoogleButton() {
         disabled={loading}
         onPress={() => {
           setLoading(true);
-          promptAsync();
+          handleGoogleSignIn();
         }}
         accessibilityLabel="sign in with google button"
       >
