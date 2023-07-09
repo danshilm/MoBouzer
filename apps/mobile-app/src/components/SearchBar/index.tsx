@@ -1,4 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
+import { useUser } from '@supabase/auth-helpers-react';
 import React, { useState } from 'react';
 import type { StyleProp, ViewStyle } from 'react-native';
 import { Image, TextInput, TouchableOpacity, View } from 'react-native';
@@ -19,8 +20,12 @@ export default function SearchBar({
 }) {
   const [focused, setFocused] = useState(false);
   const { value: searchValue, setValue: setSearchValue } = useDebouncedState('');
-  /** TODO Use gravatar? */
-  const [photoURL] = useState('');
+  const user = useUser();
+  const photoURL: string | undefined = user?.identities?.some(
+    (identity) => identity.provider === 'google'
+  )
+    ? user.user_metadata.avatar_url
+    : undefined;
 
   return (
     <View
