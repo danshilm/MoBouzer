@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import '../styles/globals.css';
@@ -12,6 +13,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         ></meta>
       </Head>
       <Component {...pageProps} />
+      <Analytics />
     </>
   );
 }
