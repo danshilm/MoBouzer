@@ -6,3 +6,7 @@
 
 # firebase
 service-account-file.json
+
+# gtfs files
+config/gtfs/*.zip
+config/gtfs/*.txt
