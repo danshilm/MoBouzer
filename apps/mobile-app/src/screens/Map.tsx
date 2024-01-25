@@ -1,8 +1,13 @@
 import { Ionicons } from '@expo/vector-icons';
 import type { BusStop } from '@mobouzer/shared';
-import type { OnPressEvent } from '@rnmapbox/maps';
-import MapboxGL, { Camera, MapView, ShapeSource, SymbolLayer } from '@rnmapbox/maps';
-import { UserTrackingMode } from '@rnmapbox/maps/javascript/components/Camera';
+import MapboxGL, {
+  Camera,
+  MapView,
+  ShapeSource,
+  SymbolLayer,
+  UserLocationRenderMode,
+  UserTrackingMode,
+} from '@rnmapbox/maps';
 import { useDocumentData } from '@skillnation/react-native-firebase-hooks/firestore';
 import center from '@turf/center';
 import type { Feature, Point } from '@turf/helpers';
@@ -114,7 +119,7 @@ export default function Map() {
     );
   }
 
-  const handleMarkerPress = (e: OnPressEvent) => {
+  const handleMarkerPress = (e: any) => {
     const features = e.features as Feature<Point>[];
     const isClusterMarker = features.some((v) => v.properties?.cluster === true);
 
@@ -181,7 +186,7 @@ export default function Map() {
         <MapboxGL.UserLocation
           showsUserHeadingIndicator={true}
           animated={true}
-          renderMode="native"
+          renderMode={UserLocationRenderMode.Native}
           androidRenderMode="compass"
           visible={userLocationIsShown}
         />

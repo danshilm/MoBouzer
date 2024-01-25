@@ -1,7 +1,13 @@
 import { Ionicons } from '@expo/vector-icons';
 import type { BusLine } from '@mobouzer/shared';
-import type { OnPressEvent } from '@rnmapbox/maps';
-import MapboxGL, { Camera, LineLayer, MapView, ShapeSource, SymbolLayer } from '@rnmapbox/maps';
+import MapboxGL, {
+  Camera,
+  LineLayer,
+  MapView,
+  ShapeSource,
+  SymbolLayer,
+  UserLocationRenderMode,
+} from '@rnmapbox/maps';
 import { useDocumentDataOnce } from '@skillnation/react-native-firebase-hooks/firestore';
 import bbox from '@turf/bbox';
 import center from '@turf/center';
@@ -89,7 +95,7 @@ export default function BusLineDetails({
     }
   }, [fitToMarkers, loading, value]);
 
-  const handleMarkerPress = (event: OnPressEvent) => {
+  const handleMarkerPress = (event: any) => {
     const features = event.features as Feature<Point>[];
     const isClusterMarker = features.some((v) => v.properties?.cluster === true);
 
@@ -159,7 +165,7 @@ export default function BusLineDetails({
           <MapboxGL.UserLocation
             showsUserHeadingIndicator={true}
             animated={true}
-            renderMode="native"
+            renderMode={UserLocationRenderMode.Native}
             androidRenderMode="compass"
           />
           {ways && (
