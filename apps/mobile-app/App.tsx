@@ -18,7 +18,7 @@ Sentry.init({
   enableAutoSessionTracking: true,
 
   // performance
-  enableAutoPerformanceTracking: true,
+  enableAutoPerformanceTracing: true,
 
   integrations: [
     new Sentry.Native.ReactNativeTracing({
