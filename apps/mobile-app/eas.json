@@ -22,8 +22,7 @@
       "distribution": "internal",
       "channel": "preview",
       "android": {
-        "buildType": "apk",
-        "image": "ubuntu-22.04-jdk-11-ndk-r21e"
+        "buildType": "apk"
       },
       "ios": {
         "simulator": true,

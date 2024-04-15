@@ -1,19 +1,19 @@
 import {
-    Inter_100Thin,
-    Inter_200ExtraLight,
-    Inter_300Light,
-    Inter_400Regular,
-    Inter_500Medium,
-    Inter_600SemiBold,
-    Inter_700Bold,
-    Inter_800ExtraBold,
-    Inter_900Black,
+  Inter_100Thin,
+  Inter_200ExtraLight,
+  Inter_300Light,
+  Inter_400Regular,
+  Inter_500Medium,
+  Inter_600SemiBold,
+  Inter_700Bold,
+  Inter_800ExtraBold,
+  Inter_900Black,
 } from '@expo-google-fonts/inter';
 import {
-    SpaceMono_400Regular,
-    SpaceMono_400Regular_Italic,
-    SpaceMono_700Bold,
-    SpaceMono_700Bold_Italic,
+  SpaceMono_400Regular,
+  SpaceMono_400Regular_Italic,
+  SpaceMono_700Bold,
+  SpaceMono_700Bold_Italic,
 } from '@expo-google-fonts/space-mono';
 import { FontAwesome } from '@expo/vector-icons';
 import MapboxGL from '@rnmapbox/maps';

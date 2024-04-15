@@ -1,11 +1,11 @@
 import { Ionicons } from '@expo/vector-icons';
 import React, { useState } from 'react';
 import type {
+  TextInputProps as BaseTextInputProps,
   NativeSyntheticEvent,
   TextInputFocusEventData,
-  TextInputProps as BaseTextInputProps,
 } from 'react-native';
-import { Text, TextInput as BaseTextInput, TouchableOpacity, View } from 'react-native';
+import { TextInput as BaseTextInput, Text, TouchableOpacity, View } from 'react-native';
 import { gray } from 'tailwindcss/colors';
 import tw from '../../../lib/tailwind';
 
@@ -71,7 +71,7 @@ export default function FormTextInput({
           >
             <Ionicons
               size={20}
-              name={isShown ? 'md-eye-off' : 'md-eye'}
+              name={isShown ? 'eye-off' : 'eye'}
               style={tw`mr-4`}
               color={gray[700]}
             />
