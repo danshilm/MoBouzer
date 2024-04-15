@@ -27,7 +27,8 @@
   },
   "pnpm": {
     "overrides": {
-      "tslib": "^2.4.1"
+      "tslib": "^2.4.1",
+      "eslint": "8.38.0"
     }
   },
   "prettier": {
