@@ -9,5 +9,5 @@ firebaseAuth().onAuthStateChanged((user) => {
   firebaseStore()
     .doc(`users/${user.uid}`)
     .update('lastActive', firebaseStore.FieldValue.serverTimestamp())
-    .catch((reason) => Sentry.Native.captureException(reason));
+    .catch((reason) => Sentry.captureException(reason));
 });

@@ -10,7 +10,6 @@ import Sentry from './src/utils/sentry';
 
 Sentry.init({
   dsn: Constants.expoConfig?.extra?.sentryDsn,
-  enableInExpoDevelopment: true,
   maxBreadcrumbs: 150,
   debug: __DEV__,
 
@@ -21,7 +20,7 @@ Sentry.init({
   enableAutoPerformanceTracing: true,
 
   integrations: [
-    new Sentry.Native.ReactNativeTracing({
+    new Sentry.ReactNativeTracing({
       routingInstrumentation,
       enableAppStartTracking: true,
       enableNativeFramesTracking: true,
@@ -47,7 +46,7 @@ Sentry.init({
   // release is set to DEVELOPMENT or the full app version + build version
 });
 
-Sentry.Native.setTags({
+Sentry.setTags({
   buildProfile: Constants.expoConfig?.extra?.buildProfile ?? 'unknown',
 });
 
@@ -68,4 +67,4 @@ function App() {
   }
 }
 
-export default Sentry.Native.wrap(App);
+export default Sentry.wrap(App);

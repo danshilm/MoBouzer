@@ -25,6 +25,6 @@ if (platform === 'android') {
 }
 
 console.log(
-  `Running upload-sourcemaps script for platform ${platform} and version ${version}+${distribution}`
+  `Would have ran upload-sourcemaps script for platform ${platform} and version ${version}+${distribution}`
 );
-uploadSourcemaps({ platform, distribution });
+// uploadSourcemaps({ platform, distribution });

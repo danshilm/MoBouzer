@@ -29,7 +29,7 @@ export default function SignInWithGoogleButton() {
         // Sign-in the user with the credential
         await firebaseAuth()
           .signInWithCredential(googleCredential)
-          .catch((reason) => Sentry.Native.captureException(reason));
+          .catch((reason) => Sentry.captureException(reason));
       }
       setLoading(false);
     };

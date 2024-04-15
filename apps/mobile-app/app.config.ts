@@ -81,18 +81,14 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
           RNMapboxMapsImpl: 'maplibre',
         },
       ],
-      'sentry-expo',
-    ],
-    hooks: {
-      postPublish: [
+      'expo-font',
+      [
+        '@sentry/react-native/expo',
         {
-          file: 'sentry-expo/upload-sourcemaps',
-          config: {
-            organization: process.env.SENTRY_ORG,
-            project: process.env.SENTRY_PROJECT,
-          },
+          project: process.env.SENTRY_PROJECT,
+          organization: process.env.SENTRY_ORG,
         },
       ],
-    },
+    ],
   },
 });

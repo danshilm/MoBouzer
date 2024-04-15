@@ -1,4 +1,4 @@
-import * as BaseSentry from 'sentry-expo';
+import * as BaseSentry from '@sentry/react-native';
 
 const Sentry = BaseSentry;
 

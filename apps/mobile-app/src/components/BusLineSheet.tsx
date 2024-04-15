@@ -81,7 +81,7 @@ export default function BusLineSheet({
     try {
       run();
     } catch (error) {
-      Sentry.Native.captureException(error);
+      Sentry.captureException(error);
     }
   }, [currentDirection]);
 
