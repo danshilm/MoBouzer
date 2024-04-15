@@ -4,6 +4,7 @@ const spawnAsync = require('@expo/spawn-async');
 const appJson = require('../app.json');
 
 async function run() {
+  // from https://raw.githubusercontent.com/expo/expo/sdk-49/packages/expo/bundledNativeModules.json
   const sdk49packages = {
     '@expo/vector-icons': '^13.0.0',
     '@react-native-async-storage/async-storage': '1.18.2',
