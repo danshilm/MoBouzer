@@ -18,7 +18,7 @@ const useSecondBottomTabPress = (screenName: keyof HomeTabParamList, callback: (
       const navState = navigation.getState();
 
       if (navState.index < navState.history.length) {
-        const isSecondTabPress = navState.history[navState.index].key.includes(screenName);
+        const isSecondTabPress = navState.history[navState.index].key === screenName;
 
         if (isSecondTabPress) {
           callback();

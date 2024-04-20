@@ -8,8 +8,8 @@ export const navigationRef = createNavigationContainerRef<RootStackParamList>();
  * prop. If you have access to the navigation prop, do not use this.
  * More info: https://reactnavigation.org/docs/navigating-without-navigation-prop/
  */
-export function navigate(name: never, params: never) {
+export function navigate(name: any, params: any) {
   if (navigationRef.isReady()) {
-    navigationRef.navigate(name as never, params as never);
+    navigationRef.navigate(name, params);
   }
 }

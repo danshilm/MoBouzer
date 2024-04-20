@@ -35,7 +35,7 @@ export default function useCachedResources() {
         SplashScreen.preventAutoHideAsync();
 
         MapboxGL.setWellKnownTileServer(Platform.OS === 'android' ? 'Mapbox' : 'mapbox');
-        MapboxGL.setAccessToken(Constants.expoConfig?.extra?.mapboxToken);
+        MapboxGL.setAccessToken(Constants.expoConfig?.extra?.mapboxToken); // set to empty string if mapbox tiles are not needed
 
         // Load fonts
         await Font.loadAsync({

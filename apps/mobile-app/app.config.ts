@@ -76,9 +76,16 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       ],
       '@react-native-firebase/app',
       [
+        'expo-location',
+        {
+          locationWhenInUsePermission: 'Show current location on map.',
+        },
+      ],
+      [
         '@rnmapbox/maps',
         {
-          RNMapboxMapsImpl: 'maplibre',
+          RNMapboxMapsDownloadToken: process.env.RNMAPBOX_TOKEN, // set to empty string if mapbox tiles are not needed
+          // RNMapboxMapsVersion: '11.0.0', // v10 is the stable default, v11 is in beta for now
         },
       ],
       'expo-font',
