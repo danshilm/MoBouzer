@@ -94,6 +94,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         {
           project: process.env.SENTRY_PROJECT,
           organization: process.env.SENTRY_ORG,
+          url: 'https://sentry.io/',
         },
       ],
     ],

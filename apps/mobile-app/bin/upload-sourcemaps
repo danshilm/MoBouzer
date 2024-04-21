@@ -2,12 +2,58 @@
 
 const path = require('path');
 const fs = require('fs');
-const uploadSourcemapsHook = require('sentry-expo/upload-sourcemaps');
-const bundlesDirPath = path.join(__dirname, '../dist/bundles');
+const bundlesDirPath = path.join(__dirname, '../dist/_expo/static/js');
 const appConfig = require('../app.json');
 const { program, Option } = require('commander');
 const spawnAsync = require('@expo/spawn-async');
 require('dotenv').config({ path: path.join(__dirname, '../.env') });
+
+const uploadSourcemapsWithSentryCli = async (options) => {
+  const release = options.config.release;
+  const distribution = options.config.distribution;
+
+  // uses script from sentry from https://github.com/getsentry/sentry-react-native/blob/main/scripts/expo-upload-sourcemaps.js
+  // but modified to be able to set the release and distribution
+  const { output } = await spawnAsync('node', [
+    'bin/expo-upload-sourcemaps.js',
+    'dist',
+    release,
+    distribution,
+  ]).catch((e) => {
+    console.log(e);
+    throw new Error(e);
+  });
+
+  output.map((line) => {
+    console.log(line);
+  });
+
+  console.log({ distribution, release });
+};
+
+/**
+ * @param platform { 'ios' | 'android' }
+ */
+const exportSourcemaps = async (platform) => {
+  try {
+    console.log(`Exporting sourcemaps with expo for ${platform}`);
+    const { output } = await spawnAsync('pnpm', [
+      'exec',
+      'expo',
+      'export',
+      '--dump-sourcemap',
+      '--platform',
+      platform,
+    ]);
+
+    output.map((line) => {
+      console.log(line);
+    });
+  } catch (error) {
+    console.log(e);
+    throw new Error(`Could not export sourcemaps with expo export for platform ${platform}`);
+  }
+};
 
 /**
  * Main function in a script that uses expo's upload sourcemaps hook that runs after an update is pushed
@@ -26,27 +72,6 @@ const run = async (options) => {
 
   const platform = options.platform;
   const distribution = options.distribution;
-
-  try {
-    console.log(`Exporting sourcemaps with expo for ${platform}`);
-    const { output } = await spawnAsync('pnpm', [
-      'exec',
-      'expo',
-      'export',
-      '--dump-sourcemap',
-      '--platform',
-      platform,
-    ]).catch((e) => {
-      throw new Error(e);
-    });
-
-    output.map((line) => {
-      console.log(line);
-    });
-  } catch (error) {
-    throw new Error(`Could not export sourcemaps with expo export`);
-  }
-
   const baseOptions = {
     log: console.log,
     projectRoot: path.join(__dirname, '../'),
@@ -66,7 +91,8 @@ const run = async (options) => {
   };
 
   if (platform === 'android' || platform === 'all') {
-    const androidBundle = readBundleFileContents('android', '.js');
+    await exportSourcemaps('android');
+    const androidBundle = readBundleFileContents('android', '.hbc');
     const androidSourceMap = readBundleFileContents('android', '.map');
 
     const finalOptions = {
@@ -82,11 +108,12 @@ const run = async (options) => {
     };
 
     console.log(`Uploading sourcemaps with config ${JSON.stringify(finalOptions.config)}`);
-    await uploadSourcemapsHook(finalOptions);
+    await uploadSourcemapsWithSentryCli(finalOptions);
   }
 
   if (platform === 'ios' || platform === 'all') {
-    const iosBundle = readBundleFileContents('ios', '.js');
+    await exportSourcemaps('ios');
+    const iosBundle = readBundleFileContents('ios', '.hbc');
     const iosSourceMap = readBundleFileContents('ios', '.map');
 
     const finalOptions = {
@@ -102,23 +129,22 @@ const run = async (options) => {
     };
 
     console.log(`Uploading sourcemaps with config ${JSON.stringify(finalOptions.config)}`);
-    await uploadSourcemapsHook(finalOptions);
+    await uploadSourcemapsWithSentryCli(finalOptions);
   }
 };
 
 /**
- * @param startsWith { string }
+ * @param platform { 'ios' | 'android' }
  * @param endsWith { string }
  * @returns { string } contents of the bundle file that matches the specified criteria
  */
-const readBundleFileContents = (startsWith, endsWith) => {
+const readBundleFileContents = (platform, endsWith) => {
   return fs
     .readFileSync(
       path.join(
         bundlesDirPath,
-        fs
-          .readdirSync(bundlesDirPath)
-          .filter((v) => v.startsWith(startsWith) && v.endsWith(endsWith))[0]
+        platform,
+        fs.readdirSync(path.join(bundlesDirPath, platform)).filter((v) => v.endsWith(endsWith))[0]
       )
     )
     .toString('utf-8');
