@@ -19,10 +19,10 @@
     "@mobouzer/shared": "workspace:*",
     "@turf/distance": "^6.5.0",
     "axios": "^1.6.8",
-    "commander": "^10.0.1",
+    "commander": "^12.0.0",
     "common-tags": "^1.8.2",
     "dotenv": "^16.4.5",
-    "firebase-admin": "^11.11.1",
+    "firebase-admin": "^12.1.0",
     "lodash": "^4.17.21",
     "ora": "^5.4.1",
     "qs": "^6.12.1",
@@ -35,7 +35,7 @@
     "@types/lodash": "^4.17.0",
     "@types/node": "^18.19.31",
     "@types/qs": "^6.9.15",
-    "typescript": "^5.4.5"
+    "typescript": "^5.3.3"
   },
   "engines": {
     "node": ">=16.18.1",

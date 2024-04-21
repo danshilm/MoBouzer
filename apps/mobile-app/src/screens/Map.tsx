@@ -8,6 +8,7 @@ import MapboxGL, {
   UserLocationRenderMode,
   UserTrackingMode,
 } from '@rnmapbox/maps';
+import type { OnPressEvent } from '@rnmapbox/maps/lib/typescript/src/types/OnPressEvent';
 import { useDocumentData } from '@skillnation/react-native-firebase-hooks/firestore';
 import center from '@turf/center';
 import type { Feature, Point } from '@turf/helpers';
@@ -119,7 +120,7 @@ export default function Map() {
     );
   }
 
-  const handleMarkerPress = (e: any) => {
+  const handleMarkerPress = (e: OnPressEvent) => {
     const features = e.features as Feature<Point>[];
     const isClusterMarker = features.some((v) => v.properties?.cluster === true);
 

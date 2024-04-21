@@ -8,6 +8,7 @@ import MapboxGL, {
   SymbolLayer,
   UserLocationRenderMode,
 } from '@rnmapbox/maps';
+import type { OnPressEvent } from '@rnmapbox/maps/lib/typescript/src/types/OnPressEvent';
 import { useDocumentDataOnce } from '@skillnation/react-native-firebase-hooks/firestore';
 import bbox from '@turf/bbox';
 import center from '@turf/center';
@@ -70,10 +71,10 @@ export default function BusLineDetails({
           sheetIndex === -1 || sheetIndex === 0
             ? interpolate(mapHeight.current, [644, 662], [120, 105])
             : sheetIndex === 1
-            ? interpolate(mapHeight.current, [644, 662], [310, 280])
-            : sheetIndex === 2
-            ? interpolate(mapHeight.current, [644, 662], [580, 525])
-            : 0;
+              ? interpolate(mapHeight.current, [644, 662], [310, 280])
+              : sheetIndex === 2
+                ? interpolate(mapHeight.current, [644, 662], [580, 525])
+                : 0;
 
         cameraRef.current?.setCamera({
           bounds: { ne: [bboxCoords[2], bboxCoords[3]], sw: [bboxCoords[0], bboxCoords[1]] },
@@ -95,7 +96,7 @@ export default function BusLineDetails({
     }
   }, [fitToMarkers, loading, value]);
 
-  const handleMarkerPress = (event: any) => {
+  const handleMarkerPress = (event: OnPressEvent) => {
     const features = event.features as Feature<Point>[];
     const isClusterMarker = features.some((v) => v.properties?.cluster === true);
 

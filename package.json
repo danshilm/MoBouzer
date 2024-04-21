@@ -11,6 +11,7 @@
     "shared": "pnpm run --filter @mobouzer/shared",
     "prepare": "node bin/prepare.js",
     "build": "pnpm run -r --if-present build",
+    "lint": "pnpm run -r --if-present lint",
     "lint:fix": "pnpm run -r --if-present lint:fix",
     "recrawl": "watchman watch-del ./; watchman watch-project ./"
   },
@@ -19,11 +20,11 @@
     "packages/*"
   ],
   "dependencies": {
-    "lint-staged": "^13.3.0"
+    "lint-staged": "^15.2.2"
   },
   "devDependencies": {
     "husky": "^8.0.3",
-    "prettier": "^2.8.7"
+    "prettier": "^3.2.5"
   },
   "pnpm": {
     "overrides": {

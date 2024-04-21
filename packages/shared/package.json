@@ -13,8 +13,8 @@
     "@mobouzer/eslint-config": "workspace:*",
     "@react-native-firebase/firestore": "16.4.6",
     "@tsconfig/node18": "^18.2.4",
-    "firebase-admin": "^11.11.1",
-    "typescript": "^5.4.5"
+    "firebase-admin": "^12.1.0",
+    "typescript": "^5.3.3"
   },
   "engines": {
     "node": ">=16.18.1",

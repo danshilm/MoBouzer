@@ -1,5 +1,5 @@
 {
-  "extends": ["@mobouzer/eslint-config", "next", "prettier"],
+  "extends": ["@mobouzer/eslint-config", "next", "next/core-web-vitals", "prettier"],
   "settings": {
     "next": {
       "rootDir": "apps/website/"
