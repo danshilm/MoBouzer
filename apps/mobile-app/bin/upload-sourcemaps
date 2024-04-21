@@ -168,6 +168,6 @@ program
       await run(options);
     }
   })
-  .parse();
+  .parseAsync();
 
 module.exports = run;
