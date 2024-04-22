@@ -3,6 +3,7 @@ import { GTFSFile } from '.';
 import { firebaseStore } from '../../firebase/config';
 import type { Stops } from '../../interfaces/gtfs/stops';
 
+// TODO use data from database after the database has been populated with data from OSM
 const getAllBusStops = async (): Promise<Stops[]> => {
   const allBusStopsRef = firebaseStore.doc(
     'bus-stops/all'
@@ -26,6 +27,11 @@ const getAllBusStops = async (): Promise<Stops[]> => {
   return data;
 };
 
-const StopsFile = new GTFSFile('stops', getAllBusStops);
+class StopsGTFSFile extends GTFSFile {
+  public getRecordId(record: Record<string, unknown>): string {
+    return record.stop_id as string;
+  }
+}
+const StopsFile = new StopsGTFSFile('stops', getAllBusStops);
 
 export default StopsFile;

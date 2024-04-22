@@ -9,6 +9,7 @@ import { getForwardDirectionRelationId } from '../../utils/bus-line';
 import ora from '../../utils/ora';
 import updateAggregateBusLine from './updateAll';
 
+// TODO use data from OSM to populate database in GTFS format
 const updateBusLine = async ({
   id,
   direction,
@@ -28,10 +29,10 @@ const updateBusLine = async ({
     !options.ways && !options.busStops
       ? 'both'
       : options.ways && !options.busStops
-      ? 'ways'
-      : !options.ways && options.busStops
-      ? 'busStops'
-      : 'both';
+        ? 'ways'
+        : !options.ways && options.busStops
+          ? 'busStops'
+          : 'both';
 
   const busLineData = await getBusLine(id);
 

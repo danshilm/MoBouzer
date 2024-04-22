@@ -4,6 +4,7 @@ import { getAllBusLineIds } from '../../api/firestore';
 import { firebaseStore } from '../../firebase/config';
 import ora from '../../utils/ora';
 
+// TODO use data from OSM to populate database in GTFS format
 const updateAggregateBusLine = async ({ force }: { force: boolean }): Promise<void> => {
   const spinner = ora('Initialising').start();
 

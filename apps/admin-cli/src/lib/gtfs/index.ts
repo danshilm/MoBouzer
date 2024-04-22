@@ -1,10 +1,12 @@
 import { writeFile } from 'fs/promises';
 import { isEqual } from 'lodash';
 import { join } from 'path';
+import { firebaseStore } from '../../firebase/config';
 import type { GFTSFeedFileName } from '../../interfaces/gtfs';
 import logger from '../../utils/logger';
+import ora from '../../utils/ora';
 
-export class GTFSFile {
+export abstract class GTFSFile {
   public data: Promise<Record<string, unknown>[]>;
   protected filename: GFTSFeedFileName;
 
@@ -14,7 +16,11 @@ export class GTFSFile {
     this.data = initialise();
   }
 
+  public abstract getRecordId(record: Record<string, unknown>): string;
+
   public async writeToFile() {
+    const spinner = ora(`Writing to file ${this.filename}`).start();
+
     try {
       const awaitedData = await this.data;
       const clonedData = JSON.parse(JSON.stringify(awaitedData)) as Record<string, unknown>[];
@@ -50,8 +56,25 @@ export class GTFSFile {
         .join('\n')}`;
 
       await writeFile(path, data, 'utf-8');
+      spinner.succeed(`Done writing GTFS file ${this.filename}!`);
     } catch (error) {
+      spinner.fail(`Failed to write GTFS file ${this.filename}`);
       logger.error(error);
     }
+  }
+
+  public async writeToFirestore() {
+    const spinner = ora(`Saving GTFS file ${this.filename}`).start();
+
+    const awaitedData = await this.data;
+    logger.info(`Writing ${awaitedData.length} records to firestore for ${this.filename}`);
+
+    for await (const record of awaitedData) {
+      const recordId = this.getRecordId(record);
+      const ref = firebaseStore.doc(`${this.filename}/${recordId}`);
+      await ref.set(record);
+    }
+
+    spinner.succeed(`Done saving GTFS file ${this.filename}!`);
   }
 }

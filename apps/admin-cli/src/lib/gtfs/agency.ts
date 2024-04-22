@@ -49,6 +49,11 @@ const data = async (): Promise<Agency[]> => {
   ];
 };
 
-const AgencyFile = new GTFSFile('agency', data);
+class AgencyGTFSFile extends GTFSFile {
+  public getRecordId(record: Record<string, unknown>): string {
+    return record.agency_id as string;
+  }
+}
+const AgencyFile = new AgencyGTFSFile('agency', data);
 
 export default AgencyFile;

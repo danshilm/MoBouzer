@@ -4,6 +4,7 @@ import { firebaseStore } from '../../firebase/config';
 import { VehicleType } from '../../interfaces/gtfs';
 import type { Route } from '../../interfaces/gtfs/routes';
 
+// TODO use data from database after the database has been populated with data from OSM
 const getAllBusLines = async (): Promise<Route[]> => {
   const allBusLinesRef = firebaseStore.doc(
     `bus-lines/all`
@@ -28,6 +29,11 @@ const getAllBusLines = async (): Promise<Route[]> => {
   return data;
 };
 
-const RoutesFile = new GTFSFile('routes', getAllBusLines);
+class RoutesGTFSFile extends GTFSFile {
+  public getRecordId(record: Record<string, unknown>): string {
+    return record.route_id as string;
+  }
+}
+const RoutesFile = new RoutesGTFSFile('routes', getAllBusLines);
 
 export default RoutesFile;
