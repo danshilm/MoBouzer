@@ -1,5 +1,4 @@
-import { Argument } from 'commander';
-import { program } from '../../structures/command';
+import { Argument, program } from 'commander';
 import updateBusLine from './update';
 import updateAggregateBusLine from './updateAll';
 

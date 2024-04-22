@@ -2,6 +2,7 @@ import { writeFile } from 'fs/promises';
 import { isEqual } from 'lodash';
 import { join } from 'path';
 import type { GFTSFeedFileName } from '../../interfaces/gtfs';
+import logger from '../../utils/logger';
 
 export class GTFSFile {
   public data: Promise<Record<string, unknown>[]>;
@@ -47,8 +48,7 @@ export class GTFSFile {
 
       await writeFile(path, data, 'utf-8');
     } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error(error);
+      logger.error(error);
     }
   }
 }

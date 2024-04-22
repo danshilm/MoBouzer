@@ -1,4 +1,4 @@
-import { program } from '../../structures/command';
+import { program } from 'commander';
 import { generateGtfsFiles } from './generate';
 
 const gtfsCommand = program.command('gtfs').description('commands related to GTFS feeds');

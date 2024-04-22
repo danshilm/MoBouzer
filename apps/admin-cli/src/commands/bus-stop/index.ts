@@ -1,4 +1,4 @@
-import { program } from '../../structures/command';
+import { program } from 'commander';
 import logger from '../../utils/logger';
 import updateAggregateBusStop from './updateAll';
 
