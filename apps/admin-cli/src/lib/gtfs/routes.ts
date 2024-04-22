@@ -18,7 +18,7 @@ const getAllBusLines = async (): Promise<Route[]> => {
     (busLineData): Route => ({
       route_id: busLineData.id,
       route_type: VehicleType.BUS,
-      agency_id: busLineData.operator?.replace(',', '|'),
+      agency_id: busLineData.operator,
       route_long_name: `${busLineData.origin} to ${busLineData.destination}`,
       // route URL needs the relation ID from OSM
       // route_url: `https://www.openstreetmap.org/relation/${busLineData.id}`,

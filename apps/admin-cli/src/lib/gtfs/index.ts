@@ -36,13 +36,16 @@ export class GTFSFile {
         })
       );
 
-      const data = `${headers.join(',')}\n\n${awaitedData
+      const columnDelimiter = ',';
+
+      const data = `${headers.join(columnDelimiter)}\n\n${awaitedData
         .map((value) => {
           return headers
             .map((header) => {
-              return value[header] ?? '';
+              const containsDelimiter = value[header]?.toString().includes(columnDelimiter);
+              return containsDelimiter ? `"${value[header]}"` : value[header] ?? '';
             })
-            .join(',');
+            .join(columnDelimiter);
         })
         .join('\n')}`;
 
