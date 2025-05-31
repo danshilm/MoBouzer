@@ -4,7 +4,7 @@
     "outDir": "./dist",
     "declaration": true,
     "declarationMap": true,
-    "importsNotUsedAsValues": "error",
+    "verbatimModuleSyntax": true,
     "ignoreDeprecations": "5.0"
   },
   "include": ["src"],

@@ -19,7 +19,7 @@
         "name": "next"
       }
     ],
-    "importsNotUsedAsValues": "error",
+    "verbatimModuleSyntax": true,
     "ignoreDeprecations": "5.0"
   },
   "include": [

@@ -2,7 +2,7 @@
   "extends": "@tsconfig/node18",
   "compilerOptions": {
     "outDir": "./dist",
-    "importsNotUsedAsValues": "error",
+    "verbatimModuleSyntax": true,
     "ignoreDeprecations": "5.0"
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
