@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import Link from 'next/link';
 import BackgroundVideo from '../components/BackgroundVideo';
 
 const Home: NextPage = () => {
@@ -24,9 +25,12 @@ const Home: NextPage = () => {
             <div className="flex items-center justify-center overflow-hidden text-white origin-top-right sm:-skew-x-6 sm:w-9/12 h-5/6 sm:h-full bg-black/[.85]">
               <div className="sm:skew-x-6 max-w-[40rem] sm:pr-36 sm:pl-16 w-4/5 sm:w-full">
                 <p className="mb-6 text-5xl italic font-semibold">Our Website is Coming Soon</p>
-                <p className="text-xl">
+                <p className="mb-6 text-xl">
                   We&apos;re working hard to finish the development of this site.
                 </p>
+                <Link href="/faq" className="inline-block px-6 py-2 text-black bg-white rounded-lg hover:bg-gray-200">
+                  View FAQ
+                </Link>
               </div>
             </div>
             <div className="flex items-center justify-center flex-1 gap-6 sm:mr-16 sm:flex-col sm:items-end">
