@@ -28,8 +28,8 @@
     "typescript": "^5.3.3"
   },
   "engines": {
-    "node": "^18.0.0",
-    "pnpm": "8.15.9"
+    "node": "^20.0.0",
+    "pnpm": "9.15.5"
   },
-  "packageManager": "pnpm@8.15.9"
+  "packageManager": "pnpm@9.15.5"
 }

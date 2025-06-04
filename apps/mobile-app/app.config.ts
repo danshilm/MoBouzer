@@ -97,6 +97,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
           url: 'https://sentry.io/',
         },
       ],
+      'expo-asset',
     ],
   },
 });
