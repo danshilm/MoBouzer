@@ -31,6 +31,9 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       bundleIdentifier: config.ios?.bundleIdentifier,
       buildNumber: config.ios?.buildNumber,
       jsEngine: 'hermes',
+      infoPlist: {
+        ITSAppUsesNonExemptEncryption: false,
+      },
     },
     android: {
       adaptiveIcon: {
