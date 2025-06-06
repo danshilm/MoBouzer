@@ -3,10 +3,10 @@
     "name": "MoBouzer",
     "slug": "mobouzer",
     "sdkVersion": "51.0.0",
-    "version": "1.0.0",
+    "version": "0.0.2",
     "android": {
       "package": "com.mobouzer",
-      "versionCode": 1
+      "versionCode": 5
     },
     "ios": {
       "bundleIdentifier": "com.mobouzer",
