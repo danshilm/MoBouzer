@@ -34,7 +34,7 @@ const MyDarkTheme: Theme = {
   },
 };
 
-export const routingInstrumentation = new Sentry.ReactNavigationInstrumentation();
+export const routingInstrumentation = Sentry.reactNavigationIntegration();
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (

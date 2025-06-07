@@ -19,12 +19,13 @@ Sentry.init({
   // performance
   enableAutoPerformanceTracing: true,
 
+  enableAppStartTracking: true,
+  enableNativeFramesTracking: true,
+  tracePropagationTargets: ['localhost', /^\//, /^https:\/\//],
+
   integrations: [
-    new Sentry.ReactNativeTracing({
-      routingInstrumentation,
-      enableAppStartTracking: true,
-      enableNativeFramesTracking: true,
-      tracePropagationTargets: ['localhost', /^\//, /^https:\/\//],
+    routingInstrumentation,
+    Sentry.reactNativeTracingIntegration({
       shouldCreateSpanForRequest: (url) => {
         const stringsToFilter = ['/logs', '/symbolicate'];
 

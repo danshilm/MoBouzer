@@ -14,7 +14,6 @@ export default function SignInWithGoogleButton() {
     clientId: Constants.expoConfig?.extra?.firebaseWebClientId,
     androidClientId: Constants.expoConfig?.extra?.firebaseAndroidClientId,
     iosClientId: Constants.expoConfig?.extra?.firebaseiOSClientId,
-    expoClientId: Constants.expoConfig?.extra?.firebaseExpoGoClientId,
   });
   const [loading, setLoading] = useState(false);
 

@@ -35,6 +35,7 @@
   "dependencies": {
     "@expo-google-fonts/inter": "^0.2.3",
     "@expo-google-fonts/space-mono": "^0.2.3",
+    "@expo/config": "^11.0.10",
     "@expo/spawn-async": "^1.7.2",
     "@expo/vector-icons": "^14.1.0",
     "@gorhom/bottom-sheet": "^4.6.1",
