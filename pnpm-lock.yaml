@@ -129,8 +129,8 @@ importers:
         specifier: ^6.9.26
         version: 6.9.26(@react-navigation/native@6.1.17(react-native@0.76.9(@babel/core@7.27.4)(@babel/preset-env@7.24.4(@babel/core@7.27.4))(@react-native-community/cli@13.6.9)(@types/react@18.3.23)(react@18.3.1))(react@18.3.1))(react-native-safe-area-context@4.12.0(react-native@0.76.9(@babel/core@7.27.4)(@babel/preset-env@7.24.4(@babel/core@7.27.4))(@react-native-community/cli@13.6.9)(@types/react@18.3.23)(react@18.3.1))(react@18.3.1))(react-native-screens@4.4.0(react-native@0.76.9(@babel/core@7.27.4)(@babel/preset-env@7.24.4(@babel/core@7.27.4))(@react-native-community/cli@13.6.9)(@types/react@18.3.23)(react@18.3.1))(react@18.3.1))(react-native@0.76.9(@babel/core@7.27.4)(@babel/preset-env@7.24.4(@babel/core@7.27.4))(@react-native-community/cli@13.6.9)(@types/react@18.3.23)(react@18.3.1))(react@18.3.1)
       '@rnmapbox/maps':
-        specifier: 10.1.39
-        version: 10.1.39(expo@52.0.46(@babel/core@7.27.4)(@babel/preset-env@7.24.4(@babel/core@7.27.4))(graphql@15.8.0)(react-native@0.76.9(@babel/core@7.27.4)(@babel/preset-env@7.24.4(@babel/core@7.27.4))(@react-native-community/cli@13.6.9)(@types/react@18.3.23)(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react-native@0.76.9(@babel/core@7.27.4)(@babel/preset-env@7.24.4(@babel/core@7.27.4))(@react-native-community/cli@13.6.9)(@types/react@18.3.23)(react@18.3.1))(react@18.3.1)
+        specifier: 10.1.36
+        version: 10.1.36(expo@52.0.46(@babel/core@7.27.4)(@babel/preset-env@7.24.4(@babel/core@7.27.4))(graphql@15.8.0)(react-native@0.76.9(@babel/core@7.27.4)(@babel/preset-env@7.24.4(@babel/core@7.27.4))(@react-native-community/cli@13.6.9)(@types/react@18.3.23)(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react-native@0.76.9(@babel/core@7.27.4)(@babel/preset-env@7.24.4(@babel/core@7.27.4))(@react-native-community/cli@13.6.9)(@types/react@18.3.23)(react@18.3.1))(react@18.3.1)
       '@sentry/react-native':
         specifier: 6.10.0
         version: 6.10.0(expo@52.0.46(@babel/core@7.27.4)(@babel/preset-env@7.24.4(@babel/core@7.27.4))(graphql@15.8.0)(react-native@0.76.9(@babel/core@7.27.4)(@babel/preset-env@7.24.4(@babel/core@7.27.4))(@react-native-community/cli@13.6.9)(@types/react@18.3.23)(react@18.3.1))(react@18.3.1))(react-native@0.76.9(@babel/core@7.27.4)(@babel/preset-env@7.24.4(@babel/core@7.27.4))(@react-native-community/cli@13.6.9)(@types/react@18.3.23)(react@18.3.1))(react@18.3.1)
@@ -2020,8 +2020,8 @@ packages:
   '@react-navigation/routers@6.1.9':
     resolution: {integrity: sha512-lTM8gSFHSfkJvQkxacGM6VJtBt61ip2XO54aNfswD+KMw6eeZ4oehl7m0me3CR9hnDE4+60iAZR8sAhvCiI3NA==}
 
-  '@rnmapbox/maps@10.1.39':
-    resolution: {integrity: sha512-h96h/wPwmuJ6Je/qDL8KTh3QSVvlX41SNVAZpEUtPpIos/n/3eDzERvBxNd/8FGZYZVR/3FcZnv4razaNCFksg==}
+  '@rnmapbox/maps@10.1.36':
+    resolution: {integrity: sha512-wZ0rC6wIoSUaOhjqPfroOFdpclT1klaABZeSr7JbQcRZxmepEQQ+Cpol+C/mJ//n96WSyoDnQ2kD+BlobVc3GA==}
     peerDependencies:
       expo: '>=47.0.0'
       mapbox-gl: ^2.9.0
@@ -9909,7 +9909,7 @@ snapshots:
     dependencies:
       nanoid: 3.3.6
 
-  '@rnmapbox/maps@10.1.39(expo@52.0.46(@babel/core@7.27.4)(@babel/preset-env@7.24.4(@babel/core@7.27.4))(graphql@15.8.0)(react-native@0.76.9(@babel/core@7.27.4)(@babel/preset-env@7.24.4(@babel/core@7.27.4))(@react-native-community/cli@13.6.9)(@types/react@18.3.23)(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react-native@0.76.9(@babel/core@7.27.4)(@babel/preset-env@7.24.4(@babel/core@7.27.4))(@react-native-community/cli@13.6.9)(@types/react@18.3.23)(react@18.3.1))(react@18.3.1)':
+  '@rnmapbox/maps@10.1.36(expo@52.0.46(@babel/core@7.27.4)(@babel/preset-env@7.24.4(@babel/core@7.27.4))(graphql@15.8.0)(react-native@0.76.9(@babel/core@7.27.4)(@babel/preset-env@7.24.4(@babel/core@7.27.4))(@react-native-community/cli@13.6.9)(@types/react@18.3.23)(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react-native@0.76.9(@babel/core@7.27.4)(@babel/preset-env@7.24.4(@babel/core@7.27.4))(@react-native-community/cli@13.6.9)(@types/react@18.3.23)(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@turf/along': 6.5.0
       '@turf/distance': 6.5.0
