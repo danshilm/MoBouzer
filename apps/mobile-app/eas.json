@@ -62,7 +62,7 @@
     "preview": {
       "extends": "base",
       "android": {
-        "track": "alpha"
+        "track": "internal"
       }
     },
     "production": {
