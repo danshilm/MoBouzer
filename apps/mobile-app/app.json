@@ -6,7 +6,7 @@
     "version": "0.0.2",
     "android": {
       "package": "com.mobouzer",
-      "versionCode": 5
+      "versionCode": 6
     },
     "ios": {
       "bundleIdentifier": "com.mobouzer",
