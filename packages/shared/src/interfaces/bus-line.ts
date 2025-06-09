@@ -35,6 +35,7 @@ interface BaseBusLineDocumentDirectionData<T extends App> {
 
 interface BaseBusLineDocumentData<T extends App> {
   id: string;
+  operator?: string;
   direction: {
     forward: BaseBusLineDocumentDirectionData<T>;
     reverse: BaseBusLineDocumentDirectionData<T>;
@@ -49,6 +50,7 @@ export namespace BusLine {
   export type DocumentBusStopData = BaseBusLineDocumentBusStopData<App>;
   export interface AllDocumentBusStopData {
     id: DocumentData['id'];
+    operator: DocumentData['operator'];
     destination: DocumentDirectionData['destination']['name'];
     origin: DocumentDirectionData['origin']['name'];
   }
@@ -65,6 +67,7 @@ export namespace AdminBusLine {
   export type DocumentBusStopData = BaseBusLineDocumentBusStopData<App>;
   export interface AllDocumentBusStopData {
     id: DocumentData['id'];
+    operator: DocumentData['operator'];
     destination: DocumentDirectionData['destination']['name'];
     origin: DocumentDirectionData['origin']['name'];
   }
