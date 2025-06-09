@@ -1,13 +1,3 @@
 {
-  "extends": "@tsconfig/node18",
-  "compilerOptions": {
-    "outDir": "./dist",
-    "declaration": true,
-    "declarationMap": true,
-    "verbatimModuleSyntax": true,
-    "ignoreDeprecations": "5.0"
-  },
-  "include": ["src"],
-  "exclude": ["node_modules", "dist"],
-  "compileOnSave": true
+  "extends": "@tsconfig/node22"
 }
