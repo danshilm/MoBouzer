@@ -1,3 +1,4 @@
+import type { Options } from 'ora';
 import baseOra from 'ora';
 import logger from './logger';
 
@@ -8,7 +9,7 @@ import logger from './logger';
 class CustomOra {
   private oraInstance;
 
-  constructor(options?: string | baseOra.Options) {
+  constructor(options?: string | Options) {
     this.oraInstance = baseOra(options);
   }
 
@@ -42,7 +43,7 @@ class CustomOra {
   }
 }
 
-const ora = (options?: string | baseOra.Options) => {
+const ora = (options?: string | Options) => {
   return new CustomOra(options);
 };
 
