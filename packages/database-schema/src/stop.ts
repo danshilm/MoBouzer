@@ -1,7 +1,7 @@
 import type { LocationType, WheelchairBoarding } from '@mobouzer/shared';
 import { relations } from 'drizzle-orm';
 import { doublePrecision, integer, pgTable, text, varchar } from 'drizzle-orm/pg-core';
-import { route } from './routes';
+import { route } from './route';
 
 export const stop = pgTable('stop', {
   stop_id: varchar('stop_id').primaryKey(),
