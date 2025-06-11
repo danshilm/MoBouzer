@@ -1,14 +1,13 @@
-import { program } from '../../structures/command';
+import { Command } from 'commander';
 import logger from '../../utils/logger';
 import updateAggregateBusStop from './updateAll';
 
-const busStopCommand = program.command('bus-stop').description('commands related to bus stops');
+const busStopCommand = new Command('bus-stop').description('commands related to bus stops');
 
 busStopCommand
   .command('update')
   .description('update bus stop')
-  .argument('<id>', 'id of the bus stop to grab from overpass and update in firestore')
-  .option('-f, --force', "don't merge data, instead update document")
+  .argument('[id]', 'id of the bus stop to grab from overpass and update in firestore')
   .action(function (busStopId: string) {
     logger.info(busStopId);
   });

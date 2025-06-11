@@ -10,7 +10,7 @@ const hformat = winston.format.printf(({ level, label, message, timestamp, ...me
 });
 
 const logger = winston.createLogger({
-  level: 'info',
+  level: 'debug',
   transports: [
     new winston.transports.File({
       filename: join(__dirname, '../../config/logs/mobouzer-cli.log'),

@@ -1,9 +1,8 @@
-import { Argument } from 'commander';
-import { program } from '../../structures/command';
+import { Argument, Command } from 'commander';
 import updateBusLine from './update';
 import updateAggregateBusLine from './updateAll';
 
-const busLineCommand = program.command('bus-line').description('commands related to bus lines');
+const busLineCommand = new Command('bus-line').description('commands related to bus lines');
 
 busLineCommand
   .command('update')
