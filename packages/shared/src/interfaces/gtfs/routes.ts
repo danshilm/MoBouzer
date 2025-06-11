@@ -1,11 +1,4 @@
-import type { VehicleType } from '.';
-
-export const enum PickupDropoffType {
-  CONTINUOUS = 0,
-  NON_CONTINUOUS,
-  MUST_CONTACT_AGENCY,
-  MUST_CONTACT_DRIVER,
-}
+import type { PickupDropoffType, VehicleType } from '../../enums/routes';
 
 export interface Route extends Record<string, unknown> {
   /**

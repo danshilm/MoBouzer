@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@mobouzer/shared": "workspace:*",
     "dotenv": "^16.5.0",
     "drizzle-orm": "^0.44.2",
     "pg": "^8.16.0"
