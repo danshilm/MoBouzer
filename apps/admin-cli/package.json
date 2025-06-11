@@ -9,7 +9,7 @@
     "build": "tsc --build",
     "watch": "tsc --build --watch",
     "start": "node dist/index.js",
-    "dev": "pnpm -w shared build && ts-node src/index.ts",
+    "dev": "ts-node src/index.ts",
     "lint": "eslint \"./src/**/*.{ts,tsx}\"",
     "lint:fix": "eslint \"./src/**/*.{ts,tsx}\" --fix",
     "format": "prettier --write ./"
@@ -17,29 +17,29 @@
   "dependencies": {
     "@mobouzer/eslint-config": "workspace:*",
     "@mobouzer/shared": "workspace:*",
-    "@turf/distance": "^6.5.0",
-    "axios": "^1.6.8",
-    "commander": "^12.0.0",
+    "@mobouzer/database-schema": "workspace:*",
+    "@turf/distance": "^7.2.0",
+    "axios": "^1.9.0",
+    "commander": "^14.0.0",
     "common-tags": "^1.8.2",
-    "dotenv": "^16.4.5",
-    "firebase-admin": "^12.1.0",
+    "dotenv": "^16.5.0",
     "lodash": "^4.17.21",
-    "ora": "^5.4.1",
-    "qs": "^6.12.1",
+    "ora": "^8.2.0",
+    "qs": "^6.14.0",
     "ts-node": "^10.9.2",
-    "winston": "^3.13.0"
+    "winston": "^3.17.0"
   },
   "devDependencies": {
-    "@tsconfig/node18": "^18.2.4",
+    "@tsconfig/node22": "^22.0.2",
     "@types/common-tags": "^1.8.4",
-    "@types/lodash": "^4.17.0",
-    "@types/node": "^18.19.31",
-    "@types/qs": "^6.9.15",
-    "typescript": "^5.3.3"
+    "@types/lodash": "^4.17.17",
+    "@types/node": "^22.15.30",
+    "@types/qs": "^6.14.0",
+    "drizzle-orm": "^0.44.2",
+    "typescript": "^5.8.3"
   },
-  "engines": {
-    "node": ">=16.18.1",
-    "pnpm": ">=7.0.0"
+  "peerDependencies": {
+    "drizzle-orm": "^0.44.2"
   },
   "eslintConfig": {
     "extends": "@mobouzer/eslint-config"

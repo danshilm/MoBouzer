@@ -1,0 +1,23 @@
+name: mobouzer-server
+
+networks:
+  mobouzer-network:
+    driver: bridge
+    name: mobouzer-network
+
+services:
+  db:
+    container_name: mobouzer-db
+    hostname: mobouzer-db
+    image: postgres:16
+    networks:
+      - mobouzer-network
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: mobouzer
+      POSTGRES_PASSWORD: mobouzer
+      POSTGRES_DB: mobouzer
+    volumes:
+      - ./config/db/:/var/lib/postgresql/data
+    restart: unless-stopped
