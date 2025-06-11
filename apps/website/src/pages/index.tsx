@@ -28,7 +28,10 @@ const Home: NextPage = () => {
                 <p className="mb-6 text-xl">
                   We&apos;re working hard to finish the development of this site.
                 </p>
-                <Link href="/faq" className="inline-block px-6 py-2 text-black bg-white rounded-lg hover:bg-gray-200">
+                <Link
+                  href="/faq"
+                  className="inline-block px-6 py-2 text-black bg-white rounded-lg hover:bg-gray-200"
+                >
                   View FAQ
                 </Link>
               </div>

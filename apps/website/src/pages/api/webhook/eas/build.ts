@@ -98,8 +98,8 @@ export default async function handler(
                 req.body.status === 'canceled'
                   ? 12626710
                   : req.body.status === 'errored'
-                  ? 12390673
-                  : 2726948,
+                    ? 12390673
+                    : 2726948,
               fields: fields,
               timestamp: req.body.completedAt,
             },
