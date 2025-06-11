@@ -1,7 +1,6 @@
 import { relations } from 'drizzle-orm';
 import { pgTable, varchar } from 'drizzle-orm/pg-core';
 import { route } from './route';
-import { stop } from './stop';
 
 export const agency = pgTable('agency', {
   agency_id: varchar('agency_id').primaryKey().notNull(), // Use as PK if present, else fallback to generated PK
@@ -20,5 +19,4 @@ export type NewAgency = typeof agency.$inferInsert;
 export const agencyRelations = relations(agency, ({ many }) => ({
   // Define relations here if needed, e.g. routes, stops, etc.
   routes: many(route),
-  stops: many(stop),
 }));

@@ -1,11 +1,10 @@
 import type { PickupDropoffType, VehicleType } from '@mobouzer/shared/src/enums/routes';
 import { relations } from 'drizzle-orm';
-import { integer, pgTable, serial, text, varchar } from 'drizzle-orm/pg-core';
+import { integer, pgTable, text, varchar } from 'drizzle-orm/pg-core';
 import { agency } from './agency';
 
 export const route = pgTable('route', {
-  id: serial('id').primaryKey(),
-  route_id: varchar('route_id').notNull().unique(),
+  route_id: varchar('route_id').primaryKey(),
   agency_id: varchar('agency_id').references(() => agency.agency_id),
   route_short_name: varchar('route_short_name'),
   route_long_name: varchar('route_long_name'),
