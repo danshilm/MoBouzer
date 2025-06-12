@@ -1,42 +1,46 @@
+import { stop } from '@mobouzer/database-schema';
+import { LocationType } from '@mobouzer/shared';
+import { getNode } from '../../api/overpass';
+import { db } from '../../db';
+import type { NodeElement } from '../../interfaces/overpass';
+import logger from '../../utils/logger';
 import ora from '../../utils/ora';
 
-const updateBusStop = async (busStopId: string): Promise<void> => {
+const updateBusStop = async (busStopId: string): Promise<unknown> => {
   const spinner = ora('Fetching bus stop data from Overpass').start();
 
-  // try {
-  //   // Get bus stop data from Overpass API
-  //   const busStopData = await getNode(parseInt(busStopId));
+  try {
+    // Get bus stop data from Overpass API
+    const busStopData = (await getNode(parseInt(busStopId))) as NodeElement;
 
-  //   if (!busStopData) {
-  //     spinner.fail(`No bus stop found with ID ${busStopId}`);
-  //     return;
-  //   }
+    spinner.info(JSON.stringify(busStopData));
 
-  //   spinner.text = 'Updating bus stop in Firestore';
+    if (!busStopData) {
+      return spinner.fail(`No bus stop found with ID ${busStopId}`);
+    }
 
-  //   // Create/update document in Firestore
-  //   await firebaseStore.doc(`bus-stops/${busStopId}`).set(
-  //     {
-  //       id: busStopId,
-  //       location: {
-  //         latitude: busStopData.lat,
-  //         longitude: busStopData.lon,
-  //       },
-  //       name: busStopData.tags?.name || null,
-  //       osmId: busStopData.id,
-  //       tags: busStopData.tags || {},
-  //       updatedAt: new Date(),
-  //     },
-  //     { merge: true }
-  //   );
+    spinner.text = 'Updating bus stop in database';
 
-  //   spinner.succeed(`Successfully updated bus stop ${busStopId}`);
-  //   logger.info(`Updated bus stop ${busStopId} with name: ${busStopData.tags?.name || 'unnamed'}`);
-  // } catch (error) {
-  //   spinner.fail(`Failed to update bus stop ${busStopId}`);
-  //   logger.error(`Error updating bus stop ${busStopId}:`, error);
-  //   throw error;
-  // }
+    // Create/update document in Firestore
+    await db.insert(stop).values({
+      stop_id: busStopData.id.toString(),
+      stop_lat: busStopData.lat,
+      stop_long: busStopData.lon,
+      stop_name: busStopData.tags?.name || 'Unnamed Stop',
+      location_type:
+        busStopData.tags?.public_transport === 'station' ? LocationType.STATION : LocationType.STOP,
+      stop_timezone: 'Indian/Mauritius',
+      stop_desc: busStopData.tags?.source,
+    });
+
+    spinner.succeed(`Successfully updated bus stop ${busStopId}`);
+    logger.info(
+      `Updated bus stop ${busStopId} with name: ${busStopData.tags?.name || 'Unnamed Stop'}`
+    );
+  } catch (error) {
+    spinner.fail(`Failed to update bus stop ${busStopId}`);
+    logger.error(`Error updating bus stop ${busStopId}:`, error);
+  }
 };
 
 export default updateBusStop;

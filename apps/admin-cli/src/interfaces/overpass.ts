@@ -1,7 +1,7 @@
 // still don't know enough to be able to separate tags
 // for node, way and relation elements
 // afaik, they're just k-v pairs
-export interface Tags {
+export interface Tags extends Record<string, string | undefined> {
   from?: string;
   name?: string;
   'name:en'?: string;
@@ -12,6 +12,7 @@ export interface Tags {
   short_name?: string;
   operator?: string;
   'public_transport:version'?: string;
+  public_transport?: string;
   ref?: string;
   route?: string;
   to?: string;
