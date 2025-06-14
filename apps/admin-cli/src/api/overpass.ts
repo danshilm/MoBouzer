@@ -2,6 +2,7 @@ import axios from 'axios';
 import { stripIndent } from 'common-tags';
 import { stringify } from 'qs';
 import type {
+  Element,
   NodeElement,
   RawOSMRootObject,
   RelationElement,
@@ -17,9 +18,9 @@ const overpass = axios.create({
   },
 });
 
-const post = async (rawData: string) => {
+const post = async <T extends Element>(rawData: string) => {
   const data = stringify({ data: rawData });
-  return await overpass.post<RawOSMRootObject>('/api/interpreter', data);
+  return await overpass.post<RawOSMRootObject<T>>('/api/interpreter', data);
 };
 
 const bbox = `(${mauritiusBBox[1].latitude},${mauritiusBBox[2].longitude},${mauritiusBBox[0].latitude},${mauritiusBBox[1].longitude})`;
@@ -47,14 +48,14 @@ export const getNode = async (id: number | number[]) => {
   }
 };
 
-export const getAllBuses = async () => {
+export const getAllBusStops = async () => {
   const data = query('node[bus=yes]', 'node[highway=bus_stop]');
 
   try {
-    const res = await post(data);
+    const res = await post<NodeElement>(data);
     return res.data.elements;
   } catch (error) {
-    throw new Error(`Could not retrieve all buses from Overpass API: ${error}`);
+    throw new Error(`Could not retrieve all bus stops from Overpass API: ${error}`);
   }
 };
 

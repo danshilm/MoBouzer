@@ -29,7 +29,9 @@ export interface Tags extends Record<string, string | undefined> {
   access?: 'yes' | 'no';
 }
 
-export interface RawOSMRootObject {
+export type Element = NodeElement | WayElement | RelationElement;
+
+export interface RawOSMRootObject<T extends Element> {
   version: number;
   generator: string;
   osm3s: {
@@ -37,7 +39,7 @@ export interface RawOSMRootObject {
     copyright: string;
     query?: string;
   };
-  elements: (NodeElement | WayElement | RelationElement)[];
+  elements: T[];
 }
 
 export interface BaseElement {

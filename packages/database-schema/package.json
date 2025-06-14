@@ -7,7 +7,8 @@
     "drizzle:push": "drizzle-kit push --config drizzle.config.ts",
     "drizzle:migrate": "drizzle-kit migrate --config drizzle.config.ts",
     "drizzle": "drizzle-kit --config drizzle.config.ts",
-    "drizzle:studio": "drizzle-kit studio --config drizzle.config.ts"
+    "drizzle:studio": "drizzle-kit studio --config drizzle.config.ts",
+    "dev": "drizzle-kit studio --config drizzle.config.ts"
   },
   "keywords": [],
   "author": "",

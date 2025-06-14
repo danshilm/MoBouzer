@@ -13,8 +13,6 @@ const updateBusStop = async (busStopId: string): Promise<unknown> => {
     // Get bus stop data from Overpass API
     const busStopData = (await getNode(parseInt(busStopId))) as NodeElement;
 
-    spinner.info(JSON.stringify(busStopData));
-
     if (!busStopData) {
       return spinner.fail(`No bus stop found with ID ${busStopId}`);
     }
