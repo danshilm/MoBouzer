@@ -6,3 +6,6 @@
 
 # firebase
 service-account-file.json
+
+
+config/data/*

@@ -1,6 +1,6 @@
 import { Argument, Command } from 'commander';
 import updateBusLine from './update';
-import updateAggregateBusLine from './updateAll';
+import updateAllBusLines from './updateAll';
 
 const busLineCommand = new Command('bus-line').description('commands related to bus lines');
 
@@ -28,7 +28,7 @@ busLineCommand
   .description('update aggregate bus lines document')
   .option('-f, --force', "don't merge data, instead update document", false)
   .action(async function (options: { force: boolean }) {
-    await updateAggregateBusLine({ force: options.force });
+    await updateAllBusLines({ force: options.force });
   });
 
 export default busLineCommand;

@@ -18,7 +18,8 @@ const updateAllBusStops = async ({ force }: { force: boolean }): Promise<unknown
       return spinner.fail(`No bus stops found`);
     }
 
-    spinner.text = 'Updating bus stops in database';
+    spinner.text = `Found ${allBusStops.length} bus stops.`;
+    spinner.info('Updating bus stops in database');
 
     const busStopData: NewStop[] = uniqBy(allBusStops, 'id').map((busStop) => {
       return {
@@ -57,8 +58,6 @@ const updateAllBusStops = async ({ force }: { force: boolean }): Promise<unknown
     spinner.fail(`Failed to update all bus stops`);
     logger.error(`Error updating all bus stops:`, error);
   }
-
-  spinner.succeed(`Done!`);
 };
 
 export default updateAllBusStops;
