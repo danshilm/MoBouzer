@@ -46,6 +46,13 @@ const data: NewAgency[] = [
     agency_lang: 'en',
     agency_phone: '+230-216-0200',
   },
+  {
+    agency_id: 'io',
+    agency_name: 'Individual Operators',
+    agency_timezone: 'Indian/Mauritius',
+    agency_lang: 'en',
+    agency_url: 'https://nlta.govmu.org/',
+  },
 ];
 
 const agencyCommand = new Command('agency').description('commands related to agencies');

@@ -8,4 +8,4 @@
 service-account-file.json
 
 
-config/data/*
+config/data/temp/*

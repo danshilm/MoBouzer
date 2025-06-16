@@ -1,0 +1,1808 @@
+[
+  {
+    "route_id": "1",
+    "agency_id": "rht",
+    "route_type": 0,
+    "route_short_name": "1 Port Louis (Victoria Square) to Rose Hill (Place Cardinal Margeot)",
+    "route_desc": "1 Port Louis (Victoria Square) - Coromandel - Beau Bassin - Rose Hill (Place Cardinal Margeot)"
+  },
+  {
+    "route_id": "1A",
+    "agency_id": "rht",
+    "route_type": 0,
+    "route_short_name": "1A Port Louis (Victoria Square) to Rose Hill (Market)",
+    "route_desc": "1A Port Louis (Victoria Square) - Coromandel - Hugnin Road - Rose Hill (Market)"
+  },
+  {
+    "route_id": "1B",
+    "agency_id": "rht",
+    "route_type": 0,
+    "route_short_name": "1B Port Louis (Victoria Square) to Rose Hill (Place Cardinal Margeot)",
+    "route_desc": "1B Port Louis (Victoria Square) - Coromandel - Cascadelle - Vandermesch - Rose Hill (Place Cardinal Margeot)"
+  },
+  {
+    "route_id": "1C",
+    "agency_id": "rht",
+    "route_type": 0,
+    "route_short_name": "1C Port Louis (Victoria Square) to Rose Hill (Market)",
+    "route_desc": "1C Port Louis (Victoria Square) - Coromandel - Barkly (Housing Estate) - Hugnin Road - Rose Hill (Market)"
+  },
+  {
+    "route_id": "1D",
+    "agency_id": "rht",
+    "route_type": 0,
+    "route_short_name": "1D Port Louis (Victoria Square) to Saint Martin (Cemetery)",
+    "route_desc": "1D Port Louis (Victoria Square) - Coromandel - Mont Roches - Saint Martin (Cemetery)"
+  },
+  {
+    "route_id": "2",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "2 Port Louis (Victoria Square) to Curepipe (Jan Palach North)",
+    "route_desc": "2 Port Louis (Victoria Square) - Coromandel - Rose Hill (Place Cardinal Margeot) - Phoenix - Curepipe (Jan Palach North)"
+  },
+  {
+    "route_id": "2A",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "2A Port Louis (Victoria Square) to Forest Side 14",
+    "route_desc": "2A Port Louis (Victoria Square) - Coromandel - Rose Hill (Place Cardinal Margeot) - Phoenix - Curepipe - Forest Side 14"
+  },
+  {
+    "route_id": "3",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "3 Port Louis (Victoria Square) to Vacoas (Bus Station)",
+    "route_desc": "3 Port Louis (Victoria Square) - Coromandel - Rose Hill (Place Cardinal Margeot) - Quatre Bornes - Candos (Victoria Hospital) - Vacoas (Bus Station)"
+  },
+  {
+    "route_id": "3A",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "3A Port Louis (Victoria Square) to Phoenix (Indira Gandhi Cultural Centre)",
+    "route_desc": "3A Port Louis (Victoria Square) - Coromandel - Rose Hill (Place Cardinal Margeot) - Quatre Bornes - Candos (Victoria Hospital) - Vacoas - Phoenix (Indira Gandhi Cultural Centre)"
+  },
+  {
+    "route_id": "3B",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "3B Port Louis (Victoria Square) to Bord Cascade 16 15",
+    "route_desc": "3B Port Louis (Victoria Square) - Coromandel - Rose Hill (Place Cardinal Margeot) - Quatre Bornes - Candos (Victoria Hospital) - Glen Park - Henrietta - Bord Cascade 16 15"
+  },
+  {
+    "route_id": "3C",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "3C Port Louis (Victoria Square) to Bassin 11 8",
+    "route_desc": "3C Port Louis (Victoria Square) - Coromandel - Rose Hill (Place Cardinal Margeot) - Quatre Bornes - Bassin 11 8"
+  },
+  {
+    "route_id": "3D",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "3D Port Louis (Victoria Square) to L a Marie 16 8",
+    "route_desc": "3D Port Louis (Victoria Square) - Coromandel - Rose Hill (Place Cardinal Margeot) - Quatre Bornes - Candos (Victoria Hospital) - Glen Park - L a Marie 16 8"
+  },
+  {
+    "route_id": "4",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "4 Quatre Bornes (Traffic Centre) to Curepipe (Jan Palach North)",
+    "route_desc": "4 Quatre Bornes (Traffic Centre) - Candos (Victoria Hospital) - Vacoas - Saint Paul - Castel - Curepipe (Jan Palach North)"
+  },
+  {
+    "route_id": "4A",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "4A Quatre Bornes (Traffic Centre) to Curepipe (Jan Palach North)",
+    "route_desc": "4A Quatre Bornes (Traffic Centre) - Candos (Victoria Hospital) - Vacoas - Floreal - Curepipe (Jan Palach North)"
+  },
+  {
+    "route_id": "6",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "6 Curepipe (Jan Palach South) to Rivieredes Galets (Bus Station) 24 60 3 ",
+    "route_desc": "6 Curepipe (Jan Palach South) - L apeyre Hill - Nouvelle France - Souillac - Chemin Grenier - Rivieredes Galets (Bus Station) 24 60 3 "
+  },
+  {
+    "route_id": "6A",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "6A Curepipe (Jan Palach South) to Chamouny 23",
+    "route_desc": "6A Curepipe (Jan Palach South) - L apeyre Hill - Nouvelle France - Souillac - Chemin Grenier - Chamouny 23"
+  },
+  {
+    "route_id": "6B",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "6B Curepipe (Jan Palach South) to Martiniere 19",
+    "route_desc": "6B Curepipe (Jan Palach South) - L apeyre Hill - Nouvelle France - Souillac - Surinam - Martiniere 19"
+  },
+  {
+    "route_id": "7",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "7 Rose Belle (J awaharlall Nehru Hospital ) to Rivieredes Galets (Bus Station )",
+    "route_desc": "7 Rose Belle (J awaharlall Nehru Hospital ) - Mare Tabac - Camp Diable - Souillac - Chemin Grenier - Rivieredes Galets (Bus Station )"
+  },
+  {
+    "route_id": "8",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "8 Souillac (Bus Station ) to Baiedu Cap 13 2",
+    "route_desc": "8 Souillac (Bus Station ) - Chemin Grenier - Baiedu Cap 13 2"
+  },
+  {
+    "route_id": "8B",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "8B Souillac (Bus Station ) to Choisy 15",
+    "route_desc": "8B Souillac (Bus Station ) - Chemin Grenier - Baiedu Cap - Choisy 15"
+  },
+  {
+    "route_id": "9",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "9 Curepipe (Jan Palach South) to Mahebourg (Bus Station) 17 86 (Incl . 9 0 and 25 2 )",
+    "route_desc": "9 Curepipe (Jan Palach South) - L apeyre Hill - J awaharlall Nehru Hospital - Mared 'Albert - SSRI Airport - Mahebourg (Bus Station) 17 86 (Incl . 9 0 and 25 2 )"
+  },
+  {
+    "route_id": "10",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "10 Mahebourg (Bus Station) to Rivieredes Galets (Bus Station)",
+    "route_desc": "10 Mahebourg (Bus Station) - SSRI Airport - L 'Escalier - Camp Diable - Souillac - Chemin Grenier - Rivieredes Galets (Bus Station)"
+  },
+  {
+    "route_id": "10A",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "10A Curepipe (Jan Palach South) to Saint Hubert (Terminus )/L e Val 8 6",
+    "route_desc": "10A Curepipe (Jan Palach South) - L apeyre Hill - Union Park - J awaharlall Nehru Hospital - Mared 'Albert - L 'Escalier - La Sourdine 19 19 1 1 /1 1 A IO Mahebourg (Bus Station) - Richeen Eau - Saint Hubert (Terminus )/L e Val 8 6"
+  },
+  {
+    "route_id": "12",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "12 Port Louis (Victoria Square) to Pellegrin 24 35 (Incl . 1 0 3 /13 5 )",
+    "route_desc": "12 Port Louis (Victoria Square) - Mount Ory - Moka (Hospital ) - Bois Cheri Road - Saint Pierre (Traffic Centre ) - Quartier Militaire - Sebastopol - Pellegrin 24 35 (Incl . 1 0 3 /13 5 )"
+  },
+  {
+    "route_id": "12A",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "12A Port Louis (V ictoria Square ) to Pellegrin 21",
+    "route_desc": "12A Port Louis (V ictoria Square ) - Mount Ory - Moka (Hospital ) - Bois Cheri Road - Saint Pierre (Traffic Centre ) - Quartier Militaire - Petit Paquet - Pellegrin 21"
+  },
+  {
+    "route_id": "13",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "13 Rose Hill (Place Cardinal Margeot) to Saint Pierre (Traffic Centre) 7 35 (Incl . 1 5 /1 5 A)",
+    "route_desc": "13 Rose Hill (Place Cardinal Margeot) - Reduit (Universityof Mauritius) - Moka (Hospital ) - Mount Ory - Bois Cheri Road - Saint Pierre (Traffic Centre) 7 35 (Incl . 1 5 /1 5 A)"
+  },
+  {
+    "route_id": "13A",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "13A Rose Hill (Place Cardinal Margeot) to Junction L a Nicioliere Road / Eau Bouillie 11 23 (Incl . 1 0 5)",
+    "route_desc": "13A Rose Hill (Place Cardinal Margeot) - Reduit (Universityof Mauritius) - Moka (Hospital ) - Helvetia - Saint Pierre (Traffic Centre) - L 'Avenir - Nouvelle Decouverte - Junction L a Nicioliere Road / Eau Bouillie 11 23 (Incl . 1 0 5)"
+  },
+  {
+    "route_id": "13D",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "13D Rose Hill (Place Cardinal Margeot) to La L aura 8 2",
+    "route_desc": "13D Rose Hill (Place Cardinal Margeot) - Reduit (Universityof Mauritius) - Moka (Hospital ) - Helvetia - Saint Pierre (Traffic Centre) - L 'Avenir - Malinga - La L aura 8 2"
+  },
+  {
+    "route_id": "14",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "14 Curepipe (Jan Palach South ) to Rose Belle (Terminus )",
+    "route_desc": "14 Curepipe (Jan Palach South ) - XVIth Mile - Midlands - Cluny - Union Park - J awaharlall Nehru Hospital - Rose Belle (Terminus )"
+  },
+  {
+    "route_id": "14A",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "14A Curepipe (Jan Palach South) to Pave Citron (Terminus )",
+    "route_desc": "14A Curepipe (Jan Palach South) - XVIth Mile - Midlands - Campdu The - Pave Citron (Terminus )"
+  },
+  {
+    "route_id": "14B",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "14B Curepipe (Jan Palach South) to Central Flacq (Bus Station) / Belle Mare 24 (Including Rte 1 3 ) 4 Route N o Operator Route Description No. offarestages No. ofbuseslicensed",
+    "route_desc": "14B Curepipe (Jan Palach South) - L a Vigie - Midlands 4 3 1 5 /1 5 B IO Rose Hill (Place Cardinal Margeot) - Reduit (Universityof Mauritius) - Helvetia - Saint Pierre (Traffic Centre) - Quartier Militaire - Campde Masque - Central Flacq (Bus Station) / Belle Mare 24 (Including Rte 1 3 ) 4 Route N o Operator Route Description No. offarestages No. ofbuseslicensed"
+  },
+  {
+    "route_id": "15A",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "15A Rose Hill (Place Cardinal Margeot) to Camp Thorel 15 (Including Rte 1 3 )",
+    "route_desc": "15A Rose Hill (Place Cardinal Margeot) - Reduit (Universityof Mauritius) - Helvetia - Saint Pierre (Traffic Centre) - Quartier Militaire - SaintJ uliend 'Hotman - Camp Thorel 15 (Including Rte 1 3 )"
+  },
+  {
+    "route_id": "15C",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "15C Rose Hill (Place Cardinal Margeot) to Petite Cabane 19",
+    "route_desc": "15C Rose Hill (Place Cardinal Margeot) - Reduit - Helvetia - Saint Pierre (Traffic Centre) - Quartier Militaire - Campde Masque - Petite Cabane 19"
+  },
+  {
+    "route_id": "15D",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "15D Rose Hill (Place Cardinal Margeot) to L 'Esperance (Extensionto Cite Alma )",
+    "route_desc": "15D Rose Hill (Place Cardinal Margeot) - Reduit (Universityof Mauritius) - Moka (Hospital ) - Helvetia - Saint Pierre (Traffic Centre) - Quartier Militaire - L 'Esperance (Extensionto Cite Alma )"
+  },
+  {
+    "route_id": "15F",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "15F Camp Thorelto Central F lacq (BusStation)",
+    "route_desc": "15F Camp Thorel - SaintJ uliend 'Hotman - Mont Ida - Campde Masque - Central F lacq (BusStation)"
+  },
+  {
+    "route_id": "16",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "16 Rose Hill (Place Cardinal Margeot) to Central Flacq (Bus Station)",
+    "route_desc": "16 Rose Hill (Place Cardinal Margeot) - Reduit (Universityof Mauritius) - Helvetia - Saint Pierre (Traffic Centre) - Quartier Militaire - Sebastopol - Clavet - Bel Air - Central Flacq (Bus Station)"
+  },
+  {
+    "route_id": "16A",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "16A Rose Hill (Place Cardinal Margeot) to Central Flacq (Bus Station)",
+    "route_desc": "16A Rose Hill (Place Cardinal Margeot) - Reduit (Universityof Mauritius) - Helvetia - Saint Pierre (Traffic Centre) - Quartier Militaire - Petit Paquet - Pellegrin - Clavet - Bel Air - Central Flacq (Bus Station)"
+  },
+  {
+    "route_id": "16D",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "16D Rose Hill (Place Cardinal Margeot) to Central F lacq (Bus Station) / Belle Mare 22 28",
+    "route_desc": "16D Rose Hill (Place Cardinal Margeot) - Reduit (Universityof Mauritius) - Helvetia - Saint Pierre (Traffic Centre) - Quartier Militaire - Campde Masque Pave - Bel Air - Central Flacq (Bus Station) 30 1 7 /1 7 G IO Curepipe (Jan Palach North) - Valetta - Quartier Militaire - Campde Masque - Central F lacq (Bus Station) / Belle Mare 22 28"
+  },
+  {
+    "route_id": "17A",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "17A Curepipe (Jan Palach North) to Petite Cabane 17",
+    "route_desc": "17A Curepipe (Jan Palach North) - Valetta - Quartier Militaire - Campde Masque - Petite Cabane 17"
+  },
+  {
+    "route_id": "17B",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "17B Curepipe (Jan Palach North) to Upper Dagotiere (NHDC Housing Estate )",
+    "route_desc": "17B Curepipe (Jan Palach North) - Valetta - Upper Dagotiere (NHDC Housing Estate )"
+  },
+  {
+    "route_id": "17C",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "17C Curepipe (Jan Palach North) to Camp Thorel 13",
+    "route_desc": "17C Curepipe (Jan Palach North) - Valetta - Vuillemin - Quartier Militaire - SaintJ uliend 'Hotman - Camp Thorel 13"
+  },
+  {
+    "route_id": "17D",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "17D Curepipe (Jan Palach North) to L 'Esperance 10",
+    "route_desc": "17D Curepipe (Jan Palach North) - Valetta - Quartier Militaire - L 'Esperance 10"
+  },
+  {
+    "route_id": "17E",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "17E L 'Esperanceto Central Flacq (Bus Station)",
+    "route_desc": "17E L 'Esperance - Quartier Militaire - Campde Masque - Central Flacq (Bus Station)"
+  },
+  {
+    "route_id": "17F",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "17F Upper Dagotiere (NHDC Housing Estate) to Central Flacq (Bus Station)",
+    "route_desc": "17F Upper Dagotiere (NHDC Housing Estate) - Valetta - Quartier Militaire - Campde Masque - Central Flacq (Bus Station)"
+  },
+  {
+    "route_id": "18",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "18 Central Flacq (Bus Station) to Mahebourg (Bus Station)",
+    "route_desc": "18 Central Flacq (Bus Station) - Boulet Rouge - Bel Air - Grand Sable - Old Grand Port - Mahebourg (Bus Station)"
+  },
+  {
+    "route_id": "19",
+    "agency_id": "mbt",
+    "route_type": 0,
+    "route_short_name": "19 Port Louis (Transportation Centre) to Creve Coeur 10 15",
+    "route_desc": "19 Port Louis (Transportation Centre) - Terre Rouge - Kitchin - L ong Mountain - Creve Coeur 10 15"
+  },
+  {
+    "route_id": "20",
+    "agency_id": "tbs",
+    "route_type": 0,
+    "route_short_name": "20 Port Louis (Transportation Centre) to Mont Choisy (Public Beach )(Extensionto Les Petits Gamins )",
+    "route_desc": "20 Port Louis (Transportation Centre) - Terre Rouge - Arsenal - Triolet - Trouaux Biches - Mont Choisy (Public Beach )(Extensionto Les Petits Gamins )"
+  },
+  {
+    "route_id": "20A",
+    "agency_id": "tbs",
+    "route_type": 0,
+    "route_short_name": "20A Port Louis (Transportation Centre) to Grande Pointeaux Piments 11 5 5 ",
+    "route_desc": "20A Port Louis (Transportation Centre) - Terre Rouge - Arsenal - Triolet - Grande Pointeaux Piments 11 5 5 "
+  },
+  {
+    "route_id": "20B",
+    "agency_id": "tbs",
+    "route_type": 0,
+    "route_short_name": "20B Triolet (Terminus) to Fonddu Sac (Junction F orbach Road )",
+    "route_desc": "20B Triolet (Terminus) - Fonddu Sac (Junction F orbach Road )"
+  },
+  {
+    "route_id": "20C",
+    "agency_id": "tbs",
+    "route_type": 0,
+    "route_short_name": "20C Port Louis (Transportation Centre) to Saint Antoine (Traffic Centre)",
+    "route_desc": "20C Port Louis (Transportation Centre) - Terre Rouge - Arsenal - SSRN Hospital - Triolet - Trouaux Biches - Mon Choisy - Grand Baie - Pereybere - Pavillon - Cap Malheureux - Petit Raffray - Goodlands - Saint Antoine (Traffic Centre)"
+  },
+  {
+    "route_id": "20D",
+    "agency_id": "tbs",
+    "route_type": 0,
+    "route_short_name": "20D Port Louis (Transportation Centre) to Bon Air 9",
+    "route_desc": "20D Port Louis (Transportation Centre) - Terre Rouge - Arsenal - Triolet - Bon Air 9"
+  },
+  {
+    "route_id": "21",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "21 Port Louis (Transportation Centre) to Saint Antoine (Traffic Centre) 18 61 (Incl . 9 4 /1 59 /2 27 )",
+    "route_desc": "21 Port Louis (Transportation Centre) - Terre Rouge - Arsenal - SSRN Hospital - Plainedes Papayes - Petit Raffray - Goodlands - Saint Antoine (Traffic Centre) 18 61 (Incl . 9 4 /1 59 /2 27 )"
+  },
+  {
+    "route_id": "22",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "22 Port Louis (Transportation Centre) to Grand Gaube 18 38",
+    "route_desc": "22 Port Louis (Transportation Centre) - Terre Rouge - Pamplemousses - Belle Vue Harel - Goodlands - Saint Antoine (Traffic Centre) - Grand Gaube 18 38"
+  },
+  {
+    "route_id": "23",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "23 Port Louis (Transportation Centre) to Rivieredu Rempart (Traffic Centre) (Extensionto Hermitage )",
+    "route_desc": "23 Port Louis (Transportation Centre) - Terre Rouge - Pamplemousses - The Mount - Piton - Poudred 'Or - Rivieredu Rempart (Traffic Centre) (Extensionto Hermitage )"
+  },
+  {
+    "route_id": "23A",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "23A Port Louis (Transportation Centre) to Rivieredu Rempart (Traffic Centre)",
+    "route_desc": "23A Port Louis (Transportation Centre) - Terre Rouge - Pamplemousses - The Mount - Piton - L 'Esperance Trebuchet - Poudred 'Or - Rivieredu Rempart (Traffic Centre)"
+  },
+  {
+    "route_id": "23B",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "23B Port Louis (Transportation Centre) to Rivieredu Rempart (Traffic Centre)",
+    "route_desc": "23B Port Louis (Transportation Centre) - Terre Rouge - Pamplemousses - The Mount - Piton - Poudred 'Or - Pointedes L ascars - Rivieredu Rempart (Traffic Centre)"
+  },
+  {
+    "route_id": "24",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "24 Port Louis (Transportation Centre) to Rivieredu Rempart (Traffic Centre)",
+    "route_desc": "24 Port Louis (Transportation Centre) - Terre Rouge - Pamplemousses - The Mount - Grande Rosalie - Petite Julie - Barlow - Amaury - Rivieredu Rempart (Traffic Centre)"
+  },
+  {
+    "route_id": "26",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "26 Saint Antoine (Traffic Centre) to Central Flacq (Bus Station) 16 18 (Incl . 5 3 )",
+    "route_desc": "26 Saint Antoine (Traffic Centre) - Poudred 'Or - Rivieredu Rempart - Roches Noires - Poste Lafayette - Central Flacq (Bus Station) 16 18 (Incl . 5 3 )"
+  },
+  {
+    "route_id": "27",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "27 Port Louis (Transportation C entre ) to Rivieredu Rempart (Traffic Centre)",
+    "route_desc": "27 Port Louis (Transportation C entre ) - Terre Rouge - Pamplemousses - Belle Vue Harel - Piton - Rivieredu Rempart (Traffic Centre)"
+  },
+  {
+    "route_id": "27A",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "27A Rivieredu Rempart (Traffic Centre) to Roches Noires Village (Siding Gaud )",
+    "route_desc": "27A Rivieredu Rempart (Traffic Centre) - Roches Noires Village (Siding Gaud )"
+  },
+  {
+    "route_id": "27B",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "27B Rivieredu Rempart (Traffic Centre) to Plainedes Roches (Terminus )",
+    "route_desc": "27B Rivieredu Rempart (Traffic Centre) - Plainedes Roches (Terminus )"
+  },
+  {
+    "route_id": "28",
+    "agency_id": "tbs",
+    "route_type": 0,
+    "route_short_name": "28 Triolet (Terminus) to Rivieredu Rempart (Traffic Centre)",
+    "route_desc": "28 Triolet (Terminus) - Solitude - Morcellement Saint Andre - Plainedes Papayes - Piton - L 'Amitie - Rivieredu Rempart (Traffic Centre)"
+  },
+  {
+    "route_id": "28A",
+    "agency_id": "tbs",
+    "route_type": 0,
+    "route_short_name": "28A Triolet (Terminus) to Plainedes Papayes 6",
+    "route_desc": "28A Triolet (Terminus) - Solitude - Bon Air - Plainedes Papayes 6"
+  },
+  {
+    "route_id": "29",
+    "agency_id": "tbs",
+    "route_type": 0,
+    "route_short_name": "29 Rivieredu Rempart (Traffic Centre) to Dubreuil / via Midlands 9 5",
+    "route_desc": "29 Rivieredu Rempart (Traffic Centre) - L 'Amitie - Piton - Plainedes Papayes - L ower Vale - Sottise - Grand Baie 15 3 0 /3 0 A UBS Curepipe (Jan Palach North) - Belle Rive - Dubreuil / via Midlands 9 5"
+  },
+  {
+    "route_id": "31",
+    "agency_id": "rht",
+    "route_type": 0,
+    "route_short_name": "31 Rose Hill (Place Cardinal Margeot) Boundary Road (Saint Patrick Church ) Berthaud (Bus Station) 3 3 6 to Rose Hill (Place Cardinal Margeot) Boundary Road (Saint Patrick Church ) Berthaud (Bus Station) 3 3 6 ",
+    "route_desc": "31 Rose Hill (Place Cardinal Margeot) Boundary Road (Saint Patrick Church ) Berthaud (Bus Station) 3 3 6 "
+  },
+  {
+    "route_id": "32",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "32 Souillac (Bus Station ) to Rivieredes Galets (Bus Station)",
+    "route_desc": "32 Souillac (Bus Station ) - Riambel - Rivieredes Galets (Bus Station)"
+  },
+  {
+    "route_id": "33",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "33 Plaine Verteto Pailles (Domaineles Pailles )",
+    "route_desc": "33 Plaine Verte - Dr. Jeetoo Hospital - L a Butte - Pailles (Domaineles Pailles )"
+  },
+  {
+    "route_id": "33A",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "33A Cite Vallijee (Bus Station) to Terre Rouge (Morcellement Raffray)",
+    "route_desc": "33A Cite Vallijee (Bus Station) - L aButte - Dr.J eetoo Hospital - Plaine Verte - Terre Rouge (Morcellement Raffray)"
+  },
+  {
+    "route_id": "33B",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "33B Plaine Verteto Bois Cheri 11 5",
+    "route_desc": "33B Plaine Verte - Dr. Jeetoo Hospital - Cassis - Cite Vallijee (Bus Station) 4 5 34 N TC Curepipe (Jan Palach South) - L apeyre Hill - Nouvelle France - L a F lora - Bois Cheri 11 5"
+  },
+  {
+    "route_id": "35",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "35 Vacoas (Bus Station) to Hollyrood 2 5",
+    "route_desc": "35 Vacoas (Bus Station) - La Caverne - Hollyrood 2 5"
+  },
+  {
+    "route_id": "36",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "36 Port Louis (Transportation Centre) to Cite L a Cure (Traffic Centre)",
+    "route_desc": "36 Port Louis (Transportation Centre) - Sainte Croix - Cite L a Cure (Traffic Centre)"
+  },
+  {
+    "route_id": "37",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "37 Curepipe (Jan Palach North) to Store )",
+    "route_desc": "37 Curepipe (Jan Palach North) - Castel - Saint Paul - Vacoas - Candos (Victoria Hospital ) - Quatre Bornes - Camp Levieux (NHDC) - Mont Roches (Co - operative Store )"
+  },
+  {
+    "route_id": "37A",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "37A Curepipe (Jan Palach North) to Store )",
+    "route_desc": "37A Curepipe (Jan Palach North) - Floreal - Vacoas - Candos (Victoria Hospital) - Quatre Bornes - Camp L evieux (NHDC) - Mont Roches (Co - operative Store )"
+  },
+  {
+    "route_id": "39",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "39 Rose Hill (Darto Salaam Square )",
+    "route_desc": "39 Rose Hill (Dar - es - Salaam Square ) - Plaisance - Rose Hill (Dar - es - Salaam Square )"
+  },
+  {
+    "route_id": "39A",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "39A Rose Hill (Darto Valleedes Pretres / Upper Valleedes Pretres 5 5",
+    "route_desc": "39A Rose Hill (Dar - es - Salaam Square ) - Stanley - Plaisance - Rose Hill (Dar - es - Salaam Square ) 3 3 4 1 /4 1 A UBS Port Louis (Transportation Centre) - Plaine Verte - Valleedes Pretres / Upper Valleedes Pretres 5 5"
+  },
+  {
+    "route_id": "42",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "42 Port Louis (Transportation Centre) to Terre Rouge 7 9",
+    "route_desc": "42 Port Louis (Transportation Centre) - Roche Bois - Baiedu Tombeau - Terre Rouge 7 9"
+  },
+  {
+    "route_id": "43",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "43 Port Louis (Transportation Centre) to Victoria Square4 3",
+    "route_desc": "43 Port Louis (Transportation Centre) - Plaine Verte - Dr.J eetoo Hospital- Victoria Square4 3"
+  },
+  {
+    "route_id": "44",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "44 Curepipe (Jan Palach North) to Albion (Mon Plaisir) / via Belle Vue 11 5",
+    "route_desc": "44 Curepipe (Jan Palach North) - L a Brasserie - Bigara (W ireless Station) 3 5 4 5 /4 5 A UBS Rose Hill (Dar - es - Salaam Square ) - Mont Roches - Petite Riviere - Albion (Mon Plaisir) / via Belle Vue 11 5"
+  },
+  {
+    "route_id": "46",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "46 Mahebourg (Traffic Centre) to Blue Bay 4 3",
+    "route_desc": "46 Mahebourg (Traffic Centre) - Pointed 'Esny - Blue Bay 4 3"
+  },
+  {
+    "route_id": "47",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "47 Port Louis (Transportation Centre) to Cite Vallijee (Bus Station)",
+    "route_desc": "47 Port Louis (Transportation Centre) - Les Salines - Baindes Dames - Cite Vallijee (Bus Station)"
+  },
+  {
+    "route_id": "48",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "48 Port Louis (Transportation Centre) to Cite La Cure (Traffic Centre)",
+    "route_desc": "48 Port Louis (Transportation Centre) - Plaine Verte - Ste Croix - Cite La Cure (Traffic Centre)"
+  },
+  {
+    "route_id": "48A",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "48A Port Louis (Transportation Centre) to Cite L a Cure (Traffic Centre) 3 7 ",
+    "route_desc": "48A Port Louis (Transportation Centre) - Plaine Verte - Cite L a Cure (Traffic Centre) 3 7 "
+  },
+  {
+    "route_id": "49",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "49 Port Louis (Transportation Centre) to Vallee Pitot (Cite Rozemont)",
+    "route_desc": "49 Port Louis (Transportation Centre) - Vallee Pitot (Cite Rozemont)"
+  },
+  {
+    "route_id": "50",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "50 Port Louis (Transportation Centre) to Tranquebar (Cite Madeleine )",
+    "route_desc": "50 Port Louis (Transportation Centre) - Champsde Mars - Tranquebar (Cite Madeleine )"
+  },
+  {
+    "route_id": "51",
+    "agency_id": "tbs",
+    "route_type": 0,
+    "route_short_name": "51 Port Louis (Transportation Centre) to Pointeaux Sables 6 39",
+    "route_desc": "51 Port Louis (Transportation Centre) - G.R.N.W . - L a Tour Koenig - Pointeaux Sables 6 39"
+  },
+  {
+    "route_id": "52",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "52 Port Louis (Transportation Centre) to Albion (Mon Plaisir) / via Belle Vue 9",
+    "route_desc": "52 Port Louis (Transportation Centre) - G.R.N.W . - Cite Richelieu - Petite Riviere - Bambous - Medine 11 27 5 2 A/5 2 D NTC Port Louis (Transportation Centre) - G.R.N.W . - Cite Richelieu - Petite Riviere - Albion (Mon Plaisir) / via Belle Vue 9"
+  },
+  {
+    "route_id": "52C",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "52C Port Louis (Transportation Centre) to Bambous (NHDC Complex)",
+    "route_desc": "52C Port Louis (Transportation Centre) - G.R. N.W . - Cite Richelieu - Petite Riviere - Bambous (NHDC Complex)"
+  },
+  {
+    "route_id": "53",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "53 Saint Antoine (Traffic Centre) to Central Flacq (Bus Station) 16 (Including Rte 2 6 )",
+    "route_desc": "53 Saint Antoine (Traffic Centre) - Poudred 'Or - Rivieredu Rempart - Amaury - L aventure - Saint Remy - Central Flacq (Bus Station) 16 (Including Rte 2 6 )"
+  },
+  {
+    "route_id": "54",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "54 Central Flacq (Bus S tation ) to Palmar (Football Ground )",
+    "route_desc": "54 Central Flacq (Bus S tation ) - Argy - Isidore Rose - Belle Mare - Palmar (Football Ground )"
+  },
+  {
+    "route_id": "55",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "55 Central Flacq (Bus Station) to Palmar (Temple ) 9 5 (Incl . 5 5 B)",
+    "route_desc": "55 Central Flacq (Bus Station) - Boulet Rouge - Troud 'Eau Douce - Palmar (Temple ) 9 5 (Incl . 5 5 B)"
+  },
+  {
+    "route_id": "55A",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "55A Central Flacq (Bus Station) to Isidore Rose 5 2",
+    "route_desc": "55A Central Flacq (Bus Station) - Argy - Camp Ithier - Isidore Rose 5 2"
+  },
+  {
+    "route_id": "55B",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "55B Central Flacq (Bus Station) to Palmar (Temple) 10 (Including Rte 5 5 )",
+    "route_desc": "55B Central Flacq (Bus Station) - Argy - Troud ' Eau Douce - Palmar (Temple) 10 (Including Rte 5 5 )"
+  },
+  {
+    "route_id": "56",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "56 Central Flacq (Bus Station) to G.R.S. E. 9 3",
+    "route_desc": "56 Central Flacq (Bus Station) - Boulet Rouge - Ecroignard - Bel Air - G.R.S. E. 9 3"
+  },
+  {
+    "route_id": "57",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "57 Quatre Bornes (Traffic Centre) to W olmar 13 13",
+    "route_desc": "57 Quatre Bornes (Traffic Centre) - Palma - Beaux Songes - Bambous - Flicen F lac - W olmar 13 13"
+  },
+  {
+    "route_id": "57A",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "57A Quatre Bornes (Traffic Centre) to Cascavelle 5",
+    "route_desc": "57A Quatre Bornes (Traffic Centre) - Palma - Beaux Songes - Cascavelle 5"
+  },
+  {
+    "route_id": "59",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "59 Rose Hill (Darto Roches Brunes (Reservoir)",
+    "route_desc": "59 Rose Hill (Dar - es - Salaam Square ) - Mont Roches - Roches Brunes (Reservoir)"
+  },
+  {
+    "route_id": "60",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "60 Rose Belleto Bois Cheri 7",
+    "route_desc": "60 Rose Belle - J awaharlall Nehru Hospital - Pont Colville - La Flora - Bois Cheri 7"
+  },
+  {
+    "route_id": "61",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "61 Curepipe (Jan Palach South) to Chateau Benares 15 2",
+    "route_desc": "61 Curepipe (Jan Palach South) - L apeyre Hill - Nouvelle France - Riviere Dragon - Camp Diable - Chateau Benares 15 2"
+  },
+  {
+    "route_id": "61A",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "61A Curepipe (Jan Palach South) to Camp Diable 18",
+    "route_desc": "61A Curepipe (Jan Palach South) - L apeyre Hill - Nouvelle France - Riviere Dragon - Rivieredes Anguilles - Benares - Camp Diable 18"
+  },
+  {
+    "route_id": "62",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "62 Curepipe (Jan Palach South) to Rivieredu Poste 15 15",
+    "route_desc": "62 Curepipe (Jan Palach South) - L apeyre Hill - Nouvelle France - Rose Belle - J awaharlall Nehru Hospital - New Grove - Mare Tabac - Rivieredu Poste 15 15"
+  },
+  {
+    "route_id": "63",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "63 Roches Noiresto SSRN Hospital 16 2 8 ",
+    "route_desc": "63 Roches Noires - Rivieredu Rempart - Amaury - Petite Julie - The Mount - SSRN Hospital 16 2 8 "
+  },
+  {
+    "route_id": "64",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "64 Les Casernes (Housing Estate) to Forest Side (F orum Complex)",
+    "route_desc": "64 Les Casernes (Housing Estate) - Curepipe (J an Palach North ) - Forest Side (F orum Complex)"
+  },
+  {
+    "route_id": "65",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "65 Vacoas (Bus Station) to Quatre Bornes (Traffic Centre) / via Belle Terre 8 5",
+    "route_desc": "65 Vacoas (Bus Station) - Saint Paul - Phoenix - Highlands - Camp Fouquereaux - Hermitage 5 5 6 5 A/6 5 C UBS Cinq Arpents - Highlands - Phoenix - Saint Paul - Vacoas (Bus Station) - Carreau Laliane - Candos (Victoria Hospital ) - Quatre Bornes (Traffic Centre) / via Belle Terre 8 5"
+  },
+  {
+    "route_id": "65B",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "65B Hermitageto Quatre Bornes (Traffic Centre)",
+    "route_desc": "65B Hermitage - Highlands - Phoenix - Saint Paul - Vacoas (Bus Station) - Carreau La Liane - Candos (Victoria Hospital ) - Quatre Bornes (Traffic Centre)"
+  },
+  {
+    "route_id": "66",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "66 Vacoas (Bus Station) to Bord Cascade 4 8",
+    "route_desc": "66 Vacoas (Bus Station) - Glen Park - Henrietta - Bord Cascade 4 8"
+  },
+  {
+    "route_id": "66A",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "66A Vacoas (Bus Station) to La Marie 4",
+    "route_desc": "66A Vacoas (Bus Station) - Glen Park - La Marie 4"
+  },
+  {
+    "route_id": "66B",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "66B Vacoas (Bus Station) to Curepipe (J an Palach South)",
+    "route_desc": "66B Vacoas (Bus Station) - Glen Park - La Marie - L a Brasserie - Forest Side - Curepipe (J an Palach South)"
+  },
+  {
+    "route_id": "66C",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "66C Vacoas (Bus Station) to Grand Bassin 11",
+    "route_desc": "66C Vacoas (Bus Station) - Glen Park - La Marie - Mareaux Vacoas - Grand Bassin 11"
+  },
+  {
+    "route_id": "68",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "68 Rose Hill (Dares Salaam Square ) to Curepipe (J an Palach North)",
+    "route_desc": "68 Rose Hill (Dares Salaam Square ) - Ollier Avenue - Candos (Victoria Hospital) - Vacoas - Saint Paul - Castel - Curepipe (J an Palach North)"
+  },
+  {
+    "route_id": "68A",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "68A Rose Hill (Dares Salaam Square ) to Curepipe (J an Palach North )",
+    "route_desc": "68A Rose Hill (Dares Salaam Square ) - Ollier Avenue - Candos (Victoria Hospital) - Vacoas - Floreal - Curepipe (J an Palach North )"
+  },
+  {
+    "route_id": "69",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "69 Port Louis (Victoria Square) to Beaux Songes (Reservoir)",
+    "route_desc": "69 Port Louis (Victoria Square) - Coromandel - Rose Hill (Place Cardinal Margeot) - Quatre Bornes - Beaux Songes (Reservoir)"
+  },
+  {
+    "route_id": "70",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "70 Port Louis (Transportation Centre) to Cite La C ure (Traffic Centre )",
+    "route_desc": "70 Port Louis (Transportation Centre) - Cocoterie Road - Sainte Croix (Pere L aval Church ) - Cite La C ure (Traffic Centre )"
+  },
+  {
+    "route_id": "72",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "72 Port Louis (Transportation Centre) to Hermitage / via Cinq Arpents 4 5",
+    "route_desc": "72 Port Louis (Transportation Centre) - Riche Terre (Commercial Centre) via Motorway 3 7 3 /7 3 A UBS Curepipe (Jan Palach North ) - Castel - Camp F ouquereaux - Hermitage / via Cinq Arpents 4 5"
+  },
+  {
+    "route_id": "75",
+    "agency_id": "tbs",
+    "route_type": 0,
+    "route_short_name": "75 Pamplemoussesto Triolet (Terminus )",
+    "route_desc": "75 Pamplemousses - Beau Plan (Aventuredu Sucre ) - SSRN Hospital- Triolet (Terminus )"
+  },
+  {
+    "route_id": "75A",
+    "agency_id": "tbs",
+    "route_type": 0,
+    "route_short_name": "75A Pamplemoussesto SSRN Hospital2 5",
+    "route_desc": "75A Pamplemousses - Beau Plan (Aventuredu S ucre ) - SSRN Hospital2 5"
+  },
+  {
+    "route_id": "76",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "76 Port Louis (Transportation Centre) to Cite Roche Bois [Withextensionto Mer Rouge (F reeport)] 2 7",
+    "route_desc": "76 Port Louis (Transportation Centre) - Cite Roche Bois [Withextensionto Mer Rouge (F reeport)] 2 7"
+  },
+  {
+    "route_id": "77",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "77 Port Louis (Transportation Centre) to Terre Rouge (Police Station ) 7 8 (Incl . 2 3 5)",
+    "route_desc": "77 Port Louis (Transportation Centre) - Roche Bois - Baiedu Tombeau - Terre Rouge (Police Station ) 7 8 (Incl . 2 3 5)"
+  },
+  {
+    "route_id": "78",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "78 Port Louis (Transportation Centre) to Riche Terre (Commercial Centre ) (Withextensionto Riche Terre Muslim Cemetery)",
+    "route_desc": "78 Port Louis (Transportation Centre) - Plaine Verte - Riche Terre Road - Riche Terre (Commercial Centre ) (Withextensionto Riche Terre Muslim Cemetery)"
+  },
+  {
+    "route_id": "79",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "79 Rose Belleto Bois Cherivia W ireless Road 7 2",
+    "route_desc": "79 Rose Belle - J awaharlall Nehru Hospital - L a F lora - Bois Cherivia W ireless Road 7 2"
+  },
+  {
+    "route_id": "80",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "80 Curepipe (Jan Palach North) to Pellegrin (Riviere Profonde )",
+    "route_desc": "80 Curepipe (Jan Palach North) - Valetta - Quartier Militaire - Sebastopol - Pellegrin (Riviere Profonde )"
+  },
+  {
+    "route_id": "80A",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "80A Curepipe (Jan Palach North) to Bel Air (Police Station)",
+    "route_desc": "80A Curepipe (Jan Palach North) - Valetta - Quartier Militaire - Sebastopol - Clavet - Olivia - Bel Air (Police Station)"
+  },
+  {
+    "route_id": "81",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "81 Allee Brillant (Sandokan Store) to Curepipe (J an Palach North) [Withextensionto Forest Side (F orum Complex)] 3 5",
+    "route_desc": "81 Allee Brillant (Sandokan Store) - Engrais Martial - Curepipe (J an Palach North) [Withextensionto Forest Side (F orum Complex)] 3 5"
+  },
+  {
+    "route_id": "82",
+    "agency_id": "tbs",
+    "route_type": 0,
+    "route_short_name": "82 Port Louis (Transportation Centre) to Saint Antoine (Traffic Centre)",
+    "route_desc": "82 Port Louis (Transportation Centre) - Terre Rouge - Arsenal - Triolet - Trouaux Biches - Mon Choisy - Grand Baie - Pereybere - SaintFrancois - Goodlands - Cap Malheureux - Saint Antoine (Traffic Centre)"
+  },
+  {
+    "route_id": "84",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "84 Plainedes Rochesto SSRN Hospital 15 2",
+    "route_desc": "84 Plainedes Roches - Rivieredu Rempart - Piton - Belle Vue Harel - Beau Plan (Aventuredu Sucre ) - SSRN Hospital 15 2"
+  },
+  {
+    "route_id": "85",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "85 Rivieredu Rempart (Traffic Centre) to PortL ouis (Transportation Centre)",
+    "route_desc": "85 Rivieredu Rempart (Traffic Centre) - Poudred 'Or Hamlet - Piton - Belle Vue Harel - BeauPlan (Aventuredu Sucre ) - SSRN Hospital - Arsenal - Terre Rouge - PortL ouis (Transportation Centre)"
+  },
+  {
+    "route_id": "86",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "86 Rivieredu Rempart (Traffic Centre) to Port Louis (Transportation Centre)",
+    "route_desc": "86 Rivieredu Rempart (Traffic Centre) - Poudred 'Or - Piton - The Mount - Pamplemousses - Beau Plan (Aventuredu Sucre ) - SSRN Hospital - Arsenal - Terre Rouge - Port Louis (Transportation Centre)"
+  },
+  {
+    "route_id": "87",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "87 Curepipe (Jan Palach South) to Saint Hubert (Terminus )",
+    "route_desc": "87 Curepipe (Jan Palach South) - L apeyre Hill - Union Park - J awaharlall Nehru Hospital - New Grove - Mare Chicose - Richeen Eau - Saint Hubert (Terminus )"
+  },
+  {
+    "route_id": "88",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "88 Port Louis (Transportation Centre) to Congomah (Terminus ) 15 17 (Incl . 1 1 0/ 1 1 7 /19 6 )",
+    "route_desc": "88 Port Louis (Transportation Centre) - Terre Rouge - Arsenal - SSRN Hospital - Beau Plan (Aventuredu Sucre ) - Campdes Embrevades - Ilot - D'Epinay - Congomah (Terminus ) 15 17 (Incl . 1 1 0/ 1 1 7 /19 6 )"
+  },
+  {
+    "route_id": "89",
+    "agency_id": "mbt",
+    "route_type": 0,
+    "route_short_name": "89 Port Louis (Transportation Centre) to Camp L a Boue 9 12",
+    "route_desc": "89 Port Louis (Transportation Centre) - Terre Rouge - L ong Mountain - Camp L a Boue 9 12"
+  },
+  {
+    "route_id": "89A",
+    "agency_id": "mbt",
+    "route_type": 0,
+    "route_short_name": "89A Port Louis (Transportation Centre) to Eau Bouillie 4 (Including Rte 1 9 /19 A)",
+    "route_desc": "89A Port Louis (Transportation Centre) - Terre Rouge - L ong Mountain - Les Mariannes - Eau Bouillie 11 89B M BT Camp La Boue - Les Mariannes - Eau Bouillie 4 (Including Rte 1 9 /19 A)"
+  },
+  {
+    "route_id": "90",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "90 Curepipe (Jan Palach South) to Blue Bayvia Blue Bay L ink Road 19 (Including Rte 9 )",
+    "route_desc": "90 Curepipe (Jan Palach South) - L apeyre Hill - Union Park - J awaharlall Nehru Hospital - Mared 'Albert - SSRI Airport - Blue Bayvia Blue Bay L ink Road 19 (Including Rte 9 )"
+  },
+  {
+    "route_id": "3",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "3 Port Louis (Victoria Square) to Camp Thorel 20 33 (Incl . 1 1 3 /11 3 A)",
+    "route_desc": "3 Port Louis (Victoria Square) - Reduit (Universityof Mauritius) - Helvetia - Saint Pierre (Traffic Centre) - Quartier Militaire - SaintJ uliend 'Hotman - Camp Thorel 20 33 (Incl . 1 1 3 /11 3 A)"
+  },
+  {
+    "route_id": "93A",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "93A Port Louis (Victoria Square) to L 'Esperance 17",
+    "route_desc": "93A Port Louis (Victoria Square) - Reduit (Universityof M auritius) - Helvetia - Saint Pierre (Traffic Centre) - Quartier Militaire - L 'Esperance 17"
+  },
+  {
+    "route_id": "94",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "94 Rivieredu Rempart (Traffic Centre) to Saint Antoine (Traffic Centre) 12 6 10 ",
+    "route_desc": "94 Rivieredu Rempart (Traffic Centre) - Piton - L 'Esperance Trebuchet - Cottage - Saint Antoine (Traffic Centre) 12 6 10 "
+  },
+  {
+    "route_id": "95",
+    "agency_id": "tbs",
+    "route_type": 0,
+    "route_short_name": "95 Pamplemousses Beau Plan (Aventuredu Sucre ) SSRN HospitalSolitude Triolet Trouaux Biches Mon Choisy Grand Baie Pereybere Pavillon Cap Malheureux Grand Gaube Goodlands Saint Antoine (T raffic Centre) 25 3 to Pamplemousses Beau Plan (Aventuredu Sucre ) SSRN HospitalSolitude Triolet Trouaux Biches Mon Choisy Grand Baie Pereybere Pavillon Cap Malheureux Grand Gaube Goodlands Saint Antoine (T raffic Centre)",
+    "route_desc": "95 Pamplemousses Beau Plan (Aventuredu Sucre ) SSRN HospitalSolitude Triolet Trouaux Biches Mon Choisy Grand Baie Pereybere Pavillon Cap Malheureux Grand Gaube Goodlands Saint Antoine (T raffic Centre)"
+  },
+  {
+    "route_id": "96",
+    "agency_id": "mbt",
+    "route_type": 0,
+    "route_short_name": "96 Creve Coeur L ong Mountain Kitchin Terre Rouge Riche Terre (Commercial Centre) 9 9 9 /9 9 A IO Mahebourg (Bus Station) Plaine Magnien Carreau Esnouf Mon Desert Carreau Accacia Trois Boutiques / via L e Bouchon 11 2 1 0 1 /10 1 B IO Central Flacq (Bus Station) Petite Retraite Bon Acceuil Villebague The Mount Pamplemousses Beau Plan (Aventuredu Sucre ) SSRNHospital/ via L aventure 16 4 to Creve Coeur L ong Mountain Kitchin Terre Rouge Riche Terre (Commercial Centre) 9 9 9 /9 9 A IO Mahebourg (Bus Station) Plaine Magnien Carreau Esnouf Mon Desert Carreau Accacia Trois Boutiques / via L e Bouchon 11 2 1 0 1 /10 1 B IO Central Flacq (Bus Station) Petite Retraite Bon Acceuil Villebague The Mount Pamplemousses Beau Plan (Aventuredu Sucre ) SSRNHospital/ via L aventure 16 4",
+    "route_desc": "96 Creve Coeur L ong Mountain Kitchin Terre Rouge Riche Terre (Commercial Centre) 9 9 9 /9 9 A IO Mahebourg (Bus Station) Plaine Magnien Carreau Esnouf Mon Desert Carreau Accacia Trois Boutiques / via L e Bouchon 11 2 1 0 1 /10 1 B IO Central Flacq (Bus Station) Petite Retraite Bon Acceuil Villebague The Mount Pamplemousses Beau Plan (Aventuredu Sucre ) SSRNHospital/ via L aventure 16 4"
+  },
+  {
+    "route_id": "101A",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "101A Central Flacq (Bus Station) FUEL L allmatie Bon Acceuil Villebague The Mount SSRN Hospital 18 to Central Flacq (Bus Station) FUEL L allmatie Bon Acceuil Villebague The Mount SSRN Hospital 18",
+    "route_desc": "101A Central Flacq (Bus Station) FUEL L allmatie Bon Acceuil Villebague The Mount SSRN Hospital 18"
+  },
+  {
+    "route_id": "101C",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "101C Central Flacq (Bus Station) FUEL Belvedere Villebague The Mount Pamplemousses Beau Plan (Aventuredu Sucre ) SSRNHospital17 to Central Flacq (Bus Station) FUEL Belvedere Villebague The Mount Pamplemousses Beau Plan (Aventuredu Sucre ) SSRNHospital17",
+    "route_desc": "101C Central Flacq (Bus Station) FUEL Belvedere Villebague The Mount Pamplemousses Beau Plan (Aventuredu Sucre ) SSRNHospital17"
+  },
+  {
+    "route_id": "102",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "102 Port Louis (Victoria Square) Coromandel Rose Hill ( Place Cardinal Margeot) Phoenix Saint Paul Floreal Curepipe (Jan Palach North) 16 8 to Port Louis (Victoria Square) Coromandel Rose Hill ( Place Cardinal Margeot) Phoenix Saint Paul Floreal Curepipe (Jan Palach North)",
+    "route_desc": "102 Port Louis (Victoria Square) Coromandel Rose Hill ( Place Cardinal Margeot) Phoenix Saint Paul Floreal Curepipe (Jan Palach North)"
+  },
+  {
+    "route_id": "103",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "103 Port Louis (Victoria Square) Mount Ory Moka (Hospital ) Bois Cheri Road Saint Pierre (Traffic Centre ) L Avenir Nouvelle Decouverte J unction L a Nicoliere Road / Eau Bouillie 15 (Including Rte 1 2 ) to Port Louis (Victoria Square) Mount Ory Moka (Hospital ) Bois Cheri Road Saint Pierre (Traffic Centre ) L Avenir Nouvelle Decouverte J unction L a Nicoliere Road / Eau Bouillie 15 (Including Rte 1 2 )",
+    "route_desc": "103 Port Louis (Victoria Square) Mount Ory Moka (Hospital ) Bois Cheri Road Saint Pierre (Traffic Centre ) L Avenir Nouvelle Decouverte J unction L a Nicoliere Road / Eau Bouillie 15 (Including Rte 1 2 )"
+  },
+  {
+    "route_id": "103A",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "103A Port Louis (Victoria Square) Reduit (Universityof Mauritius ) Helvetia Saint Pierre (Traffic Centre ) L Avenir Malinga L a L aura 13 to Port Louis (Victoria Square) Reduit (Universityof Mauritius ) Helvetia Saint Pierre (Traffic Centre ) L Avenir Malinga L a L aura 13",
+    "route_desc": "103A Port Louis (Victoria Square) Reduit (Universityof Mauritius ) Helvetia Saint Pierre (Traffic Centre ) L Avenir Malinga L a L aura 13"
+  },
+  {
+    "route_id": "104",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "104 Curepipe (Jan Palach North) Corson (Tea Factory) Icery Curepipe (J an Palach North) [Withextensionto Forest Side (Forum Complex)] 5 3 to Curepipe (Jan Palach North) Corson (Tea Factory) Icery Curepipe (J an Palach North) [Withextensionto Forest Side (Forum Complex)] 5 3",
+    "route_desc": "104 Curepipe (Jan Palach North) Corson (Tea Factory) Icery Curepipe (J an Palach North) [Withextensionto Forest Side (Forum Complex)] 5 3"
+  },
+  {
+    "route_id": "105",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "105 Rose Hill (Place Cardinal Margeot) Reduit (Universityof Mauritius) Moka (Hospital ) Helvetia Saint Pierre (Traffic Centre) Valetta Upper Dagotiere (NHDC Housing Estate ) Vuillemin (Terminus ) 12 (Including Rte 1 3 A) to Rose Hill (Place Cardinal Margeot) Reduit (Universityof Mauritius) Moka (Hospital ) Helvetia Saint Pierre (Traffic Centre) Valetta Upper Dagotiere (NHDC Housing Estate ) Vuillemin (Terminus ) 12 (Including Rte 1 3 A)",
+    "route_desc": "105 Rose Hill (Place Cardinal Margeot) Reduit (Universityof Mauritius) Moka (Hospital ) Helvetia Saint Pierre (Traffic Centre) Valetta Upper Dagotiere (NHDC Housing Estate ) Vuillemin (Terminus ) 12 (Including Rte 1 3 A)"
+  },
+  {
+    "route_id": "105A",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "105A Rose Hill (Place Cardinal Margeot) Reduit (Universityof Mauritius) Moka (Hospital ) Helvetia Saint Pierre (Traffic Centre) Coted Or (Exto Store )",
+    "route_desc": "105A Rose Hill (Place Cardinal Margeot) Reduit (Universityof Mauritius) Moka (Hospital ) Helvetia Saint Pierre (Traffic Centre) Coted Or (Ex - Co - operative Store )"
+  },
+  {
+    "route_id": "106",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "106 Port Louis (Transportation Centre) Terre Rouge Pamplemousses The Mount Villebague Bon Acceuil L allmatie FUEL Central F lacq (Bus Station) 23 70 (Incl . 1 0 9/ 1 1 1 / 11 2 / 2 3 2 /23 6 ) to Port Louis (Transportation Centre) Terre Rouge Pamplemousses The Mount Villebague Bon Acceuil L allmatie FUEL Central F lacq (Bus Station) 23 70 (Incl . 1 0 9/ 1 1 1 / 11 2 / 2 3 2 /23 6 )",
+    "route_desc": "106 Port Louis (Transportation Centre) Terre Rouge Pamplemousses The Mount Villebague Bon Acceuil L allmatie FUEL Central F lacq (Bus Station) 23 70 (Incl . 1 0 9/ 1 1 1 / 11 2 / 2 3 2 /23 6 )"
+  },
+  {
+    "route_id": "109",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "109 Port Louis (Transportation Centre) Terre Rouge Pamplemousses The Mount Villebague Belvedere FUEL Central Flacq (Bus Station) 22 (Including Rte 1 0 6 ) to Port Louis (Transportation Centre) Terre Rouge Pamplemousses The Mount Villebague Belvedere FUEL Central Flacq (Bus Station) 22 (Including Rte 1 0 6 )",
+    "route_desc": "109 Port Louis (Transportation Centre) Terre Rouge Pamplemousses The Mount Villebague Belvedere FUEL Central Flacq (Bus Station) 22 (Including Rte 1 0 6 )"
+  },
+  {
+    "route_id": "110",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "110 Port Louis (Transportation Centre) Terre Rouge Old Flacq Road Ilot D Epinay Congomah (Terminus ) 10 (Including Rte 8 8 ) to Port Louis (Transportation Centre) Terre Rouge Old Flacq Road Ilot D Epinay Congomah (Terminus ) 10 (Including Rte 8 8 )",
+    "route_desc": "110 Port Louis (Transportation Centre) Terre Rouge Old Flacq Road Ilot D Epinay Congomah (Terminus ) 10 (Including Rte 8 8 )"
+  },
+  {
+    "route_id": "111",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "111 Port Louis (Transportation Centre) Terre Rouge Pamplemousses The Mount Villebague Bon Acceuil L aventure Central Flacq (Bus Station) 21 (Including Rte 1 0 6 ) to Port Louis (Transportation Centre) Terre Rouge Pamplemousses The Mount Villebague Bon Acceuil L aventure Central Flacq (Bus Station) 21 (Including Rte 1 0 6 )",
+    "route_desc": "111 Port Louis (Transportation Centre) Terre Rouge Pamplemousses The Mount Villebague Bon Acceuil L aventure Central Flacq (Bus Station) 21 (Including Rte 1 0 6 )"
+  },
+  {
+    "route_id": "112",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "112 Port Louis (Transportation Centre) Terre Rouge Pamplemousses The Mount Villebague Bon Acceuil Constanceto Petite Cabane /Campde Masque Pave (Withextensionto Bel Airvia Clemencia ) 29 (Including Rte 9 3 )",
+    "route_desc": "112 Port Louis (Transportation Centre) Terre Rouge Pamplemousses The Mount Villebague Bon Acceuil Constance - Central Flacq (Bus Station) 22 (Including Rte 1 0 6 ) 11  1 1 3 / 11 3 A IO Port Louis (Victoria Square) - Reduit (Universityof Mauritius) - Helvetia - Saint Pierre (Traffic Centre) - Quartier Militaire - Campde Masque - Petite Cabane /Campde Masque Pave (Withextensionto Bel Airvia Clemencia ) 29 (Including Rte 9 3 )"
+  },
+  {
+    "route_id": "114",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "114 Cite Malherbesto Curepipe (Jan Palach North) [Withextensionto F orest Side (Forum Complex)] 3 5",
+    "route_desc": "114 Cite Malherbes - Curepipe (Jan Palach North) [Withextensionto F orest Side (Forum Complex)] 3 5"
+  },
+  {
+    "route_id": "114A",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "114A W ooton ( Millenium Memorial ) to Cite Vallijee (Bus Station) / via Cite Rozemont 4 11",
+    "route_desc": "114A W ooton ( Millenium Memorial ) - Curepipe (Jan Palach North) [Withextensionto F orest Side(Forum Complex)] 3 1 1 5 / 1 1 5 A UBS Plaine Verte - Vallee Pitort - Tranquebar - Dr. J eetoo Hospital- L a Butte - Cite Vallijee (Bus Station) / via Cite Rozemont 4 11"
+  },
+  {
+    "route_id": "117",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "117 Port Louis (Transportation Centre) to Congomah (Terminus ) 12 (Including Rte 8 8 )",
+    "route_desc": "117 Port Louis (Transportation Centre) - Terre Rouge - Campdes Embrevades - Ilot - D'Epinay - Congomah (Terminus ) 12 (Including Rte 8 8 )"
+  },
+  {
+    "route_id": "119",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "119 Port Louis (Transportation Centre) to Grande Riviere Noire (Trois Bras Store)",
+    "route_desc": "119 Port Louis (Transportation Centre) - G.R.N.W . - Cite Richelieu - Petite Riviere - Bambous - Tamarin - Grande Riviere Noire (Trois Bras Store)"
+  },
+  {
+    "route_id": "120",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "120 Port Louisto Baiedu Cap 32 2",
+    "route_desc": "120 Port Louis - G.R.N.W . - Cite Richelieu - Petite Riviere - Bambous - Tamarin - Grande Riviere Noire (Trois Bras Store ) - Le Morne - Baiedu Cap 32 2"
+  },
+  {
+    "route_id": "121",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "121 Camp L evieux (Eau Coulee ) to Curepipe (J an Palach North) [ withextensionto Forest Side (F orum Complex)] 3 4",
+    "route_desc": "121 Camp L evieux (Eau Coulee ) - Mgr L een Street - Curepipe (J an Palach North) [ withextensionto Forest Side (F orum Complex)] 3 4"
+  },
+  {
+    "route_id": "122",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "122 Curepipe (Jan Palach North) to Camp L evieux (NHDC Complex)",
+    "route_desc": "122 Curepipe (Jan Palach North) - Floreal - Vacoas - Candos (Victoria Hospital) - Quatre Bornes - Camp L evieux (NHDC Complex)"
+  },
+  {
+    "route_id": "122A",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "122A Curepipe (Jan Palach North) to Camp Levieux (NHDC Complex)",
+    "route_desc": "122A Curepipe (Jan Palach North) - Castel - Saint Paul - Vacoas - Candos (Victoria Hospital ) - Quatre Bornes - Camp Levieux (NHDC Complex)"
+  },
+  {
+    "route_id": "125",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "125 Curepipe (Jan Palach North) to Cite La Caverne 5 2",
+    "route_desc": "125 Curepipe (Jan Palach North) - Floreal - Vacoas - Cite La Caverne 5 2"
+  },
+  {
+    "route_id": "126",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "126 Port Louis (Transportation Centre) to Rivdu Rempart (Traffic Centre)",
+    "route_desc": "126 Port Louis (Transportation Centre) - Terre Rouge - Pamplemousses - Belle Vue Harel - Cottage - Poudred 'Or - Rivdu Rempart (Traffic Centre)"
+  },
+  {
+    "route_id": "127",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "127 Port Louis (Transportation Centre) to Roches Noires Village 19 2",
+    "route_desc": "127 Port Louis (Transportation Centre) - Terre Rouge - Pamplemousses - Belle Vue Harel - Piton - L 'Amitie - Rivieredu Rempart (Traffic Centre) - Roches Noires Village 19 2"
+  },
+  {
+    "route_id": "128",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "128 Curepipe (Jan Palach North) to Curepipe ( Jan Palach North) [Withextensionto F orest Side (Forum Complex)] 4 6",
+    "route_desc": "128 Curepipe (Jan Palach North) - Botanical Garden Entrance - Curepipe ( Jan Palach North) [Withextensionto F orest Side (Forum Complex)] 4 6"
+  },
+  {
+    "route_id": "129",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "129 Curepipe (Jan Palach South) to Pointeaux Roches 25 1",
+    "route_desc": "129 Curepipe (Jan Palach South) - L apeyre Hill - Nouvelle France - Souillac - Chemin Grenier - Pointeaux Roches 25 1"
+  },
+  {
+    "route_id": "131",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "131 Cite L 'Oiseauto Curepipe (Jan Palach North) [Withextensionto F orest Side (Forum Complex)] 4 8",
+    "route_desc": "131 Cite L 'Oiseau - Curepipe (Jan Palach North) [Withextensionto F orest Side (Forum Complex)] 4 8"
+  },
+  {
+    "route_id": "132",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "132 Rose Hill (Darto Trefles (Housing Estate )",
+    "route_desc": "132 Rose Hill (Dar - es - Salaam Square ) - Trefles (Housing Estate )"
+  },
+  {
+    "route_id": "133",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "133 Curepipe (Jan Palach South) to Choisy (Terminus) 32 2 12 ",
+    "route_desc": "133 Curepipe (Jan Palach South) - L apeyre Hill - Nouvelle France - Souillac - Chemin Grenier - Bel Ombre - Baiedu Cap - Choisy (Terminus) 32 2 12 "
+  },
+  {
+    "route_id": "134",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "134 Curepipe (Jan Palach North) to Bord Cascade 7 5",
+    "route_desc": "134 Curepipe (Jan Palach North) - Floreal - Sadally - Glen Park - Henrietta - Bord Cascade 7 5"
+  },
+  {
+    "route_id": "134A",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "134A Curepipe (Jan Palach North) to L a Marie (Terminus )",
+    "route_desc": "134A Curepipe (Jan Palach North) - Floreal - Sadally - Glen Park - L a Marie (Terminus )"
+  },
+  {
+    "route_id": "135",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "135 Port Louis (Victoria Square) to Carreau Accacia / via L e Bouchon 17 4",
+    "route_desc": "135 Port Louis (Victoria Square) - Mount Ory - Moka (Hospital ) - Bois Cheri Road - Saint Pierre (Traffic Centre ) - Upper Dagotiere (NHDC Housing Estate) - Valetta - Vuillemin 16 (Including Rte 1 2 ) 1 3 7 / 13 7 A IO Curepipe - Lapeyre Hill - Union Park - J awaharlall Nehru Hospital- Mared 'Albert - Plaine Magnien - Carreau Esnouf - Mon Desert - Carreau Accacia / via L e Bouchon 17 4"
+  },
+  {
+    "route_id": "139",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "139 Port Louis (Transportation Centre) to Cite Gabriel Martial 3 3 1",
+    "route_desc": "139 Port Louis (Transportation Centre) - Vallee Pitot (Cite Rozemont) - Cite Gabriel Martial 3 3 1"
+  },
+  {
+    "route_id": "40",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "40 Port Louis (Victoria Square) to Hermitage 14 8",
+    "route_desc": "40 Port Louis (Victoria Square) - Coromandel - Rose Hill (Place Cardinal Margeot) - Phoenix - Highlands - Hermitage 14 8"
+  },
+  {
+    "route_id": "141",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "141 Port Louis (Victoria Square) to Curepipe (Jan Palach North)",
+    "route_desc": "141 Port Louis (Victoria Square) - Reduit (Universityof Mauritius) - Phoenix (Commercial Centre) - Vacoas - Glen Park - Henrietta - Bord Cascade 16 15 1 4 3 / 14 3 A NTC Vacoas - Floreal - Cite L 'Oiseau / Queen Mary Avenue - Curepipe (Jan Palach North)"
+  },
+  {
+    "route_id": "144A",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "144A O'Connorto Curepipe (J an Palach North)[Withextensionto F orest Side (Forum Complex)] 3 1",
+    "route_desc": "144A O'Connor - Camp Caval - Curepipe (J an Palach North)[Withextensionto F orest Side (Forum Complex)] 3 1"
+  },
+  {
+    "route_id": "145",
+    "agency_id": "rht",
+    "route_type": 0,
+    "route_short_name": "145 Port Louis (Victoria Square) to Rose Hill (Market)",
+    "route_desc": "145 Port Louis (Victoria Square) - Coromandel - Roches Brunes - Trefles - Rose Hill (Market)"
+  },
+  {
+    "route_id": "147",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "147 Rose Hill (Place Cardinal Margeot) to Bord Cascade 9 7",
+    "route_desc": "147 Rose Hill (Place Cardinal Margeot) - Quatre Bornes - Candos (Victoria Hospital ) - Glen Park - Henrietta - Bord Cascade 9 7"
+  },
+  {
+    "route_id": "148",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "148 Citela Cure (Traffic Centre ) to Cite Vallijee (Bus Station)",
+    "route_desc": "148 Citela Cure (Traffic Centre ) - Sainte Croix (Pere L aval Church ) - Plaine Verte - Dr.J eetoo Hospital - L a Butte - Cite Vallijee (Bus Station)"
+  },
+  {
+    "route_id": "149",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "149 Port Louis (Victoria Square) to Bigara (W ireless Station)",
+    "route_desc": "149 Port Louis (Victoria Square) - Coromandel - Rose Hill (Place Cardinal Margeot) - Phoenix - Curepipe - Forest Side - L a Brasserie - Bigara (W ireless Station)"
+  },
+  {
+    "route_id": "150",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "150 Paillesto Vallee Pitot 6 12",
+    "route_desc": "150 Pailles - G.R.N.W . - L a Butte - Dr. J eetoo Hospital - Tranquebar - Vallee Pitot 6 12"
+  },
+  {
+    "route_id": "152",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "152 Cite Vallijee (Bus Station) to Le Goulet 8 8",
+    "route_desc": "152 Cite Vallijee (Bus Station) - L aButte - Dr.J eetoo Hospital - Plaine Verte - Cite Roche Bois - Baiedu Tombeau - Le Goulet 8 8"
+  },
+  {
+    "route_id": "153",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "153 Curepipe (Jan Palach North) to Saint Pierre (Traffic Centre)",
+    "route_desc": "153 Curepipe (Jan Palach North) - Floreal - Vacoas - Candos (Victoria Hospital) - Quatre Bornes - Reduit (Universityof Mauritius) - Moka (Hospital ) - Helvetia - Saint Pierre (Traffic Centre)"
+  },
+  {
+    "route_id": "155",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "155 Quatre Bornes (Traffic Centre) to Curepipe (J an Palach South )",
+    "route_desc": "155 Quatre Bornes (Traffic Centre) - Candos (Victoria Hospital) - Glen Park - L a Marie - Curepipe (J an Palach South )"
+  },
+  {
+    "route_id": "156",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "156 Port Louis (Victoria Square) to Berthaud (Bus Station) 10 15 13 ",
+    "route_desc": "156 Port Louis (Victoria Square) - Coromandel - Rose Hill (Place Cardinal Margeot) - Ollier Avenue - Berthaud (Bus Station) 10 15 13 "
+  },
+  {
+    "route_id": "156A",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "156A Rose Hill (Place Cardinal Margeot) to La Source 4 1",
+    "route_desc": "156A Rose Hill (Place Cardinal Margeot) - Quatre Bornes - La Source 4 1"
+  },
+  {
+    "route_id": "159",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "159 Port Louis (Transportation Centre) to Valleedes Pretres / Upper Valleedes Pretres 7 8",
+    "route_desc": "159 Port Louis (Transportation Centre) - Terre Rouge - Arsenal - SSRN Hospital - Plainedes Papayes - Belle Vue Harel - Cottage - Poudred 'Or (Hospital ) 19 (Including Rte 2 1 ) 1 6 0 / 16 0 A UBS Cite Vallijee (Bus Station) - L aButte - Dr.J eetoo Hospital - Plaine Verte - Valleedes Pretres / Upper Valleedes Pretres 7 8"
+  },
+  {
+    "route_id": "162",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "162 Port Louis (Victoria Square) to Curepipe (Jan Palach North)(Withextensionto F orest Side )",
+    "route_desc": "162 Port Louis (Victoria Square) - Reduit (Roundabout) - Phoenix - Curepipe (Jan Palach North)(Withextensionto F orest Side )"
+  },
+  {
+    "route_id": "163",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "163 Port Louis (Victoria Square) to Vacoas (Bus Station) 13 2 3 + 1 0 (Blue Line)",
+    "route_desc": "163 Port Louis (Victoria Square) - Reduit (Roundabout) - Quatre Bornes - Candos (Victoria Hospital ) - Vacoas (Bus Station) 13 2 3 + 1 0 (Blue Line)"
+  },
+  {
+    "route_id": "166",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "166 Vacoas (Bus Station) to Cite L a Caverne 3 2",
+    "route_desc": "166 Vacoas (Bus Station) - Bonne Terre - Cite L a Caverne 3 2"
+  },
+  {
+    "route_id": "168",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "168 Curepipe (Jan Palach South) to Grand Bassin 14 1",
+    "route_desc": "168 Curepipe (Jan Palach South) - L apeyre Hill - N ouvelle France - L a F lora - Bois Cheri - Grand Bassin 14 1"
+  },
+  {
+    "route_id": "169",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "169 Central Flacq (Bus Station) to Petite Cabane 6 2",
+    "route_desc": "169 Central Flacq (Bus Station) - FUEL - Campde Masque Pave - Petite Cabane 6 2"
+  },
+  {
+    "route_id": "170",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "170 Port Louis (Victoria Square) to Curepipe (Jan Palach North)",
+    "route_desc": "170 Port Louis (Victoria Square) - Coromandel - Rose Hill (Place Cardinal Margeot) - Quatre Bornes - Candos (Victoria Hospital) - Vacoas - Saint Paul - Castel - Curepipe (Jan Palach North)"
+  },
+  {
+    "route_id": "170A",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "170A Port Louis (Victoria Square) to Curepipe (Jan Palach North)",
+    "route_desc": "170A Port Louis (Victoria Square) - Coromandel - Rose Hill (Place Cardinal Margeot) - Quatre Bornes - Candos (Victoria Hospital) - Vacoas - Floreal - Curepipe (Jan Palach North)"
+  },
+  {
+    "route_id": "171",
+    "agency_id": "tbs",
+    "route_type": 0,
+    "route_short_name": "171 Port Louis (Transportation Centre) to Grande Pointeaux Piments 13 2",
+    "route_desc": "171 Port Louis (Transportation Centre) - Terre Rouge - Arsenal - SSRN (Hospital ) - Solitude - Triolet - Grande Pointeaux Piments 13 2"
+  },
+  {
+    "route_id": "172",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "172 Rose Hill (Darto Roches Brunes 2 1",
+    "route_desc": "172 Rose Hill (Dar - es - Salaam Square ) - Roches Brunes 2 1"
+  },
+  {
+    "route_id": "173",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "173 Curepipe (Jan Palach North) to Saint Pierre (Traffic Centre)",
+    "route_desc": "173 Curepipe (Jan Palach North) - Castel - Phoenix - Reduit (Universityof Mauritius) - Moka (Hospital) - Helvetia - Saint Pierre (Traffic Centre)"
+  },
+  {
+    "route_id": "174",
+    "agency_id": "rht",
+    "route_type": 0,
+    "route_short_name": "174 Rose Hill (Place Cardinal Margeot) to Port L ouis (Victoria Square ) 9 Includedin Route 1",
+    "route_desc": "174 Rose Hill (Place Cardinal Margeot) - Ebene - Reduit (Universityof Mauritius) - Pailles - Port L ouis (Victoria Square ) 9 Includedin Route 1"
+  },
+  {
+    "route_id": "174A",
+    "agency_id": "rht",
+    "route_type": 0,
+    "route_short_name": "174A Rose Hill (Place Cardinal Margeot) to PortL ouis (Victoria Square ) 9 Including Route 1",
+    "route_desc": "174A Rose Hill (Place Cardinal Margeot) - Ebene (Cyber Tower) - Reduit (Universityof Mauritius) - Pailles - PortL ouis (Victoria Square ) 9 Including Route 1"
+  },
+  {
+    "route_id": "175",
+    "agency_id": "mbt",
+    "route_type": 0,
+    "route_short_name": "175 SSRN (Hospital ) to Creve Coeur 11 1",
+    "route_desc": "175 SSRN (Hospital ) - Pamplemousses - Melle Laure - L ong Mountain - Creve Coeur 11 1"
+  },
+  {
+    "route_id": "176",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "176 Port Louis (Transportation Centre) to Central Flacq (Bus Station)",
+    "route_desc": "176 Port Louis (Transportation Centre) - Terre Rouge - Old F lacq Road - D'Epinay - Villebague - Bon Acceuil - L allmatie - Saint J ulien - Constance - Central Flacq (Bus Station)"
+  },
+  {
+    "route_id": "178",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "178 Melvilleto Madame Azor 6 5",
+    "route_desc": "178 Melville - Roche Terre - Goodlands - Saint Antoine (Traffic Centre) - Madame Azor 6 5"
+  },
+  {
+    "route_id": "179",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "179 Curepipe (Jan Palach North) to W olmar 19 6 14 Route No Operator Route Description No. offarestages N o . ofbuseslicensed",
+    "route_desc": "179 Curepipe (Jan Palach North) - Castel - Saint Paul - Vacoas - Candos (Victoria Hospital ) - Palma - Beaux Songes - Bambous - Flicen F lac - W olmar 19 6 14 Route No Operator Route Description No. offarestages N o . ofbuseslicensed"
+  },
+  {
+    "route_id": "179A",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "179A Curepipe (Jan Palach North) to W olmar 19",
+    "route_desc": "179A Curepipe (Jan Palach North) - Floreal - Vacoas - Candos (Victoria Hospital) - Palma - Beaux Songes - Bambous - Flicen F lac - W olmar 19"
+  },
+  {
+    "route_id": "180",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "180 Bord Cascadeto Valentina (Phoenix I ndustrialEstate)",
+    "route_desc": "180 Bord Cascade - Henrietta - Glen Park - Vacoas (Bus Station) - Valentina (Phoenix I ndustrialEstate)"
+  },
+  {
+    "route_id": "181",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "181 Hermitageto Valentina (Phoenix Industrial Estate)",
+    "route_desc": "181 Hermitage - Highlands - Valentina (Phoenix Industrial Estate)"
+  },
+  {
+    "route_id": "182",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "182 Citela Cure (Traffic Centre ) to Cite Chebel [Withextensionto Gros Cailloux (Morc . De Marigny)] 13 8",
+    "route_desc": "182 Citela Cure (Traffic Centre ) - Sainte Croix - Plaine Verte - Vallee Pitot - Tranquebar - Dr.J eetoo Hospital- L a Butte - Coromandel - Cite Chebel [Withextensionto Gros Cailloux (Morc . De Marigny)] 13 8"
+  },
+  {
+    "route_id": "185",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "185 Port Louis (Transportation Centre) to Cite Bois Marchand 4 2",
+    "route_desc": "185 Port Louis (Transportation Centre) - Terre Rouge - Cite Bois Marchand 4 2"
+  },
+  {
+    "route_id": "187",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "187 Saint Antoine (Traffic Centre) to Melle J eanne (Near Kalimaye )",
+    "route_desc": "187 Saint Antoine (Traffic Centre) - Melle J eanne (Near Kalimaye )"
+  },
+  {
+    "route_id": "188",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "188 Port Louis (Victoria Square) to Sodnac 10 1",
+    "route_desc": "188 Port Louis (Victoria Square) - Reduit (Roundabout) - Quatre Bornes - Sodnac 10 1"
+  },
+  {
+    "route_id": "189",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "189 Rose Hill (Place Cardinal Margeot) to W olmar 12 5",
+    "route_desc": "189 Rose Hill (Place Cardinal Margeot) - Mont Roches - Bambous - Flicen Flac - W olmar 12 5"
+  },
+  {
+    "route_id": "190",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "190 Port Louis (Victoria Square) to Port Louis (Transportation Centre)",
+    "route_desc": "190 Port Louis (Victoria Square) - Port Louis (Transportation Centre)"
+  },
+  {
+    "route_id": "191",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "191 Port Louis (Transportation Centre) to Curepipe (Jan Palach North ) via Motorwayand Couventde L orette Street 16 5",
+    "route_desc": "191 Port Louis (Transportation Centre) - Curepipe (Jan Palach North ) via Motorwayand Couventde L orette Street 16 5"
+  },
+  {
+    "route_id": "192",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "192 Port Louis (Victoria Square) to Vacoas (Bus Station) via Motorwayand Sivananda Avenue 14 10",
+    "route_desc": "192 Port Louis (Victoria Square) - Vacoas (Bus Station) via Motorwayand Sivananda Avenue 14 10"
+  },
+  {
+    "route_id": "193",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "193 Curepipe (Jan Palach North) to Belle Terre (Terminus )",
+    "route_desc": "193 Curepipe (Jan Palach North) - Castel - Phoenix - Highlands - Belle Terre (Terminus )"
+  },
+  {
+    "route_id": "194",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "194 Central Flacq (Bus Station) to Marie J eanne 11 3",
+    "route_desc": "194 Central Flacq (Bus Station) - Boulet Rouge - Bel Air - Marie J eanne 11 3"
+  },
+  {
+    "route_id": "195",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "195 Quatre Bornes (Traffic Centre) to Quatre Bornes (Traffic Centre)",
+    "route_desc": "195 Quatre Bornes (Traffic Centre) - Phoenix (Commercial Centre) - Quatre Bornes (Traffic Centre)"
+  },
+  {
+    "route_id": "196",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "196 Port Louis (Transportation Centre) to Congomah (Terminus ) 12 (Including Rte 8 8 )",
+    "route_desc": "196 Port Louis (Transportation Centre) - Terre Rouge - Pamplemousses - Mon Gout - D'Epinay - Congomah (Terminus ) 12 (Including Rte 8 8 )"
+  },
+  {
+    "route_id": "197",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "197 Port Louis (Victoria Square) to Rivieredes Galets (Bus Station)",
+    "route_desc": "197 Port Louis (Victoria Square) - Reduit (Universityof Mauritius) - Pont Fer - L a Vigie (Roundabout) - Nouvelle France - Souillac - Chemin Grenier - Rivieredes Galets (Bus Station)"
+  },
+  {
+    "route_id": "199",
+    "agency_id": "tbs",
+    "route_type": 0,
+    "route_short_name": "199 Port Louis (Transportation Centre) to Terre Rouge (Police Station)",
+    "route_desc": "199 Port Louis (Transportation Centre) - Morcellement Raffray - Terre Rouge (Police Station)"
+  },
+  {
+    "route_id": "200",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "200 Port Louis (Deschartres Street / Victoria Square) to L a Sourdine 32 8 15 ",
+    "route_desc": "200 Port Louis (Deschartres Street / Victoria Square) - Reduit (Universityof Mauritius) - Pont F er - La Vigie (Roundabout) - Rose Belle - M ared 'Albert - L 'Escalier - L a Sourdine 32 8 15 "
+  },
+  {
+    "route_id": "202",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "202 Hermitageto Vacoas (Bus Station)",
+    "route_desc": "202 Hermitage - Camp Fouquereaux - C astel - Saint Paul - Vacoas (Bus Station)"
+  },
+  {
+    "route_id": "203",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "203 Port Louis (Transportation Centre) to Baiedu Nord (Withextensionto Mouroukand Anse Quitor)",
+    "route_desc": "203 Port Louis (Transportation Centre) - GRNW - Cite Richelieu - Petite Riviere - Mont Roches - Camp Levieux (NHDC Complex) 10 10 204 (Rodrigues ) Port Mathurin (Traffic Centre) - Terre Rouge - Grand Baie 3 4 (Incl . 2 3 0) 205 (Rodrigues ) Port Mathurin (Traffic Centre) - Accacia - Baie Malgache - Baiedu Nord 7 4 205A (Rodrigues ) Port Mathurin (Traffic Centre) - Accacia - Allee Tamarin 3 205B (Rodrigues ) Port Mathurin (Traffic Centre) - Accacia - Fondla Bonte 3 206 (Rodrigues ) Port Mathurin (Traffic Centre) - Solitude - Petit Gabriel - Quatre Vents - L a Ferme - Plaine Corail (Airport) 13 15 (Incl . 2 0 7) 206A (Rodrigues ) Port Mathurin (Traffic Centre) - Accacia - Baie Malgache - Montagnedu Sable - Mangues - L a F erme - Plaine Corail (Airport) 12 207 (Rodrigues ) Port Mathurin (Traffic Centre) - Solitude - Petit Gabriel - Marechal - L a F erme - Camp Pintade (Pointe Palmiste W ater Tank ) 14 (Including Rte 2 0 6 ) 207A (Rodrigues ) Port Mathurin (Traffic Centre ) - Malartic - Marechal - Grand L a F ouche Corail - Anse Quitor - Riviere Cocos (R.C.A. School ) 12 207B (Rodrigues ) Port Mathurin (Traffic Centre) - Accacia - Baiedu Nord - La Ferme - Camp Pintade (Pointe Palmiste W ater Tank ) 13 207C (Rodrigues ) Port Mathurin (Traffic Centre) - Accacia - Baie Malgache - Montagnedu Sable - Mangues - L a F erme - Camp Pintade (Pointe Palmiste W ater Tank ) 13 208 (Rodrigues ) Port Mathurin (Traffic Centre) - Solitude - Roche Bon Dieu - Pointe Coton (Public Beach ) (extensionto Riviere Bananeand Saint Francois ) 9 8 209 (Rodrigues ) Port Mathurin (Traffic Centre) - Solitude - Sainte Famille - Port Sud Est - Mourouk - Riviere Cocos (R.C.A. School ) 10 11 210 (Rodrigues ) Port Mathurin (Traffic Centre) - Solitude - Batatrand - Graviers 7 4 210A (Rodrigues ) Port Mathurin (Traffic Centre) - Solitude - Coromandel - Patate Theophile - Montagne Cabris 7 210B (Rodrigues ) Port Mathurin (Traffic Centre) - Solitude - Coromandel - Montagne Cheri 7 211 (Rodrigues ) Port Mathurin (Traffic Centre) - Solitude - Malartic / Saint Gabriel - Petit Gabriel - Citron Donis (Withextensionto Eau Vannee ) 6 3 16  213 (Rodrigues ) Riviere Cocos - L a Ferme - Baiedu Nord (Withextensionto Mouroukand Anse Quitor)"
+  },
+  {
+    "route_id": "214",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "214 Rivieredu Posteto Mahebourg (Bus Station)",
+    "route_desc": "214 Rivieredu Poste - Mare Tabac - Mared 'Albert - SSRI Airport - Mahebourg (Bus Station)"
+  },
+  {
+    "route_id": "215",
+    "agency_id": "tbs",
+    "route_type": 0,
+    "route_short_name": "215 Port Louis (Transportation Centre) to Grand Baie (La Jonque Restaurant)",
+    "route_desc": "215 Port Louis (Transportation Centre) - Grand Baie (La Jonque Restaurant)"
+  },
+  {
+    "route_id": "216",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "216 Central Flacq (B us Station) to Central Flacq (Bus Station)",
+    "route_desc": "216 Central Flacq (B us Station) - FUEL - L allmatie - Grand Bas Fond - FUEL - Central Flacq (Bus Station)"
+  },
+  {
+    "route_id": "217",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "217 Central Flacq (Bus Station) to Central Flacq (Bus Station)",
+    "route_desc": "217 Central Flacq (Bus Station) - Constance - hermitage - La Porte Providence - Postede Flacq - Constance - Central Flacq (Bus Station)"
+  },
+  {
+    "route_id": "218",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "218 Central Flacq (Bus Station) to Central F lacq (Bus Station)",
+    "route_desc": "218 Central Flacq (Bus Station) - Queen Victoria - Central F lacq (Bus Station)"
+  },
+  {
+    "route_id": "219",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "219 Curepipe (Jan Palach North) to Soupirs 5 4",
+    "route_desc": "219 Curepipe (Jan Palach North) - Sivananda Avenue (Vacoas Bus Station) - Phoenix (Commercial Centre) - Paillotte - Candos (Victoria Hospital ) - Quatre Bornes (Traffic Centre) 7 10 220 (Rodrigues ) Port Mathurin (Traffic Centre) - Solitude - Malartic - Soupirs 5 4"
+  },
+  {
+    "route_id": "221",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "221 Rivieredu Rempart (Traffic Centre) to Central Flacq (Bus Station)",
+    "route_desc": "221 Rivieredu Rempart (Traffic Centre) - Plainedes Roches - Petite Retraite - Central Flacq (Bus Station)"
+  },
+  {
+    "route_id": "222",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "222 Rose Hill (Place Cardinal Margeot) to Rivieredu Rempart (Traffic Centre)",
+    "route_desc": "222 Rose Hill (Place Cardinal Margeot) - Reduit (Universityof Mauritius) - Helvetia - Saint Pierre (Traffic Centre) - Quartier Militaire - SaintJ uliend 'Hotman - L allmatie - Petite Retraite - L aventure - Belle Vue Maurel - Rivieredu Rempart (Traffic Centre)"
+  },
+  {
+    "route_id": "222A",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "222A Rose Hill (Place Cardinal Margeot ) to Baladirou 6 5",
+    "route_desc": "222A Rose Hill (Place Cardinal Margeot ) - Reduit (Universityof Mauritius) - Helvetia - Saint Pierre (Traffic Centre) - Quartier Militaire - SaintJ uliend 'Hotman - L allmatie - Belvedere - Petite Retraite - Laventure - Belle Vue Maurel - Rivieredu Rempart (Traffic Centre) 29 224 (Rodrigues ) Port Mathurin (Traffic Centre) - Solitude - Montagne Goyaves (Health Centre) - Baladirou 6 5"
+  },
+  {
+    "route_id": "225",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "225 Rose Hill (Darto Camp L evieux (NHDC Complex)",
+    "route_desc": "225 Rose Hill (Dar - es - Salaam Square ) - Plaisance - Camp L evieux (NHDC Complex)"
+  },
+  {
+    "route_id": "226",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "226 Curepipe (Jan Palach North) to Rivieredu Rempart (Traffic Centre)",
+    "route_desc": "226 Curepipe (Jan Palach North) - Valetta - Vuillemin - Quartier Militaire - SaintJ uliend 'Hotman - L allmatie - Bon Acceuil - Mared 'Australia - Amaury - Belle Vue Maurel - Rivieredu Rempart (Traffic Centre)"
+  },
+  {
+    "route_id": "226A",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "226A Curepipe (Jan Palach North) to Rivieredu Rempart (Traffic Centre)",
+    "route_desc": "226A Curepipe (Jan Palach North) - Valetta - Vuillemin - Quartier Militaire - SaintJ uliend 'Hotman - Lallmatie - Belvedere - Mared 'Australia - Belle Vue Maurel - Rivieredu Rempart (Traffic Centre)"
+  },
+  {
+    "route_id": "226B",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "226B Curepipe (Jan Palach North) to Rivieredu Rempart (Traffic Centre)",
+    "route_desc": "226B Curepipe (Jan Palach North) - Valetta - Vuillemin - Quartier Militaire - SaintJ uliend 'Hotman - L allmatie - Grande Retraite - L aventure - Belle V ue Maurel - Rivieredu Rempart (Traffic Centre)"
+  },
+  {
+    "route_id": "227",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "227 Port Louisto Saint Antoine (Traffic Centre) 21 (Including Rte 2 1 )",
+    "route_desc": "227 Port Louis - Terre Rouge - Pamplemousses - Beau Plan (Aventuredu Sucre ) - SSRN Hospital - Plainedes Papayes - Petit Raffray - Goodlands - Saint Antoine (Traffic Centre) 21 (Including Rte 2 1 )"
+  },
+  {
+    "route_id": "228",
+    "agency_id": "tbs",
+    "route_type": 0,
+    "route_short_name": "228 Grande Pointeaux Pimentsto Saint Antoine (Traffic Centre)",
+    "route_desc": "228 Grande Pointeaux Piments - Mon Choisy (Public Beach ) - Grand Baie - Pereybere - Pavillon - Petit Raffray - Goodlands - Saint Antoine (Traffic Centre)"
+  },
+  {
+    "route_id": "229",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "229 Rose Hill (Darto Hauteur Accacia 1 (Including Rte 2 0 4 )",
+    "route_desc": "229 Rose Hill (Dar - es - Salaam Square ) - Mont Roches - Bambous 7 5 230 (Rodrigues ) Port Mathurin (Traffic Centre) - Hauteur Accacia 1 (Including Rte 2 0 4 )"
+  },
+  {
+    "route_id": "231",
+    "agency_id": "tbs",
+    "route_type": 0,
+    "route_short_name": "231 Pointeaux Cannoniersto Saint Antoine (Traffic Centre)",
+    "route_desc": "231 Pointeaux Cannoniers - Grand Baie - Upper Vale - Rouillard - Goodlands - Saint Antoine (Traffic Centre)"
+  },
+  {
+    "route_id": "232",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "232 Port Louis (Transportation Centre) to Bel Air (Endof Village ) 27 (Including Rte 1 0 6 )",
+    "route_desc": "232 Port Louis (Transportation Centre) - Terre Rouge - Old F lacq Road - D'Epinay - Villebague - Belvedere - Saint Julien - Constance - Central Flacq - Boulet Rouge - Bel Air (Endof Village ) 27 (Including Rte 1 0 6 )"
+  },
+  {
+    "route_id": "233",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "233 Plaine Verteto Tranquebar (Cite Madeleine )",
+    "route_desc": "233 Plaine Verte - Vallee Pitot - Tranquebar (Cite Madeleine )"
+  },
+  {
+    "route_id": "234",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "234 Cite Vallijeeto Tranquebar (Cite Madeleine )",
+    "route_desc": "234 Cite Vallijee - L a Butte - Dr.J eetoo Hospital - Tranquebar (Cite Madeleine )"
+  },
+  {
+    "route_id": "236",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "236 Port Louis (Transportation Centre) to Belle Mare (W aterpark ) 29 (Including Rte 1 0 6 )",
+    "route_desc": "236 Port Louis (Transportation Centre) - Terre Rouge - Pamplemousses - The Mount - Villebague - Bon Acceuil - FUEL - Central Flacq - Belle Mare (W aterpark ) 29 (Including Rte 1 0 6 )"
+  },
+  {
+    "route_id": "237",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "237 Valleedes Pretres (Terminus ) to Pailles (Morcellement Raffray)",
+    "route_desc": "237 Valleedes Pretres (Terminus ) - Plaine Verte - Vallee Pitot - Dr. J eetoo Hospital - L a Butte - Old Moka Road - Pailles (Morcellement Raffray)"
+  },
+  {
+    "route_id": "238",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "238 Pailles (Morcellement Raffray) to Port Louis (Transportation Centre)",
+    "route_desc": "238 Pailles (Morcellement Raffray) - Old Moka Road - Port Louis (Transportation Centre)"
+  },
+  {
+    "route_id": "239",
+    "agency_id": "rht",
+    "route_type": 0,
+    "route_short_name": "239 Rose Hill (Place Margeot) to Rose Hill (Place Margeot)",
+    "route_desc": "239 Rose Hill (Place Margeot) - Camp Levieux (NHDC Complex) - Roches Brunes - Beau Bassin - Rose Hill (Place Margeot)"
+  },
+  {
+    "route_id": "240",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "240 Sottiseto Central Flacq (Bus Station)",
+    "route_desc": "240 Sottise - Lower Vale - Plainedes Papayes - Piton - L 'Amitie - Rivieredu Rempart - Belle Vue Maurel - Petite Retraite - Central Flacq (Bus Station)"
+  },
+  {
+    "route_id": "241",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "241 Vacoas (NTC Remy Ollier Depot) to Rose Hill (Place Cardinal Margeot)",
+    "route_desc": "241 Vacoas (NTC Remy Ollier Depot) - L a Caverne - Vacoas (Bus Station) - Phoenix (Commercial Centre) - Rose Hill (Place Cardinal Margeot)"
+  },
+  {
+    "route_id": "242",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "242 Petite Riviere (Foyer Piat) to Vacoas (ENT Hospital )",
+    "route_desc": "242 Petite Riviere (Foyer Piat) - Coromandel - Rose Hill (Place Cardinal Margeot) - Quatre Bornes - Candos (Victoria Hospital) - Vacoas (ENT Hospital )"
+  },
+  {
+    "route_id": "243",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "243 Quatre Bornes (Traffic Centre) to Chamarel (Entrance La Terre 7 Couleurs )",
+    "route_desc": "243 Quatre Bornes (Traffic Centre) - Beaux Songes - Bambous - Riviere Noire - Case Noyale - Chamarel (Entrance La Terre 7 Couleurs )"
+  },
+  {
+    "route_id": "244",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "244 Port Louis (Victoria Square) to Mer Rouge (Mauritius F reeport Authority)",
+    "route_desc": "244 Port Louis (Victoria Square) - Roche Bois - Mer Rouge (Mauritius F reeport Authority)"
+  },
+  {
+    "route_id": "245",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "245 Port Louis (Victoria Square ) to Camp Diable 32 5",
+    "route_desc": "245 Port Louis (Victoria Square ) - Reduit (Universityof Mauritius) - Pont Fer - L a Vigie (Roundabout) - Nouvelle France - Rivieredes Anguilles - Camp Diable 32 5"
+  },
+  {
+    "route_id": "246",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "246 Port Louis (Victoria Square) to Bois Cheri 26 5 18 ",
+    "route_desc": "246 Port Louis (Victoria Square) - Reduit (Universityof Mauritius) - Pont Fer - L a Vigie (Roundabout) - Nouvelle France - Grand Bois - Bois Cheri 26 5 18 "
+  },
+  {
+    "route_id": "247",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "247 Curepipe (Jan Palach North) to Cite Anouchka 2 2",
+    "route_desc": "247 Curepipe (Jan Palach North) - Forest Side - Cite Anouchka 2 2"
+  },
+  {
+    "route_id": "248",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "248 Port Louis (Deschartres Street/Victoria Square ) to Rivieredu Poste (Terminus )",
+    "route_desc": "248 Port Louis (Deschartres Street/Victoria Square ) - Reduit (Universityof Mauritius) - Pont F er - La Vigie (Roundabout) - Rose Belle - Mare Tabac - Rivieredu Poste (Terminus )"
+  },
+  {
+    "route_id": "249",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "249 Dubreuil (Terminus) to Quatre Bornes (Traffic Centre)",
+    "route_desc": "249 Dubreuil (Terminus) - Hermitage - Highlands - Phoenix - Saint Paul - Vacoas - Carreau L a Liane - Candos (Victoria Hospital) - Quatre Bornes (Traffic Centre)"
+  },
+  {
+    "route_id": "250",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "250 Port Louisto Dubreuil (Terminus )",
+    "route_desc": "250 Port Louis - Coromandel - Rose Hill (Place Cardinal Margeot) - Eau Coulee - W ooton - Pitondu Milieu - Dubreuil (Terminus )"
+  },
+  {
+    "route_id": "252",
+    "agency_id": "io",
+    "route_type": 0,
+    "route_short_name": "252 Curepipeto Mahebourg (Bus Station) 17 (Including Rte 9 )",
+    "route_desc": "252 Curepipe - La Vigie - J awaharlall Nehru Hospital- Mared 'Albert - Mahebourg (Bus Station) 17 (Including Rte 9 )"
+  },
+  {
+    "route_id": "253",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "253 Cite Vallijee (Bus Station) to Le Goulet 7 5",
+    "route_desc": "253 Cite Vallijee (Bus Station) - La Butte - Dr. J eetoo Hospital - Plaine Verte - Riche Terre (Commercial Centre ) - Riche Terre Road - Le Goulet 7 5"
+  },
+  {
+    "route_id": "254",
+    "agency_id": "ubs",
+    "route_type": 0,
+    "route_short_name": "254 Curepipeto Rose Hill (Place Cardinal Margeot)",
+    "route_desc": "254 Curepipe - Phoenix - Trianon - Ebene (Cyber Tower) - Rose Hill (Place Cardinal Margeot)"
+  },
+  {
+    "route_id": "255",
+    "agency_id": "ntc",
+    "route_type": 0,
+    "route_short_name": "255 Bord Cascadeto Societyc to Rose Hill (Place Cardinal Margeot)",
+    "route_desc": "255 Bord Cascade - Henrietta - Glen Park - Vacoas (Bus Station) - Pont Fer (IVTB) - Ebene (Cyber Tower) - Rose Hill (Place Cardinal Margeot)"
+  }
+]
