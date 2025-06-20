@@ -28,7 +28,7 @@ interface BusCNTBusLine {
   endstage: string;
 }
 
-const busRoutesFilePath = path.join(__dirname, '../../../../config/data/buscnt_routes.json');
+const busRoutesFilePath = path.join(__dirname, '../../../../config/data/temp/buscnt_routes.json');
 const busRoutesFileData = readFile(busRoutesFilePath).then(
   (v) => JSON.parse(v.toString()) as BusCNTInputRow[]
 );

@@ -3,10 +3,7 @@ import { VehicleType } from '@mobouzer/shared/src/enums/routes';
 import { readFile } from 'fs/promises';
 import path from 'path';
 
-const busRoutesFilePath = path.join(
-  __dirname,
-  '../../../../config/data/mauritius_bus_lines_cleaned.json'
-);
+const busRoutesFilePath = path.join(__dirname, '../../../../config/data/bus-lines.json');
 const busRoutesFileData = readFile(busRoutesFilePath).then(
   (v) => JSON.parse(v.toString()) as NewRoute[]
 );
